@@ -1,0 +1,98 @@
+:PROPERTIES:
+:ID:       629363f6-5b8f-4771-a03d-2e21d9f61b32
+:ROAM_ALIASES: "ORG ROAM"
+:END:
+#+title: Org Roam
+
+-> [[id:ceec713c-7576-418e-908f-8084c45f83d4][EMACS]]
+
+[[https://www.orgroam.com/manual.html][Org-roam user manual]]
+
+* MAIN
+
+**  TODO template for dailies with the custom TODO statuses
+**  TODO rebind dailies to easier keybinds ?
+
+* KEYBINDS
+
+~SPC n r n~ -> org roam capture
+~SPC n r i~ -> insert a node link
+~SPC n r r~ -> see backlinks
+
+* NODES
+
+a node is a simply note or a heading with an ID property, which will make it identifiable to org-roam
+
+** CREATING A NODE
+
+you make regular org-roam nodes with
+~org-roam-capture~ (SPC n r n)
+
+you can also put a node on a regular heading with:
+~org-id-get-create~ (SPC m I)
+
+** NODE ALIASES
+
+easily create an alias while in a node ~:PROPERTIES:~ with:
+~org-roam-alias-add~ (SPC m m o a)
+
+** COMPLETION AT POINT
+
+using ~completion-at-point~ you can auto-complete words with their respective org-roam node link.
+
+add this to your ~~/.doom.d/config.el~
+#+begin_src elisp
+(map! :leader
+      :desc "Completion at point"
+      "n r c" #'completion-at-point)
+#+end_src
+
+* DATABASE SYNC
+
+convert a file for org roam with ~org-id-create
+
+in case of deleting, renaming, or moving notes database.
+- clean the database with ~org-roam-db-clear-all~
+- re-scan the database with ~org-roam-db-sync~ or ~M-SPC n r s~
+
+* DAILIES
+
+_today_
+capture a note for *today*
+~org-roam-dailies-capture-today~
+with ~SPC n r d T~
+go to *today's* notes
+~org-roam-dailies-goto-today~
+with ~SPC n r d t~
+
+_specific date_
+capture a note for a *specific date*
+~org-roam-capture-date~
+with ~SPC n r d D~
+go to a *specific date* note
+~org-roam-goto-date~
+with ~SPC n r d d~
+(*note*: move around dates with ~SHIFT + ARROW KEYS~, can also use mouse)
+
+_tomorrow_
+capture a note for *tomorrow*
+~org-roam-dailies-capture-tomorrow~
+with ~SPC n r d M~
+go to *tomorrow's* notes
+~org-roam-dailies-goto-today~
+with ~SPC n r d m~
+
+_yesterday_
+capture a note for *yesterday*
+~org-roam-dailies-capture-yesterday~
+with ~SPC n r d Y~
+go to *yesterday's* notes
+~org-roam-dailies-goto-yesterday~
+with ~SPC n r d y~
+
+* GRAPH (org-roam-ui)
+
+[[https://github.com/org-roam/org-roam-ui][github page]]
+
+https://org-roam.discourse.group/t/how-to-generate-the-roam-graph-to-appear-in-emacs/310
+

@@ -1,0 +1,141 @@
+:PROPERTIES:
+:ID:       a1f856a6-a6bf-4412-b9b3-52db03710620
+:ROAM_ALIASES: ガイド "GUIDES ガイド"
+:END:
+#+title: Guides
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]]
+
+* A GUIDE TO
+** [[id:3ebd7649-1f3e-4082-bb5e-60feee3212f3][AUDIO]] ON LINUX 
+** [[id:f96e5f9e-62bf-400e-8520-b3ec0450c712][BACKUPS]]
+** [[id:04888fa0-a833-4f9b-9238-17808e6deafc][CONTAINERS]]
+** [[id:ceec713c-7576-418e-908f-8084c45f83d4][EMACS]]
+** [[id:820af444-d90f-44e4-8723-c4d6e82b42b5][EMULATION]] ON LINUX
+** [[id:18e2483e-8a47-40d7-9a80-a79a3ca254fb][FILESYSTEMS]] AND [[id:ef5bd774-e428-452d-9e04-1dad211148d3][STORAGE]]
+** [[id:d1093c5b-1817-4713-93d6-83fdf6377ee7][FILE SHARING]] 
+** [[id:78b32325-b577-4289-85c7-754861dcc360][GAMING]]
+** [[id:93cc71d7-8411-41b7-9349-dd222bf28249][TOR]] / [[id:11075fd2-9e3d-4ea1-a00f-0ebbe045e6d0][I2P]]
+** [[id:fead246a-696e-4222-809a-506a9e58fd6b][MONERO]]
+** [[id:9a58c90f-23c4-4d06-915c-0d3d5ef17ca3][VERSION CONTROL]] (AND DOTFILE MANAGEMENT)
+** [[id:94812be7-0920-40cb-aa76-8bf9447b553c][VIM]]
+** [[id:744bfcde-15c4-469d-8962-9912f8ab9940][VM]] (VIRTUAL MACHINES)
+* direnv
+:PROPERTIES:
+:ID:       11dc24ea-2d42-4736-b259-72d3bc06dff3
+:ROAM_ALIASES: DIRENV
+:END:
+
+[[https://direnv.net/][main page]]
+
++ [[https://www.digitalocean.com/community/tutorials/how-to-manage-python-with-pyenv-and-direnv][How To Manage Python with Pyenv and Direnv - Digital Ocean]]
++ [[https://shivamarora.medium.com/a-guide-to-manage-your-environment-variables-in-a-better-way-using-direnv-2c1cd475c8e][A guide to manage your environment variables in a better way using direnv - Medium]]
+
+** set up
+
+1. Install direnv through your package manager
+2. Hook into the shell
+
+   in ~.bashrc~
+   #+begin_src
+   eval "$(direnv hook bash)"
+   #+end_src
+
+   in ~.zshrc~
+   #+begin_src
+   eval "$(direnv hook zsh)"
+   #+end_src
+
+It uses a ~.envrc~ file in the current and parent directories.
+
+* SERVER / NETWORKS / WEBDEV
+** [[id:bc2233db-f8fd-4de6-8a9a-bb519804ba85][SSH]]
+** [[id:18bfbe2b-1f10-47ab-aaeb-c203bae7ee04][PGP]]
+** CONTAINERS -> [[id:51b4ecce-b0a6-4844-84e1-7b9ca2b554fa][DOCKER]]
+** WEB SERVER
+*** [[id:da4f3703-0384-4a06-a797-04e19f88dbe6][NGINX]]
+** [[id:84bfb8e8-fd88-4974-84ee-7975bfbeda3e][WEBASSEMBLY]]
+** FRONTENDS
+*** Neocities
+
+[[https://neocities.org/][main page]]
+[[https://en.wikipedia.org/wiki/Neocities][wikipedia page]]
+
+** CREATING STATIC WEBSITES
+
+[[https://letsencrypt.org/][Let's Encrypt]]
+
++ [[id:f95867f8-1eb4-46be-98f3-5a7b35f4f2ce][Org Publish]]
++ [[id:1d2bf530-2f5a-4104-ae41-39c837798edf][Hugo]]
++ [[https://www.mkdocs.org/][MkDocs]]
+
+** SETTING UP A SMART HOME
+*** IFTTT
+
+[[https://ifttt.com/][main page]]
+
+*** Home Assistant
+
+[[https://www.home-assistant.io/][main page]]
+
+* NETWORKS
+** ANONYMOUS NETWORKS
+*** [[I2P]]
+*** [[Tor]]
+** MESH NETWORKS
+*** [[id:8ea0b243-496e-4e7c-98eb-13ade994d593][Tailscale]]
+*** [[id:baef0b33-e2d8-419d-a1a5-0f3500248386][ZeroTier]]
+* APPLICATION GUIDES
+
++ Command-line hex viewer with hexyl
++ Benchmarking with [[id:f5e334fa-0b46-4f9c-8985-9c559bb3f82a][hyperfine]]
++ Using [[tmux]]
++ Setting up [[Mullvad]] VPN
++ Listening to music with [[MPD]] + [[Ncmpcpp]]
++ Japanese Input using [[id:10a53004-e63e-42b9-bbdb-c889cd4d43b3][FCITX5 + MOZC]]
++ *Note taking* with [[id:f906a0bc-4369-4a72-a36d-25e6d1a66c42][Obsidian]]
++ Setting linux default apps with the [[id:f3350b33-d745-4230-8a77-6a0267064639][xdg-mime]] specification
++ Password management with [[id:4f81a52e-4000-4b93-9abc-e30d7920759c][pass]]
+
+** MANAGING FILES
+
++ Office suite with [[id:18d57b7d-519f-42d6-beb0-b086b61a860a][LibreOffice]]
++ *LaTeX* documents in [[id:a39a5097-a472-4a4a-b4f6-31fc548ad0ac][Tectonic]]
++ Converting files through [[id:a354d96c-8e7a-4fb0-ac78-84f754246169][Pandoc]]
++ Editing pictures with [[ImageMagick]]
+
+** SYSTEM MANAGEMENT / CUSTOMIZATION
+
++ IRC client - [[id:4c2c23d2-3f25-4cb4-b857-4d1cdf28a295][WeeChat]]
++ customize your system with [[id:fd9ac2ec-672b-4fda-8e85-d13cbebbe3f1][pywal]] and [[id:33a9d6ce-bbc9-4ae4-a621-076653455ec3][wpgtk]]
++ Fuzzy Finding with [[fzf]] / [[id:d9c4ecf3-4be8-40b4-97dd-b6d330f7799d][skim]]
++ Screenshots with grimp/slurp / [[id:67245cd0-c301-49e5-8000-b909f967c028][Flameshot]] / [[id:c23119a1-7843-4d75-b6eb-a7671d5c8807][ksnip]]
++ Organize your home folder with [[id:0fe479eb-60ab-47ce-a692-b63d88df776f][xdg-ninja]]
++ [[id:3d2a36c1-bade-407f-9cfa-7165d77db076][ClamAV]] antivirus on linux
++ [[id:b4cb3821-0424-4d04-b494-9aaf1f63fb07][OpenRGB]]
+
+** VIDEO AND AUDIO
+
++ Video + Audio with [[FFmpeg]] (+ ** wl-recorder[link] for Wayland[link])
++ [[id:0f196f22-f896-4061-a047-85519defbcba][asciinema]]
++ [[id:ee37b081-8a3e-4b78-bfc4-55f10b6c6e79][playerctl]]
+
+*MUSIC PLAYERS*
+
++ ncmpcpp
++ cmus
++ qmmp
+
+** PRESENTATIONS
+
+*** [[id:4ed1c0a2-60d0-48ea-9a27-f907331ff4e6][slides]] (terminal)
+*** marp + [[id:afb3240b-71e7-4154-b81b-84791e6e6e65][zathura]] (markdown)
+*** emacs present beamer
+** OCR
+*** [[id:1bc2dccd-5992-4805-95b3-0d1728590da9][Tesseract]]
+*** [[id:f5af88a0-008f-42e3-86e8-cda988bb930f][EasyOCR]]
+** WINDOW MANAGERS
+*** [[id:f607aef7-2442-4b29-adf4-a9c7868d54d0][Hyprland]]
+*** [[id:3071a725-018e-42d3-8865-c915f402103c][Yabai]] (MacOS)
+*** xmonad
+*** RatPoison

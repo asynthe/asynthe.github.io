@@ -1,0 +1,78 @@
+:PROPERTIES:
+:ID:       f7cb03c9-a09b-4650-88bb-509ac4f5b11e
+:ROAM_ALIASES: "FONT フォント" FONTS フォント
+:END:
+#+title: Fonts
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+
+[[https://linuxconfig.org/how-to-install-and-manage-fonts-on-linux][How to install and manage fonts on Linux - linuxconfig]]
+[[https://nixos.wiki/wiki/Fonts][Fonts - NixOS wiki]]
+
+* RESOURCES
+
+Nerd Fonts
+[[id:c5bab2eb-1abe-49a4-be10-6e9616195b12][fontawesome]]
+
+UNICODE FONT
+https://github.com/illnyang/univga-ttf
+https://www.inp.nsk.su/~bolkhov/files/fonts/univga/index.html
+The Ultimate Oldschool PC Font Pack
+https://int10h.org./oldschool-pc-fonts/
+Amiga Fonts
+https://github.com/rewtnull/amigafonts
+
+* FONTS
+** Square
+** [[https://edwardtufte.github.io/et-book/][ET Book]]
+* JAPANESE FONTS
+
+FOT-Matiise ProN
+
+Corporate Logo Maru
+https://www.freejapanesefont.com/corporate-logo-maru-download/
+
+Togalite
+https://fonts.adobe.com/fonts/togalite
+
+
+*MINCHO (SERIF)*
+
+
+*GOTHIC (SANS-SERIF)*
+Ricty
+[[https://rictyfonts.github.io/][link]]
+
+monafont
+[[https://monafont.sourceforge.net/][link]]
+arch -> ~123~
+gentoo -> ~media-fonts/monafont~
+
+Sazanami
+arch ->123
+gentoo -> ~media-fonts/sazanami~
+
+* FAVOURITES
+
+Eurostile - FIND
+Gona 1975
+Fontworks - New Rodin
+Morisawa - Shingo / UD Shingo NT
+
+THIS MGS2 FONT I FORGOT
+
+* HOW TO SET UP - LINUX
+
+*On a user level*
+Copy and paste font into one of the next directories:
+~~/.fonts~ or ~~/.local/share/fonts~
+
+*On a system level*
+Copy and paste into following directory:
+~/usr/share/fonts~
+
+Now, make the new fonts cache with
+~$ fc-cache~ (all fonts directories) or
+~$ fc-cache -vf /usr/share/fonts~ (specific directory)
+~-v~ -> verbose
+~-f~ -> force

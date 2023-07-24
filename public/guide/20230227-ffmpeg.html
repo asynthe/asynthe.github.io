@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FFmpeg</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">FFmpeg</h1>
+<p>
+-&gt; <a href="../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; [BROKEN LINK: a1f856a6-a6bf-4412-b9b3-52db03710620]
+</p>
+
+<p>
+<a href="https://github.com/FFmpeg/FFmpeg">github page</a>
+<a href="https://en.wikipedia.org/wiki/FFmpeg">wikipedia page</a>
+<a href="https://ffmmpeg.org">official webpage</a>
+<a href="https://wiki.gentoo.org/wiki/FFmpeg">gentoo wiki</a>
+<a href="https://wiki.archlinux.org/title/FFmpeg">arch wiki</a>
+</p>
+
+<p>
+<a href="https://drewdevault.com/2022/10/12/In-praise-of-ffmpeg.html">In praise of ffmpeg - Drew DeVault's blog</a>
+</p>
+
+<div id="outline-container-orgf7c5c34" class="outline-2">
+<h2 id="orgf7c5c34">package</h2>
+<div class="outline-text-2" id="text-orgf7c5c34">
+<p>
+arch -&gt; <code>ffmpeg</code> or <code>ffmpeg-git</code> (aur), also <code>ffmpeg-full</code> (aur, with all options enabled)
+gentoo -&gt; <code>media-video/ffmpeg</code> (see <code>ffmpeg</code> use flag)
+nixos -&gt; <code>...</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org671745c" class="outline-2">
+<h2 id="org671745c">usage</h2>
+<div class="outline-text-2" id="text-org671745c">
+</div>
+<div id="outline-container-orgb5392a4" class="outline-3">
+<h3 id="orgb5392a4">converting .wav to compressed .mp3</h3>
+<div class="outline-text-3" id="text-orgb5392a4">
+<p>
+<code>$ ffmpeg -i &lt;input&gt;.wav -vn -ar 44100 -ac 2 -b:a 192k &lt;output&gt;.mp3</code>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">flag</th>
+<th scope="col" class="org-left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">-i</td>
+<td class="org-left">the input (.wav file)</td>
+</tr>
+
+<tr>
+<td class="org-left">-vn</td>
+<td class="org-left">disable video, no album cover</td>
+</tr>
+
+<tr>
+<td class="org-left">-ar</td>
+<td class="org-left">audio sampling frequency</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">8kHz (telcom), 44.1kHz (audio cd), 48kHz (movies)</td>
+</tr>
+
+<tr>
+<td class="org-left">-ac</td>
+<td class="org-left">audio channels</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">stereo (2), mono (1)</td>
+</tr>
+
+<tr>
+<td class="org-left">-b:a</td>
+<td class="org-left">audio bitrate, convert to exact number</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">in this <span class="underline">example</span>: 192kbit per second</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgbd3fce3" class="outline-3">
+<h3 id="orgbd3fce3">media player (ffplay)</h3>
+<div class="outline-text-3" id="text-orgbd3fce3">
+<p>
+If built with <code>sdl</code> flag, a cli media player called <code>ffplay</code> is available
+</p>
+</div>
+
+<div id="outline-container-org5b849a8" class="outline-4">
+<h4 id="org5b849a8">commands</h4>
+<div class="outline-text-4" id="text-org5b849a8">
+<p>
+<code>ffplay &lt;path/to/video&gt;</code> -&gt; play a video
+<code>curl https | xargs ffplay</code> -&gt; play a stream
+</p>
+
+<p>
+more info:
+<code>$ man 1 ffplay</code>
+<code>$ ffplay -h</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6105785" class="outline-3">
+<h3 id="org6105785">extracting blu-ray audio</h3>
+<div class="outline-text-3" id="text-org6105785">
+<p>
+<span class="underline">note</span>: remember to have ffmpeg compiled with the <code>bluray</code> flag
+</p>
+
+<p>
+<a href="https://wiki.gentoo.org/wiki/FFmpeg_-_Extract_Blu_Ray_Audio">FFmpeg - Extract Blu-Ray Audio - gentoo wiki</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

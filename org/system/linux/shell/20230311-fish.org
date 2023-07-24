@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       3b022392-4269-457a-a180-342afa6063d6
+:ROAM_ALIASES: FISH
+:END:
+#+title: fish
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]  
+
+[[https://en.wikipedia.org/wiki/Fish_(Unix_shell)][wikipedia page]]

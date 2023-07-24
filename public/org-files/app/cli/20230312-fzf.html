@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>fzf</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">fzf</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a> / <a href="../../other/main/20230428-bsd.html#ID-5b8d8a26-f3dd-4e50-b144-9eff85eadf96">BSD</a> / <a href="../../system/windows/20230428-windows.html#ID-0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b">WINDOWS ウィンドウズ</a> -&gt; <a href="../../other/main/20230428-sysapps.html#ID-9be91f09-e446-4d22-931e-c05792d8f582">SYSAPPS アプリ</a>
+</p>
+
+<p>
+<a href="https://github.com/junegunn/fzf">github page</a>
+[[][official webpage] ]
+[[][gentoo wiki] ]
+<a href="https://wiki.archlinux.org/title/fzf">arch wiki</a>
+<a href="https://www.tomshardware.com/how-to/fuzzy-search-linux">How to Do a Fuzzy File Search in Linux - tom's HARDWARE</a>
+</p>
+
+<p>
+<a href="https://www.reddit.com/r/commandline/comments/10mfm5b/a_practical_guide_to_fzf_building_a_file_explorer/">https://www.reddit.com/r/commandline/comments/10mfm5b/a_practical_guide_to_fzf_building_a_file_explorer/</a>
+<a href="https://www.reddit.com/r/commandline/comments/10m34pl/searching_and_watching_youtube_with_thumbnails/">https://www.reddit.com/r/commandline/comments/10m34pl/searching_and_watching_youtube_with_thumbnails/</a>
+<a href="https://www.youtube.com/watch?v=on1AzaZzQ7k">https://www.youtube.com/watch?v=on1AzaZzQ7k</a>
+<a href="https://archlinux.org/packages/?name=skim">https://archlinux.org/packages/?name=skim</a>
+</p>
+
+<p>
+app-text/fzy
+</p>
+
+<p>
+ytfzf
+net-misc/ytfzf
+</p>
+
+<div id="outline-container-org9977828" class="outline-2">
+<h2 id="org9977828">package</h2>
+<div class="outline-text-2" id="text-org9977828">
+<p>
+arch -&gt; fzf or 
+gentoo -&gt; <code>app-shells/fzf</code>
+nixos -&gt; 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc2ee043" class="outline-2">
+<h2 id="orgc2ee043">usage (not working? - but should work if installing on source)</h2>
+<div class="outline-text-2" id="text-orgc2ee043">
+<p>
+<a href="https://www.tomshardware.com/how-to/fuzzy-search-linux">How to Do a Fuzzy File Search in Linux - tom's HARDWARE</a>
+</p>
+
+<p>
+<i>this doesn't load for me by default</i> (?)
+fzf tool support auto-completion and various key bindings
+<code>Ctrl + r</code> -&gt; search recent command history based on $HISTFILE
+<code>Ctrl + t</code> -&gt; search recursively for the file name in $PWD
+<code>Alt + c</code> -&gt; search for a directory name under $PWD and cd into selected dir
+</p>
+
+<p>
+<b>tab completion</b>
+in this case for cd into a directory:
+<code>$ cd **&lt;TAB&gt;</code>
+</p>
+
+<p>
+<b>kill a application / process</b>
+<code>$ kill -9 **</code> &lt;TAB&gt; (?)
+</p>
+
+<p>
+<b>enhancing the search</b>
+type <code>$ less</code> then press &lt;Ctrl + t&gt;
+search for your file, example python files:
+<code>$ .py</code>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Token</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">string</td>
+<td class="org-left">string</td>
+<td class="org-left">Searches for string</td>
+</tr>
+
+<tr>
+<td class="org-left">'</td>
+<td class="org-left">'string</td>
+<td class="org-left">Items that include the quoted string (exact match)</td>
+</tr>
+
+<tr>
+<td class="org-left">^string</td>
+<td class="org-left">^LXF</td>
+<td class="org-left">List items that start with (exact match)</td>
+</tr>
+
+<tr>
+<td class="org-left">.format$</td>
+<td class="org-left">.odt$</td>
+<td class="org-left">List files that end in .odt format (exact match)</td>
+</tr>
+
+<tr>
+<td class="org-left">!string</td>
+<td class="org-left">!dhc</td>
+<td class="org-left">List items that don't include dhc (inverse-exact-match</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>!^string</code></td>
+<td class="org-left"><code>~^LXF</code></td>
+<td class="org-left">List items that don't start with LXF</td>
+</tr>
+
+<tr>
+<td class="org-left">!.format$</td>
+<td class="org-left">!.odt$</td>
+<td class="org-left">List files that don't end with .odt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org579d1e3" class="outline-2">
+<h2 id="org579d1e3">FZF / SKIM</h2>
+<div class="outline-text-2" id="text-org579d1e3">
+<p>
+<b>command format</b>
+command | fzf | xargs command
+</p>
+
+<p>
+<b>dt's example</b>
+<i>print 3 words, choose one and create (touch) a file</i>
+<code>$ printf '%s\n' "one" "two" "three" | fzf | xargs touch</code>
+</p>
+
+<p>
+<i>print 3 specific words, choose one of them and output will be deleted</i>
+<code>$ printf '%s\n' "one" "two" "three" | fzf | xargs touch</code>
+</p>
+
+<p>
+<i>open nvim taking the output of fzf</i>
+<code>$ nvim $(fzf)</code>
+it can be any text editor
+</p>
+
+<hr />
+<p>
+query flag will try to find a string, may it be a folder or anything that includes linux in the string
+</p>
+
+<p>
+example: <span class="underline">linux</span>
+<code>$ fzf --query "linux"</code>
+</p>
+
+<p>
+<i>searching for a video</i>
+<code>$ mpv $(fzf --query ".mp4")</code>
+</p>
+
+<p>
+<i>search for specific process (to kill or else)</i>
+<code>$ ps aux | fzf</code>
+<i>kill a specific process</i>
+<code>$ ps aux | fzf | awk '{print $2}' | xargs kill</code>
+</p>
+
+<p>
+<i>copying from a fzf list to a clipboard</i>
+<b>X11</b>
+<code>$ printf '%s\n' "one" "two "three" | fzf | xclip -r -selection clipboard</code>
+<b>WAYLAND</b> (fix)
+~$ printf '%s\n' "one" "two" "three" | fzf | wl-clipboard
+</p>
+
+
+<p>
+<i>Changing a wallpaper with fzf</i>
+<b>X11</b>
+<code>$ command ls ~/wallpapers | fzf | xargs xwallpaper --stretch</code>
+<b>WAYLAND</b>
+~$ command ls /wallpapers | fzf | xargs swww init
+</p>
+
+<p>
+command doesnt work because it can be a different directory than the one the user is, so you can fix it like this
+~$ command ls -d $PWD/* | fzf | xargs xxxxxx
+</p>
+
+<p>
+$ command
+</p>
+</div>
+</div>
+
+<div id="outline-container-org410ae84" class="outline-2">
+<h2 id="org410ae84">yt-fzf</h2>
+</div>
+<div id="outline-container-org79989bf" class="outline-2">
+<h2 id="org79989bf">skim</h2>
+</div>
+<div id="outline-container-org65e6e8f" class="outline-2">
+<h2 id="org65e6e8f">sysz</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

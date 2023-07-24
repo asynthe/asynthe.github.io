@@ -1,0 +1,260 @@
+:PROPERTIES:
+:ID:       9e7fbce7-a2b5-4697-a8a2-6c21ef58fb99
+:ROAM_ALIASES: "OPENBSD INSTALL"
+:END:
+#+title: OpenBSD Install
+
+-> [[id:df2f653e-62dc-46dc-9600-b19c845edabd][OPENBSD]]
+
+~root_BSD_!?#~
+~user_BSD_!?#~
+
+* installing
+** overview
+
+Note the drive you're going to install bsd to (maybe sd1) and the usb drive you're installing from, as this has important sets that will be used in the installation. (sd3)
+
+The installation and after setup:
+1. Creating the USB
+2. Installing the system
+3. Connecting to the Internet
+4. Installing the non-free firmware
+5. Installing the packages
+
+** creating the usb
+
+_Note_: [[id:3bc59813-349b-4aba-aee4-8fce96b84b32][Ventoy]] has not worked in this case for me (in the datasets part), so i would recommend using an entire USB device.
+
+first, get the ~.img~ image of the official page (amd64)
+then copy the ~.img~ into a usb drive like this:
+
+~# dd if="install73.img" of="/dev/<disk>" status="progress" conv="fsync"~
+
+** system install
+
+For this install, I'm using two devices.
+
+|--------+-------------|
+| device | name        |
+|--------+-------------|
+| sd0    | hdd         |
+| sd1    | install usb |
+|--------+-------------|
+You can check their names when selecting them by typing "*?".*
+
+*OPENBSD INSTALL*
+-----
+
+~Welcome to the OpenBSD/amd64 7.3 installation program.~
+~(I)nstall, (U)pgrade, (A)utoinstall or (S)hell?~
+-> *i*
+
+~Choose your keyboard layout ('?' or 'L' for list) [default]~
+-> *Enter*
+
+~System hostname? (short form, e.g. 'foo')~
+-> *Your preferred hostname*
+
+~Available network interfaces are: re0 re1 vlan0~
+~Network interface to configure (name, lladdr, '?', or 'done') [re0]~
+-> *done*
+
+~DNS domain name? (e.g. 'example.com') [my.domain]~
+-> *Enter*
+
+~DNS nameservers? (IP address list or 'none') [none]~
+-> *Enter*
+
+~Password for root account? (will not echo)~
+-> *Your preffered password for root*
+
+~Password for root account? (again)~
+-> *Again*
+
+~Start sshd(8) by default? [yes]~
+-> *Enter*
+
+~Do you want the X Windor System to be started by xenodm(1)? [no]~
+-> *Enter*
+
+~Change the default console to com0? [no]~
+-> *Enter*
+
+~Setup a user? (enter a lower-case loginname, or 'no') [no]~
+-> *Username*
+
+~Full name for user <username>? [username]~
+-> *Your name*
+
+~Password for user <username>? (will not echo)~
+-> *User password*
+
+~Password for user <username>? (again)~
+-> *Again*
+
+~Allow root ssh login? (yes, no, prohibit-password) [no]~
+-> *Enter*
+
+~Encrypt the root disk? (disk, 'no' or '?' for details) [no]~
+-> *Enter* or *?* then *choose disk*
+
+~Which disk is the root disk? ('?' for details) [disk]~
+-> *?* then *choose disk*
+_note_: remember your root and usb
+
+~Use (W)hole disk MBR, whole disk (G)PT or (E)dit? [whole]~
+-> *g*
+
+~An EFI/GPT disk may not boot. Proceed? [no]~
+-> *yes*
+
+~Use (A)uto layout, (E)dit auto layout, or create (C)ustom layout? [a]~
+-> *Enter*
+
+~Which disk do you wish to initialize? (or 'done') [done]~
+-> *Enter*
+
+~Let's install the sets!~
+~Location of sets? (cd0 disk http nfs or 'done') [cd0]~
+-> *disk*
+
+~Is the disk partition already mounted? [yes]~
+-> *no*
+
+~Which disk contains the install media? (or 'done') [sd1]~
+-> *sd1* (usb disk)
+
+~Available sd1 partitions are: a i.~
+~Which sd1 partition has the install sets? (or 'done') [a]~
+-> *a* (the one that says 4.2BSD)
+
+~Pathname to the sets? (or 'done') [7.3/amd64]~
+-> *Enter*
+
+~Set name(s)? (or 'abort' or 'done') [done]~
+-> *Enter*
+
+~Directory does not contain SHA256.sig. Continue without verification? [no]~
+-> *yes*
+
+~[OPENBSD INSTALLATION]~
+
+~Location of sets? (cd0 disk http nfs or 'done') [done]~
+-> *Enter*
+
+~What timezone are you in? ('?' for list) [Canada/Mountain]~
+-> *Timezone* (Australia/Perth for me)
+
+~CONGRATULATIONS! Your OpenBSD install has been successfully completed!~
+~When you login to your new system the first time, please read your mail using the 'mail' command.~
+~Exit to (S)hell, (H)alt or (R)eboot? [reboot]~
+-> *Enter*
+
+** encrypting with bioctl 
+
+_Note_: this hasn't been working for me.
+
+bioctl -c C -l /dev/sd1a softraid0
+bioctl -c C -l sd1a softraid0
+
+dd if=/dev/zero of=/dev/rsd4c bs=1m count=1
+
+before -> installboot /dev/rsd1i
+after -> installboot /dev/rsd1i
+
+fdisk -iy -g -b 960 sd1
+dd if=/dev/zero of=/dev/sd1c bs=1m count=10
+disklabel -E sd1
+- p g
+- a i
+
+missing sd1i -> ESP Boot
+
+[deleted] reddit suggestion:
+wipe hard drive -> auto partitioning -> delete all partitions except i:
+
+secured2k reddit suggestion:
+-> Disk Setup -> (E)dit -> reinit(?) -> write
+
+* after install
+** usb tethering
+
+connect your phone with usb tethering enabled then
+~# dhclient urndis0~
+and it should work
+
+test with ping
+~$ ping 8.8.8.8~
+
+** firmware
+
+*DIRECTLY FROM URL*
+
+installing the firmware can be done in two ways
+
+write the link to the firmware packages you need
+_example_: asd
+
+now install them directly with:
+~# pkg_add -i ~
+
+*INPROGRESS - using the .img inside OpenBSD (requires internet)*
+*INPROGRESS using a external usb*
+
+** connecting to the internet (wifi)
+
+now, if you have the wifi driver available, connect to internet like this
+~# ifconfig <interface> nwid <name> wpakey <pass>~
+
+check with ping
+~$ ping 8.8.8.8~
+
+** installing packages
+
+run this command
+~echo 'https://cdn.openbsd.org/pub/OpenBSD' > /etc/installurl~
+
+now you can install packages using ~pkg_add~
+_example_: ~pkg_add neofetch tmux neovim~
+
+** app list
+
+*PACKAGE LIST*
+xmonad dwm bspwm i3 emacs dmenu picom alacritty kitty rofi dunst nitrogen
+feh firefox fish libreoffice pcmanfm gimp kdenlive audacity fzf mpv ncmpcpp mpd ffmpeg zathura zathura-cb zathura-pdf-mupdf zsh zsh-syntax-highlighting syncthing imagemagick keepassxc broot exa bat fzf irssi weechat xrandr xclip unrar unzip unclutter xbanish virt-manager ntfs_3g pass-import pass-otp password-store
+
+*BACKUPS*
+restic rclone borgbackup
+rtorrent / transmission / deluge
+
+*JAPANESE*
+japanese
+fcitx fcitx-configtool
+fcitx-anthy ja-sazanami-ttf fcitx-gtk3
+
+*RUST*
+rust rust-clippy rust-rustfmt
+
+** doas config
+
+add user to doas
+~echo 'asynthe permit nopass' > /etc/doas.conf~
+you can now use your normal user with sudo
+
+** setting up ~.xsession~
+
+Edit ~~/.xsession~ to add the next lines
+
+#+begin_src xsession
+
+#+end_src
+
+-> feh + cron (a folder w images)
+(in /etc/11/xenodm/
+~# Xsetup 0~
+
+** starting xmonad
+
+start xmonad in xenodm
+~# rcctl enable xenodm~
+~# rcctl start xenodm~

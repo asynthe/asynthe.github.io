@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ZFS</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">ZFS</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="20230428-filesystems.html#ID-18e2483e-8a47-40d7-9a80-a79a3ca254fb">FILESYSTEMS</a>   
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-bsd.html#ID-5b8d8a26-f3dd-4e50-b144-9eff85eadf96">BSD</a>
+</p>
+
+<p>
+<a href="https://docs.freebsd.org/en/books/handbook/zfs">Chapter 21. The Z File System (ZFS) - FreeBSD docs</a>
+<a href="https://arstechnica.com/information-technology/2020/05/zfs-101-undestanding-zfs-storage-and-performance">ZFS 101 - Understanding ZFS storage and performace - ars technica</a>
+</p>
+
+<p>
+<a href="https://www.reddit.com/r/linux/comments/10fa8ka/a_detailed_guide_to_openzfs_understanding/">https://www.reddit.com/r/linux/comments/10fa8ka/a_detailed_guide_to_openzfs_understanding/</a>
+</p>
+
+<div id="outline-container-org7902311" class="outline-2">
+<h2 id="org7902311">zpool - How to get Disk Space info</h2>
+<div class="outline-text-2" id="text-org7902311">
+<p>
+<a href="https://docs.oracle.com/cd/E19253-01/819-5461/gaynp/index.html">Querying ZFS Storage Pool Status - Oracle Docs</a>
+</p>
+
+<p>
+<code># zpool list</code>
+<code># zpool list &lt;poolname&gt;</code>
+<code># zpool list -v &lt;poolname&gt;</code>
+<code>-v</code> -&gt; verbose output
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Value</th>
+<th scope="col" class="org-left">Field</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;poolname&gt;</td>
+<td class="org-left">NAME</td>
+<td class="org-left">The name of the pool.</td>
+</tr>
+
+<tr>
+<td class="org-left">3.62T</td>
+<td class="org-left">SIZE</td>
+<td class="org-left">The total size of the pool.</td>
+</tr>
+
+<tr>
+<td class="org-left">1.11T</td>
+<td class="org-left">ALLOC</td>
+<td class="org-left">The amount of space for all datasets (different than df).</td>
+</tr>
+
+<tr>
+<td class="org-left">2.52T</td>
+<td class="org-left">FREE</td>
+<td class="org-left">The amount of unallocated (free) space in the pool.</td>
+</tr>
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">CKPOINT</td>
+<td class="org-left">How much space the checkpoint takes from pool.</td>
+</tr>
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">EXPANDSZ</td>
+<td class="org-left">N/A</td>
+</tr>
+
+<tr>
+<td class="org-left">3%</td>
+<td class="org-left">FRAG</td>
+<td class="org-left">How fragmented the free space in the pool is.</td>
+</tr>
+
+<tr>
+<td class="org-left">30%</td>
+<td class="org-left">CAP</td>
+<td class="org-left">The amount of space used, express as percentage.</td>
+</tr>
+
+<tr>
+<td class="org-left">1.00x</td>
+<td class="org-left">DEDUP</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">ONLINE</td>
+<td class="org-left">HEALTH</td>
+<td class="org-left">The current health status of the pool.</td>
+</tr>
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">ALTROOT</td>
+<td class="org-left">The alternate root of the pool, if one exists.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org5078612" class="outline-2">
+<h2 id="org5078612">zpool - Expanding a ZFS pool</h2>
+</div>
+<div id="outline-container-orga788387" class="outline-2">
+<h2 id="orga788387">zpool - Adding a drive</h2>
+<div class="outline-text-2" id="text-orga788387">
+<p>
+you can check your different drives with:
+<code>$ lsblk</code>
+<code># lshw -class disk</code>
+</p>
+
+<p>
+Now to add a drive as a <span class="underline">vdev</span>, this is pretty simple:
+<code># zpool add rpool /dev/sdb</code>
+</p>
+
+<p>
+Check that it's been added with
+<code># zpool list</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb7a81ff" class="outline-2">
+<h2 id="orgb7a81ff">zpool - Adding a mirror drive</h2>
+<div class="outline-text-2" id="text-orgb7a81ff">
+<p>
+zpool add $POOL mirror $A $B
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga9c0fef" class="outline-2">
+<h2 id="orga9c0fef">zpool - Adding a physical device to a existing RAID-Z vdev.</h2>
+<div class="outline-text-2" id="text-orga9c0fef">
+<p>
+from a 6-drive RAID-Z2 vdev into a 7-drive RAID-Z2
+</p>
+
+<p>
+On <span class="underline">development</span> (October 2022)
+<a href="https://github.com/openzfs/zfs/pull/12225">https://github.com/openzfs/zfs/pull/12225</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

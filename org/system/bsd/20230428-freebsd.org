@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       f2d33403-13ae-4f93-8f06-d6b699f7252c
+:ROAM_ALIASES: FREEBSD
+:END:
+#+title: FreeBSD
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:5b8d8a26-f3dd-4e50-b144-9eff85eadf96][BSD]]

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>nvidia</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">nvidia</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="20230505-gaming.html#ID-78b32325-b577-4289-85c7-754861dcc360">GAMING</a>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="20230505-gaming.html#ID-78b32325-b577-4289-85c7-754861dcc360">GAMING</a> -&gt; <a href="20230505-steam.html#ID-d7e0189d-dcd7-4527-8a18-e1fd265a203d">STEAM</a>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a>
+</p>
+
+<p>
+<a href="https://wiki.archlinux.org/title/NVIDIA">https://wiki.archlinux.org/title/NVIDIA</a>
+<a href="https://nixos.wiki/wiki/Nvidia">https://nixos.wiki/wiki/Nvidia</a>
+</p>
+
+<p>
+I guess that mode setting is supposed to work 
+(since it works on other distributions). 
+However, after booting the install CD with nomodeset, 
+you can switch to the proprietary NVIDIA driver. 
+First, edit /etc/nixos/configuration.nix, adding:
+</p>
+
+<p>
+nixpkgs.config.allowUnfree = true;
+services.xserver.videoDrivers = [ "nvidia" ];
+</p>
+
+<p>
+Then run nixos-rebuild switch. Afterwards, 
+the NVIDIA driver is available in the live environment. You can then start KDE/GNOME (depending on the ISO that you use) with:
+</p>
+
+<p>
+systemctl restart display-manager.service
+</p>
+
+<p>
+Of course, if you want to use the NVIDIA driver on your installed system, you should add the lines above to the generated NixOS configuration (/mnt/etc/nixos/configuration.nix).
+</p>
+
+
+<div id="outline-container-orgc41b570" class="outline-2">
+<h2 id="orgc41b570">VULKAN DRIVERS</h2>
+<div class="outline-text-2" id="text-orgc41b570">
+</div>
+<div id="outline-container-orgc0356aa" class="outline-3">
+<h3 id="orgc0356aa">finalizing</h3>
+<div class="outline-text-3" id="text-orgc0356aa">
+<p>
+While i haven't been able to run Hyprland with nvidia drivers straight from TTY,
+what has worked is running it using [BROKEN LINK: greetd] (working for me) or Gnome's GDM
+(haven't tried).
+</p>
+
+<p>
+enable greetd like this:
+&#x2026;
+</p>
+
+<p>
+enable GDM like this:
+&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgca305ff" class="outline-3">
+<h3 id="orgca305ff">NVIDIA-SETTINGS</h3>
+</div>
+</div>
+
+<div id="outline-container-org055b710" class="outline-2">
+<h2 id="org055b710">NVIDIA LAPTOP OFFLOADING</h2>
+<div class="outline-text-2" id="text-org055b710">
+<p>
+<a href="https://discourse.nixos.org/t/nvidia-offload-screen-tearing-and-game-crashes/13136">https://discourse.nixos.org/t/nvidia-offload-screen-tearing-and-game-crashes/13136</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orge84c442" class="outline-2">
+<h2 id="orge84c442">NVIDIA-SMI</h2>
+</div>
+<div id="outline-container-orgdc9b19d" class="outline-2">
+<h2 id="orgdc9b19d"><a href="../../system/nix/20230428-nixos.html#ID-b9e94588-3066-473f-a0ad-c0a266a46423">NIXOS</a> SETUP</h2>
+<div class="outline-text-2" id="text-orgdc9b19d">
+</div>
+<div id="outline-container-orgffe74f2" class="outline-3">
+<h3 id="orgffe74f2">GENERAL</h3>
+</div>
+
+
+<div id="outline-container-org87d0510" class="outline-3">
+<h3 id="org87d0510">OPTIMUS</h3>
+<div class="outline-text-3" id="text-org87d0510">
+<p>
+<span class="underline">note</span>: if setting up PRIME offloading, setting the value to just <b>nvidia</b> is
+necessary.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-configuration.nix">services.xserver.videoDrivers = [ "nvidia" ];
+hardware.nvidia.modesetting.enable = true; (enable?)
+
+  environment.systemPackages = [ nvidia-offload ];
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.prime = {
+    offload.enable = true;
+
+    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
+    intelBusId = "PCI:0:2:0";
+
+    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
+    nvidiaBusId = "PCI:1:0:0";
+  };
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9d22132" class="outline-2">
+<h2 id="org9d22132">OFFLOADING ON OPTIMUS LAPTOPS</h2>
+<div class="outline-text-2" id="text-org9d22132">
+<p>
+doc for fedora
+<a href="https://docs.fedoraproject.org/en-US/quick-docs/how-to-set-nvidia-as-primary-gpu-on-optimus-based-laptops/">https://docs.fedoraproject.org/en-US/quick-docs/how-to-set-nvidia-as-primary-gpu-on-optimus-based-laptops/</a>
+</p>
+
+<p>
+make a nvidia offload file executable
+~.local/bin/nvidia-offload
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="font-weight: bold;">export</span> <span style="font-weight: bold; font-style: italic;">__NV_PRIME_RENDER_OFFLOAD</span>=1
+<span style="font-weight: bold;">export</span> <span style="font-weight: bold; font-style: italic;">__NV_PRIME_RENDER_OFFLOAD_PROVIDER</span>=NVIDIA-G0
+<span style="font-weight: bold;">export</span> <span style="font-weight: bold; font-style: italic;">__GLX_VENDOR_LIBRARY_NAME</span>=nvidia
+<span style="font-weight: bold;">export</span> <span style="font-weight: bold; font-style: italic;">__VK_LAYER_NV_optimus</span>=NVIDIA_only
+<span style="font-weight: bold;">exec</span> <span style="font-style: italic;">"$@"</span>
+</pre>
+</div>
+
+<p>
+chmod +x ~/.local/bin/nvidia-offload
+</p>
+
+<p>
+alias nvidia='~/.loca/bin/nvidia-offload' (not needed if in bin folder, lol)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge075419" class="outline-2">
+<h2 id="orge075419">NVIDIA-SETTINGS</h2>
+</div>
+<div id="outline-container-org0c966a0" class="outline-2">
+<h2 id="org0c966a0">NVIDIA-SMI</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

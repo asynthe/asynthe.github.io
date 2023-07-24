@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       7137ef16-27cd-48b9-9b0e-5f87ef957cc9
+:ROAM_ALIASES: LUA
+:END:
+#+title: lua
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][STUDY 勉強]]
+
+[[https://learnxinyminutes.com/docs/lua][Where X=Lua - Learn X in Y minutes]]

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SwayOSD</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">SwayOSD</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a> / <a href="../../other/main/20230428-bsd.html#ID-5b8d8a26-f3dd-4e50-b144-9eff85eadf96">BSD</a> / <a href="../../system/windows/20230428-windows.html#ID-0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b">WINDOWS ウィンドウズ</a> -&gt; <a href="../../other/main/20230428-sysapps.html#ID-9be91f09-e446-4d22-931e-c05792d8f582">SYSAPPS アプリ</a>
+</p>
+
+<p>
+<a href="https://github.com/ErikReider/SwayOSD">github page</a>
+[[][official webpage] ]
+[[][gentoo wiki] ]
+[[][arch wiki] ]
+</p>
+
+<div id="outline-container-orgfb967f8" class="outline-2">
+<h2 id="orgfb967f8">package</h2>
+<div class="outline-text-2" id="text-orgfb967f8">
+<p>
+arch -&gt; <code>swayosd-git</code> (aur)
+gentoo -&gt; <code>...</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4cc1990" class="outline-2">
+<h2 id="org4cc1990">install</h2>
+<div class="outline-text-2" id="text-org4cc1990">
+<p>
+asd
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2e0ddf6" class="outline-2">
+<h2 id="org2e0ddf6">usage</h2>
+<div class="outline-text-2" id="text-org2e0ddf6">
+<p>
+in <a href="20230309-hyprland.html#ID-f607aef7-2442-4b29-adf4-a9c7868d54d0">Hyprland</a> config file <code>~/.config/hypr/hyprland.conf</code>
+</p>
+<pre class="example">
+# OSD window
+exec swayosd
+
+# Sink volume raise
+bindsym XF86AudioRaiseVolume exec swayosd --output-volume raise
+# Sink volume lower
+bindsym XF86AudioLowerVolume exec  swayosd --output-volume lower
+# Sink volume toggle mute
+bindsym XF86AudioMute exec swayosd --output-volume mute-toggle
+# Source volume toggle mute
+bindsym XF86AudioMicMute exec swayosd --input-volume mute-toggle
+
+# Capslock
+bindsym --release Caps_Lock exec swayosd --caps-lock
+
+# Capslock but specific LED name (/sys/class/leds/)
+bindsym --release Caps_Lock exec swayosd --caps-lock-led input19::capslock
+
+# Brightness raise
+bindsym XF86MonBrightnessUp exec swayosd --brightness raise
+# Brightness lower
+bindsym XF86MonBrightnessDown exec swayosd --brightness lower
+</pre>
+
+<p>
+<b>brightness control</b>
+some devices may not have permission to write in <code>/sys/class/backlight/*/brightness</code>, a workaround is to add a rule inside <code>udev</code>
+</p>
+
+<p>
+add this in <code>/etc/udev/rules.d/99-swayosd.rules</code>
+</p>
+<pre class="example">
+ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness"
+ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
+</pre>
+
+<p>
+now add the user to the <code>video</code> group with
+<code># usermod -a -G video $USER</code>
+</p>
+
+<p>
+then reboot the system.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

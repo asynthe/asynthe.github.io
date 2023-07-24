@@ -1,0 +1,136 @@
+:PROPERTIES:
+:ID:       a2128876-3f2a-4b3a-bce8-92070c57cb13
+:ROAM_ALIASES: "EMACS FROM SCRATCH"
+:END:
+#+title: Emacs from Scratch
+
+/useful when setting up emacs/
+
+- start install by installing emacs
+- install chemacs
+- after getting emacs --with-profile default, begin literate config
+- install super save
+
+* installation
+
+~Ctrl-x Ctrl-f~ -> find-file
+then edit ~~/.emacs.d/init.el~
+
+to zoom in use the command with ~M-X~
+it should be ~text-scale-increase~
+
+paste into the file
+#+begin_src elisp
+(org-babel-load-file
+ (expand-file-name
+  "config.org"
+  user-emacs-directory))
+#+end_src
+_note_: be careful with writing /elisp/ instead of /emacs-lisp/ as this will not work.
+
+now on the same directory, create ~~/.emacs.d/config.org~ document
+(remember find-file)
+
+* initial ~config.org~
+
+Now save with ~C-x C-s~, close and open again Emacs
+_note_: you can also do ~M-x load-file~ command, then write ~~/.emacs.d/init.el~
+
+
+
+
+
+
+* overview of the set up
+versions to run with [chemacs]
+~~/.emacs.d~ -> chemacs
+~~/.emacs~ main emacs with literate config
+~~/.doomemacs~ -> doom emacs
+
+* tutorial
+
+** chemacs
+first, let's install chemacs
+
+
+** doom
+now let's install doom
+
+
+
+
+** cron job / systemd job to backup configs (GIT?)
+[[https://crontab.guru/][crontab guru]]
+
+let's set up a [cron] job to a folder we want to save
+~$ crontab -e~ (if user)
+~# crontab -e -u <user>~ (if root, to specify user)
+
+i will set up rsync to run every 15 minutes for both emacs and doom
+#+begin_src bash
+15 * * * * rsync 
+#+end_src
+
+
+* using emacs daemon 
+
+-> try to always use the emacs daemon, as it will be faster and always available.
+
+run it with
+~$ emacs --daemon &~
+(will run the emacs profile in ~~/.config/chemacs/profile~)
+
+in case of running with a certain profile
+~$ emacs --with-profile doom --daemon &~
+
+now to open emacs instances, use
+~$ emacsclient -c -s <profile> -a emacs~
+for doom (if doom profile)
+~$ emacsclient -c -s doom -a emacs~
+
+_note_: add this in your twm configuration or .Xprofile
+_2nd note_: change the desktop file of emacs
+to run the emacsclient command (~$ emacsclient -c -s emacs -a emacs~)
+
+* overview of the set up
+versions to run with [chemacs]
+~~/.emacs.d~ -> chemacs
+~~/.emacs~ main emacs with literate config
+~~/.doomemacs~ -> doom emacs
+
+* tutorial
+** chemacs
+first, let's install chemacs
+
+** doom
+now let's install doom
+
+** cron job / systemd job
+[[https://crontab.guru/][crontab guru]]
+
+let's set up a [cron] job to a folder we want to save
+~$ crontab -e~ (if user)
+~# crontab -e -u <user>~ (if root, to specify user)
+
+i will set up rsync to run every 15 minutes for both emacs and doom
+#+begin_src bash
+15 * * * * rsync 
+#+end_src
+
+
+-> main -> guides -> emacs
+
+in this file i will teach you how to set up emacs from scratch
+
+
+*
+**
+** COMMAND LOG BUFFER
+
+global-command-log-mode
+clm/toggle-command-log-buffer
+
+** COUNSEL
+in Counsel-m-X hit ALT o and it will show you stuff
+
+counsel-load-theme

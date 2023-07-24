@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>mpv</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">mpv</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a> / <a href="../../other/main/20230428-bsd.html#ID-5b8d8a26-f3dd-4e50-b144-9eff85eadf96">BSD</a> / <a href="../../system/windows/20230428-windows.html#ID-0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b">WINDOWS ウィンドウズ</a> -&gt; <a href="../../other/main/20230428-sysapps.html#ID-9be91f09-e446-4d22-931e-c05792d8f582">SYSAPPS アプリ</a>
+</p>
+
+<p>
+<a href="https://github.com/mpv-player/mpv">github page</a>
+<a href="https://mpv.io/">official webpage</a>
+<a href="https://wiki.gentoo.org/wiki/Mpv">gentoo wiki</a>
+<a href="https://wiki.archlinux.org/title/Mpv">arch wiki</a>
+</p>
+
+<p>
+<a href="https://mpv.io/manual/master/">mpv manual</a>
+</p>
+
+<div id="outline-container-orgeb57f62" class="outline-2">
+<h2 id="orgeb57f62">package</h2>
+<div class="outline-text-2" id="text-orgeb57f62">
+<p>
+arch -&gt; <code>mpv</code> or <code>mpv-git</code> (aur)
+gentoo -&gt; <code>media-video/mpv</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org30e89b3" class="outline-2">
+<h2 id="org30e89b3">keybinds</h2>
+<div class="outline-text-2" id="text-org30e89b3">
+<p>
+<span class="underline">NAVIGATION</span>
+<code>.</code> -&gt; next frame
+<code>,</code> -&gt; previous frame
+<code>left arrow</code> -&gt; -5 seconds
+<code>right arrow</code> -&gt; +5 seconds
+<code>up arrow</code> -&gt; +60 seconds
+<code>down arrow</code> -&gt; -60 seconds
+<code>Page Up / Down</code> -&gt; next / previous chapter
+</p>
+
+<p>
+<code>Shift + left</code> -&gt; -1 second (no osc)
+<code>Shift + right arrow</code> -&gt; +1 second (no osc)
+<code>Shift + up arrow</code> -&gt; +5 seconds
+<code>Shift + down arrow</code> -&gt; -5 seconds
+<code>Shift + Page Up / Down</code> -&gt; move 600 seconds
+</p>
+
+<p>
+<b>PLAYLIST</b>
+<code>Shift + &lt;</code> -&gt; previous video (in playlist)
+<code>Shift + &gt;</code> -&gt; next video (in playlist)
+<code>&lt;</code> -&gt; next playlist link
+<code>&gt;</code> -&gt; next playlist link
+<code>F8</code> -&gt; see playlist items
+</p>
+
+<p>
+<span class="underline">MENU</span>
+<code>p</code> -&gt; play / pause
+<code>q</code> / <code>Ctrl + c</code> -&gt; quit, save current position
+<code>f</code> -&gt; fullscreen mode
+<code>m</code> -&gt; mute
+<code>v</code> -&gt; subs on / off
+<code>o</code> -&gt; show progress
+<code>s</code> -&gt; screenshot
+</p>
+
+<p>
+<code>Shift + o</code> -&gt; toggle show progress
+<code>Shift + s</code> -&gt; screenshot w/o subtitles
+<code>Shift + t</code> -&gt; toggle stay on top
+</p>
+
+<p>
+<code>Ctrl + h</code> -&gt; cycle hardware decoding
+<code>Shift + a</code> -&gt; Cycle aspect radio ("16:9","4:3"&#x2026;)
+</p>
+
+<p>
+<span class="underline">PLAYBACK</span>
+<code>Ctrl + +</code> -&gt; increase <i>audio delay</i>
+<code>Ctrl + -</code> -&gt; decrease <i>audio delay</i>
+<code>[</code> -&gt; decrease <i>speed</i>
+<code>]</code> -&gt; increase <i>speed</i>
+<code>1</code> -&gt; decrease <i>contrast</i>
+<code>2</code> -&gt; increase <i>contrast</i>
+<code>3</code> -&gt; decrease <i>brightness</i>
+<code>4</code> -&gt; increase <i>brightness</i>
+<code>5</code> -&gt; decrease <i>gamma</i>
+<code>6</code> -&gt; increase <i>gamma</i>
+<code>7</code> -&gt; decrease <i>saturation</i>
+<code>8</code> -&gt; increase <i>saturation</i>
+<code>9</code> -&gt; decrease <i>audio volume</i>
+<code>0</code> -&gt; increase <i>audio volume</i>
+<code>w</code> -&gt; zoom out
+<code>e</code> -&gt; zoom in
+</p>
+
+<p>
+<span class="underline">SUBS</span>
+<code>j</code> -&gt; next sub
+<code>Shift + j</code> -&gt; previous sub
+<code>z</code> -&gt; increase sub delay
+<code>x</code> -&gt; decreate sub delay
+<code>r</code> -&gt; move sub up
+<code>t</code> -&gt; move sub down
+</p>
+
+<p>
+<code>Ctrl + left arrow</code> -&gt; skip to previous sub
+<code>Ctrl + right arrow</code> -&gt; skip to next sub
+</p>
+
+<p>
+<code>Ctrl + Shift + left arrow</code> -&gt; adjust timing to previous sub
+<code>Ctrl + Shift + right arrow</code> -&gt; adjust timing to next sub
+</p>
+
+<p>
+<span class="underline">VIDEO RECTANGLE</span>
+<code>Alt + left arrow</code> -&gt; video pan-x 0.1
+<code>Alt + right arrow</code> -&gt; video pan-x -0.1
+<code>Alt + up arrow</code> -&gt; video pan-y 0.1
+<code>Alt + down arrow</code> -&gt; video pan-y -0.1
+<code>Alt + Backspace</code> -&gt; reset video zoom and pan
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6b97eee" class="outline-2">
+<h2 id="org6b97eee">usage</h2>
+<div class="outline-text-2" id="text-org6b97eee">
+</div>
+<div id="outline-container-org8a4be11" class="outline-3">
+<h3 id="org8a4be11">creating a videos playlist</h3>
+<div class="outline-text-3" id="text-org8a4be11">
+<p>
+create a <code>my_list.txt</code> file with the list of files
+</p>
+
+<p>
+<span class="underline">example</span>:
+</p>
+<div class="org-src-container">
+<pre class="src src-text">video1.mp4
+video2.mp4
+video3.mp4
+</pre>
+</div>
+
+<p>
+then run:
+<code>$ mpv --playlist=my_list.txt</code>
+</p>
+
+<p>
+while this works, you may also change <code>.txt</code> for <code>.m3u</code> for more compatibility with apps (like mpvpaper)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1198e7e" class="outline-2">
+<h2 id="org1198e7e">plugins</h2>
+</div>
+<div id="outline-container-ID-4c29064d-513d-4c55-be65-13d55370083e" class="outline-2">
+<h2 id="ID-4c29064d-513d-4c55-be65-13d55370083e">mpvpaper</h2>
+<div class="outline-text-2" id="text-org1513a42">
+<p>
+"<i>Videos as a wallpaper (Wayland only).</i>"
+</p>
+
+<p>
+<a href="https://github.com/GhostNaN/mpvpaper">github page</a>
+</p>
+</div>
+
+<div id="outline-container-org0c916df" class="outline-3">
+<h3 id="org0c916df">package</h3>
+<div class="outline-text-3" id="text-org0c916df">
+<p>
+arch -&gt; <code>...</code>
+gentoo -&gt; <code>gui-app/mpvpaper</code> through <code>guru</code> overlay
+</p>
+</div>
+</div>
+
+<div id="outline-container-org77208e5" class="outline-3">
+<h3 id="org77208e5">usage</h3>
+<div class="outline-text-3" id="text-org77208e5">
+<p>
+run video in loop and fork to background as this:
+<code>$ mpvpaper -f -o "loop-file=inf" &lt;display&gt; &lt;file&gt;</code>
+</p>
+
+<p>
+now, if you're running resource-intensive processes like playing a videogame, you would want your background video to pause or to stop, in this case add the <code>-p</code> flag for auto-pause, or <code>-s</code> for auto-stop.
+<code>$ mpvpaper -f -o "loop-file=inf" &lt;display&gt; &lt;file&gt;</code>
+</p>
+
+<p>
+<b>PLAYLISTS</b>
+be sure to have your playlist file as <code>.m3u</code>
+</p>
+
+<p>
+<b>FLAGS</b> (from man page)
+<code>-h</code>, <code>--help</code> -&gt; display options
+<code>-v</code>, <code>--verbose</code> -&gt; be verbose
+<code>-f</code>, <code>--fork</code> -&gt; forks mpvpaper
+<code>-p</code>, <code>--auto-pause</code> -&gt; automatically pause mpv when hidden
+<code>-s</code>, <code>--auto-stop</code> -&gt; automatically stop mpv when hidden
+<code>-o</code>, <code>--mpv-options</code> -&gt; options to run with mpv, they have to be inside a quote <code>"like this"</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

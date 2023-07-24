@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       af1d0388-6a6a-49b8-a6bd-10eda1137eb3
+:END:
+#+title: Rhythm Games on Wine
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]] -> [[id:95152727-d7c3-4142-b26a-2ccb243d0dd9][WINE]]
+
+First, check the Wine page on how to set it up.
+
+* beatmania IIDX
+* jubeat
+* SOUND VOLTEX

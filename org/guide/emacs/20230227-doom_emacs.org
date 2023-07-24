@@ -1,0 +1,90 @@
+:PROPERTIES:
+:ID:       8969b600-ed83-4a1c-b745-5265904c3a48
+:END:
+#+title: Doom Emacs
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][Main]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][Linux]] / [[id:5b8d8a26-f3dd-4e50-b144-9eff85eadf96][BSD]] / [[id:0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b][Windows]] -> [[id:9be91f09-e446-4d22-931e-c05792d8f582][Sysapps]]
+
+* Doom Emacs
+
+[[][github page] ]
+[[][official webpage] ]
+[[https://github.com/niyumard/Doom-Emacs-Cheat-Sheet][Doom Emacs Cheat Sheet]]
+[[][gentoo wiki] ]
+[[][arch wiki] ]
+
+** related
+
+->[[id:ceec713c-7576-418e-908f-8084c45f83d4][ Emacs]]
+-> [[id:6f1167d5-1cf6-49de-9f10-df121e03d42f][Org Mode]]
+->[[id:629363f6-5b8f-4771-a03d-2e21d9f61b32][ Org Roam]]
+
+** package
+
+arch -> ~...~
+gentoo -> ~...~
+
+** install
+*** pre-configuration
+
+** keybindings
+
+
+doom commands
+```
+doom sync
+doom upgrade
+doom doctor
+doom env
+```
+
+doom command pallete commands
+```
+:q -> will quit and close emacs (will remember PATH because of the daemon)
+:e PATH -> let's you edit a file
+```
+
+keybindings
+```
+M -> Meta (ALT)
+
+M + x -> run any command available on emacs
+
+Spc + . -> find-file
+Space + f + r -> list recent files
+
+Spc + b (buffer) + k (kill) -> kill open buffer
+
+SPC + h + r + r -> restart Doom Emacs (remember to save)
+
+VIM SPLITS
+Ctrl-w + h -> horizontally
+Ctrl-w + v -> split vertically
+Ctrl-w + w -> change focus
+Ctrl-w + c -> close
+
+EMACS SPLIT
+Space + w + s -> horizontal split
+Space + w + v -> vertical split
+Space + w + w -> change focus
+Space + w + c -> close
+```
+
+find-file
+
+check open buffers with:
+```
+M-x -> see all buffers
+Space + b + n -> next buffer
+Space + b + p -> previous buffer
+```
+
+commands you can do with M-x
+```
+ibuffer -> see all open buffers
+Space + b + i
+
+dired -> file manager
+Space + .
+
+term -> basic terminal emulator
+run /bin/bash

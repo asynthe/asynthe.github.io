@@ -1,0 +1,210 @@
+:PROPERTIES:
+:ID:       4f81a52e-4000-4b93-9abc-e30d7920759c
+:ROAM_ALIASES: PASS
+:END:
+#+title: pass
+
+-> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]
+-> [[id:18bfbe2b-1f10-47ab-aaeb-c203bae7ee04][PGP]]
+
+[[https://www.passwordstore.org][main page]]
+[[https://wiki.gentoo.org/wiki/Pass][gentoo wiki]]
+[[https://wiki.archlinux.org/title/Pass][arch wiki]]
+
+* resources
+
+*YOUTUBE*
+[[https://youtu.be/FhwsfH2TpFA][This is perhaps my favorite password manager for the terminal - Dreams of Code]]
+[[https://youtu.be/_rd4CeDgdF8][CLI Password Management with pass, gpg and dmenu - nixcasts]]
+
+* package
+
+arch -> ~
+gentoo -> ~app-admin/pass~
+nixos -> ~pass~, ~pass-wayland~, ~pass-nodmenu~
+
+pinentry is required
+arch ->
+gentoo ->
+nixos -> pinentry-curses
+
+* usage
+** CREATING A PGP KEY
+
+You will need to generate a [[id:68b050f0-842e-4de7-b5fb-7d294209421b][GPG]] key par with:
+~$ gpg --gen-key~
+
+*PINENTRY*
+At first, if your system doesn't detect pinentry installed, it will fail while creating a key.
+
+~gpg: agent_genkey failed: No pinentry~
+~Key generation failed: No pinentry~
+
+*FIX*:
+Once you install pinentry, restart the gpg-agent with a specified pinentry.
+~$ pkill gpg-agent~
+~$ gpg-agent --pinentry-program=/usr/bin/pinentry-gtk-2 --daemon~
+
+nixos:
+~$ gpg-agent --pinentry-proram=/run/current-system/sw/bin/pinentry-curses --daemon~
+
+_note_: configured in ~~/.gnupg/gpg-agent.conf~
+
+** MODIFYING THE KEY
+
+Get the public key
+~$ gpg -K~
+
+Changing the expiration date
+~$ gpg --edit-key <pub-key>~
+~gpg> expire~
+~Key is valid for? (0) 0~
+~Is this correct? (y/N) y~
+~gpg> save~
+
+** INITIALIZE A PASSWORD STORE
+
+You can set up the environment variable for where password-store will manage it's passwords
+~$ export PASSWORD_STORE_DIR=/path/to/store~
+
+~$ pass init <key>~
+
+~$ pass init 9E2DF84C235188C18549CEAE9AEA18A808B7E4F5~
+
+Start a git init
+~$ pass git init~
+
+** PASSWORDS
+
+_CUSTOM PASSWORD_
+
+It will use or create the specified folders and now it will ask to enter a password:
+~Enter password for test/testpassword:~
+
+~$ pass insert <name>~
+~$ pass insert <folder/name>~
+
+_GENERATED PASSWORD_
+
+It will create a password and store it in the password manager.
+
+~$ pass generate <name>~
+~$ pass generate <folder/name>~
+
+_COPYING PASSWORDS_
+
+Use the show command to show your password in the terminal.
+~$ pass show <name>~
+
+Now, this output the password on the terminal, and maybe you don't want that. This flag will copy the pass to the clipboard.
+~$ pass show -c <name>~
+
+_REMOVING_
+
+
+
+_LISTING THE PASSWORDS_
+
+To see your password store, just type:
+~$ pass~
+
+#+begin_src text
+Password Store
+├── testfolder
+│   └── testfolder
+│       └── test
+└── test
+#+end_src
+
+_DELETING AND REVERTING_
+
+Remove a password like this:
+~$ pass rm <name>~
+
+Get the git log for pass
+~$ pass git log~
+
+Revert the change
+~$ pass git revert HEAD~
+
+_MODIFYING ADDING METADATA_ (EMAILS, PHONE NUMBER)
+You can modify the password files to add more metadata
+ 
+~$ pass edit <name>~
+~$ pass edit <folder/name>~
+
+#+begin_src
+I$~4r,3'8cFQU:f"|^^CcjDt?
+email: test@testemail.com
+#+end_src
+
+Now, you can search in the password's additial information in case of doing a mistake while creating passwords. Use the grep utility
+~$ pass grep "email:"
+~$ pass grep "test@email.com"~
+
+** CLONING INTO OTHER SYSTEMS / GITHUB
+
+Add a remote to push to
+~$ pass git remote add origin git@github.com:asynthe/pwd-store.git~
+~$ pass git push origin main~
+
+Now export your GPG key
+~$ mkdir exported-keys && cd exported-keys~
+
+*On the other machine*
+clone the repository:
+
+Time to import the keys
+
+*PUBLIC KEY*
+~$ gpg --output public.pgp --armor --export <email>~
+
+We are identifying the key by it's associated email, you can use email instead of the ID.
+
+*PRIVATE KEY*
+~$ gpg --output private.pgp --armor --export-secret-key <email>~
+
+*TRANSFERING THE KEYS*
+You can transfer the keys by using [[id:0c903167-c8a8-4637-adb1-6c2887ff5c64][SSH]], with something like [[id:96cdfae8-78df-4130-a631-1600ac4cdb22][SFTP]] or [[id:a2ac1ae0-71ad-47e2-878c-e0a0a9f98c03][RSYNC]].
+
+On the new machine, import the key:
+~$ gpg --import private.pgp~
+~$ gpg --import public.pgp~
+
+We have to up the trust level of the key, so we can encrypt new passwords
+~$ gpg --edit-key <email>~
+~gpg> trust~
+Assign the maximum value of trust
+~Your decision? 5~
+~Do you really want to set this key to ultimate trust? (y/N) y~
+~gpg> save~
+
+** TIP: SETTING ENV VARIABLES
+
+SET ENVIRONMENT VARIABLES
+~$ export GITHUB_TOKEN=$(pass show github/api/token)~
+
+Set alias on ~.bashrc~ or ~.zshrc~, or you can also set them temporarily with the alias command
+~$ alias aws="AWS_ACCESS_KEY_ID=$(pass show aws/access_id) AWS_SECRET_ACCESS_KEY=$(pass show aws/access_token) aws"~
+
+This will output:
+*aws* -> ~AWS_ACCESS_KEY_ID=<key> AWS_SECRET_ACCESS_KEY=<key> aws~
+
+* PLUGINS
+** ON ANDROID
+
+import secret key
+get passwords from a git repository
+
+** print username > password > otp into terminal
+
+#+begin_src
+pw() {
+export PASSWORD_STORE_CLIP_TIME=8
+export PASSWORD_STORE_X_SELECTION=primary
+pass -c2 $1; sleep 5; pass -c $1; sleep 5; pass otp -c $1; exit
+}
+#+end_src
+
+** teaming
+

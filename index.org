@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       050e9166-394b-40bb-8135-a45ab4419153
+:END:
+#+title: MINDHACKERS / MAIN メイン
+#+author: Benjamin Dunstan
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⡀⢉⣉⠉⠉⠋⠐⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠰⠒⠒⠂⠀⠄⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣠⣾⣿⣿⡿⠿⠿⣶⣶⣥⣴⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢊⡀⢤⣤⣤⣶⣶⣶⣖⠃⠀⠀⠀⠀⠀
+⠀⠀⠠⢴⣾⣿⡿⠋⠀⠀⠀⣴⣾⣿⣿⣿⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣥⣾⣿⣟⠉⠉⠙⠻⣿⣿⣦⣀⠀⠀⠀
+⠀⠀⣠⣾⣿⠋⠀⠀⠀⠀⠠⣿⣜⢶⡗⣹⡯⠣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣟⢭⣛⢹⣧⠀⠀⠀⠀⠻⣿⣧⡀⠀⠀
+⠲⠿⠿⠿⣿⡀⠀⠀⠀⠀⠀⠻⠿⣷⡼⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣯⣫⣼⡏⠀⠀⠀⠀⠀⣹⣿⠿⠷⠦
+⠀⠀⠀⠀⠈⠉⠒⠀⠀⡀⢀⣠⠶⠖⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠭⢭⢥⣄⠀⠀⠀⠀⠊⠁⠀⠀⠀⠀
+
+
+genkai
+bsdnyan
+
+* Overview
+
+This is an *example* of a _website_ written in Org Mode!
+
+Here's a link to my: 
+[[file:emacs.org][Emacs configuration]]
+
+[[file:img/cat.jpg]]
+
+* [[id:11b6a67a-d559-4af6-a91a-19ba580f6cef][やること帳]]
+* MAIN マイン
+** [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][勉強]]
+** [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][ガイド]]
+** [[id:8cbecd70-f9d9-4857-bc82-e0c3d1cad54d][日本語]] / [[id:c6618022-af53-471d-a148-85a15b64556c][ラテン]]
+
+* SYSTEM システム
+** [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][リナックス]]
+** [[id:9be91f09-e446-4d22-931e-c05792d8f582][アプリ]]
+** [[id:5b8d8a26-f3dd-4e50-b144-9eff85eadf96][BSD]]
+** [[id:0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b][ウィンドウズ]]
+** [[id:7e52c960-b6f9-4c1d-8b4d-aba03fa899fc][アンドロイド]]
+
+* TOPIC
+** [[id:a941c479-da94-455a-8838-c407043d2c26][サイバーセキュリティ]]
+** [[id:6c2cc908-5784-465d-9979-74811b0a3255][ネットワーキング]]
+** [[id:ea34f7ab-1bed-49d2-a0b5-0c2de2fbe56f][写真術]]
+
+* MEDIA メディア
+** [[id:78e2f8fb-aba4-4e82-a7a0-521f1d6dea25][アニメ]]
+** [[id:32dcd12b-c138-4efb-896b-3d99d4da0b18][ゲーム]]
+** [[id:3e8fc7fd-f318-4a41-b9eb-8732129fa74c][映画]]
+** [[id:d98e1eca-cee1-4437-a62d-d53a671cf5c6][音楽]]
+* ME 私
+** [[id:85799511-4bf6-4d6e-a6bc-520c8af8be82][ブログ]]
+** [[id:abf3e374-ad0a-42d9-bc9d-098ef33a9fec][プロジェクト]]
+** [[id:00cb6551-b930-4fb7-9fe0-6af547341dd4][STRUCTURE]]

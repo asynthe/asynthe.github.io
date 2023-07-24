@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shells</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Shells</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a>
+</p>
+
+<div id="outline-container-ID-658cb6fe-e7c5-4fcb-8b9d-eef823d64952" class="outline-2">
+<h2 id="ID-658cb6fe-e7c5-4fcb-8b9d-eef823d64952">STUDY: renaming files in bulk</h2>
+<div class="outline-text-2" id="text-orgedeca91">
+<p>
+<a href="https://stackoverflow.com/questions/26603052/how-to-rename-files-without-changing-extension-in-linux-102221-pdf-to-102221-nam">How to rename files without changing extension in Linux 102221.pdf to 102221<sub>name.pdf</sub> - Stack Overflow</a>
+</p>
+
+<p>
+let's say i have
+</p>
+
+<p>
+<code>102221.pdf</code>
+to
+<code>102221_name.pdf</code>
+</p>
+
+<p>
+<code>for x in * ; do mv "$x" "${x%.*}_name.${x##*.}"; done</code>
+</p>
+
+<p>
+<code>$x</code> -&gt; filename
+<code>${x%.*}</code> -&gt; 102221
+<code>${x##*.}</code> -&gt; *.pdf
+</p>
+
+<hr />
+
+<p>
+x.part1.rar &#x2026; x.part7.rar
+</p>
+
+<p>
+<code>for x in * ; do mv "$x" "${x%.*}_name.${x##*.}"; done</code>
+</p>
+
+<p>
+<code>x.part1_name.rar</code> &#x2026; <code>x.part7_name.rar</code>
+</p>
+
+<p>
+<code>for x in * ; do mv "$x" "twinkle_crusaders_passion_star_stream.${x%.*"; done</code>
+</p>
+
+<p>
+<code>twinkle_crusaders_passion_star_stream.x.part1_name</code> &#x2026;
+<code>twinkle_crusaders_passion_star_stream.x.part7_name</code>
+</p>
+
+<p>
+<code>for x in * ; do mv "$x" "${x%.*}_name.${x##*.}"; done</code>
+</p>
+
+
+<p>
+removing that last ugly <code>_name</code>
+<code>for i in * ; do mv $i ${i%_name}; done</code>
+</p>
+
+<p>
+adding <code>.rar</code>
+<code>for i in * ; do mv $i $i.rar; done</code>
+</p>
+
+<p>
+for f in "a.php?ano=1&amp;tp=O&amp;np=1&amp;lg=62&amp;gp=TOTAL&amp;id="*; do mv "\({f}" "\){f/.php?ano=1&amp;tp=O&amp;np=1&amp;lg=62&amp;gp=TOTAL&amp;id=/_}.pdf"; done
+</p>
+
+<p>
+<code>for i in twinkle_crusaders_passion_star_steam*; do mv "${f}" "${f/.x*</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9951c79" class="outline-2">
+<h2 id="org9951c79">Changing the default user shell</h2>
+<div class="outline-text-2" id="text-org9951c79">
+</div>
+<div id="outline-container-org556a40c" class="outline-3">
+<h3 id="org556a40c">Linux</h3>
+</div>
+
+<div id="outline-container-org081084d" class="outline-3">
+<h3 id="org081084d">NixOS</h3>
+</div>
+</div>
+
+<div id="outline-container-ID-c5734a41-62e6-488c-95cd-45464ffa3f60" class="outline-2">
+<h2 id="ID-c5734a41-62e6-488c-95cd-45464ffa3f60">sh</h2>
+<div class="outline-text-2" id="text-org012df3b">
+<p>
+<a href="https://en.wikipedia.org/wiki/Bourne_shell">wikipedia page</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0f1f464" class="outline-2">
+<h2 id="org0f1f464"><a href="20230311-bash.html#ID-5f4c11c6-091c-4e9a-9704-7f9fb37b95bc">Bash</a></h2>
+</div>
+<div id="outline-container-orga6d48fa" class="outline-2">
+<h2 id="orga6d48fa"><a href="20230311-zsh.html#ID-2cd50d56-b3fa-4e6b-a005-d0769ae58995">zsh</a></h2>
+</div>
+<div id="outline-container-org1ac0450" class="outline-2">
+<h2 id="org1ac0450"><a href="20230311-fish.html#ID-3b022392-4269-457a-a180-342afa6063d6">fish</a></h2>
+</div>
+<div id="outline-container-org81d3f45" class="outline-2">
+<h2 id="org81d3f45"><a href="20230311-dash.html#ID-c3b942d1-3420-477a-8a39-9590498aa5dd">dash</a></h2>
+</div>
+<div id="outline-container-orga73406c" class="outline-2">
+<h2 id="orga73406c"><a href="../bsd/20230416-ksh.html#ID-0b5978bc-53bc-4a9e-ae9d-8c42b1be6ba4">ksh</a></h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

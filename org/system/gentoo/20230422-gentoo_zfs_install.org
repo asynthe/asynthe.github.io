@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       d9a683c1-9be7-47d0-b234-6784ac7367d7
+:END:
+#+title: gentoo zfs install
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]] - 
+
+

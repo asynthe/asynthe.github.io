@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bash</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Bash</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a>
+</p>
+
+<p>
+<a href="https:en.wikipedia.org/wiki/Bash_(Unix_shell)">wikipedia page</a>
+<a href="https://www.howtogeek.com/726559/what-is-the-bash-shell-and-why-is-it-so-important-to-linux/">What Is the Bash Shell, and Why Is It So Important to Linux? - How-To Geek</a>
+</p>
+
+<p>
+<b>Bourne Again SHell</b>
+</p>
+
+<p>
+Bash is the shell that is implemented by default on most linux distributions, that's why i'm going to try to learn it and implement it with <a href="20230311-zsh.html#ID-2cd50d56-b3fa-4e6b-a005-d0769ae58995">ZSH</a>
+</p>
+
+<p>
+vim mode that will allow to execute command (v) in vi mode
+</p>
+
+<p>
+<b>FIX FROM HERE TO BELOW</b>
+</p>
+
+<p>
+bash history (updates when exit shell) -&gt; <code>~/.bash_history</code>
+<code>history</code> command &lt;- has session commands
+</p>
+
+<div id="outline-container-orgd88dea1" class="outline-2">
+<h2 id="orgd88dea1">keybindings</h2>
+<div class="outline-text-2" id="text-orgd88dea1">
+<p>
+as it is developed by GNU, some of the emacs keybindings also work in the
+Bash Shell
+</p>
+
+<p>
+bash shell uses emacs keybindings as default, this is:
+<code>set -o emacs</code>
+if you want to use the vi keybindings you can specify
+<code>set -o vi</code>
+</p>
+
+<p>
+<b>ZSH</b>
+change to vi bindings
+<code>$ bindkey -e</code> -&gt; for emacs
+<code>$ bindkey -v</code> -&gt; for vi
+</p>
+
+<p>
+<b>fish</b>
+<code>$ fish_default_key_bindings</code> -&gt; for emacs
+<code>$ fish_vi_key_bindings</code> -&gt; for vi
+</p>
+</div>
+</div>
+
+<div id="outline-container-org611324e" class="outline-2">
+<h2 id="org611324e">BASHISMS</h2>
+</div>
+
+<div id="outline-container-org1bef076" class="outline-2">
+<h2 id="org1bef076">.bashrc</h2>
+<div class="outline-text-2" id="text-org1bef076">
+</div>
+<div id="outline-container-org1d8b4c5" class="outline-3">
+<h3 id="org1d8b4c5">PS1 - Shell Prompt</h3>
+<div class="outline-text-3" id="text-org1d8b4c5">
+<p>
+<a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Controlling-the-Prompt">6.9 Controlling the Prompt - gnu.org</a>
+</p>
+
+<p>
+<i>online bash prompt generators</i>
+</p>
+<ul class="org-ul">
+<li></li>
+
+<li></li>
+
+<li></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org157d719" class="outline-3">
+<h3 id="org157d719">History</h3>
+</div>
+</div>
+<div id="outline-container-org212a8ad" class="outline-2">
+<h2 id="org212a8ad">Emacs keybindings (default)</h2>
+<div class="outline-text-2" id="text-org212a8ad">
+</div>
+<div id="outline-container-org0e6362b" class="outline-3">
+<h3 id="org0e6362b">movement</h3>
+<div class="outline-text-3" id="text-org0e6362b">
+<p>
+<code>CTRL a</code> -&gt; move to start of the line
+<code>CTRL e</code> -&gt; move to end of the line
+</p>
+
+<p>
+<code>CTRL f</code> -&gt; forward (one character)
+<code>CTRL b</code> -&gt; backward (one character)
+</p>
+
+<p>
+<code>ALT f</code> -&gt; forward (one word)
+<code>ALT b</code> -&gt; backward (one word)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb5f726c" class="outline-3">
+<h3 id="orgb5f726c">undo / redo</h3>
+<div class="outline-text-3" id="text-orgb5f726c">
+<p>
+<code>CTRL u</code> -&gt; undo
+<code>CTRL y</code> -&gt; redo
+</p>
+</div>
+</div>
+
+<div id="outline-container-org62a3c31" class="outline-3">
+<h3 id="org62a3c31">deleting</h3>
+<div class="outline-text-3" id="text-org62a3c31">
+<p>
+<code>CTRL k</code> -&gt; delete everything after the cursor
+<code>CTRL w</code> -&gt; delete last word
+<code>ALT d</code> -&gt; delete word that is in front of the cursor
+(doesn't work for me)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org80ac706" class="outline-3">
+<h3 id="org80ac706">inserting last command</h3>
+<div class="outline-text-3" id="text-org80ac706">
+<p>
+<code>ALT .</code> -&gt; insert an previously used argument
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga0e4939" class="outline-3">
+<h3 id="orga0e4939">commands</h3>
+<div class="outline-text-3" id="text-orga0e4939">
+<p>
+<code>CTRL p</code> -&gt; get the previous command in history (previous)
+<code>CTRL n</code> -&gt; get the next command in history (next)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd120ce4" class="outline-3">
+<h3 id="orgd120ce4">clear terminal</h3>
+<div class="outline-text-3" id="text-orgd120ce4">
+<p>
+<code>CTRL l</code> -&gt; clear terminal
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org11f801c" class="outline-2">
+<h2 id="org11f801c">vi keybindings</h2>
+<div class="outline-text-2" id="text-org11f801c">
+<p>
+remember to press <code>esc</code> to go back to normal mode.
+</p>
+</div>
+
+<div id="outline-container-orga84f19c" class="outline-3">
+<h3 id="orga84f19c">movement</h3>
+<div class="outline-text-3" id="text-orga84f19c">
+<p>
+<code>0</code> (normal mode) -&gt; go to start of line
+<code>$</code> (normal mode) -&gt; go to end of line
+</p>
+
+<p>
+<code>h</code> -&gt; move cursor back
+<code>l</code> -&gt; move cursor forward
+</p>
+
+<p>
+<code>k</code> -&gt; goes a command back in history
+<code>j</code> -&gt; goes a command forward in history
+</p>
+
+<p>
+<code>w</code> -&gt; forward (one word)
+<code>e</code> -&gt; forward (last letter of word)
+<code>b</code> -&gt; backward (one word)
+you can specify a number, so it goes &lt;number&gt; words back
+or forward
+<span class="underline">example</span>: <code>2b</code> (two words backwards) <code>5w</code> (five words forward)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1170816" class="outline-3">
+<h3 id="org1170816">undo / redo</h3>
+<div class="outline-text-3" id="text-org1170816">
+<p>
+<code>u</code> -&gt; undo
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7583ca5" class="outline-3">
+<h3 id="org7583ca5">deleting</h3>
+<div class="outline-text-3" id="text-org7583ca5">
+<p>
+you can add <code>d</code> to movement commands
+<code>dw</code> in this case will delete the word that is after the cursor
+</p>
+
+<p>
+<code>d0</code> -&gt; delete entire line
+<code>d</code> -&gt; cut full line
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7f66c75" class="outline-3">
+<h3 id="org7f66c75">past commands</h3>
+<div class="outline-text-3" id="text-org7f66c75">
+<p>
+there's no way to do as emacs binding, but you can specify
+the last argument with <code>!$</code>
+</p>
+
+<p>
+so if you only do <code>!$</code> on a terminal, it will enter the last argument
+</p>
+
+<p>
+<span class="underline">example</span>:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">$ echo <span style="font-style: italic;">"Hello"</span>
+Hello
+$ prinf !$
+prinf <span style="font-style: italic;">"Hello"</span>
+</pre>
+</div>
+
+<p>
+<code>!!</code> -&gt; runs the last command again
+(helpful for long commands that need sudo/doas)
+<code>sudo !!</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org91a3ad2" class="outline-2">
+<h2 id="org91a3ad2">command structure</h2>
+<div class="outline-text-2" id="text-org91a3ad2">
+<p>
+you can run another command after the previous one is finished
+(successful or not)
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">&lt;command&gt;; &lt;command&gt;
+</pre>
+</div>
+
+<p>
+run the second command <b>only</b> if first command was successful
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">&lt;command&gt; &amp;&amp; &lt;command&gt;
+</pre>
+</div>
+
+<p>
+<span class="underline">helpful</span>: let's say you want to do this script in one line
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">!/bin/</span><span style="font-weight: bold;">bash</span>
+wget -q http://exemple.com/page1.php;
+wget -q http://exemple.com/page2.php;
+wget -q http://exemple.com/page3.php;
+</pre>
+</div>
+
+<p>
+you can do it like this, with a <code>for loop</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold;">for</span> P<span style="font-weight: bold;"> in</span> {1..3} ; <span style="font-weight: bold;">do</span> wget -q http://exemple.com/page${<span style="font-weight: bold; font-style: italic;">P</span>}.php ; <span style="font-weight: bold;">done</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

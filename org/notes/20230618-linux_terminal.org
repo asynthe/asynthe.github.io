@@ -1,0 +1,248 @@
+:PROPERTIES:
+:ID:       fed24c43-e1fd-47cd-ba74-9fce08d6d8d9
+:ROAM_ALIASES: "LINUX TERMINAL" TERMINAL
+:END:
+#+title: Linux Terminal
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+
+This guide will take the bash shell as reference, as that is what most linux distributions use by default.
+
+terminal = text input/output environment
+console = physical terminal
+shell = command line interpreter
+
+*TUTORIALS*
+[[https://linuxconfig.org/an-introduction-to-linux-automation-tools-and-techniques][An Introduction to Linux Automation, Tools and Techniques]]
+
+*RESOURCES*
+[[https://askubuntu.com/questions/506510/what-is-the-difference-between-terminal-console-shell-and-command-line][What is the difference between Terminal, Console, Shell, and Command Line? - StackExchange]]
+
+* TABLE OF CONTENTS :toc:
+- [[#shells][SHELLS]]
+  - [[#changing-the-default-user-shell][Changing the default user shell]]
+  - [[#sh][sh]]
+  - [[#bash][BASH]]
+  - [[#zsh][ZSH]]
+  - [[#fish][FISH]]
+  - [[#dash][DASH]]
+- [[#shell-scripting][SHELL SCRIPTING]]
+- [[#shell-prompt][SHELL PROMPT]]
+  - [[#ps1---shell-prompt][PS1 - Shell Prompt]]
+- [[#history][HISTORY]]
+- [[#folder--file-permissions---chmod][FOLDER / FILE PERMISSIONS - chmod]]
+  - [[#flags][flags]]
+  - [[#types-of-devices][types of devices]]
+  - [[#find--chmod][find + chmod]]
+  - [[#sticky-bit][Sticky bit]]
+- [[#terminal-keybinds][TERMINAL KEYBINDS]]
+  - [[#emacs-default][emacs (default)]]
+  - [[#vi][vi]]
+- [[#environment-variables][ENVIRONMENT VARIABLES]]
+
+* SHELLS
+:PROPERTIES:
+:ID:       3b1a17c8-8af6-49f2-b1d0-8f08dc82c038
+:END:
+** Changing the default user shell
+** sh
+[[https://en.wikipedia.org/wiki/Bourne_shell][wikipedia page]]
+** [[id:5f4c11c6-091c-4e9a-9704-7f9fb37b95bc][BASH]]
+** [[id:2cd50d56-b3fa-4e6b-a005-d0769ae58995][ZSH]]
+** [[id:3b022392-4269-457a-a180-342afa6063d6][FISH]]
+** [[id:c3b942d1-3420-477a-8a39-9590498aa5dd][DASH]]
+* [[id:fcf0c804-9e84-4948-a9cf-ea92eef235f5][SHELL SCRIPTING]]
+* SHELL PROMPT
+** PS1 - Shell Prompt
+
+[[https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Controlling-the-Prompt][6.9 Controlling the Prompt - gnu.org]]
+
+/online bash prompt generators/
+- 
+- 
+- 
+
+* HISTORY
+
+*BASH*
+Find bash history as
+~~/.bash_history~
+
+You can also specify it in ~.bashrc~ as the next environment variable
+
+*ZSH*
+
+
+bash history (updates when exit shell) -> ~~/.bash_history~
+~history~ command <- has session commands
+
+* FOLDER / FILE PERMISSIONS - chmod
+
+*TUTORIAL*
++ [[https://www.redhat.com/sysadmin/linux-file-permissions-explained][Linux file permissions explained - Red Hat]]
++ [[https://www.tomshardware.com/how-to/change-file-directory-permissions-linux][How To Change File or Directory Permissions in Linux - tom's HARDWARE]]
+
+*RESOURCES*
++ [[https://unix.stackexchange.com/questions/59132/what-does-the-d-mean-in-ls-al-results-and-what-is-that-slot-called][What does the 'd' mean in ls -al results and what is that slot called? [duplicate] - StackExchange]]
++ [[https://serverfault.com/questions/238962/how-do-i-clear-the-s-permission-on-a-directory-in-linux][How do I clear the "s" permission on a directory in Linux? - StackExchange]]
++ [[https://unix.stackexchange.com/questions/28363/whats-the-difference-between-s-and-s-in-ls-la][What's the difference between "s" and "S" in ls -la? - StackExchange]]
++ [[https://unix.stackexchange.com/questions/118853/what-does-the-s-attribute-in-file-permissions-mean][What does the 's' attribute in file permissions mean? [duplicate] - StackExchange]]
+  
+THE USUAL 777 666 444 000
+Chmod
+666
+
+Usual for directory (~d~) -> 744 / rwxr-xr-x
+Usual for a pdf -> 644 / rw-r--r--
+
+|---+-------------------------+-----+--------|
+| N | Description             | ls  | binary |
+|---+-------------------------+-----+--------|
+| 0 | No permissions at all   | --- |    000 |
+| 1 | Only execute            | --x |    001 |
+| 2 | Only write              | -w- |    010 |
+| 3 | Write and execute       | -wx |    011 |
+| 4 | Only read               | r-- |    100 |
+| 5 | Read and execute        | r-x |    101 |
+| 6 | Read and write          | rw- |    110 |
+| 7 | Read, write, and execte | rwx |    111 |
+|---+-------------------------+-----+--------|
+
+** flags
+
+change permissions on a symlink
+~$ chmod -h 777 <path/to/symlink>~
+
+** types of devices
+
++ ~-~ (dash means file)
++ ~d~ (directory)
+  
+#+begin_src
+drwxrwxr-x 3 el users 4096 Dec 21 13:06 .
+drwx--x--x 9 el users 4096 Dec 21 11:47 ..
+drwxrwxr-x 3 el users 4096 Dec 21 11:54 my_empty_directory
+-rw-rw-r-- 1 el users  182 Dec 21 11:45 myfile.txt
+#+end_src
+
++ ~c~ (character device)
+  
++ ~l~ (symlink)
++ ~p~ (named pipe)
++ ~s~ (socket)
++ ~b~ (block device)
++ ~D~ (door, not common on Linux systems, but has been ported)
+
+** find + chmod
+
+[[https://superuser.com/questions/1164687/how-to-chmod-all-folders-recursively-excluding-all-folders-within-a-specific-fol][How to chmod all folders recursively excluding all folders within a specific folder? - StackExchange]]
+
+#+begin_src bash
+find . -type d \( -path ./node_modules \) -prune -o -exec chmod 644 {} \;
+#+end_src
+
+** Sticky bit
+
+[[https://en.wikipedia.org/wiki/Sticky_bit][wikipedia page]]
+
+[[https://askubuntu.com/questions/432699/what-is-the-t-letter-in-the-output-of-ls-ld-tmp][What is the "t" letter in the output of "ls -ld /tmp"? - StackExchange]]
+
+_note_: This only applies to directories.
+
+Removing the sticky bit
+~$ chmod o-t <folder>~
+
+* TERMINAL KEYBINDS
+** emacs (default)
+*** movement
+
+~CTRL a~ -> move to start of the line
+~CTRL e~ -> move to end of the line
+
+~CTRL f~ -> forward (one character)
+~CTRL b~ -> backward (one character)
+
+~ALT f~ -> forward (one word)
+~ALT b~ -> backward (one word)
+
+*** undo / redo
+
+~CTRL u~ -> undo
+~CTRL y~ -> redo
+
+*** deleting
+
+~CTRL k~ -> delete everything after the cursor
+~CTRL w~ -> delete last word
+~ALT d~ -> delete word that is in front of the cursor
+(doesn't work for me)
+
+*** inserting last command
+
+~ALT .~ -> insert an previously used argument
+
+*** commands
+
+~CTRL p~ -> get the previous command in history (previous)
+~CTRL n~ -> get the next command in history (next)
+
+*** clear terminal
+
+~CTRL l~ -> clear terminal
+
+** vi
+
+remember to press ~esc~ to go back to normal mode.
+
+*** movement
+
+~0~ (normal mode) -> go to start of line
+~$~ (normal mode) -> go to end of line
+
+~h~ -> move cursor back
+~l~ -> move cursor forward
+
+~k~ -> goes a command back in history
+~j~ -> goes a command forward in history
+
+~w~ -> forward (one word)
+~e~ -> forward (last letter of word)
+~b~ -> backward (one word)
+you can specify a number, so it goes <number> words back
+or forward
+_example_: ~2b~ (two words backwards) ~5w~ (five words forward)
+
+*** undo / redo
+
+~u~ -> undo
+
+*** deleting
+
+you can add ~d~ to movement commands
+~dw~ in this case will delete the word that is after the cursor
+
+~d0~ -> delete entire line
+~d~ -> cut full line
+
+*** past commands
+
+there's no way to do as emacs binding, but you can specify
+the last argument with ~!$~
+
+so if you only do ~!$~ on a terminal, it will enter the last argument
+
+_example_:
+#+begin_src bash
+$ echo "Hello"
+Hello
+$ prinf !$
+prinf "Hello"
+#+end_src
+
+~!!~ -> runs the last command again
+(helpful for long commands that need sudo/doas)
+~sudo !!~
+ 
+* ENVIRONMENT VARIABLES
+
+[[https://www.howtogeek.com/842780/linux-list-environment-variables/][How to List Environment Variables on Linux - How-To Geek]]

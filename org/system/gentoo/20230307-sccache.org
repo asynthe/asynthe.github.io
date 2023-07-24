@@ -1,0 +1,49 @@
+:PROPERTIES:
+:ID:       004e489d-4cd4-45ef-b6d6-4e2238f61255
+:END:
+#+title: sccache
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]] -> [[id:24056e55-2aa2-4630-ae53-b7609d42d892][OPTIMIZATIONS]]
+
+[[https://github.com/mozilla/sccache][github page]]
+[[https://wiki.gentoo.org/wiki/Sccache][gentoo wiki]]
+
+* package
+
+arch -> ~...~
+gentoo -> ~dev-util/sccache~
+windows (scoop) -> ~sccache~
+cargo -> ~sccache~
+
+* install
+
+create the cache directory:
+~# mkdir -p /var/cache/sccache~
+~# chown root:portage /var/cache/sccache~
+~# chmod 2775 /var/cache/sccache~
+
+allow write access to the cache directory when running under sandbox
+-> ~/etc/sandbox.d/20sccache~
+#+begin_src
+# Allow write access to sccache cache directory
+SANDBOX_WRITE="/var/cache/sccache"
+#+end_src
+
+-> ~/etc/portage/make.conf~
+#+begin_src
+RUSTC_WRAPPER=/usr/bin/sccache
+SCCACHE_DIR=/var/cache/sccache
+SCCACHE_MAX_FRAME_LENGTH=104857600
+#+end_src
+
+*NOTE*: enable sccache for the current user like this
+-> ~.zshrc~ or ~.bashrc~
+#+begin_src bash
+export RUSTC_WRAPPER=/usr/bin/sccache
+export SCCACHE_DIR=/var/cache/sccache
+export SCCACHE_MAX_FRAME_LENGTH=104857600
+#+end_src
+
+* usage
+get cache hit statistics with
+~$ SCCACHE_DIR=/var/cache/sccache sccache -s~
+(it can only read it when it's running)

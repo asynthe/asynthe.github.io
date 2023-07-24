@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A Pretty Good Introduction to Pretty Good Privacy</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">A Pretty Good Introduction to Pretty Good Privacy</h1>
+<p>
+-&gt;
+-&gt;  
+</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=Lq-yKJFHJpk">youtube link</a>
+[BROKEN LINK: mnfst.io] (?)
+</p>
+
+<div id="outline-container-org4089e94" class="outline-2">
+<h2 id="org4089e94">PGP</h2>
+<div class="outline-text-2" id="text-org4089e94">
+<p>
+it's a example of <b>Public key cryptography</b> where you use a <i>pair</i> of keys
+</p>
+
+<p>
+These are:
+</p>
+<ul class="org-ul">
+<li><span class="underline">Public key</span>: that can be distributed as widely as possible</li>
+<li><span class="underline">Private key</span>: that is a closely guarded secret</li>
+</ul>
+
+<p>
+These keys are generated at the same time with mathematics.
+</p>
+
+<p>
+They give you access to very powerful functions:
+</p>
+<ol class="org-ol">
+<li><p>
+<span class="underline">Encryption</span>: scramble a file so that a specific person can unscramble it.
+</p>
+
+<p>
+<b>Hello world</b> &#x2013;(PGP encryption program + <span class="underline">public key</span>)&#x2013;&gt; <b>hQEMA6hE0W3mZ</b>&#x2026;
+</p>
+
+<p>
+<b>hQEMA6hE0W3mZ</b>&#x2026; &#x2013;(PGP decryption program + <span class="underline">private key</span>)&#x2013;&gt; <b>Hello world</b>
+</p></li>
+
+<li><p>
+<span class="underline">Signing</span>: a guarantee that this document is from me.
+</p>
+
+<p>
+<b>Hello world</b> &#x2013;(PGP signing program + private key)&#x2013;&gt; <b>Hello world + iQEcBAEBAqAGB&#x2026;</b>
+</p>
+
+<p>
+<b>Hello world</b> + <b>iQEcBAEBAqAGB&#x2026;</b> &#x2013;(PGP verification program + <span class="underline">public key</span>)&#x2013;&gt; <b>Hello world + Verified</b>
+</p></li>
+</ol>
+
+<hr />
+</div>
+</div>
+
+<div id="outline-container-org232466a" class="outline-2">
+<h2 id="org232466a"><span class="underline">WHY SHOULD I CARE?</span></h2>
+<div class="outline-text-2" id="text-org232466a">
+<ol class="org-ol">
+<li><b>Email security</b>
+The most famous PGP user must be Edward Snowden. When he wanted to discuss classified secrets with a journalist, PGP was his <b>go-to</b>.</li>
+
+<li><b>Signed Git commits</b>
+<span class="underline">Note to self</span>: check for git repo <i>signed</i> badge.</li>
+
+<li><b>Encrypted files</b>
+See <a href="../../guide/20230303-pass.html#ID-4f81a52e-4000-4b93-9abc-e30d7920759c">pass</a>, command line password manager that uses PGP to encrypt all of your passwords.</li>
+
+<li><p>
+<b>Verifiable downloads</b>
+While you can download your file and verify with a <code>sha1</code> or a <code>.md5</code> file, run a hash function and verify with the website hash.
+</p>
+
+<p>
+What if the website was compromised?
+We can create a PGP signature for the downloaded file. And use it without having to go back to the website.
+</p>
+
+<p>
+The <code>apt</code> package manager (ubuntu, debian) is using this behind the scenes.
+</p></li>
+
+<li><p>
+Web sites without passwords
+Cookies: The thing that identifies you, is going across the wire even if it's HTTPS. (<sub>note</sub>_: <i>HTTPS certificates are issued by a central authority instead of a distributed PGP mechanism, if authority is compromised, everyone can pretend to be safe.</i>)
+</p>
+
+<p>
+[BROKEN LINK: mnfst.io] test of using PGP as signing as a way to log in. 
+</p></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org7b22f78" class="outline-2">
+<h2 id="org7b22f78"><b>THE CHICKEN, OR THE EGG? PROBLEM</b></h2>
+<div class="outline-text-2" id="text-org7b22f78">
+<p>
+If i get your <span class="underline">public key</span>, our communication is <b>secure</b>.
+But how can our communication be secure <b>before</b> i even get your <span class="underline">public key</span>?
+How can i securely get your <span class="underline">public key</span>?
+</p>
+
+<p>
+Every key has one or more user IDs attached to it: name, email address, comment.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga188f1b" class="outline-2">
+<h2 id="orga188f1b">PGP RESPONSE IS <span class="underline">THE WEB OF TRUST</span></h2>
+<div class="outline-text-2" id="text-orga188f1b">
+</div>
+<div id="outline-container-orgc2ce691" class="outline-3">
+<h3 id="orgc2ce691">Practical Example</h3>
+<div class="outline-text-3" id="text-orgc2ce691">
+<p>
+(3 people: you, aaron and harry)
+</p>
+<hr />
+<p>
+You: Hey, what's your name?
+X: Aaron.
+<i>I don't know X, which says it's Aaron, but i know Harry.</i>
+</p>
+
+<p>
+X: Harry, who's that?
+Harry: That's Aaron.
+You: Hey Aaron. Nice to meet you!
+<i>Now we have the confirmation that X is Aaron. From both Aaron itself, and Harry.</i>
+</p>
+<hr />
+</div>
+</div>
+
+<div id="outline-container-org39b1432" class="outline-3">
+<h3 id="org39b1432">Trusting someone</h3>
+<div class="outline-text-3" id="text-org39b1432">
+<p>
+You can have the trust algorithm to trust someone <span class="underline">fully</span> or trust someone <span class="underline">parcially</span>.
+</p>
+
+<p>
+<b>fully</b>: if <span class="underline">they</span> signed someone's key, you will trust that key.
+<b>parcially</b>: if <span class="underline">they</span> and <span class="underline">another</span> signed that key, you will trust that key.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1f052e2" class="outline-2">
+<h2 id="org1f052e2">HOW DO I USE IT?</h2>
+<div class="outline-text-2" id="text-org1f052e2">
+<p>
+<b>PGP, OpenPGP &amp; GnuPG</b>
+</p>
+
+<p>
+PGP: Originally developed by Phil Simmons on mid 90's (check), free as in beer, not as in Stallman.
+OpenPGP: Standart, RFC4000 (defines how a OpenPGP compliant app should work)
+GnuPG: Free as in beer, and also free in Stallman.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1b11e46" class="outline-2">
+<h2 id="org1b11e46">TUTORIAL</h2>
+<div class="outline-text-2" id="text-org1b11e46">
+<p>
+Creating a own key
+<code>$ gpg --gen-key</code>
+</p>
+<ul class="org-ul">
+<li>Use defaults for your first key</li>
+<li>Use default for keysize
+<ul class="org-ul">
+<li>The larger the key is harder to crack</li>
+<li>But it will be more signature and encrypted docs.</li>
+</ul></li>
+</ul>
+
+<p>
+Key should expire
+You can always change the expiry date
+</p>
+<ul class="org-ul">
+<li>Go 2 years</li>
+</ul>
+
+<p>
+Construct your user ID
+Real name: Testy McTest
+Email address: test@example.com
+Comment: (describe what key is for) or (company name)
+Comment: This is my general signing key through 2016!
+</p>
+
+<p>
+Enter a strong passphrase
+</p>
+
+<p>
+We have created our first key!
+-&gt; pub 2048R/C19B0406 2014-12-09 [expires: 2016-12-08]
+   Key fingerprint = 6E4C
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcbbcca1" class="outline-2">
+<h2 id="orgcbbcca1">KEY SERVERS</h2>
+<div class="outline-text-2" id="text-orgcbbcca1">
+<p>
+You can use this to publish your key online:
+<code>$ gpg --send-key &lt;pub-key&gt;</code>
+Once you send your
+</p>
+
+<p>
+If you forget your key ID, you can use:
+<code>$ gpg --list-keys test@example.com</code>
+</p>
+
+<p>
+pub 2048R/C19B0406 2014-12-09 [expires: 2016-12-08]
+<code>2048R</code> -&gt; 2048-bit RSA key
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5d12f1d" class="outline-2">
+<h2 id="org5d12f1d">SIGNING A KEY</h2>
+<div class="outline-text-2" id="text-org5d12f1d">
+<p>
+Just like the same key server we sent our key to, we now search for a key we want to sign.
+<code>$ gpg --search harry@thoughtbot.com</code>
+</p>
+
+<p>
+let's see this key
+<code>$ gpg --edit-key --ask-cert-level &lt;email or pubkey&gt;</code>
+<code>--ask-cert-level</code> -&gt; ask certainty level
+</p>
+
+<p>
+now gpg launches a little command editor:
+<code>gpg&gt;</code>
+</p>
+
+<p>
+you can just check with the pub key id, but it's not good as is short and you can <b>generate a key with a custom id</b>, best way is to use a <b>longer</b> representation of the key, this is a <span class="underline">fingerprint</span>.
+<code>gpg&gt; fgr</code>
+</p>
+
+<p>
+-&gt; Make sure that you and the person have the same fingerprint &lt;-
+<code>Primary key fingerprint: 1B41 8F2C 23DE DD9C 807E...</code>
+</p>
+
+<p>
+Now is the time to sign!
+<code>gpg&gt; sign</code>
+(0) I will not answer. (default)
+<i>this is no assumption of a certainty level.</i>
+(1) I have not checked at all.
+(2) I have done casual checking.
+(3) I have done very careful checking.
+</p>
+
+<p>
+input your passphrase.
+</p>
+
+<p>
+exit
+<code>gpg&gt; save</code>
+</p>
+
+<p>
+Send the signed key to the server
+<code>$ gpg --list-keys harry@thoughtbot.com</code>
+<code>$ gpg --send-key 25AE721B</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3f17305" class="outline-2">
+<h2 id="org3f17305">ENCRYPTING A MESSAGE</h2>
+<div class="outline-text-2" id="text-org3f17305">
+<p>
+<code>$ echo 'hello world' | gpg --sign --armor -</code>
+</p>
+
+<p>
+two approaches too keep a key consistent across machines
+</p>
+<ol class="org-ol">
+<li>copy the key around, prefferably not over the <span class="underline">network</span> but on a <span class="underline">removable media</span> (usb key).</li>
+<li>create a master key, then sub-keys.
+<span class="underline">example</span>: signing email on your phone, phone is likely to get stolen, in that case you can revoke that subkey. So all email signatures aren't lost.
+One approach is to have a sub-key for each device.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

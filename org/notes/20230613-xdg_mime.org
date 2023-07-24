@@ -1,0 +1,81 @@
+:PROPERTIES:
+:ID:       f3350b33-d745-4230-8a77-6a0267064639
+:ROAM_ALIASES: XDG-MIME
+:END:
+#+title: xdg-mime
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]
+
+[[https://wiki.archlinux.org/title/Default_applications][Default applications - arch wiki]]
+
+*RESOURCES*
+[[https://youtu.be/z3F0hTigMvU][Linux: How To Change Your Default Applications In XDG MIME - Brodie Robertson (youtube video)]]
+[[https://askubuntu.com/questions/90214/how-do-i-set-the-default-program][How do I set the default program? - StackExchange]]
+[[https://unix.stackexchange.com/questions/350103/setting-default-application-for-filetypes-via-cli][Setting default application for filetypes via CLI? - StackExchange]]
+
+Find the default program used for png
+~$ xdg-mime query default image/png~
+
+Find the default for a file
+~$ xdg-mime query filetype <file>~
+
+* setting defaults
+
+There are different ways to set up a application as default on linux:
+1. Using ~xdg-mime~
+2. Editing ~~/.config/mimeapps.list~
+
+** with ~xdg-mime~
+
+Setting a default
+You first have to find the ~.desktop~ file, you can use anything to find it, here i will use locate.
+~$ locate -i feh.desktop~
+
+Result:
+#+begin_src 
+/usr/share/applications/feh.desktop
+#+end_src
+
+Now that we know that there is a ~.desktop~ file, we can set it up as the default of the ~image/png~ mimetype.
+~$ xdg-mime default <.desktop file> <mimetype>~
+Like this:
+~$ xdg-mime default feh.desktop image/png~
+
+You don't need a GUI/CLI file manager to test it, you can do:
+~$ xdg-open <file>~
+~$ xdg-open image.png~
+
+** Adding it to ~mimeapps.list~
+
+~[Added Associations]~ -> Programs that can be considered but won't be the default.
+You can use this for something like torrents.
+
+~[Removed Associations]~ -> Remove programs from the list *Open with:* (for example in PCmanFM)
+
+If it's not removed from the list, it may be because the program _doesn't follow_ the XDG specifications.
+
+~[Default Applications]~ -> It will be the default. It will open with specified application even if it's on *[Removed Associations]*.
+
+* extra
+
+There are projects to replace xdg-open, you can check them in
+[[https://wiki.archlinux.org/title/Default_applications#Resource_openers][Default applications/Resource openers - arch wiki]]
+
+* nixos
+
+You can enable xdg mime and specify the contents inside your nix configuration.
+Add the next to ~configuration.nix~:
+
+#+begin_src nix
+xdg.mime = {
+  enable = true;
+  defaultApplications =
+    "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+    "image/png" = [
+      "imv-dir.desktop"
+      "gimp.desktop"
+    ];
+  #addedAssociations = ;
+  #removedAssociations = ;
+};
+#+end_src

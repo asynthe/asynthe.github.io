@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       c62f66ca-6d31-4408-8d87-c8a9d4eb4511
+:END:
+#+title: BusyBox
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]] / [[id:5b8d8a26-f3dd-4e50-b144-9eff85eadf96][BSD]] / [[id:0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b][WINDOWS ウィンドウズ]] -> [[id:9be91f09-e446-4d22-931e-c05792d8f582][SYSAPPS アプリ]]
+-> [[id:6c2cc908-5784-465d-9979-74811b0a3255][NETWORKING ネットワーキング]]
+
+[[][github page] ]
+[[https://www.busybox.net][official webpage]]
+[[][gentoo wiki] ]
+[[][arch wiki] ]
+
+
+
+* package
+
+arch -> ~...~
+gentoo -> ~...~
+
+* usage
+
+

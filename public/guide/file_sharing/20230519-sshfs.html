@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SSHFS</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">SSHFS</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="20230508-file_sharing.html#ID-d1093c5b-1817-4713-93d6-83fdf6377ee7">FILE SHARING</a>
+</p>
+
+<p>
+<a href="https://phoenixnap.com/kb/sshfs">SSHFS: How to Mount Remote File Systems Over SSH - phoenixNAP</a>
+</p>
+
+<div id="outline-container-org80a1f3e" class="outline-2">
+<h2 id="org80a1f3e">package</h2>
+<div class="outline-text-2" id="text-org80a1f3e">
+<p>
+arch -&gt;
+gentoo -&gt;
+nixos -&gt; sshfs
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9d5ecaa" class="outline-2">
+<h2 id="org9d5ecaa">usage</h2>
+<div class="outline-text-2" id="text-org9d5ecaa">
+<p>
+There are two ways to establish a connection to a remote machine
+</p>
+<ol class="org-ol">
+<li>Using password authentication</li>
+<li>Using a SSH key pair (recommended)</li>
+</ol>
+
+<p>
+<code># sshfs [-o &lt;options&gt;] &lt;remote user&gt;@&lt;remote host&gt;:/&lt;path to remote directory&gt; /mnt/&lt;folder name&gt;/</code>
+</p>
+
+<p>
+<code># sshfs -o allow_other,IdentityFile=/home/kb/.ssh/id_rsa ubuntu@131.153.142.254:/home/user/ /home/asynthe/debian-pc</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-aed9b748-d083-43ca-9e09-163823daaffc" class="outline-2">
+<h2 id="ID-aed9b748-d083-43ca-9e09-163823daaffc">SSHFS ON WINDOWS</h2>
+<div class="outline-text-2" id="text-org623ffd8">
+</div>
+
+<div id="outline-container-orge9f75cc" class="outline-3">
+<h3 id="orge9f75cc">setup</h3>
+<div class="outline-text-3" id="text-orge9f75cc">
+<p>
+windows -&gt;
+</p>
+<ol class="org-ol">
+<li>First, install <a href="https://github.com/winfsp/winfsp">WFSP - Windows File System Proxy</a></li>
+<li>Then, install <a href="https://github.com/winfsp/sshfs-win">SSHFS for Windows</a></li>
+</ol>
+<p>
+<span class="underline">note</span>: (Optional) SSHFS for Windows has an available frontend too.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

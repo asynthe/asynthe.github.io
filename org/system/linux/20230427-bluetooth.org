@@ -1,0 +1,12 @@
+
+-> main -> linux -> sysapps
+
+bluetooth
+
+* package
+
+arch ->
+gentoo -> ~net-wireless/bluez~ ~net-wireless/bluez-tools~
+
+* usage
+https://computingforgeeks.com/connect-to-bluetooth-device-from-linux-terminal/

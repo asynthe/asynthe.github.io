@@ -1,0 +1,362 @@
+:PROPERTIES:
+:ID:       95152727-d7c3-4142-b26a-2ccb243d0dd9
+:ROAM_ALIASES: WINE
+:END:
+#+title: Wine
+
+-> [[id:820af444-d90f-44e4-8723-c4d6e82b42b5][EMULATION]]
+
+"WINE Is Not an Emulator"
+
+[[https://www.winehq.org][WineHQ]]
+[[https://appdb.winehq.org][WineHQ AppDB]]
+
+[[https://wiki.gentoo.org/wiki/Wine][gentoo wiki]]
+[[https://wiki.archlinux.org/title/Wine][arch wiki]]
+
+* RESOURCES
+
+I think "compatibility layer" is the more technical term for what Wine actually is, as it converts low-level Windows system calls to something that the Linux (and other UNIX/POSIX) kernels can understand and execute, and effectively runs the application "natively" (or semi-natively?). It's equivalent to the old code in 32-bit versions of Windows that allowed MS-DOS programs to run, or Windows' own settings to allow programs to run in "compatibility mode" for older versions of the OS.
+
+Wine does not emulate an entire CPU like, for example, DOSBox, BSNES and KEGA Fusion... so therefore, "Wine is not an emulator." It just translates things meant for the Windows kernel in such a way that other kernels can understand.
+
+_note_: always run as user.
+_note_: you can use [[id:57f6a4b2-5649-4aa2-95f1-a665045176df][Bottles]] which is a easier way to manage Wine apps.
+
+[[https://wiki.winehq.org/Wine_User's_Guide][Wine User's Guide - WineHQ]]
+
+[[https://www.maketecheasier.com/install-wine-on-linux][How to Install Wine on Linux - maketecheasier]]
+[[https://linuxize.com/post/how-to-install-wine-on-ubuntu-20-04][How to Install and Use Wine on Ubuntu 20.04 - Linuxize]]
+[[https://adamtheautomator.com/wine-for-ubuntu/][How to Get Started and Install Wine for Ubuntu - ATA Learning]]
+[[https://itsfoss.com/use-windows-applications-linux][How To Run Windows Applications On Linux [Beginners Guide] - It's FOSS]]
+
+* PACKAGES
+
+arch ->
+gentoo ->
+nixos ->
+
+wine wine64 wineasio winetricks
+airwave -> VST bridge for Linux
+
+** FAST COMPATIBLE PREFIX
+
+Wine will use a _32-bit_ prefix by default, _wine64_ has to be used to _64-bit_ prefixes.
+
+_note_: wineboot doesn't work to create a 64-bit prefix.
+
+What i do is just run something like ~explorer~, that will create the prefix.
+
+~$ WINEPREFIX=~/wine/main WINEARCH=win64 wine64 explorer~
+
+~$ WINEPREFIX=~/wine/main WINEARCH=win64 winetricks dotnet35 dotnet452 dxvk vcrun2015 vcrun2017 vcrun2022 gdiplus corefonts tahoma~
+
+** WINE IN DIFFERENT NIXOS ARCHITECTURES
+
+On ~x86_64-linux~ wine supports by default ~32-bit~ and ~64-bit~ applications.
+In other architectures, it *only* supports ~32-bit~ applications.
+
+If you're using another architecture like [[id:f0bbf7fe-4572-418c-8534-06ea190f236a][RISC-V]], you can override the Wine package so it includes ~64-bit~ applications.
+
+#+begin_src nix
+{
+  environment.systemPackages = with pkgs; [
+    
+    # support both 32- and 64-bit applications
+    wineWowPackages.stable
+
+    # support 32-bit only
+    wine
+
+    # support 64-bit only
+    (wine.override { wineBuild = "wine64"; })
+
+    # wine-staging (version with experimental features)
+    wineWowPackages.staging
+
+    # winetricks (all versions)
+    winetricks
+
+    # native wayland support (unstable)
+    wineWowPackages.waylandFull
+  ];
+}
+#+end_src
+
+In other *architectures*, replace this line
+#+begin_src nix
+# support 64-bit only
+(wine.override { wineBuild = "wine64"; })
+#+end_src
+
+* WINETRICKS
+
+[[https://linuxconfig.org/configuring-wine-with-winetricks][Configuring WINE with Winetricks - Linuxconfig.org]]
+
+It's a Wine system config tool built on zenity (zenity generates dialog with options from a *bash script*)
+It can allow you to install needed software such as DirectX, DotNet, Visual C++ Distributable and more.
+
+It can be used as follows:
+~$ WINEPREFIX=~/wine/pfx32 winetricks d3dx9 dirac dotnet35 dotnet40 dxvk lavfilters vcrun2003 vcrun2005 vcrun2008 wmp9~
+
+This will install different programs into the WINEPREFIX.
+
+* USAGE
+** ENV PARAMETERS
+
+WINEPREFIX=<dir>
+
+WINEARCH=win32 or win64
+- Use win32 for any app
+- Use win64 for any game
+
+winetricks
+mimeassoc=off
+fontsmooth=rgb
+
+_after wine_
+regedit
+
+** KILLING WINE SERVER
+
+Kill wine processes
+~$ wineserver -k~
+
+Force kill wine processes
+~$ wineserver -k9~
+
+** LISTING INSTALLED WINETRICKS
+
+[[https://www.reddit.com/r/wine_gaming/comments/13cebww/how_to_list_installed_winetricks_in_a_prefix][How to list installed winetricks in a prefix? - reddit post]]
+
+List them like this:
+~$ WINEPREFIX=/home/user/wineprefix winetricks list-installed~
+
+* APPS
+** [[id:5aea11d7-3892-4265-b729-b52a3b5d80eb][ABLETON]]
+** FAKIN' THE FUNK
+:PROPERTIES:
+:ID:       58b03e01-4b38-4cf9-8545-249e302ae764
+:ROAM_ALIASES: "Fakin' The Funk"
+:END:
+
+[[https://fakinthefunk.net/en][main page]]
+
+*INSTALL*
+
+[[https://youtu.be/5kbDTxVR17c][How to install Fakin' The Funk? - On Linux (youtube video)]]
+
+** NOTEPAD++
+
+
+
+** IIDX - TEST
+
+[[https://mon.im/bemanipatcher][Bemani Patcher]]
+
+1. Making a Wine prefix, and installing required dependencies
+
+   ~$ mkdir -r iidx/pfx~
+   ~$ WINEPREFIX=~/iidx/pfx WINEARCH=win64 wineboot~
+
+   We are going to be using the next dependencies:
+   ~$ WINEPREFIX=~/wine/iidx/pfx winetricks~
+
+   mf?
+   
+   dotnet20, dotnet35, dotnet452
+
+   vcrun2003 vcrun2005 vcrun2008 vcrun2010 vcrun2012 vcrun2013 vcrun2022
+   gdiplus corefonts
+
+   d3dx9 d3dx10 ? -> dxvk
+   
+   wmp9 wmp10 wmp11
+
+   copy japanese fonts?
+
+   dotnet20 -> rundll32.exe problem
+
+   vcredist all versions both x86/x64
+   https://github.com/abbodi1406/vcredist
+
+   windows10 mediafeature pack
+   https://www.microsoft.com/en-us/software-download/mediafeaturepack
+
+   mf.dll -> mf? / Media Foundation DLL
+   mfplat.dll -> mf? (MS Media Foundation) / Media Foundation Platform DLL
+   mfreadwrite.dll -> mf? / Media Foundation ReadWrite DLL
+
+   MFPlat.DLL needed by MF.dll
+   MF.dll needed by bm2dx.dll
+   mfplat.dll needed by MFReadWrite.dll
+
+   MFCORE.MFGetService
+   MFCORE.MFEnumDEviceSources
+
+   MAYBE
+   lavfilters ffdshow dirac l3codecx
+   
+   winecfg, set windows10, refresh rate and monitor
+
+1. OPENVPN
+   
+   Start it, run with the configuration file.
+   ~# openvpn --config <file>.ovpn~
+
+2. Change Permissions for the iidx /contents/ folder.
+   ~$ chmod -R 7777 contents/~
+
+   As we need to run wine as root, change the prefix owner to root.
+   ~# chown -R root pfx/~
+
+   
+   _NOT NECESSARY - test: making the content folder root too_
+   ~# chown -R root contents/~
+
+3. Configuring the game with spicecfg
+
+   .
+   .
+   .
+
+4. Running the game
+
+   ~$ doas env LC_ALL=ja_JP.UTF-8 WINEPREFIX=/home/user/iidx/pfx sudo wine /home/user/iidx/contents/spice64.exe~
+   
+   ~$ doas env LANG=ja_JP.UTF-8 WINEPREFIX=/home/asynthe/iidx/pfx wine /home/asynthe/iidx/contents/spice64.exe~
+   
+5. ----- EXTRA -----
+
+   ~$ export XDG_RUNTIME_DIR=/run/user/0~
+
+   msmpeg2adec.dll -> ? / Microsoft DTV-DVD Audio Decoder
+   msmpeg2vdec.dll -> ? / Microsoft DTV-DVD Video Decoder
+
+* REVISE
+** usage
+
+Check if it's installed with:
+~$ wine --version~
+
+Wine default folder is ~~/.wine~, this is where your emulated windows machine will be.
+- You can specify another directory by specifying ~WINE_PREFIX=~/<path>~
+
+Now, you can install _two_ applications, but their app requirements may be different and even make a _conflict_. That's why it's better to set a *main folder* with folders (this will be the different PREFIXES) for differents app. ([[id:57f6a4b2-5649-4aa2-95f1-a665045176df][Bottles]] makes this easier.)
+
+*WINECFG - WINE CONFIGURATION*
+Now configure your Wine subsystem
+~$ winecfg~ (will open the configuration for ~~/.wine~.)
+~$ WINE_PREFIX=~/wine/<folder>~ (will open the configuration for ~~/wine/<folder>~.)
+
+*INSTALLING AN .EXE*
+To run a Windows ~.exe~ on Linux, open it like this.
+~$ wine <installer>.exe~
+or
+~$ WINE_PREFIX=~/wine/<folder> wine <installer>.exe~
+
+*UNINSTALLING*
+To uninstall any Windows software, open terminal and bring a Windows-style control panel.
+~$ wine uninstaller~
+or
+~$ WINE_PREFIX=~/wine/<folder> wine uninstaller~
+
+*RUNNING*
+You will have to go into the Wine folder and find the application executable.
+It will probably be in the "Program Files" or "Program Files (x86)" in the prefix created C drive.
+~~/.wine/drive_c~
+
+Go into that directory and simply run it like this:
+~$ wine program.exe~
+or
+~$ WINE_PREFIX=~/wine/<folder> wine program.exe~
+
+** WINE FRONTENDS AND MANAGERS
+
+- PlayOnLinux
+popular tool, but it hasn't been mantained for a long time.
+- Q4Wine
+confusing user interface
+- crossover
+is it worth to pay for windows apps on linux?
+- steam + lutris
+lutris gives you a frontend for all your game storefronts.
+-  bottles
+one of the best choices.
+
+** usage - Chris Titus Tech
+
+defacto wine dir, wine bottle
+~~/.wine~
+
+create a wine folder
+~$ mkdir wine~
+
+do we want it to be win64 or win32
+~$ WINEARCH=win32~ or
+~$ WINEARCH=win64~
+
+use win32 for any app
+use win64 for any game
+
+do a wine prefix
+~$ WINEARCH=win32 WINEPREFIX=~/wine/test winetricks~
+
+once the winetricks gui is open, you can select different options, we are going to go w ~Select the default wineprefix~
+
+do you install any d3dx?
+leave it as stock unless you need d3dx9 or special
+
+_DotNet_
+recommended dotnet order
+~dotnet35~, ~dotnet452~
+
+_DXVK_
+use dxvk instead of direct x
+~dxvk~
+
+_Visual C++ Libraries_
+~vcrun2015~, ~vcrun2017~, ~vcrun2019~ and ~vcrun2022~ have the same files, so choose one of the two, better to choose ~vcrun2022~
+
+_Xbox controller support_
+choose ~xinput~
+
+_XACT_
+if required
+~xact~ or ~xact_x64~ (64-bit)
+
+_MS GDI+_
+Some applications may require gdiplus
+~gdiplus~
+
+after the install, let's configure the fonts in winetricks.
+
+*FONTS*
+~corefonts~ -> Core microsoft fonts, needed for most applications.
+~tahoma~ ->
+
+now, run ~winecfg~ to set up you preffered windows version.
+
+*recommended to start* with ~windows7~ or ~windows10~
+
+quit and go inside the wine bottle
+
+it will have this structure.
+#+begin_src 
+dosdevices
+drive_c
+system.reg
+userdef.reg
+user.reg
+#+end_src
+
+"~drive_c~" will be our root, so you can put a ~.exe~ program inside and run it like this:
+~$ WINEARCH=win32 WINEPREFIX=~/wine/<folder> wine ~/wine/<folder>/drive_c/<program>.exe~
+
+** finding dependencies
+
+winehq appdb -> check for dependencies
+launching through terminal and looking at logs
+
+Depedency Walker 2.2 -> windows app
+

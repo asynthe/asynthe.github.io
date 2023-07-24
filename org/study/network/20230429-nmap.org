@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       bf8a1687-be29-4ec1-98c9-1298080f7fd0
+:END:
+#+title: nmap
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][STUDY 勉強]] -> [[id:6c2cc908-5784-465d-9979-74811b0a3255][NETWORKING ネットワーキング]]
+
+* package
+
+arch -> ~...~
+gentoo -> ~...~
+nixos -> ~...~
+
+* usage

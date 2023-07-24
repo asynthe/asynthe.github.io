@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       406d6693-0521-42de-9022-30366a93c1bc
+:END:
+#+title: eJPT
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][STUDY 勉強]]
+
+[[https://ine.com/learning/certifications/internal/elearnsecurity-junior-penetration-tester-cert][main page]]

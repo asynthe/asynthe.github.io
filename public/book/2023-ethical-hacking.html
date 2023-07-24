@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ethical Hacking</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Ethical Hacking</h1>
+<div id="outline-container-org7b614ad" class="outline-2">
+<h2 id="org7b614ad">Source</h2>
+<div class="outline-text-2" id="text-org7b614ad">
+<p>
+Author: Daniel G. Graham
+Title: Ethical Hacking
+Year: 2021
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0fae5ba" class="outline-2">
+<h2 id="org0fae5ba">Contents</h2>
+<div class="outline-text-2" id="text-org0fae5ba">
+</div>
+<div id="outline-container-org550d73b" class="outline-3">
+<h3 id="org550d73b">1. Setting Up</h3>
+<div class="outline-text-3" id="text-org550d73b">
+</div>
+<div id="outline-container-orgc2ebb2d" class="outline-4">
+<h4 id="orgc2ebb2d">The Setup</h4>
+<div class="outline-text-4" id="text-orgc2ebb2d">
+<ul class="org-ul">
+<li>pfSense VM</li>
+<li>Kali Linux VM</li>
+<li>2 Ubuntu Linux Desktop VMs</li>
+<li>Metasploitable VM</li>
+</ul>
+
+<p>
+official webpages:
+<a href="https://www.virtualbox.org/">VirtualBox</a> (in gentoo <code>app-emulation/virtualbox</code>)
+<a href="https://www.pfsense.org/download/">pfSense</a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgf5eb3eb"></a>Setting up pfSense<br />
+<div class="outline-text-5" id="text-orgf5eb3eb">
+<p>
+Unzip the <b>pfSense</b> iso with <code>gunzip</code> like this
+<code>gunzip pfSense iso .gz &lt;filename&gt;</code>
+</p>
+
+<p>
+When making the VM, choose <code>BSD</code> as the type, and <code>FreeBSD (64-bit)</code> as the version.
+</p>
+
+<p>
+Set the memory size to <code>1024MB</code>
+Select <code>VDI (VirtualBox Disk Image)</code>
+Choose dynamically allocated and set the size to <code>5GB</code>
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org856730e"></a>Setting up the pfSense Network<br />
+<div class="outline-text-6" id="text-org856730e">
+<p>
+<b>pfSense</b> will act as a gatekeeper between the internet and your internal network, making it secure from outside attackers. We are creating a safe place to add vulnerable machines and attack them.
+</p>
+
+<p>
+Click on <i>Settings</i> -&gt; <i>Network</i> -&gt; change <i>NAT</i> to <i>Bridged Adapter</i>, and choose your wireless/Ethernet card. It should be <i>wlan0</i>.
+</p>
+
+<p>
+This will create a direct connection between the pfSense virtual machine and the internet.
+</p>
+
+<p>
+Click on <i>Adapter 2</i> -&gt; change <i>Attached to:</i> to <i>Internal Network</i> (we will name it <i>Internal LAN</i>)
+</p>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+Run the <b>pfSense</b> VM, and proceed to install using the defaults.
+After installing, close the VM and proceed to remove the ISO from loading.
+</p>
+</div>
+</li>
+</ul>
+</li>
+
+<li><a id="org1ba054b"></a>Setting up Metasploitable<br /></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

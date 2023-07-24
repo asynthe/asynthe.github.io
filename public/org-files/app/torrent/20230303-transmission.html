@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Transmission</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Transmission</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">Main</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">Linux</a> / <a href="../../other/main/20230428-bsd.html#ID-5b8d8a26-f3dd-4e50-b144-9eff85eadf96">BSD</a> / <a href="../../system/windows/20230428-windows.html#ID-0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b">Windows</a> -&gt; <a href="../../other/main/20230428-sysapps.html#ID-9be91f09-e446-4d22-931e-c05792d8f582">Sysapps</a>
+</p>
+<div id="outline-container-orga1aa355" class="outline-2">
+<h2 id="orga1aa355">Transmission</h2>
+<div class="outline-text-2" id="text-orga1aa355">
+<p>
+[[][github page] ]
+[[][official webpage] ]
+[[][gentoo wiki] ]
+[[][arch wiki] ]
+</p>
+
+<p>
+<a href="https://cli-ck.io/transmission-cli-user-guide/">https://cli-ck.io/transmission-cli-user-guide/</a>
+</p>
+</div>
+
+<div id="outline-container-orgc1c70f9" class="outline-3">
+<h3 id="orgc1c70f9">package</h3>
+<div class="outline-text-3" id="text-orgc1c70f9">
+<p>
+arch -&gt; <code>transmission-cli</code>
+gentoo -&gt; <code>net-p2p/transmission</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0a74a77" class="outline-3">
+<h3 id="org0a74a77">set-up</h3>
+<div class="outline-text-3" id="text-org0a74a77">
+<p>
+<b>initialize the daemon</b>
+</p>
+
+<p>
+<b>systemd</b>
+<code>$ systemctl enable transmission.service</code>
+<code>$ systemctl start transmission.service</code>
+</p>
+
+<p>
+<b>OpenRC</b>
+$ rc-service
+</p>
+
+<hr />
+
+<p>
+update your download directory
+<code>$ transmission-daemon --download-dir "~~/Downloads/"</code>
+</p>
+
+<p>
+check your current settings with
+<code>$ transmission-daemon --dump-settings</code>
+</p>
+
+<p>
+check more settings with
+<code>$ man transmission-daemon</code>
+</p>
+
+<p>
+start the daemon
+<code>$ transmission-daemon</code>
+</p>
+
+<p>
+<b>using transmission</b>
+add a torrent, you can use a downloaded torrent path or direct URL or even a magnet link
+<code>$ transmission-remote -a "/home/meow/x/"</code>
+<code>$ transmission-remote -a "magnet:?xt=urn:..."</code>
+</p>
+
+<p>
+download and check the status of your downloads with the list command
+<code>$ transmission-remote -l</code>
+</p>
+
+<p>
+remove a torrent, use the ID number (left-hand column on the list command) to select which torrent you want to remove
+<code>$ transmission-remote -t (torrentid-1),(torrentid-2) -r</code>
+</p>
+
+<p>
+you can also remove everything
+<code>$ transmission-remote -t all -r</code>
+</p>
+
+<p>
+stop transmission
+<code>$ transmission-remote --exit</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga70746e" class="outline-3">
+<h3 id="orga70746e">usage</h3>
+<div class="outline-text-3" id="text-orga70746e">
+<p>
+add a torrent like this
+<code>$ transmission-remote -a &lt;path/to/.torrent&gt;</code>
+<code>$ transmission-remote -a "&lt;magnet-link&gt;"</code>
+</p>
+
+<p>
+see the progress with
+<code>$ transmission-remote -l</code>
+</p>
+
+<p>
+pause a torrent
+<code>$ transmission-remote -t &lt;torrent-number&gt;, &lt;torrent-number-2&gt; -S</code>
+pause all the torrents
+<code>$ transmission-remote -t all --stop</code>
+</p>
+
+<p>
+start it again
+<code>$ transmission-remote -t &lt;torrent-number&gt; --start</code>
+</p>
+
+<p>
+remove a torrent
+<code>$ transmission-remote -t &lt;torrent-number&gt; -r</code>
+</p>
+</div>
+
+<div id="outline-container-org0f8c81d" class="outline-4">
+<h4 id="org0f8c81d">asd</h4>
+<div class="outline-text-4" id="text-org0f8c81d">
+<p>
+see the contents of a torrent
+<code>$ trasmission-remote -t &lt;torrent-number&gt; -f</code>
+</p>
+
+<p>
+if you want to see <span class="underline">live</span> progress of your torrents, you can enter the WebUI
+search <code>localhost:9091</code> in your preferred browser
+</p>
+
+<p>
+or use <code>watch</code>
+<code>$ watch transmission-remote -l</code>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org8a37058" class="outline-2">
+<h2 id="org8a37058">tmux</h2>
+<div class="outline-text-2" id="text-org8a37058">
+<p>
+i always use watch, which you can come with your linux distro or you can obtain through busybox or package manager and use it inside <a href="../../guide/20230311-tmux.html#ID-cec60bab-064c-41b1-a2b4-59b257690b28">tmux</a> as
+<code>$ watch transmission-remote -l</code>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

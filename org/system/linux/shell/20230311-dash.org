@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       c3b942d1-3420-477a-8a39-9590498aa5dd
+:ROAM_ALIASES: DASH
+:END:
+#+title: dash
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+
+[[][github page] ]
+[[][official webpage] ]
+[[https://wiki.gentoo.org/wiki/Dash][gentoo wiki]]
+[[https://wiki.archlinux.org/title/Dash][arch wiki]]
+
+* package
+
+arch -> ~dash~ or ~dash-static-musl~ (aur)
+gentoo -> ~app-shells/dash~
+
+* install
+
+identify bashisms
+
+
+make it the default system shell
+~# cd /bin~
+~# ln -sf dash sh~
+~# echo /bin/dash >> /etc/shells~
+~# usermod -s /bin/dash root~

@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       be96ec4b-dcd7-41b1-9a54-b05f8938a033
+:END:
+#+title: distcc
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]] -> [[id:9be91f09-e446-4d22-931e-c05792d8f582][SYSAPPS アプリ]]
+
+[[][github page] ]
+[[][official webpage] ]
+[[https://wiki.gentoo.org/wiki/Distcc][gentoo wiki]]
+[[][arch wiki] ]
+
+* RESOURCES
+
++ [[https://noiselabs.io/distcc-distributed-compiling-with-gentoo-and-wsl/][Distributed compiling with Gentoo Linux and WSL2 - Noiselab Consulting]]
++ [[https://wiki.gentoo.org/wiki/Distcc/Cross-Compiling][Distcc/Cross-Compiling - gentoo wiki]]
+
+* package
+
+arch -> ~...~
+gentoo -> ~...~
+
+* usage

@@ -1,0 +1,148 @@
+:PROPERTIES:
+:ID:       9a58c90f-23c4-4d06-915c-0d3d5ef17ca3
+:ROAM_ALIASES: "VERSION CONTROL"
+:END:
+#+title: Version Control
+
+-> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]
+
+- DOTFILES - [[id:6e767248-281b-47d1-9196-047376846648][GIT]]
+  - dotfiles management
+  - cron jobs to backup home, config and portage
+  - gnu stow or dotfiles management
+  - MAKE LITERATE CONF
+
+SNOWFLAKE STRUCTURE
+  - snowflakes (configuration.nix + imports)
+- imports
+- configuration.nix
+- README.org
+  
+* VERSION CONTROL
+** [[id:6e767248-281b-47d1-9196-047376846648][GIT]]
+* CODE REPOSITORIES
+** [[id:4316ea16-d9d3-4e3d-b96a-905245801617][GITHUB]]
+** CODEBERG
+* DOTFILES
+:PROPERTIES:
+:ID:       7865dc78-8771-41ac-bb1e-819528fd19dd
+:END:
+
+** THE BASICS OF DOTFILES
+from [[https://youtu.be/BE87kUCTBVU][The Basics of Dotfiles - System Crafters (youtube video)]]
+
+_What are they?_
+- Text-based configuration files for the programs you use.
+- Personal scripts.
+- Called "dotfiles" because the file or directory starts with "."
+
+_Common dotfiles_
+- ~~/.bash_profile~ - A script loaded when you log in.
+- ~~/.bashrcc~ - A script loaded when you open a terminal.
+- ~~/.emacs.d~ - Emacs configuration.
+- ~~/.vimrc~ - Vim configuration.
+- ~~/.gitconfig~ - Configuration for Git.
+- ~~/.config~ - A folder full of many more configuration files.
+
+In *Windows* case, many cross-platform programs will store in ~C:\Users\username~ or ~C:\Users\username\AppData\Roaming~.
+
+_How should I manage them?_
+The best way to manage your dotfiles is to keep them in source control.
+
+*Benefits*
+- Easily sync your configuration between multiple machines
+- Roll back to a previous config
+- Experiment with huge changes w branches
+- Have a log of the changes
+
+*Which program?*
+It doesn't matter, decentralized is better!
+- Git
+- Mercurial (implications for which host you can use)
+- Darcs
+
+_Publish your dotfiles!_
+
+It feels scary, but it's worth it.
+
+_What's next?_
+
+- Manage and share your dotfiles with Git
+- Tools to make dotfiles management easier like GNU Stow
+- Complete dotfiles management with Emacs (even on Windows!)
+
+** HOW TO CREATE A DOTFILES FOLDER
+from [[https://youtu.be/gibqkbdVbeY][How to Create a Dotfiles Folder - System Crafters (youtube video)]]
+
+- Create a folder in the *$HOME* directory, or as close as you can.
+- Move some configuration files into it.
+- Link them back to their original location
+- Verify that it works!
+
+System Crafters recommends this directory, as is it easier to use tools like GNU Stow:
+~$ mkdir ~/.dotfiles~
+
+Once we have a new folder, we are ready to populate it with files.
+
+...
+...
+...
+
+Create symbolic links to the original config file locations
+
+# Create a new link called ~/.emacs.d which comes from ~/.dotfiles/.emacs.d
+~$ ln -sf ~/.dotfiles/.emacs.d ~/.emacs.d~
+
+** DOTFILES SYMLINKS IN WINDOWS
+
+In windows create a junction using mklink.
+_important_: You need a elevated prompt. (Run cmd as administrator)
+
+Create a link for a *individual file* with the */H* flag.
+~$ mklink /H <link-name>.conf <original-file>.conf~
+
+Create a link for a *directory* with the */J* flag.
+~$ mklink /J <link-name> <original-folder>~
+
+_example_: Emacs configuration.
+~$mklink /J c:\Users\benjamin\AppData\Roaming\.emacs.d c:\Users\benjamin\AppData\Roaming\.dotfiles\.emacs.d~
+
+** THE PROBLEM BETWEEN MACHINES
+
+It's tedious to create and manage symlinks like this when having different computers.
+Some people solve this by creating a "bootstrap" script that creates all symbolic links automatically.
+
+It's easier to use a tool made for this, such as GNU Stow and others.
+
+** DIFFERENT WAYS TO DO DOTFILES MANAGEMENT
+
+https://news.ycombinator.com/item?id=11071754
+
+https://wiki.archlinux.org/title/Dotfiles
+
+https://www.atlassian.com/git/tutorials/dotfiles
+
+* GNU STOW
+
+It describe itself as a "symlink farm manager".
+
+It's a program that can _mirror_ the structure of one directory into another by creating _symbolic links_ back to the original files.
+
+Extremely useful when you have a directory with configuration files (~~/.dotfiles~ or other) managed by [[id:6e767248-281b-47d1-9196-047376846648][git]], and you want to send all of this configuration files (symlink) into where they belong in your home directory.
+
+** install
+
+arch ->
+gentoo ->
+nixos ->
+
+Windows -> Install Stow via the _MSYS2_ command shell using *pacman -S stow*.
+- Make sure you run the shell as _Administrator_.
+- Have the ~MSYS~ variable set to ~winsymlinks:nativestrict~, so that it creates _symbolic links correctly, if not, stow will just copy the files.
+
+** how it works
+* MONOREPO
+
+[[https://www.atlassian.com/git/tutorials/monorepos][Monorepos in Git - Bitbucket]]
+
+

@@ -1,0 +1,217 @@
+:PROPERTIES:
+:ID:       fcf0c804-9e84-4948-a9cf-ea92eef235f5
+:ROAM_ALIASES: "SHELL SCRIPTING" SCRIPTING "BASH SCRIPTING"
+:END:
+#+title: Shell Scripting
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][STUDY 勉強]]
+
+I will write here all that i've learned of sh/bash scripting.
+
+[[https://linuxconfig.org/mastering-bash-script-loops][Mastering Bash Script Loops - LinuxConfig.org]]
+
+* RESOURCES
+
++ [[https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/][Bash Scripting Tutorial - Linux Shell Script and Command Line for Beginners - freeCodeCamp]]
++ [[https://www.freecodecamp.org/news/shell-scripting-crash-course-how-to-write-bash-scripts-in-linux/][Shell Scripting for Beginners - How to Write Bash Scripts in Linux - freeCodeCamp]]
++ [[https://www.geeksforgeeks.org/introduction-linux-shell-shell-scripting/][Introduction to Linux Shell and Shell Scripting - GeeksforGeeks]]
++ [[https://www.shellscript.sh/][The Shell Scripting Tutorial - shellscript.sh]]
++ [[https://www.howtogeek.com/67469/the-beginners-guide-to-shell-scripting-the-basics/][The Beginner's Guide to Shell Scripting: The Basics - How-To Geek]]
++ [[https://www.howtogeek.com/808593/bash-script-examples/][9 Bash Script Examples to Get You Started on Linux - How-To Geek]]
+
+  *YOUTUBE*
++ [[https://youtu.be/NSu4IWlOU7k][Bash Scripting Basics Part 1 - Jason Wertz (youtube video)]]
++ [[https://youtu.be/I4EWvMFj37g][Bash in 100 Seconds - Fireship (youtube video)]]
++ [[https://youtu.be/_n5ZegzieSQ][A Beginner's Introduction to BASH Shell Scripting - Joe Collins (youtube video)]]
+
+* SHELL
+** Creating various files that end in same extension
+
+I do it like this
+
+The commas are important, don't include a space.
+
+#+begin_src bash
+$ touch {file1,file2,file3}.csv
+#+end_src
+
+
+* STUDY: renaming files in bulk
+:PROPERTIES:
+:ID:       658cb6fe-e7c5-4fcb-8b9d-eef823d64952
+:END:
+
+[[https://stackoverflow.com/questions/26603052/how-to-rename-files-without-changing-extension-in-linux-102221-pdf-to-102221-nam][How to rename files without changing extension in Linux 102221.pdf to 102221_name.pdf - Stack Overflow]]
+
+let's say i have
+
+~102221.pdf~
+to
+~102221_name.pdf~
+
+~for x in * ; do mv "$x" "${x%.*}_name.${x##*.}"; done~
+
+~$x~ -> filename
+~${x%.*}~ -> 102221
+~${x##*.}~ -> *.pdf
+
+-----
+
+x.part1.rar ... x.part7.rar
+
+~for x in * ; do mv "$x" "${x%.*}_name.${x##*.}"; done~
+
+~x.part1_name.rar~ ... ~x.part7_name.rar~
+
+~for x in * ; do mv "$x" "twinkle_crusaders_passion_star_stream.${x%.*"; done~
+
+~twinkle_crusaders_passion_star_stream.x.part1_name~ ...
+~twinkle_crusaders_passion_star_stream.x.part7_name~
+
+~for x in * ; do mv "$x" "${x%.*}_name.${x##*.}"; done~
+
+
+removing that last ugly ~_name~
+~for i in * ; do mv $i ${i%_name}; done~
+
+adding ~.rar~
+~for i in * ; do mv $i $i.rar; done~
+
+for f in "a.php?ano=1&tp=O&np=1&lg=62&gp=TOTAL&id="*; do mv "${f}" "${f/.php?ano=1&tp=O&np=1&lg=62&gp=TOTAL&id=/_}.pdf"; done
+
+~for i in twinkle_crusaders_passion_star_steam*; do mv "${f}" "${f/.x*~
+
+* .bashrc / .zshrc
+
+as it is developed by GNU, some of the emacs keybindings also work in the
+Bash Shell
+
+bash shell uses emacs keybindings as default, this is:
+~set -o emacs~
+if you want to use the vi keybindings you can specify
+~set -o vi~
+
+*ZSH*
+change to vi bindings
+~$ bindkey -e~ -> for emacs
+~$ bindkey -v~ -> for vi
+
+*fish*
+~$ fish_default_key_bindings~ -> for emacs
+~$ fish_vi_key_bindings~ -> for vi
+
+* BASHISMS 
+* OPERATORS
+
+You can run another command after the previous one is finished
+(successful or not)
+#+begin_src bash
+<command>; <command>
+#+end_src
+
+run the second command *only* if first command was successful
+#+begin_src bash
+<command> && <command>
+#+end_src
+
+_helpful_: let's say you want to do this script in one line
+#+begin_src bash
+#!/bin/bash
+wget -q http://exemple.com/page1.php;
+wget -q http://exemple.com/page2.php;
+wget -q http://exemple.com/page3.php;
+#+end_src
+
+you can do it like this, with a ~for loop~
+
+#+begin_src bash
+for P in {1..3} ; do wget -q http://exemple.com/page${P}.php ; done
+#+end_src
+
+* OPERATORS (;, &&, ||) - RUNNING MULTIPLE COMMANDS AT ONCE
+
+[[https://itsfoss.com/run-multiple-commands-linux][How to Run Multiple Linux Commands at Once in Terminal - IT'S FOSS]]
+
+There are three ways to run multiple commands in one line.
+
+|----------+----------------------+-------------------------------|
+| operator | example              | explanation                   |
+|----------+----------------------+-------------------------------|
+| ;        | command1; command2   | Run 1 first, then 2           |
+| &&       | command1 && command2 | Run 2 only if 1 is sucessfull |
+| \vert        | command1 \vert\vert command2 | Run 2 only if 1 fails         |
+|----------+----------------------+-------------------------------|
+1. *USING ;*
+
+  This is the simplest, you just combine several commands that you want to run using ~;~ like this:
+  #+begin_src sh
+  cmd1; cmd2; cmd3
+  #+end_src
+
+  ~cmd1~ will run first, ~cmd2~ will run whether it's successful or not, and ~cmd3~ after that.
+  _example_:
+  #+begin_src sh
+  mkdir new_dir; cd new_dir; pwd
+  #+end_src
+
+2.  *USING && - AND OPERATOR*
+
+   Use this to ensure all commands are running without any problem.
+   In case of a failed command, the next one will not run.
+   
+   #+begin_src sh
+   cmd1 && cmd2 && cmd3
+   #+end_src
+
+   _example_: It is very used to update the package database cache and update your system.
+   #+begin_src sh
+   sudo apt update && sudo apt upgrade
+   #+end_src
+
+3. *USING \vert\vert - OR OPERATOR*
+
+   Run a chain of commands but the next command only when the previous ends in error.
+   
+   #+begin_src sh
+   cmd1 || cmd2 || cmd3
+   #+end_src
+
+   if cmd1 fails, cmd2 runs.
+   if cmd2 is successful, cmd3 doesn't run.
+
+*BONUS TIP: COMBINING && AND || OPERATORS*
+
+You may combine the operators to run two or more Linux commands.
+
+#+begin_src sh
+cmd1 && cmd2 || cmd3
+#+end_src
+
+_example_: check if file exists in bash, and print message.
+#+begin_src sh
+[ -f file.txt ] && echo "File exists" || echo "File doesn't exist"
+#+end_src
+
+You can also use ~;~, ~&&~ and ~||~ to run multiple commands in bash scripts as well.
+
+* Combine the output of two commands
+
+[[https://unix.stackexchange.com/questions/64736/combine-the-output-of-two-commands-in-bash][Combine the output of two commands in bash - StackExchange]]
+
+Do it like this:
+
+#+begin_src bash
+{ command1 & command2; }
+#+end_src
+
+The space after ~{~ is necessary.
+The ~;~ on the last ~}~ is also necessary.
+
+You can combine with operators
+#+begin_src bash
+{ command1 ; command2 ; command3 ; } > outfile.txt
+
+{ command1 & command2 & command3 ; } > outfile.txt
+
+{ command1 && command2 && command3 ; } > outfile.txt
+#+end_src

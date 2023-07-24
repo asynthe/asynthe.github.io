@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Android</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Android</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a>
+</p>
+
+<p>
+<a href="https://nixos.wiki/wiki/Android">Android - nixoswiki</a>
+</p>
+
+<p>
+<a href="https://github.com/topjohnwu/Magisk">https://github.com/topjohnwu/Magisk</a>
+<a href="https://github.com/Genymobile/scrcpy">https://github.com/Genymobile/scrcpy</a>
+</p>
+
+<p>
+<a href="https://revanced.net">Youtube Revanced</a>
+</p>
+<ul class="org-ul">
+<li>yt-dlp on tmux android</li>
+<li>access android folders with termux-setup-storage</li>
+</ul>
+
+<p>
+Then finally
+change directory into `Downloads`, copy and paste the youtube link as you normally do on android (alias cd &amp;&amp; yt-dlp &lt;link&gt;)
+wallpaper change cronjob (systemd job)
+</p>
+
+<div id="outline-container-org9467a68" class="outline-2">
+<h2 id="org9467a68">SCREENSHARING ANDROID ON LINUX</h2>
+<div class="outline-text-2" id="text-org9467a68">
+<p>
+<a href="https://linuxconfig.org/how-to-mirror-your-android-mobile-screen-to-linux">How to Mirror Your Android Mobile Screen to Linux - Linuxconfig</a>
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orge265bd1" class="outline-2">
+<h2 id="orge265bd1">LINUX ON ANDROID NON-ROOT</h2>
+<div class="outline-text-2" id="text-orge265bd1">
+</div>
+<div id="outline-container-org2e9033f" class="outline-3">
+<h3 id="org2e9033f">INSTALLING F-DROID</h3>
+</div>
+<div id="outline-container-org255c2ac" class="outline-3">
+<h3 id="org255c2ac">SETTING UP TERMUX</h3>
+</div>
+</div>
+
+<div id="outline-container-org8a06566" class="outline-2">
+<h2 id="org8a06566">EDITING ORG FILES IN ANDROID</h2>
+</div>
+<div id="outline-container-ID-62b1b1f3-682a-46b2-bfeb-d9ce65de5a48" class="outline-2">
+<h2 id="ID-62b1b1f3-682a-46b2-bfeb-d9ce65de5a48">scrcpy</h2>
+<div class="outline-text-2" id="text-orgf87961c">
+<p>
+Display and control your Android device.
+</p>
+
+<p>
+<a href="https://github.com/Genymobile/scrcpy">github page</a>
+</p>
+
+<p>
+<a href="https://linuxconfig.org/how-to-mirror-your-android-mobile-screen-to-linux">How to Mirror Your Android Mobile Screen to Linux - LinuxConfig.org</a>
+</p>
+</div>
+
+<div id="outline-container-orgf67c2e3" class="outline-3">
+<h3 id="orgf67c2e3">package</h3>
+<div class="outline-text-3" id="text-orgf67c2e3">
+<p>
+arch -&gt;
+gentoo -&gt;
+nixos -&gt; <code>scrcpy</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb00931c" class="outline-3">
+<h3 id="orgb00931c">usage</h3>
+<div class="outline-text-3" id="text-orgb00931c">
+<p>
+Once you have a good adb connection, start it with:
+<code>$ scrcpy</code>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org59d4dbf" class="outline-3">
+<h3 id="org59d4dbf">flags</h3>
+<div class="outline-text-3" id="text-org59d4dbf">
+<p>
+<code>-n</code> / <code>--no-control</code> -&gt; Read-only
+</p>
+
+<p>
+<code>-S</code> / <code>--turn-screen-off</code> -&gt; Turn screen off
+<code>-w</code> / <code>--stay-awake</code> -&gt; Prevent device from sleeping (only USB connection)
+</p>
+
+<p>
+<code>-t</code> / <code>--show-touches</code> -&gt; Show physical touches
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7f82b74" class="outline-3">
+<h3 id="org7f82b74">keybinds</h3>
+<div class="outline-text-3" id="text-org7f82b74">
+<p>
+Click -&gt; press
+Right Click -&gt; back button
+Middle Click -&gt; home button
+</p>
+
+<p>
+<code>Ctrl + Mouse move</code> -&gt; Zoom in / out
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9e05de3" class="outline-2">
+<h2 id="org9e05de3">adb (Android Debug Bridge)</h2>
+<div class="outline-text-2" id="text-org9e05de3">
+<p>
+<b>NIXOS</b>
+enable like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">{
+  programs.adb.enable = true;
+  users.users.&lt;user&gt;.extraGroups = ["adbusers"];
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgbecc948" class="outline-3">
+<h3 id="orgbecc948">setup</h3>
+<div class="outline-text-3" id="text-orgbecc948">
+<ol class="org-ol">
+<li>Start the server:
+<code>$ adb start-server</code></li>
+
+<li><p>
+Now, <span class="underline">enable</span> Developer Mode on your phone:
+</p>
+<ul class="org-ul">
+<li>Settings</li>
+<li>About Phone</li>
+<li>Software information</li>
+<li>Build</li>
+</ul>
+
+<p>
+You can <span class="underline">disable</span> Developer Mode as follows:
+</p>
+<ul class="org-ul">
+<li>Settings</li>
+<li>System &amp; Updates</li>
+<li>Developer Options</li>
+<li>Top blue slider, from On -&gt; Off</li>
+</ul></li>
+
+<li>Enable USB Debugging:
+<ul class="org-ul">
+<li>Settings</li>
+<li>System &amp; Updates</li>
+<li>Developer Options</li>
+<li>DEBUGGING Section -&gt; enable USB debugging</li>
+</ul></li>
+
+<li>Connect your PC and Android Phone with a USB cable
+and Allow the connection.</li>
+
+<li>Connect through ADB
+<code>$ adb devices</code>
+<code>$ adb shell</code></li>
+</ol>
+
+<p>
+<span class="underline">note</span>: Stack commands on your computer like this:
+<code>$ adb shell pwd; ls /</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org023efb1" class="outline-3">
+<h3 id="org023efb1">conecting through wifi</h3>
+<div class="outline-text-3" id="text-org023efb1">
+<p>
+<span class="underline">note</span>: Do it after setting a connection with a regular USB cable.
+</p>
+
+<ol class="org-ol">
+<li>We will have to open a TCP port first.
+Choose a number from 1000-19999, and open the port.
+<code>$ adb tcpip 2233</code></li>
+
+<li><p>
+In your phone, go to
+</p>
+<ul class="org-ul">
+<li>Settings</li>
+<li>About phone</li>
+<li>Status</li>
+</ul>
+
+<p>
+Note the IP address under 'IP address'.
+Use the IPv4, only numbers, no letters.
+</p></li>
+
+<li><p>
+On the terminal, connect to the IP address
+<code>$ adb connect 10.0.0.191:2233</code>
+</p>
+
+<p>
+To change to a USB Connection disconnect from all the devices:
+<code>$ adb disconnect</code>
+</p></li>
+</ol>
+</div>
+
+<div id="outline-container-org9111e0a" class="outline-4">
+<h4 id="org9111e0a">fix: connection refused</h4>
+<div class="outline-text-4" id="text-org9111e0a">
+<p>
+I couldn't connect at first, but i just keep playing with.
+</p>
+
+<ul class="org-ul">
+<li>Making sure the USB Debugging option was on after disconnected.</li>
+<li>Changing the port <code>$ adb tcpip &lt;number&gt;</code> while the phone is connected.</li>
+<li>Testing the IP and the port, to make sure you're on the same network.
+<code>$ ping 192.168.1.4</code> -&gt; see if the IP is online.
+<code>$ telnet 192.168.1.4 5555</code> -&gt; see if this port is online.</li>
+</ul>
+
+<p>
+Repeat the steps mentioned, unconnect the usb after adding the connection.
+And check if <code>$ adb shell</code> works.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

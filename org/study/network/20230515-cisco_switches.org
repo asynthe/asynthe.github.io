@@ -1,0 +1,57 @@
+:PROPERTIES:
+:ID:       4a01a963-f70a-4612-a096-188719ed9178
+:ROAM_ALIASES: SWITCHES "CISCO SWITCHES"
+:END:
+#+title: Cisco Switches
+
+https://www.youtube.com/watch?v=N_gBudULCu0
+Rapid Spanning Tree Protocol (IEEE802.1W)
+
+* VLAN
+
+[[https://youtu.be/A9lMH0ye1HU][VLANs Explained | Cisco CCNA 200-301 - youtube video]]
+
+** trunk
+
+[[https://youtu.be/Nlyx5lFQR34][VLAN Trunking Protocol (VTP) Explained | Version 1 & 2 - youtube video]]
+
+* SWITCH PORT SECURITY
+
+HOSTNAME(config)# int g1/0/24
+HOSTNAME(config-if)# switchport mode access
+HOSTNAME(config-if)# switchport port-security
+HOSTNAME(config-if)# switchport port-security mac-address sticky
+HOSTNAME(config-if)# switchport port-security maximum 1
+HOSTNAME(config-if)# switchport port-security violation shutdown
+
+* UPDATING THE OS VERSION
+
+[[https://networkproguide.com/upgrade-cisco-ios-switch-step-by-step/][Upgrade Cisco IOS Switch Step-by-Step - NetworkProGuide]]
+
+1. show current version of switch IOS version
+HOSTNAME#show switch
+
+2. download Latest cisco IOS image
+
+3. Delete old IOS image if short on space
+HOSTNAME# delete /f /r flash1:<SWITCH>.bin
+
+~/f~ → force
+~/r~ → recursive
+
+Check that contents of flash are clear
+<PC>#dir flash1:
+<PC>#dir flash2:
+
+4. Upload the New IOS to Flash
+<PC># copy tftp flash1
+>Address or name of remote host? 192.168.1.10 (SWITCH IP)
+>source filename? c2960x-universalk9-mz.152-4.E6.bin
+>Destination filename? c2960x-universalk9-mz.152-4.E6.bin
+Verify that image is copied by checking flash again
+<PC>#dir flash1:
+
+Verify MD5 checksum for integrity
+<PC># verify /md5 flash1:c2960x-universalk9-mz.152-4.E6.bin
+
+5. Update Booth Path List

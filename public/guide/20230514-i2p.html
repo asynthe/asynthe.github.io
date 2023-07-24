@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>I2P</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">I2P</h1>
+<p>
+-&gt; <a href="../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a>
+</p>
+
+<p>
+"<i>I2P is written in java, while I2PD is a C++ implementation of it.</i>"
+</p>
+
+<p>
+<a href="https://geti2p.net/en/">main page</a>
+<a href="https://wiki.gentoo.org/wiki/I2P">gentoo wiki</a>
+<a href="https://en.wikipedia.org/wiki/I2P">wikipedia page</a>
+</p>
+
+<p>
+<a href="https://i2pd.website">i2pd main page</a>
+<a href="https://i2pd.readthedocs.io/en/latest">i2pd documentation</a>
+</p>
+
+<div id="outline-container-orgbf0d1e0" class="outline-2">
+<h2 id="orgbf0d1e0">package</h2>
+<div class="outline-text-2" id="text-orgbf0d1e0">
+</div>
+<div id="outline-container-orgacd8ea2" class="outline-3">
+<h3 id="orgacd8ea2">pre-requisite - I2P</h3>
+</div>
+
+
+<div id="outline-container-org256eb3a" class="outline-3">
+<h3 id="org256eb3a">I2P / I2PD</h3>
+<div class="outline-text-3" id="text-org256eb3a">
+<p>
+arch -&gt; 
+gentoo -&gt; <code>net-vpn/i2p</code> or <code>net-vpn/i2pd</code>
+nixos -&gt; <code>i2p</code> or <code>i2pd</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf18ac18" class="outline-2">
+<h2 id="orgf18ac18">eep sites list</h2>
+<div class="outline-text-2" id="text-orgf18ac18">
+<p>
+<span class="underline">tor.taxi</span>
+b32 = taxi2pxjy7hnm3tdoa67ub5xancixo7vncdx3y5mnxxxfoyunlla
+</p>
+
+<p>
+<span class="underline">AlphaBay</span>
+b32 = <a href="http://tnaefzkcnhryeusi7hdpqujqiqmnbtah3dmjcg3gvezohunjuxbq.b32.i2p/">http://tnaefzkcnhryeusi7hdpqujqiqmnbtah3dmjcg3gvezohunjuxbq.b32.i2p/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org482bcdc" class="outline-2">
+<h2 id="org482bcdc">install</h2>
+<div class="outline-text-2" id="text-org482bcdc">
+<p>
+_<sub>prerequisite</sub>__
+for running the main implementation of I2P, Java must be installed with
+</p>
+<ul class="org-ul">
+<li>`dev-java/icedtea` or `dev-java/icedtea-bin`</li>
+<li>`dev-java/openjdk` or `dev-java/openjdk-bin`</li>
+<li></li>
+
+<li>&#x2013;oneshot `virtual/jdk`</li>
+<li>&#x2013;oneshot `virtual/jre`</li>
+</ul>
+
+<p>
+_<sub>package</sub>__
+arch -&gt;
+</p>
+
+<p>
+service
+<b>systemd</b>
+</p>
+
+<p>
+<b>OpenRC</b>
+</p>
+
+<p>
+_<sub>usage</sub>__
+after enabling and starting the service, go on your preferred web broser and open
+```
+localhost:7657
+in case of i2pd
+localhost:7070
+```
+</p>
+
+<p>
+now we will make a Firefox profile to use with I2P
+</p>
+<ul class="org-ul">
+<li>go to `about:profiles`</li>
+<li>asd</li>
+</ul>
+
+<p>
+click on `run this profile on a new browser`
+</p>
+
+<p>
+on Firefox settings, go to `General` -&gt; `Network Settings`
+</p>
+<ul class="org-ul">
+<li>check `Manual proxy configuration`</li>
+<li>change http proxy to</li>
+</ul>
+<p>
+```
+HTTP Proxy: 127.0.0.1 Port: 4444
+```
+</p>
+<ul class="org-ul">
+<li>check for `SOCKS v5` to be enabled</li>
+<li>add in `No proxy for`</li>
+</ul>
+<p>
+```
+localhost, 127.0.0.1
+```
+</p>
+
+<p>
+Now, It happened to me that Firefox will try to run stuff you put on the  url always like a search, you can disable this by
+</p>
+<ul class="org-ul">
+<li>going to `about:config`</li>
+<li>searcing for `keyw`</li>
+<li>change `keyword.enable` from `true` to `false` (with that arrow button)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb99821d" class="outline-2">
+<h2 id="orgb99821d">NixOS</h2>
+</div>
+
+
+<div id="outline-container-orgfdfd78b" class="outline-2">
+<h2 id="orgfdfd78b">from my obsidian note (markdown)</h2>
+<div class="outline-text-2" id="text-orgfdfd78b">
+<p>
+_<sub>prerequisite</sub>__
+for running the main implementation of I2P, Java must be installed with
+arch -&gt; `asd`
+gentoo -&gt;
+</p>
+<ul class="org-ul">
+<li>`dev-java/icedtea` or `dev-java/icedtea-bin`</li>
+<li>`dev-java/openjdk` or `dev-java/openjdk-bin`</li>
+<li></li>
+
+<li>&#x2013;oneshot `virtual/jdk`</li>
+<li>&#x2013;oneshot `virtual/jre`</li>
+</ul>
+
+<p>
+_<sub>package</sub>__
+arch -&gt;
+gentoo -&gt; `net-vpn/i2p` or `net-vpn/i2pd`
+</p>
+
+<p>
+_<sub>service</sub>__
+```
+systemd
+</p>
+
+<p>
+OpenRC
+</p>
+
+<p>
+```
+</p>
+
+<p>
+_<sub>usage</sub>__
+after enabling and starting the service, go on your preferred web broser and open
+```
+localhost:7657
+in case of i2pd
+localhost:7070
+```
+</p>
+
+<p>
+now we will make a Firefox profile to use with I2P
+</p>
+<ul class="org-ul">
+<li>go to `about:profiles`</li>
+<li>asd</li>
+</ul>
+
+<p>
+click on `run this profile on a new browser`
+</p>
+
+<p>
+on Firefox settings, go to `General` -&gt; `Network Settings`
+</p>
+<ul class="org-ul">
+<li>check `Manual proxy configuration`</li>
+<li>change http proxy to</li>
+</ul>
+<p>
+```
+HTTP Proxy: 127.0.0.1 Port: 4444
+```
+</p>
+<ul class="org-ul">
+<li>check for `SOCKS v5` to be enabled</li>
+<li>add in `No proxy for`</li>
+</ul>
+<p>
+```
+localhost, 127.0.0.1
+```
+</p>
+
+<p>
+Now, It happened to me that Firefox will try to run stuff you put on the  url always like a search, you can disable this by
+</p>
+<ul class="org-ul">
+<li>going to `about:config`</li>
+<li>searcing for `keyw`</li>
+<li>change `keyword.enable` from `true` to `false` (with that arrow button)</li>
+</ul>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+&lt;u&gt;eep sites&lt;/u&gt;
+</p>
+
+<p>
+tor.taxi
+[b32](taxi2pxjy7hnm3tdoa67ub5xancixo7vncdx3y5mnxxxfoyunlla)
+</p>
+
+<p>
+AlphaBay
+[b32](<a href="http://tnaefzkcnhryeusi7hdpqujqiqmnbtah3dmjcg3gvezohunjuxbq.b32.i2p/">http://tnaefzkcnhryeusi7hdpqujqiqmnbtah3dmjcg3gvezohunjuxbq.b32.i2p/</a>)
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

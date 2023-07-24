@@ -1,0 +1,57 @@
+:PROPERTIES:
+:ID:       abc9b250-ecc3-4ded-b60c-948aef6438ec
+:END:
+#+title: FFmpeg
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]
+
+[[https://github.com/FFmpeg/FFmpeg][github page]]
+[[https://en.wikipedia.org/wiki/FFmpeg][wikipedia page]]
+[[https://ffmmpeg.org][official webpage]]
+[[https://wiki.gentoo.org/wiki/FFmpeg][gentoo wiki]]
+[[https://wiki.archlinux.org/title/FFmpeg][arch wiki]]
+
+[[https://drewdevault.com/2022/10/12/In-praise-of-ffmpeg.html][In praise of ffmpeg - Drew DeVault's blog]]
+
+* package
+
+arch -> ~ffmpeg~ or ~ffmpeg-git~ (aur), also ~ffmpeg-full~ (aur, with all options enabled)
+gentoo -> ~media-video/ffmpeg~ (see ~ffmpeg~ use flag)
+nixos -> ~...~
+
+* usage 
+** converting .wav to compressed .mp3
+
+~$ ffmpeg -i <input>.wav -vn -ar 44100 -ac 2 -b:a 192k <output>.mp3~
+
+|------+---------------------------------------------------|
+| flag | description                                       |
+|------+---------------------------------------------------|
+| -i   | the input (.wav file)                             |
+| -vn  | disable video, no album cover                     |
+| -ar  | audio sampling frequency                          |
+|      | 8kHz (telcom), 44.1kHz (audio cd), 48kHz (movies) |
+| -ac  | audio channels                                    |
+|      | stereo (2), mono (1)                              |
+| -b:a | audio bitrate, convert to exact number            |
+|      | in this _example_: 192kbit per second               |
+|      |                                                   |
+|------+---------------------------------------------------|
+** media player (ffplay)
+
+If built with ~sdl~ flag, a cli media player called ~ffplay~ is available
+
+*** commands
+
+~ffplay <path/to/video>~ -> play a video
+~curl https | xargs ffplay~ -> play a stream
+
+more info:
+~$ man 1 ffplay~
+~$ ffplay -h~
+
+** extracting blu-ray audio
+
+_note_: remember to have ffmpeg compiled with the ~bluray~ flag
+
+[[https://wiki.gentoo.org/wiki/FFmpeg_-_Extract_Blu_Ray_Audio][FFmpeg - Extract Blu-Ray Audio - gentoo wiki]]

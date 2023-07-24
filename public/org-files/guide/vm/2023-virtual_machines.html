@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Virtual Machines</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Virtual Machines</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a>
+</p>
+
+<p>
+ISOS LOCATION = <code>/var/lib/libvirt/isos</code>
+VMS LOCATION = <code>/var/lib/libvirt/images</code>
+make sure to chown root all the isos, just in case
+</p>
+
+<div id="outline-container-org0570fe3" class="outline-2">
+<h2 id="org0570fe3"><a href="../file_sharing/20230509-ssh.html#ID-bc2233db-f8fd-4de6-8a9a-bb519804ba85">SSH</a></h2>
+</div>
+<div id="outline-container-org231f7e6" class="outline-2">
+<h2 id="org231f7e6">HYPERVISORS</h2>
+<div class="outline-text-2" id="text-org231f7e6">
+</div>
+<div id="outline-container-orga2f8526" class="outline-3">
+<h3 id="orga2f8526"><a href="2023-virtualbox.html#ID-b61fbba9-25d0-4d40-95e5-b2ef4c74c47c">VirtualBox</a></h3>
+</div>
+<div id="outline-container-orge489d2f" class="outline-3">
+<h3 id="orge489d2f">VMware</h3>
+</div>
+<div id="outline-container-org75c64d5" class="outline-3">
+<h3 id="org75c64d5"><a href="2023-virt_manager.html#ID-30a114c3-b036-4620-9fbb-f9c7c1ecee9b">virt-manager</a></h3>
+</div>
+<div id="outline-container-org0464cbe" class="outline-3">
+<h3 id="org0464cbe"><a href="2023-proxmox.html#ID-ce97d191-0d79-42d9-b01e-cd8a881cf61c">Proxmox</a></h3>
+</div>
+<div id="outline-container-orga77f883" class="outline-3">
+<h3 id="orga77f883"><a href="../../notes/20230531-libvirt.html#ID-e2d361c5-a087-43e1-8c02-4839bda41387">libvirt</a></h3>
+</div>
+</div>
+<div id="outline-container-org74c0aaa" class="outline-2">
+<h2 id="org74c0aaa">FIX</h2>
+<div class="outline-text-2" id="text-org74c0aaa">
+</div>
+<div id="outline-container-org01cf3a3" class="outline-3">
+<h3 id="org01cf3a3">QEMU</h3>
+<div class="outline-text-3" id="text-org01cf3a3">
+</div>
+<div id="outline-container-orgf99575c" class="outline-4">
+<h4 id="orgf99575c">install</h4>
+<div class="outline-text-4" id="text-orgf99575c">
+<p>
+arch -&gt;
+gentoo -&gt;
+nixos -&gt; <code>qemu</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4841f26" class="outline-4">
+<h4 id="org4841f26">configuration</h4>
+</div>
+
+<div id="outline-container-orgbeb838d" class="outline-4">
+<h4 id="orgbeb838d">NixOS - implement UEFI support</h4>
+<div class="outline-text-4" id="text-orgbeb838d">
+<p>
+use the following on your
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org778bc13" class="outline-3">
+<h3 id="org778bc13">NEMU-TUI</h3>
+<div class="outline-text-3" id="text-org778bc13">
+<p>
+<a href="https://www.youtube.com/watch?v=KuLLnyLbcyw">https://www.youtube.com/watch?v=KuLLnyLbcyw</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orge5b7109" class="outline-3">
+<h3 id="orge5b7109">VNC</h3>
+<div class="outline-text-3" id="text-orge5b7109">
+<p>
+vncviewer
+virsh dumpxml &lt;vm-name&gt; | grep vnc
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc47693d" class="outline-2">
+<h2 id="orgc47693d">EXTRA</h2>
+<div class="outline-text-2" id="text-orgc47693d">
+</div>
+<div id="outline-container-orgf32ed9d" class="outline-3">
+<h3 id="orgf32ed9d">VM tips from The Linux Cast</h3>
+<div class="outline-text-3" id="text-orgf32ed9d">
+<ul class="org-ul">
+<li><p>
+Saved State VMs
+preserve your vm exactly as it was, then come back to it
+useful when
+</p>
+<ul class="org-ul">
+<li>Host machine has to rebooted</li>
+<li>Walking away</li>
+<li>Switching to another VM (saving resources)</li>
+</ul>
+<p>
+<span class="underline">caution</span>: some <b>saved state</b> may not come back like you saved them. happens rarely with distros like Ubuntu / Gnome.
+<span class="underline">caution</span>: coming back there's a chance that the <b>clock</b> may be wrong, make sure to check it out. (can mess with 2FA or SSL, basically, big part of the internet can broke.)
+</p></li>
+
+<li>clone</li>
+</ul>
+<p>
+very good way to backup your VM,
+you can also have VM snapshots.
+clones are your friends.
+</p>
+
+<ul class="org-ul">
+<li>storage</li>
+</ul>
+<p>
+<span class="underline">storage is important</span>.
+is not impossible to add storage to VM, but it's not easy.
+give your VMs enough storage space.
+</p>
+
+<ul class="org-ul">
+<li>be prepared for crappy video performance</li>
+
+<li>be prepared to sacrifice blur effects and animations in your DE</li>
+
+<li>be prepared for mouse buttons not to work
+extra keys don't work.</li>
+
+<li>VMs are not "private by default"
+your journey for privacy doesn't end there, it is a step, but just not enough.</li>
+
+<li>Create yourself a <i>minimal</i> VM
+A linux that has:
+<ul class="org-ul">
+<li>Linux installed</li>
+<li>Just the apps you need</li>
+<li>Just a browser and your text editor.</li>
+</ul></li>
+
+<li>Block yourself out of distractions
+<ul class="org-ul">
+<li>Browser extensions and plugin that block you from youtube, cat videos</li>
+</ul></li>
+
+<li>don't forget to customize it, even a little bit
+unless you really get into it and lose your time.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

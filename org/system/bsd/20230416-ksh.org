@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       0b5978bc-53bc-4a9e-ae9d-8c42b1be6ba4
+:ROAM_ALIASES: KSH KornShell
+:END:
+#+title: ksh
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:5b8d8a26-f3dd-4e50-b144-9eff85eadf96][BSD]]
+
+[[https://en.wikipedia.org/wiki/KornShell][wikipedia page]]
+[[https://linuxtldr.com/korn-shell/][What is Korn Shell (KSH) in UNIX/Linux System - linuxtldr]]

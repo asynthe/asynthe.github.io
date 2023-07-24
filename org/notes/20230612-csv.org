@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       270d8162-aabd-4263-b44b-7ff4c85484b9
+:ROAM_ALIASES: CSV
+:END:
+#+title: csv
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> 
+
+MANAGING CSV NOTE FILES

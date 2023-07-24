@@ -1,0 +1,300 @@
+:PROPERTIES:
+:ID:       f95867f8-1eb4-46be-98f3-5a7b35f4f2ce
+:ROAM_ALIASES: "ORG PUBLISH"
+:END:
+#+title: Org Publish
+
+have a file in ~content/~ called ~index.org~, which will be converted into ~index.html~, being the landing page of your site.
+
+
+* TABLE OF CONTENTS :toc:
+- [[#system-crafters---build-your-website-with-org-mode][System Crafters - Build Your Website with Org Mode]]
+  - [[#creating-a-script][CREATING A SCRIPT]]
+  - [[#setting-up-the-project][SETTING UP THE PROJECT]]
+  - [[#previewing-with-simple-httpd][PREVIEWING WITH SIMPLE-HTTPD]]
+  - [[#improving-the-html-output][IMPROVING THE HTML OUTPUT]]
+  - [[#other-settings][OTHER SETTINGS]]
+  - [[#improving-the-page-styling][IMPROVING THE PAGE STYLING]]
+  - [[#source-blocks][SOURCE BLOCKS]]
+  - [[#linking-between-files][LINKING BETWEEN FILES]]
+- [[#system-crafters---automated-org-mode-website-publishing-with-github-or-sourcehut][System Crafters - Automated Org Mode Website Publishing with GitHub or SourceHut]]
+  - [[#getting-started][GETTING STARTED]]
+  - [[#which-one-should-you-choose][WHICH ONE SHOULD YOU CHOOSE]]
+  - [[#quick-repo-setup][QUICK REPO SETUP]]
+  - [[#github][GITHUB]]
+- [[#create-an-org-mode-blog-static-site-blog][Create An Org Mode Blog (Static Site Blog)]]
+
+* System Crafters - Build Your Website with Org Mode
+from [[https://youtu.be/AfkrzFodoNw][youtube video]]
+
+** CREATING A SCRIPT
+
+*First*, let's create a script in Emacs Lisp that will create the HTML files, call it _build-site.el_, and inside of it:
+#+begin_src emacs-lisp
+;; Load the publishing system
+(require 'ox-publish)
+
+(message "Build complete!")
+#+end_src
+
+/then/, as an extra, let's create a *shell script* that can run our *Emacs Lisp script*, let's call it _build.sh_.
+#+begin_src shell
+#!/bin/sh
+emacs -Q --script build-site.el
+#+end_src
+
+make it executable
+~$ chmod +x build.sh~
+
+run the script
+~$ ./build.sh~
+
+** SETTING UP THE PROJECT
+
+Now with the script ready, let's set up a publishing configuration for our website, adding the next snippet into _build-site.el_.
+
+An important thing to note here is that we are setting the value for the *org-publish-project-alist* variable, which means it is not only one project (website) but a list of them.
+- There is a first-level *list*, list of all project configurations.
+- Second-level *list*, for project *my-org-site*.
+
+#+begin_src emacs-lisp
+;; Define the publishing project
+(setq org-publish-project-alist
+      (list
+       (list "my-org-site"
+	     :recursive t
+	     :base-directory "./content"
+	     :publishing-directory "./public"
+	     :publishing-function 'org-html-publish-to-html)))
+
+;; Generate the site output
+(org-publish-all t)
+#+end_src
+
+- ~:base-directory~ folder of files we want to publish to HTML.
+- ~:publishing-directory~ output folder of published files.
+- ~:recursive~ publish ~.org~ files in all subdirectories too.
+- ~:publishing-function~ publish this files as HTML.
+- ~org-publish-all~ function to publish every project configured. ~org-publish-project-alist~, ~t~ parameter to regenerate all files.
+
+Now create a org note inside the ~content~ folder, and publish it with the script !
+~$ ./build.sh~
+
+** PREVIEWING WITH SIMPLE-HTTPD
+
+Host your file as a local website, using the package called ~simple-httpd~.
+
+Install it using ~M-x package-install~ or by putting the snippet in your Emacs configuration.
+
+#+begin_src emacs-lisp
+(use-package simple-httpd
+  :ensure t)
+#+end_src
+
+Now, you can run ~M-x httpd-serve-directory~
+- Select path of ~public/~ directory
+- Open your browser in ~http://localhost:8080~
+
+If your port is taken, you can set ~httpd-port~ to change the default port.
+
+If you want to see the changes in the website, _remember to run build.sh_, then _refresh the page_.
+
+** IMPROVING THE HTML OUTPUT
+
+Let's disable a few things in the project configuration.
+
+#+begin_src emacs-lisp
+;; Define the publishing project
+(setq org-publish-project-alist
+      (list
+       (list "my-org-site"
+	     :recursive t
+	     :base-directory "./content"
+	     :publishing-function 'org-html-publish-to-html
+	     :publishing-directory "./public"
+	     :with-author nil           ;; Don't include author name
+	     :with-creator nil          ;; Include Emacs and Org versions in footer
+	     :with-toc t                ;; Include a table of contents
+	     :section-numbers nil       ;; Don't include section numbers
+	     :time-stamp-file nil)))    ;; Don't include time stamp in file
+
+;; Generate the site output
+(org-publish-all t)
+#+end_src
+
+For more options, press describe-variable (~C-h v~) on the ~org-publish-project-alist~ variable to see more options.
+
+_HTML VALIDATION_
+
+If you want to remove the "_Validate_" message written on the bottom on the page, you can use the next variable.
+
+#+begin_src emacs-lisp
+(setq org-html-validation-link nil)
+#+end_src
+
+** OTHER SETTINGS
+
+|---------------------+-----------------------------|
+| Publish setting key | Emacs Lisp variable         |
+|---------------------+-----------------------------|
+| :author             | user-full-name              |
+| :email              | user-mail-address           |
+| :creator            | org-export-creator-string   |
+| :exclude-tags       | org-export-exclude-tags     |
+| :headline-levels    | org-export-headline-levels  |
+| :language           | org-export-default-language |
+| :preserve-breaks    | org-export-preserve-breaks  |
+:section-numbers 	org-export-with-section-numbers
+:select-tags 	org-export-select-tags
+:time-stamp-file 	org-export-time-stamp-file
+:with-archived-trees 	org-export-with-archived-trees
+:with-author 	org-export-with-author
+:with-creator 	org-export-with-creator
+:with-date 	org-export-with-date
+:with-drawers 	org-export-with-drawers
+:with-email 	org-export-with-email
+:with-emphasize 	org-export-with-emphasize
+:with-entities 	org-export-with-entities
+:with-fixed-width 	org-export-with-fixed-width
+:with-footnotes 	org-export-with-footnotes
+:with-inlinetasks 	org-export-with-inlinetasks
+:with-latex 	org-export-with-latex
+:with-planning 	org-export-with-planning
+:with-priority 	org-export-with-priority
+:with-properties 	org-export-with-properties
+:with-smart-quotes 	org-export-with-smart-quotes
+:with-special-strings 	org-export-with-special-strings
+:with-statistics-cookies 	org-export-with-statistics-cookies
+:with-sub-superscript 	org-export-with-sub-superscripts
+:with-toc 	org-export-with-toc
+:with-tables 	org-export-with-tables
+:with-tags 	org-export-with-tags
+:with-tasks 	org-export-with-tasks
+:with-timestamps 	org-export-with-timestamps
+:with-title 	org-export-with-title
+:with-todo-keywords 	org-export-with-todo-keywords
+
+** IMPROVING THE PAGE STYLING
+
+Let's add the next to our build file.
+
+#+begin_src emacs-lisp
+;; HTML validation
+(setq org-html-validation-link nil             ;; Don't show validation link
+      org-html-head-include-scripts nil        ;; Use a script
+      org-html-head-include-default-style nil  ;; Use a style
+      org-html-head "<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />") ;; CSS file to load
+#+end_src
+
+The CSS file that will be loaded is a simple css file taken from [[https://simplecss.org/][Simple.css]].
+
+** SOURCE BLOCKS
+
+Adding code blocks will not work at first, you will get the next error:
+
+~Cannot fontify source block (htmlize.el >= 1.34 required)~
+
+To solve this, we need to install the ~htmlize~ package from MELPA.
+We can also add this to the top of ~build-site.el~ too.
+
+_note_: we are going to set up the packages folder as ~./.packages~, this is a hidden packages folder inside our blog folder. This is so that those packages are independent of emacs and our configuration and don't get mixed.
+
+#+begin_src emacs-lisp
+;; Set the package installation directory so that packages aren't stored in the
+;; ~/.emacs.d/elpa path.
+(require 'package)
+(setq package-user-dir (expand-file-name "./.packages"))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+;; Initialize the package system
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Install dependencies
+(package-install 'htmlize)
+#+end_src
+
+** LINKING BETWEEN FILES
+
+Use ~Org-insert-link~ (C-c C-l)
+
+* System Crafters - Automated Org Mode Website Publishing with GitHub or SourceHut 
+from [[https://youtu.be/za99DwdZEyg][youtube video]]
+
+** GETTING STARTED
+
+Create an account on one of the next websites:
+- GitHub
+- SourceHut
+
+Create an account on GitHub here.
+https://github.com/join
+
+Create an account on SourceHut here.
+https://meta.sr.ht/register/step2
+_note_: It started requiring payments for as little as $2 per month
+
+** WHICH ONE SHOULD YOU CHOOSE
+
+Both are good:
+
+*GitHub* is the well-known mainstream option, doesn't hurt to have an account there.
+
+*SourceHut* is more hacker-focused with a totally different philosophy.
+
+** QUICK REPO SETUP
+
+Brief rundown of how to turn your site files into a Git repo and "commit" the changes:
+
+#+begin_src 
+# Copy the example site
+git clone https://github.com/SystemCrafters/org-website-example
+
+# Create a folder for a local repo.
+mkdir org-site
+cd org-site
+cp -R ../org-website-example/* .
+
+# Initialize the Git repository and make your first commit.
+git init
+git add -A
+git commit -m "My first commit!"
+#+end_src
+
+Now, everytime you make changes to your site, go into the page folder and run the following commands:
+~$ git add -A~
+~$ git commit -m "Updating website files"~
+
+I recommend learning the [[https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository][Git Book]].
+
+** GITHUB
+
+To publish with GitHub Pages, you need to create a repository with a specific name:
+
+yourusername.github.io
+
+_note_: This is the way GitHub has implemented and check the website belongs to your user.
+
+Go to https://github.com/new and create a _public repository with your username_.
+
+Don't select any of the checkboxes, we will push our repository once the GitHub repo is created.
+
+Now that a repo is created, copy the link they give you to configure a local repository to push there:
+
+#+begin_src
+# Using HTTPS
+git rmeote add origin https://github.com/yourusername/yourusername.github.io.git
+
+# Using SSH, if you've set up a public key
+git remote add origin git@github.com:yourusername/yourusername.github.io.git
+#+end_src
+
+_note_: Authenticating to GitHub can be tricky if you never done it before, consult documentation.
+
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line
+
+* Create An Org Mode Blog (Static Site Blog)
+
+[[https://www.inmotionhosting.com/support/edu/emacs/org-mode-blog/][Create An Org Mode Blog (Static Site Blog) - inmotion hosting]]

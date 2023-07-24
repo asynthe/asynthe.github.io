@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       4316ea16-d9d3-4e3d-b96a-905245801617
+:ROAM_ALIASES: GITHUB
+:END:
+#+title: GitHub
+
+-> [[id:9a58c90f-23c4-4d06-915c-0d3d5ef17ca3][VERSION CONTROL]]
+
+*RESOURCES*
+
+
+* authenticating user with a SSH key
+
+
+

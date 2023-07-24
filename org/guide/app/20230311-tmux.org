@@ -1,0 +1,116 @@
+:PROPERTIES:
+:ID:       cec60bab-064c-41b1-a2b4-59b257690b28
+:ROAM_ALIASES: TMUX
+:END:
+#+title: tmux
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]] / [[id:5b8d8a26-f3dd-4e50-b144-9eff85eadf96][BSD]] / [[id:0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b][WINDOWS ウィンドウズ]] -> [[id:9be91f09-e446-4d22-931e-c05792d8f582][SYSAPPS アプリ]]
+
+[[https://github.com/tmux/tmux/wiki][github wiki]]
+[[https://wiki.gentoo.org/wiki/Tmux][gentoo wiki]]
+[[https://wiki.archlinux.org/title/Tmux][arch wiki]]
+
+[[https://www.howtogeek.com/671422/how-to-use-tmux-on-linux-and-why-its-better-than-screen/][How to Use tmux on Linux (and Why It's Better Than Screen) - How-To Geek]]
+[[https://www.redhat.com/sysadmin/tips-using-tmux][Tips for using tmux - Red Hat]]
+
+*RESOURCES*
+https://www.stationx.net/tmux-cheat-sheet
+
+* package
+
+arch -> ~tmux~ (+ ~tmux-bash-completion-git~ (aur))
+gentoo -> ~app-misc/tmux~
+
+* usage
+**  panes
+
+move between the /panes/
+~ctrl b + arrow keys~
+(resize the panes holding ~ctrl b~)
+
+create a new *vertical* pane
+~ctrl b %~
+
+create a new *horizontal* pane
+~ctrl b "~
+
+exit them with
+~exit~
+
+**  windows
+
+create a new window
+~ctrl b c~
+
+switch between windows
+~ctrl b <number>~
+
+rename window
+~ctrl b ,~
+
+close a window with
+~exit~
+
+**  sessions
+
+detach session
+~ctrl b d~
+
+see sessions (in terminal)
+~$ tmux ls~
+
+re-attach to session (enter session)
+~$ tmux attach -t <number>~
+~attach~ or ~a~
+~-t~ -> target
+
+rename a session
+~$ tmux rename-session -t <number> <name>~
+
+create a session with custom name
+~$ tmux new -s <name>~
+example: ~$ tmux new -s docker~
+
+delete a session
+~$ tmux kill-session -t <name>~
+example: ~$ tmux kill-session -t docker~
+
+_note_: sessions will remain until system reboots
+
+**  extra
+
+panes overview
+~ctrl b w~
+
+see help
+~ctrl b ?~
+
+* config
+
+all of tmux configuration is done inside
+~~/.tmux.conf~ or ~~/.config/tmux/tmux.conf~
+
+you can see my configuration here[link to github]
+
+see your keybindings with
+~$ tmux list-keys~
+or ~:list-keys~ or ~Ctrl + b ?~
+
+** true color support (kitty + tmux)
+First, remove any ~export TERM~ from ~.zshrc~, ~.bashrc~, etc.
+Then, set up the next options in the tmux configuration file
+
+  #+begin_src tmux
+  set-g default-terminal "screen-256color"
+  set-option -sa terminal-overrides ",xterm-kitty:RGB"
+  #+end_src
+
+Kill tmux, close kitty and reopen. It should be enabled now.
+
+* tips
+** detach a session that you're using, return to regular shell
+
+[[https://superuser.com/questions/249659/how-to-detach-a-tmux-session-that-itself-already-in-a-tmux][How to detach a tmux session that iself already in a tmux? - StackExchange]]
+
+Do with ~Ctrl b + d
+Use ~tmux detach~ then ~tmux ls~ to see the number of the session, attach with ~tmux -a <number>~
+

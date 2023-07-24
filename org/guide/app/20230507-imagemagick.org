@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       ec43876b-e38d-414f-88c6-2d21fd598678
+:END:
+#+title: ImageMagick
+
+-> [[id:9be91f09-e446-4d22-931e-c05792d8f582][SYSAPPS アプリ]]
+
+[[][github page] ]
+[[https://imagemagick.org/][main page]]
+[[][gentoo wiki] ]
+[[][arch wiki] ]
+
+* package
+
+arch -> ~...~
+gentoo -> ~...~
+
+* usage
+
+** blur
+
+[[https://askubuntu.com/questions/1002254/how-to-blur-an-image-from-command-line][How to blur an image from the command line? - StackExchange]]
+[[https://imagemagick.org/Usage/blur/][ImageMagick Examples -- Blurring and Sharpening Images - imagemagick.org]]
+
+Blur a file like this:
+~$ convert <file>.jpg -blur 0x8 <output>.jpg~ 
+
+Using Gaussian filter: (I prefer this method)
+~$ convert <file>.jpg -filter Gaussian -blur 0x8 <output>.jpg~
+
+A simple blur script:
+

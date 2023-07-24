@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       2a79f3c2-4e51-4c75-88c5-b74548ed1331
+:END:
+#+title: GTK / QT
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+
+[[https://en.wikipedia.org/wiki/GTK][GTK - wikipedia page]]
+
+https://github.com/FedoraQt/adwaita-qt
+
+https://unix.stackexchange.com/questions/129355/what-is-difference-between-gtk-and-qt-applications
+https://askubuntu.com/questions/249150/what-is-kde-gtk-gtk-qt-and-or-gnome
+https://stackoverflow.com/questions/1801074/what-are-the-differences-between-gtk-and-qt
+https://www.makeuseof.com/tag/difference-gtk-qt/
+https://info-4geek.com/which-one-is-better-gtk-or-qt/
+https://discourse.nixos.org/t/how-do-you-theme-your-desktop/2147
+
+* NixOS
+
+https://unix.stackexchange.com/questions/632879/how-to-set-a-system-wide-gtk-theme-in-nixos
+
+https://discourse.nixos.org/t/changing-gtk-theme/3048
+
+https://www.reddit.com/r/NixOS/comments/nryv23/can_configurationnix_manage_gtk_themes/
+
+fix is installing a theme through ~nix-env~ (?)
+
+* lxappearance
+
+lxappearance
+lxappearance-gtk
+
+** FIX:
+
+to run in [[id:6858a013-6326-4b0a-943e-2272298a3fe2][Wayland]], use:
+~$ GDK_BACKEND=x11 lxappearance~
+
+you may have to symlink ~~/.nix-profile/share/themes~ to ~~/.themes~ to have them shown in lxappearance but they won't be applied anyway.

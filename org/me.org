@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       d032c4a1-e693-45ca-a8dd-243f147651ec
+:END:
+#+title: metadata
+
+* note
+
+-> *level 1* (main) -> *level 2* (guide/node)
+If a note with two levels, then refer to last level
+-> level 2
+
+note id: [ ... ]
+
+- package
+- keybind
+- usage
+
+
+* system
+
+nix system
++ system apps
++ system monitoring
+home manager
++ user apps
++ customization

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Version Control</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Version Control</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a>
+</p>
+
+<ul class="org-ul">
+<li>DOTFILES - <a href="2023-git.html#ID-6e767248-281b-47d1-9196-047376846648">GIT</a>
+<ul class="org-ul">
+<li>dotfiles management</li>
+<li>cron jobs to backup home, config and portage</li>
+<li>gnu stow or dotfiles management</li>
+<li>MAKE LITERATE CONF</li>
+</ul></li>
+</ul>
+
+<p>
+SNOWFLAKE STRUCTURE
+</p>
+<ul class="org-ul">
+<li>snowflakes (configuration.nix + imports)</li>
+</ul>
+<ul class="org-ul">
+<li>imports</li>
+<li>configuration.nix</li>
+<li>README.org</li>
+</ul>
+
+<div id="outline-container-orga6d5fcb" class="outline-2">
+<h2 id="orga6d5fcb">VERSION CONTROL</h2>
+<div class="outline-text-2" id="text-orga6d5fcb">
+</div>
+<div id="outline-container-orgd826609" class="outline-3">
+<h3 id="orgd826609"><a href="2023-git.html#ID-6e767248-281b-47d1-9196-047376846648">GIT</a></h3>
+</div>
+</div>
+<div id="outline-container-orgf9ce689" class="outline-2">
+<h2 id="orgf9ce689">CODE REPOSITORIES</h2>
+<div class="outline-text-2" id="text-orgf9ce689">
+</div>
+<div id="outline-container-org84abc54" class="outline-3">
+<h3 id="org84abc54"><a href="2023-github.html#ID-4316ea16-d9d3-4e3d-b96a-905245801617">GITHUB</a></h3>
+</div>
+<div id="outline-container-orgd1eadb6" class="outline-3">
+<h3 id="orgd1eadb6">CODEBERG</h3>
+</div>
+</div>
+<div id="outline-container-ID-7865dc78-8771-41ac-bb1e-819528fd19dd" class="outline-2">
+<h2 id="ID-7865dc78-8771-41ac-bb1e-819528fd19dd">DOTFILES</h2>
+<div class="outline-text-2" id="text-org0cb7002">
+</div>
+
+<div id="outline-container-org66203c7" class="outline-3">
+<h3 id="org66203c7">THE BASICS OF DOTFILES</h3>
+<div class="outline-text-3" id="text-org66203c7">
+<p>
+from <a href="https://youtu.be/BE87kUCTBVU">The Basics of Dotfiles - System Crafters (youtube video)</a>
+</p>
+
+<p>
+<span class="underline">What are they?</span>
+</p>
+<ul class="org-ul">
+<li>Text-based configuration files for the programs you use.</li>
+<li>Personal scripts.</li>
+<li>Called "dotfiles" because the file or directory starts with "."</li>
+</ul>
+
+<p>
+<span class="underline">Common dotfiles</span>
+</p>
+<ul class="org-ul">
+<li><code>~/.bash_profile</code> - A script loaded when you log in.</li>
+<li><code>~/.bashrcc</code> - A script loaded when you open a terminal.</li>
+<li><code>~/.emacs.d</code> - Emacs configuration.</li>
+<li><code>~/.vimrc</code> - Vim configuration.</li>
+<li><code>~/.gitconfig</code> - Configuration for Git.</li>
+<li><code>~/.config</code> - A folder full of many more configuration files.</li>
+</ul>
+
+<p>
+In <b>Windows</b> case, many cross-platform programs will store in <code>C:\Users\username</code> or <code>C:\Users\username\AppData\Roaming</code>.
+</p>
+
+<p>
+<span class="underline">How should I manage them?</span>
+The best way to manage your dotfiles is to keep them in source control.
+</p>
+
+<p>
+<b>Benefits</b>
+</p>
+<ul class="org-ul">
+<li>Easily sync your configuration between multiple machines</li>
+<li>Roll back to a previous config</li>
+<li>Experiment with huge changes w branches</li>
+<li>Have a log of the changes</li>
+</ul>
+
+<p>
+<b>Which program?</b>
+It doesn't matter, decentralized is better!
+</p>
+<ul class="org-ul">
+<li>Git</li>
+<li>Mercurial (implications for which host you can use)</li>
+<li>Darcs</li>
+</ul>
+
+<p>
+<span class="underline">Publish your dotfiles!</span>
+</p>
+
+<p>
+It feels scary, but it's worth it.
+</p>
+
+<p>
+<span class="underline">What's next?</span>
+</p>
+
+<ul class="org-ul">
+<li>Manage and share your dotfiles with Git</li>
+<li>Tools to make dotfiles management easier like GNU Stow</li>
+<li>Complete dotfiles management with Emacs (even on Windows!)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org155f895" class="outline-3">
+<h3 id="org155f895">HOW TO CREATE A DOTFILES FOLDER</h3>
+<div class="outline-text-3" id="text-org155f895">
+<p>
+from <a href="https://youtu.be/gibqkbdVbeY">How to Create a Dotfiles Folder - System Crafters (youtube video)</a>
+</p>
+
+<ul class="org-ul">
+<li>Create a folder in the <b>$HOME</b> directory, or as close as you can.</li>
+<li>Move some configuration files into it.</li>
+<li>Link them back to their original location</li>
+<li>Verify that it works!</li>
+</ul>
+
+<p>
+System Crafters recommends this directory, as is it easier to use tools like GNU Stow:
+<code>$ mkdir ~/.dotfiles</code>
+</p>
+
+<p>
+Once we have a new folder, we are ready to populate it with files.
+</p>
+
+<p>
+&#x2026;
+&#x2026;
+&#x2026;
+</p>
+
+<p>
+Create symbolic links to the original config file locations
+</p>
+
+<p>
+<code>$ ln -sf ~/.dotfiles/.emacs.d ~/.emacs.d</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org05efb64" class="outline-3">
+<h3 id="org05efb64">DOTFILES SYMLINKS IN WINDOWS</h3>
+<div class="outline-text-3" id="text-org05efb64">
+<p>
+In windows create a junction using mklink.
+<span class="underline">important</span>: You need a elevated prompt. (Run cmd as administrator)
+</p>
+
+<p>
+Create a link for a <b>individual file</b> with the <b>/H</b> flag.
+<code>$ mklink /H &lt;link-name&gt;.conf &lt;original-file&gt;.conf</code>
+</p>
+
+<p>
+Create a link for a <b>directory</b> with the <b>/J</b> flag.
+<code>$ mklink /J &lt;link-name&gt; &lt;original-folder&gt;</code>
+</p>
+
+<p>
+<span class="underline">example</span>: Emacs configuration.
+<code>$mklink /J c:\Users\benjamin\AppData\Roaming\.emacs.d c:\Users\benjamin\AppData\Roaming\.dotfiles\.emacs.d</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf5cae7d" class="outline-3">
+<h3 id="orgf5cae7d">THE PROBLEM BETWEEN MACHINES</h3>
+<div class="outline-text-3" id="text-orgf5cae7d">
+<p>
+It's tedious to create and manage symlinks like this when having different computers.
+Some people solve this by creating a "bootstrap" script that creates all symbolic links automatically.
+</p>
+
+<p>
+It's easier to use a tool made for this, such as GNU Stow and others.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6c0d5dd" class="outline-3">
+<h3 id="org6c0d5dd">DIFFERENT WAYS TO DO DOTFILES MANAGEMENT</h3>
+<div class="outline-text-3" id="text-org6c0d5dd">
+<p>
+<a href="https://news.ycombinator.com/item?id=11071754">https://news.ycombinator.com/item?id=11071754</a>
+</p>
+
+<p>
+<a href="https://wiki.archlinux.org/title/Dotfiles">https://wiki.archlinux.org/title/Dotfiles</a>
+</p>
+
+<p>
+<a href="https://www.atlassian.com/git/tutorials/dotfiles">https://www.atlassian.com/git/tutorials/dotfiles</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9f4ddc4" class="outline-2">
+<h2 id="org9f4ddc4">GNU STOW</h2>
+<div class="outline-text-2" id="text-org9f4ddc4">
+<p>
+It describe itself as a "symlink farm manager".
+</p>
+
+<p>
+It's a program that can <span class="underline">mirror</span> the structure of one directory into another by creating <span class="underline">symbolic links</span> back to the original files.
+</p>
+
+<p>
+Extremely useful when you have a directory with configuration files (<code>~/.dotfiles</code> or other) managed by <a href="2023-git.html#ID-6e767248-281b-47d1-9196-047376846648">git</a>, and you want to send all of this configuration files (symlink) into where they belong in your home directory.
+</p>
+</div>
+
+<div id="outline-container-org36048ad" class="outline-3">
+<h3 id="org36048ad">install</h3>
+<div class="outline-text-3" id="text-org36048ad">
+<p>
+arch -&gt;
+gentoo -&gt;
+nixos -&gt;
+</p>
+
+<p>
+Windows -&gt; Install Stow via the <span class="underline">MSYS2</span> command shell using <b>pacman -S stow</b>.
+</p>
+<ul class="org-ul">
+<li>Make sure you run the shell as <span class="underline">Administrator</span>.</li>
+<li>Have the <code>MSYS</code> variable set to <code>winsymlinks:nativestrict</code>, so that it creates _symbolic links correctly, if not, stow will just copy the files.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org30afbc6" class="outline-3">
+<h3 id="org30afbc6">How it works</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

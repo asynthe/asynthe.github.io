@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       8e7f1d51-27d5-4f66-8871-3922e1dee7ff
+:ROAM_ALIASES: TEXTRACTOR
+:END:
+#+title: Textractor
+
+-> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]] 
+-> [[id:83850e1f-4f0b-4426-8ec6-403940630095][VISUAL NOVEL]] 
+
+[[https://github.com/Artikash/Textractor][github page]]
+
+required deps: (from the github gist)
+~pulseaudio pactl ffmpeg maim xdotool libnotify~
+
+* package
+* set up
+* usage
+
+It does work with [[id:95152727-d7c3-4142-b26a-2ccb243d0dd9][Wine]].
+_note_: If using on Linux, remember to use it with the same locale variables.
+
+TRY
+https://github.com/kamui-fin/gazou
+https://github.com/OneMoreGres/ScreenTranslator/
+https://github.com/leminhyen2/Sugoi-Japanese-Translator

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>tmpfs</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">tmpfs</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="20230428-filesystems.html#ID-18e2483e-8a47-40d7-9a80-a79a3ca254fb">FILESYSTEMS</a> 
+</p>
+
+<p>
+<a href="https://wiki.archlinux.org/title/Tmpfs">arch wiki</a>
+<a href="https://wiki.gentoo.org/wiki/Tmpfs">gentoo wiki</a>
+</p>
+
+<div id="outline-container-org102eddf" class="outline-2">
+<h2 id="org102eddf">package</h2>
+<div class="outline-text-2" id="text-org102eddf">
+<p>
+arch -&gt;
+gentoo -&gt; enable on kernel
+</p>
+<div class="org-src-container">
+<pre class="src src-kernel">File systems --&gt;
+     Pseudo filesystems ---&gt;
+          [*] Tmpfs virtual memory file system support (former shm fs)
+          [ ] Optional drivers
+</pre>
+</div>
+<p>
+Optional drivers
+</p>
+<ul class="org-ul">
+<li>Tmpfs POSIX Access Control Lists (Enable ACL permissions)</li>
+<li>Tmpfs extended attributes (Enable metadata support)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-ID-52716fb0-0d60-4557-b0bf-1a9a6b886ca5" class="outline-2">
+<h2 id="ID-52716fb0-0d60-4557-b0bf-1a9a6b886ca5">Portage TMPDIR on tmpfs</h2>
+<div class="outline-text-2" id="text-orgebefddf">
+<p>
+<a href="https://wiki.gentoo/org/wiki/Portage_TMPDIR_on_tmpfs">Portage TMPDIR on tmpfs - gentoo wiki</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

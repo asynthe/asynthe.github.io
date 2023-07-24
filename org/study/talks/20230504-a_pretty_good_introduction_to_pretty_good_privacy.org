@@ -1,0 +1,174 @@
+:PROPERTIES:
+:ID:       04b4d33d-9403-4682-bb9d-caee0765d2c6
+:END:
+#+title: A Pretty Good Introduction to Pretty Good Privacy
+
+[[https://www.youtube.com/watch?v=Lq-yKJFHJpk][youtube link]]
+[[mnfst.io]] (?)
+
+* PGP
+it's a example of *Public key cryptography* where you use a /pair/ of keys
+
+These are:
+- _Public key_: that can be distributed as widely as possible
+- _Private key_: that is a closely guarded secret
+
+These keys are generated at the same time with mathematics.
+
+They give you access to very powerful functions:
+1. _Encryption_: scramble a file so that a specific person can unscramble it.
+
+   *Hello world* --(PGP encryption program + _public key_)--> *hQEMA6hE0W3mZ*...
+
+   *hQEMA6hE0W3mZ*... --(PGP decryption program + _private key_)--> *Hello world*
+
+2. _Signing_: a guarantee that this document is from me.
+
+  *Hello world* --(PGP signing program + private key)--> *Hello world + iQEcBAEBAqAGB...*
+
+  *Hello world* + *iQEcBAEBAqAGB...* --(PGP verification program + _public key_)--> *Hello world + Verified*
+
+-----
+
+* _WHY SHOULD I CARE?_
+
+1. *Email security*
+   The most famous PGP user must be Edward Snowden. When he wanted to discuss classified secrets with a journalist, PGP was his *go-to*.
+
+2. *Signed Git commits*
+   _Note to self_: check for git repo /signed/ badge.
+   
+3. *Encrypted files*
+   See [[id:4f81a52e-4000-4b93-9abc-e30d7920759c][pass]], command line password manager that uses PGP to encrypt all of your passwords.
+   
+4. *Verifiable downloads*
+   While you can download your file and verify with a ~sha1~ or a ~.md5~ file, run a hash function and verify with the website hash.
+
+   What if the website was compromised?
+   We can create a PGP signature for the downloaded file. And use it without having to go back to the website.
+
+   The ~apt~ package manager (ubuntu, debian) is using this behind the scenes.
+   
+5. Web sites without passwords
+   Cookies: The thing that identifies you, is going across the wire even if it's HTTPS. (_note_: /HTTPS certificates are issued by a central authority instead of a distributed PGP mechanism, if authority is compromised, everyone can pretend to be safe./)
+
+   [[mnfst.io]] test of using PGP as signing as a way to log in. 
+
+* *THE CHICKEN, OR THE EGG? PROBLEM*
+
+If i get your _public key_, our communication is *secure*.
+But how can our communication be secure *before* i even get your _public key_?
+How can i securely get your _public key_?
+
+Every key has one or more user IDs attached to it: name, email address, comment.
+
+* PGP RESPONSE IS _THE WEB OF TRUST_
+** PRACTICAL EXAMPLE
+
+(3 people: you, aaron and harry)
+-----
+You: Hey, what's your name?
+X: Aaron.
+/I don't know X, which says it's Aaron, but i know Harry./
+
+X: Harry, who's that?
+Harry: That's Aaron.
+You: Hey Aaron. Nice to meet you!
+/Now we have the confirmation that X is Aaron. From both Aaron itself, and Harry./
+-----
+
+** TRUSTING SOMEONE
+
+You can have the trust algorithm to trust someone _fully_ or trust someone _parcially_.
+
+*fully*: if _they_ signed someone's key, you will trust that key.
+*parcially*: if _they_ and _another_ signed that key, you will trust that key.
+
+* HOW DO I USE IT?
+
+*PGP, OpenPGP & GnuPG*
+PGP: Originally developed by Phil Simmons on mid 90's (check), free as in beer, not as in Stallman.
+OpenPGP: Standart, RFC4000 (defines how a OpenPGP compliant app should work)
+GnuPG: Free as in beer, and also free in Stallman.
+
+* TUTORIAL
+
+Creating a own key
+~$ gpg --gen-key~
+- Use defaults for your first key
+- Use default for keysize
+  - The larger the key is harder to crack
+  - But it will be more signature and encrypted docs.
+
+Key should expire
+You can always change the expiry date
+- Go 2 years
+
+Construct your user ID
+Real name: Testy McTest
+Email address: test@example.com
+Comment: (describe what key is for) or (company name)
+Comment: This is my general signing key through 2016!
+
+Enter a strong passphrase
+
+We have created our first key!
+-> pub 2048R/C19B0406 2014-12-09 [expires: 2016-12-08]
+   Key fingerprint = 6E4C
+
+* KEY SERVERS
+
+You can use this to publish your key online:
+~$ gpg --send-key <pub-key>~
+Once you send your
+
+If you forget your key ID, you can use:
+~$ gpg --list-keys test@example.com~
+
+pub 2048R/C19B0406 2014-12-09 [expires: 2016-12-08]
+~2048R~ -> 2048-bit RSA key
+
+* SIGNING A KEY
+
+Just like the same key server we sent our key to, we now search for a key we want to sign.
+~$ gpg --search harry@thoughtbot.com~
+
+let's see this key
+~$ gpg --edit-key --ask-cert-level <email or pubkey>~
+~--ask-cert-level~ -> ask certainty level
+
+now gpg launches a little command editor:
+~gpg>~
+
+you can just check with the pub key id, but it's not good as is short and you can *generate a key with a custom id*, best way is to use a *longer* representation of the key, this is a _fingerprint_.
+~gpg> fgr~
+
+-> Make sure that you and the person have the same fingerprint <-
+~Primary key fingerprint: 1B41 8F2C 23DE DD9C 807E...~
+
+Now is the time to sign!
+~gpg> sign~
+(0) I will not answer. (default)
+/this is no assumption of a certainty level./
+(1) I have not checked at all.
+(2) I have done casual checking.
+(3) I have done very careful checking.
+
+input your passphrase.
+
+exit
+~gpg> save~
+
+Send the signed key to the server
+~$ gpg --list-keys harry@thoughtbot.com~
+~$ gpg --send-key 25AE721B~
+
+* ENCRYPTING A MESSAGE
+
+~$ echo 'hello world' | gpg --sign --armor -~
+
+two approaches too keep a key consistent across machines
+1. copy the key around, prefferably not over the _network_ but on a _removable media_ (usb key).
+2. create a master key, then sub-keys.
+   _example_: signing email on your phone, phone is likely to get stolen, in that case you can revoke that subkey. So all email signatures aren't lost.
+   One approach is to have a sub-key for each device.

@@ -1,0 +1,156 @@
+:PROPERTIES:
+:ID:       a941c479-da94-455a-8838-c407043d2c26
+:ROAM_ALIASES: サイバーセキュリティ "CYBERSEC サイバーセキュリティ"
+:END:
+#+title: Cybersecurity
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]]
+
+[[https://www.crowdstrike.com][CrowdStrike]]
+NTP (Network Time Protocol)
+
+* OSINT (Open Source Intelligence)
+
+*RESOURCES*
+[[https://www.youtube.com/watch?v=ImWJgDQ-_ek][OSINT: You can't hide // Your privacy is dead // Best resources to get started - David Bombal (youtube video)]]
+
+* ELASTIC STACK
+
+[[https://www.elastic.co/elastic-stack/][main page]]
+
+* SHODAN
+
+[[https://youtu.be/z2b0Lr0eGmw][SHODAN Introducción - Behackerpro]] (youtube video)
+
+* MATERIAL
+
+[[https://blog.sanctum.geek.nz/series/gnu-linux-crypto/][GNU/Linux Crypto: Introduction - Arabesque]]
+
+*BLOGS*
+[[https://www.welivesecurity.com][welivesecurity by ESET]]
+[[https://www.clearskysec.com][ClearSky Cyber Security]]
+[[https://www.bleepingcomputer.com][BleepingComputer]]
+
+https://en.wikipedia.org/wiki/Data_Privacy_Day
+Diamond model intelligence
+VMware Carbon Black
+
+SSH Honeypot with Python
+https://www.youtube.com/watch?v=HO1h57CiF98
+
+https://github.com/sectalks/sectalks
+https://github.com/DvorakDwarf/Infinite-Storage-Glitch
+https://github.com/blackmassgroup/vx_underground
+nist 800 tutorial and files
+
+bloodhound
+cypher
+Neo4j
+Neo4j console db
+query debugging + dark mode in bloodhound
+certipy
+
+neo4j.com/docs/cyper-cheat-sheet/current
+Hausec.com/2019/09/09/bloodhound-cypher-cheatsheet
+
+
+https://youtu.be/oDkg1zz6xlw
+
+https://www.youtube.com/watch?v=taAD2z8spP0
+
+*SQL INJECTION*
+[[https://youtu.be/1nJgupaUPEQ][SQL Injection | Complete Guide - Rana Khalil (youtube video)]]
+
+* LEARNING
+** S4VITAR
+
+https://hack4u.io/
+
+[[https://docs.google.com/spreadsheets/d/1dzvaGlT_0xnT-PGO27Z_4prHgA8PHIpErmoWdlUrSoA/edit#gid=0][Plan de Estudio OSCP, OSED, OSWE... - Google Docs]]
+[[https://infosecmachines.io/][S4vitar Machine's Resolutions]]
+
+** HACK4U - CURSO INTRODUCCION AL HACKING
+** [[id:770b186a-94db-4032-bcd2-3ba5e3574e36][FRSECURE - CISSP TRAINING PROGRAM]]
+* CRYPTOGRAPHY 
+:PROPERTIES:
+:ID:       db1dde7d-122b-43e6-abac-7202f2ea03f8
+:END:
+
+[[https://github.com/sobolevn/awesome-cryptography][awesome cryptography]]
+[[https://github.com/rust-cc/awesome-cryptography-rust][awesome cryptography rust]]
+[[https://github.com/pFarb/awesome-crypto-papers][awesome crypto papers]]
+
+*COURSES*
+** [[https://www.coursera.org/learn/crypto][Stanford - Cryptography I]] (Free Coursera Course)
+
+* ENCRYPTION
+** ELLIPTIC CURVE CRYPTOGRAPHY
+
+[[https://en.wikipedia.org/wiki/Elliptic-curve_cryptography][wikipedia page]]
+[[https://soatok.blog/2022/05/19/guidance-for-choosing-an-elliptic-curve-signature-algorithm-in-2022/][ELLIPTIC CURVE CRYPTOGRAPHY: A BASIC INTRODUCTION - Boot.Dev]]
+
++ [[https://soatok.blog/2022/05/19/guidance-for-choosing-an-elliptic-curve-signature-algorithm-in-2022/][Guidance for Choosing an Elliptic Curve Signature Algorithm in 2022 - Dhole Moments]]
+
+** [[id:18bfbe2b-1f10-47ab-aaeb-c203bae7ee04][PGP]] (Pretty Good Privacy)
+** AGE / RAGE
+
+https://github.com/FiloSottile/age
+https://github.com/str4d/rage
+
+** XMPP
+
+*LINUX GUI CLIENT*: GAJIM
+*ANDROID CLIENT*: blabber
+
+Types of encryption
++ OMEMO
++ OpenPGP
++ PGP
+  
+*** OMEMO
+[[https://en.wikipedia.org/wiki/OMEMO][wikipedia page]]
+
+* APPS
+** T-POT
+
+https://github.com/telekom-security/tpotce
+
+** OpenSnitch
+
+https://github.com/evilsocket/opensnitch
+https://www.reddit.com/r/linux/comments/10izuhw/opensnitch_the_application_level_interactive/
+
+** DetectionLab
+
+https://github.com/clong/DetectionLab
+
+** [[id:8e265283-2b61-4044-a6d0-f56548bbfbe4][Prometheus]]
+* TALKS
+** [[id:04b4d33d-9403-4682-bb9d-caee0765d2c6][A Pretty Good Introduction to Pretty Good Privacy]]
+* EXPLOITS
+
+https://www.schneier.com/blog/archives/2013/10/how_the_nsa_att.html
+https://arstechnica.com/tech-policy/2023/02/the-fbis-most-controversial-surveillance-tool-is-under-threat/
+
+** WINDOWS -> _NSAKEY
+
+[[https://en.m.wikipedia.org/wiki/NSAKEY][wikipedia page]]
+
+** NSA -> QUANTUM/FOXACID
+** ZIP BOMB
+
+[[en.m.wikipedia.org/wiki/Zip_bomb][wikipedia page]]
+[[https://blog.fileformat.com/2021/10/09/zip-bombs-exploding-your-storage][ZIP Bombs - Exploding Your Storage - FileFormat]]
+
+** WINDOWS -> _NSAKEY
+
+https://en.m.wikipedia.org/wiki/NSAKEY
+
+** NSA -> QUANTUM/FOXACID
+* STRIDE METHODOLOGY
+* OTHER
+
++ [[https://vermiip.es/][Ver mi IP]]
++ [[https://whois.domaintools.com/][Whois Lookup]]
+
+

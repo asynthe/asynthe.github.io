@@ -1,0 +1,180 @@
+:PROPERTIES:
+:ID:       970444d2-8aed-44fc-ae86-e977e2b0afe4
+:ROAM_ALIASES: CISCO "CISCO GENERAL COMMANDS"
+:END:
+#+title: Cisco
+
+[[https://boubakr92.wordpress.com/2013/09/16/ccna-cheat-sheet-part-1][CCNA Cheat Sheet Part 1 - Boubakr Tech]]
+
+* [[id:4a01a963-f70a-4612-a096-188719ed9178][SWITCHES]]
+* [[id:ca81c744-2f76-4e8b-8ee6-68e61d430654][ROUTERS]]
+* [[id:75f367f9-80d5-4799-abf3-028afb1f412f][PACKET TRACER]]
+* SHORTCUTS
+
+~Tab~ -> fills predicted command
+~?~ -> shows available options
+
+* GENERAL COMMANDS
+** configuration
+*** show the current configuration
+
+~HOSTNAME#show run~
+~HOSTNAME#show ip int br~
+
+*** saving current configuration
+
+*SAVING*
+~HOSTNAME(config)#ex
+~HOSTNAME#copy running-config startup-config~
+~HOSTNAME#ex~
+
+_note_: shorter version
+~HOSTNAME# copy run start~
+
+*** TFTP - backup / restore
+
+*BACKUP*
+~Router#copy running-config tftp:~
+~Adress or name of remote host []? <number>~
+~Destination filename [router-confg]? <filename>~
+
+*RESTORING*
+~Router#copy tftp: running-config~
+~Adress or name of remote host []? <number>~
+~Destination filename [router-confg]? <filename>~
+
+*** erase startup configuration
+
+~HOSTNAME>en~
+~HOSTNAME#write erase~
+~HOSTNAME#erase startup-config~
+~HOSTNAME#reload~
+
+** change hostname
+
+~HOSTNAME>en~
+~HOSTNAME#config t~
+~HOSTNAME(config)#hostname <hostname>~
+
+_note_: remember to save!
+
+** line VTY
+
+** updating the firmware
+
+[[https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-software-releases-122-mainline/46741-backup-config.html][Understand how to Backup and Restore Configuration Files - Cisco Docs]]
+
+You first have to go into https://cisco.com > Support > Download and grab the ISO image you need
+
+*Verify current version*:
+~Router>show version~
+
+*Check if you have enough space left on the Router memory*:
+~Router>show flash~
+
+Then we will have to choose the options of how to copy the ISO image to our memory
+- TFTP
+- FTP
+- SCP
+- USB stick (shows as usbflash)
+
+In this case we will use TFTP
+~Router#copy tftp flash~
+
+Address or name of remote host []? <TFTP Server IP Address>
+Source filename []? <Firmware filename>
+Destination filename [router]? <Destination filename>
+
+*Confirm the firmware update:*
+~Router#show flash~
+
+*Set the new firmware as the default boot image:*
+~Router(config)#boot system flash <Destination filename>~
+~Router(config)#exit~
+~Router#write memory~
+
+*Reload the router to apply the firmware update:*
+~Router#reload~
+Proceed with reload? [confirm]
+
+** passwords / password encryption
+
+_note_: If password is not encrypted, it can be seen with ~show running-config~ / ~show startup-config~.
+_note_: A /Secret/ encrypts the Main / Privileged /Password/, in the case of the others (con, aux, vty) we need to activate the ~service password~.
+
+*Console*: Used for console access.
+*Auxiliary*: Used for the auxiliary port (if router/switch has one.)
+*VTY*: Used for Telnet and SSH access to the router/switch.
+
+*ENABLE PASSWORD*
+~Router>en~
+~Router#config t~
+~Router(config)# enable password <password>~ # Password
+~Router(config)# enable secret <secret>~ # Secret password
+
+*CONSOLE LINE* PASSWORD
+~Router(config)#line con 0~
+~Router(config-line)#password <password>~
+~Router(config-line)#login~
+~Router(config-line)#ex~
+
+*AUXILIARY* PASSWORD
+~Router(config)#line aux 0~
+~Router(config-line)#password <password>~
+~Router(config-line)#ex~
+
+*TELNET (VTY)* PASSWORD
+~Router(config)#line vty 0 4~
+~Router(config-line)#password~
+~Router(config-line)#password ICT@Stanley!~
+~Router(config-line)#login~
+~Router(config-line)#ex
+~Router(config)#~
+
+*PASSWORD ENCRYPTION*
+~Router(config)#service password-encryption~
+
+** aaa
+
+~Router>en~
+~Router#config t~
+~Router(config)#aaa new-model~
+
+** banner
+
+*Custom message* displayed when connecting to a Cisco IOS device
+_Note_: don't have a delimeter ($) on the message as cisco ios will interpret it as indicator to end banner message.
+
+*MOTD* -> *Login* -> (/user/ logs in) -> *Exec*
+
+*MOTD*
+~Router(config)# banner motd $<message>$~
+
+*LOGIN*
+~Router(config)# banner login ?<message>?~
+
+*EXEC*
+~Router (config)# banner exec #<message>#~
+
+_note_: the symbol chosen as starting the message will be the one to also close the message, so be careful not to include it in it.
+_note_: omitting the symbol, you can add more lines.
+*example*: Authorized personnel only.
+
+* FIXES
+
+_ERROR FIX_: Router prompt instead of customized prompt
+Check if config register is set to default (0x2102)
+~Router>en~
+~Router#config t~
+~Router(config)#config-register 0x2102~
+
+* Cisco Networking Academy
+:PROPERTIES:
+:ID:       2103166a-4a38-4b3a-9d58-525633983d11
+:ROAM_ALIASES: NETACAD "CISCO NETACAD"
+:END:
+
+** ICTNWK542 & ICTNWK543
+** Introduction to Networks
+** Enterprise Networking, Security and Automation
+** Switching, Routing, and Wireless Essentials

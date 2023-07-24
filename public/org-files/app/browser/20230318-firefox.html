@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Firefox</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Firefox</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a> / <a href="../../other/main/20230428-bsd.html#ID-5b8d8a26-f3dd-4e50-b144-9eff85eadf96">BSD</a> / <a href="../../system/windows/20230428-windows.html#ID-0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b">WINDOWS ウィンドウズ</a> -&gt; <a href="../../other/main/20230428-sysapps.html#ID-9be91f09-e446-4d22-931e-c05792d8f582">SYSAPPS アプリ</a>
+</p>
+
+<p>
+<a href="https://wiki.gentoo.org/wiki/Firefox">gentoo wiki</a>
+<a href="https://wiki.archlinux.org/title/Firefox">arch wiki</a>
+</p>
+
+<div id="outline-container-org80f1b52" class="outline-2">
+<h2 id="org80f1b52">package</h2>
+<div class="outline-text-2" id="text-org80f1b52">
+<p>
+arch -&gt; <code>firefox</code>
+gentoo -&gt; <code>www-client/firefox</code> or <code>www-client/firefox-bin</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6204cb4" class="outline-2">
+<h2 id="org6204cb4">keybinds</h2>
+<div class="outline-text-2" id="text-org6204cb4">
+<p>
+<b>MOVEMENT</b>
+<code>Space</code> / <code>Page Down</code> -&gt; move down the screen
+<code>Shift + Space</code> / <code>Page Up</code> -&gt; move up the screen
+<code>Ctrl + up arrow</code> / <code>Home</code> -&gt; top of page
+<code>Ctrl + down arrow</code> / <code>End</code> -&gt; bottom of page
+</p>
+
+<p>
+<code>Tab</code> -&gt; focus on next element, move around the page
+<code>Shift + Tab</code> -&gt; focus on previous element, move back
+</p>
+
+<p>
+<code>Alt + left arrow</code> / <code>Ctrl + [</code> -&gt; Previous page
+<code>Alt + right arrow</code> / <code>Ctrl + ]</code> -&gt; Next page
+</p>
+
+<p>
+<b>EDITING</b>
+<code>Ctrl + C</code> -&gt; copy
+<code>Ctrl + X</code> -&gt; cut
+<code>Ctrl + V</code> -&gt; paste
+<code>Ctrl + Shift + V</code> -&gt; paste (plain text)
+<code>Ctrl + Z</code> -&gt; undo
+<code>Ctrl + Y</code> / <code>Ctrl + Shift + Z</code> -&gt; redo
+<code>Ctrl + A</code> -&gt; select all
+<code>Ctrl + P</code> -&gt; print
+</p>
+
+<p>
+<code>Ctrl + left arrow</code> -&gt; go one word to the left
+<code>Ctrl + right arrow</code> -&gt; go one word to the right
+<code>Home</code> -&gt; go to beggining of line
+<code>End</code> -&gt; go to end of line
+<code>Ctrl + Home</code> -&gt; beggining of text
+<code>Ctrl + End</code> -&gt; end of text
+</p>
+
+<p>
+<code>Delete</code> -&gt; delete character
+<code>Ctrl + Backspace</code> -&gt; delete word to the left
+<code>Ctrl + Delete</code> -&gt; delete word to the right
+</p>
+
+<p>
+<code>Ctrl + +</code> -&gt; zoom in
+<code>Ctrl + -</code> -&gt; zoom out
+<code>Ctrl + 0</code> -&gt; zoom reset
+</p>
+
+<p>
+<code>Ctrl + M</code> -&gt; mute / unmute audio
+<code>Ctrl + F</code> -&gt; search on page
+<code>/</code> -&gt; quick search
+<code>Ctrl + K</code> / <code>Ctrl + J</code> -&gt; search on search bar
+(+ <code>Alt + up arrow</code> / <code>Alt + down arrow</code> -&gt; change search engine)
+</p>
+
+<p>
+<code>Ctrl + Q</code> -&gt; quit firefox
+<code>Ctrl + R</code> / <code>F5</code> -&gt; Reload
+<code>Ctrl + F5</code> / <code>Ctrl + Shift + R</code> -&gt; Reload (override cache)
+<code>Esc</code> -&gt; Stop
+<code>F11</code> -&gt; toggle full screen
+</p>
+
+<p>
+<b>TABS</b>
+<code>Ctrl + T</code> -&gt; open a new tab
+<code>Ctrl + W</code> -&gt; close a tab
+<code>Ctrl + Shift + T</code> -&gt; open previously closed tab 
+</p>
+
+<p>
+<code>Alt + 1 to 8</code> -&gt; go to tab from 1 to 8
+<code>Alt + 9</code> -&gt; go to last tab
+<code>Ctrl + Tab</code> / <code>Ctrl + Page Down</code> -&gt; go one tab to the right
+<code>Ctrl + Shift + Tab</code> / <code>Ctrl + Page Up</code> -&gt; go one tab to the left
+</p>
+
+<p>
+<code>Ctrl + Shift + Page Up</code> -&gt; move tab left
+<code>Ctrl + Shift + Page Down</code> -&gt; move tab right
+</p>
+
+<p>
+<b>WINDOWS</b>
+<code>Ctrl + N</code> -&gt; open a new window
+<code>Ctrl + Shift + P</code> -&gt; open a private window
+<code>Ctrl + Shift + W</code> / <code>Alt + F4</code> -&gt; close window
+</p>
+
+<p>
+<b>TOOLS</b>
+<code>Ctrl + Shift + Y</code> -&gt; downloads
+<code>Ctrl + Shift + A</code> -&gt; add-ons
+<code>Ctrl + Shift + I</code> / <code>F12</code> -&gt; developer tools
+<code>Ctrl + Shift + K</code> -&gt; web console
+<code>Ctrl + Shift + C</code> -&gt; inspector
+<code>Ctrl + Shift + S</code> -&gt; screenshot
+<code>Ctrl + Shift + E</code> -&gt; page source
+<code>Ctrl + I</code> -&gt; page info
+</p>
+
+<p>
+<b>HISTORY</b>
+<code>Ctrl + H</code> -&gt; history sidebar
+<code>Ctrl + Shift + H</code> -&gt; history on another window
+<code>Ctrl + Shift + Del</code> -&gt; clear recent history
+</p>
+
+<p>
+<b>PDF VIEWER</b>
+<code>N</code> / <code>J</code> or <code>right arrow</code> -&gt; next page
+<code>P</code> / <code>K</code> or <code>left arrow</code> -&gt; previous page
+<code>Ctrl + +</code> -&gt; zoom in
+<code>Ctrl + -</code> -&gt; zoom out
+<code>Ctrl + 0</code> -&gt; automatic zoom
+<code>R</code> / <code>Shift + R</code> -&gt; rotate / counter-rotate
+<code>Ctrl + Alt + P</code> -&gt; presentation mode
+<code>S</code> -&gt; selection tool
+<code>H</code> -&gt; hand tool
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1919496" class="outline-2">
+<h2 id="org1919496">extensions</h2>
+<div class="outline-text-2" id="text-org1919496">
+</div>
+<div id="outline-container-orga0db18c" class="outline-3">
+<h3 id="orga0db18c">xBrowserSync</h3>
+<div class="outline-text-3" id="text-orga0db18c">
+<p>
+<a href="https://www.xbrowsersync.org/">official page</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org87c02c5" class="outline-3">
+<h3 id="org87c02c5">Simple Tab Groups</h3>
+</div>
+<div id="outline-container-org54af895" class="outline-3">
+<h3 id="org54af895">uBlock Origin</h3>
+</div>
+<div id="outline-container-org01e77e3" class="outline-3">
+<h3 id="org01e77e3">Decentraleyes</h3>
+</div>
+<div id="outline-container-orga0ee274" class="outline-3">
+<h3 id="orga0ee274">Wii Shop Channel Music</h3>
+</div>
+<div id="outline-container-org1e5d9b2" class="outline-3">
+<h3 id="org1e5d9b2">I Don't Care About Cookies</h3>
+</div>
+<div id="outline-container-orgbc881c5" class="outline-3">
+<h3 id="orgbc881c5">Nazeka</h3>
+</div>
+</div>
+<div id="outline-container-org4e6e404" class="outline-2">
+<h2 id="org4e6e404">Arkenfox.js</h2>
+<div class="outline-text-2" id="text-org4e6e404">
+<p>
+<a href="https://github.com/arkenfox/user.js/">github page</a>
+</p>
+
+<p>
+<a href="https://github.com/arkenfox/user.js/wiki/1.1-to-arkenfox-or-not">https://github.com/arkenfox/user.js/wiki/1.1-to-arkenfox-or-not</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org462c5fa" class="outline-2">
+<h2 id="org462c5fa">Web</h2>
+<div class="outline-text-2" id="text-org462c5fa">
+<p>
+Startpage
+<a href="https://www.startpage.com/">https://www.startpage.com/</a>
+SearX
+whoogle-search
+<a href="https://github.com/benbusby/whoogle-search">https://github.com/benbusby/whoogle-search</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6575dbf" class="outline-2">
+<h2 id="org6575dbf">ADDONS</h2>
+<div class="outline-text-2" id="text-org6575dbf">
+</div>
+<div id="outline-container-org809afa8" class="outline-3">
+<h3 id="org809afa8"><a href="https://addons.mozilla.org/en-US/firefox/addon/darkreader/">Dark Reader</a></h3>
+</div>
+<div id="outline-container-org19c7768" class="outline-3">
+<h3 id="org19c7768"><a href="https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/">Decentraleyes</a></h3>
+</div>
+<div id="outline-container-orgfe19ef2" class="outline-3">
+<h3 id="orgfe19ef2"><a href="https://addons.mozilla.org/en-US/firefox/addon/i-dont-care-about-cookies/">I don't care about cookies</a></h3>
+</div>
+<div id="outline-container-org0e5a090" class="outline-3">
+<h3 id="org0e5a090"><a href="https://addons.mozilla.org/en-US/firefox/addon/styl-us/">Stylus</a></h3>
+</div>
+<div id="outline-container-orgac23c7e" class="outline-3">
+<h3 id="orgac23c7e"><a href="https://addons.mozilla.org/en-US/firefox/addon/return-youtube-dislikes/">Return Youtube Dislikes</a></h3>
+</div>
+<div id="outline-container-orgb825ef7" class="outline-3">
+<h3 id="orgb825ef7"><a href="https://addons.mozilla.org/en-US/firefox/addon/xbs/">xBrowserSync</a></h3>
+</div>
+<div id="outline-container-org6157c6a" class="outline-3">
+<h3 id="org6157c6a"><a href="https://addons.mozilla.org/en-US/firefox/addon/wii-shop-channel/">Wii Shop Channel Music</a></h3>
+</div>
+<div id="outline-container-orgf1d8673" class="outline-3">
+<h3 id="orgf1d8673"><a href="https://addons.mozilla.org/en-US/firefox/addon/nazeka/">nazeka</a></h3>
+</div>
+<div id="outline-container-orgd70cdcd" class="outline-3">
+<h3 id="orgd70cdcd"><a href="https://addons.mozilla.org/en-US/firefox/addon/enhancer-for-youtube/">Enhancer for Youtube</a></h3>
+</div>
+<div id="outline-container-org0e3df9d" class="outline-3">
+<h3 id="org0e3df9d"><a href="https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/?utm_source=addons.mozilla.org&amp;utm_medium=referral&amp;utm_content=search">Vimium-FF</a></h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

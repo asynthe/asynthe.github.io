@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       8e265283-2b61-4044-a6d0-f56548bbfbe4
+:ROAM_ALIASES: PROMETHEUS
+:END:
+#+title: Prometheus
+
+-> [[id:a941c479-da94-455a-8838-c407043d2c26][CYBERSEC サイバーセキュリティ]]
+
+* RESOURCES
+
+*BOOK*
++ [[id:fb4aff74-f7b5-4530-b4c8-bca0b8cc4826][Prometheus: Up & Running]]
+
+*BLOG*
++ [[https://blog.lazkani.io/posts/upgrade-your-monitoring-setup-with-prometheus/][Upgrade your monitoring setup with Prometeus - lazkani.io]]
++ [[https://xeiaso.net/blog/prometheus-grafana-loki-nixos-2020-11-20][How to Setup Prometheus, Grafana and Loki on NixOS - xeiaso.net]]

@@ -1,0 +1,914 @@
+:PROPERTIES:
+:ID:       4333edba-c592-43e5-999a-bb141fb79ccf
+:ROAM_ALIASES: COREUTILS
+:END:
+#+title: coreutils
+
+-> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+
+* RESOURCES
+
++ [[https://www.digitalocean.com/community/tutorials/how-to-use-top-netstat-du-other-tools-to-monitor-server-resources][How To Use Top, Netstat, Du, & Other Tools to Monitor Server Resources - DigitalOcean]]
+
+* GUIDES
+** NETWORKING UTILS
+** file or directory permissions
+
++ [[https://www.tomshardware.com/how-to/change-file-directory-permissions-linux][How To Change File or Directory Permissions in Linux - tom's HARDWARE]]
+
+
+* COREUTILS
+** atd
+
+[[https://linuxiac.com/how-to-set-alarm-on-linux/][Linux Alarm Guide: How to Set Your Reminders or Wake-up Times - linuxiac]]
+
+** tree
+:PROPERTIES:
+:ID:       634b108b-3c87-416b-8fd9-9fed51285d59
+:END:
+
+[[https://linuxhandbook.com/tree-command/][tree Command Examples in Linux - LINUX HANDBOOK]]
+[[https://www.howtogeek.com/812027/linux-tree-command/][How to Traverse a Directory Tree on Linux - How-To Geek]]
+
+*PACKAGE*
+arch -> ~tree~
+gentoo -> ~tree~
+nixos -> ~tree~
+
+*USAGE*
+See the tree of a specific directory
+~$ tree <directory>~
+
+There are flags such as only show directories
+~$ tree -d <directory>~
+
+*FLAGS*
+~-d~ -> List directories
+~-a~ -> List hidden files
+~-p~ -> List permissions
+~-h~ -> Better readability
+~-f~ -> Include path of file (_example_: Directory/World/Music.mp3)
+~-L <n>~ -> Specify levels of the tree
+
+~-c~ -> Sort by first modification
+~-D~ -> get date and time of modification
+~-r~ -> Sort by file with latest modification
+
+~--du~ -> Get the file sizes (add ~-h~ to get output in MB and GB!)
+
+_tip_: To have the full path write a absolute directory, but if it is to lenghty then you can use like this
+~$ tree -f "$(pwd)"~
+
+** netcat
+:PROPERTIES:
+:ID:       3bea8c7d-ba14-41bb-ac02-4aed7ff2c26b
+:END:
+
+*IMPROVISED CHAT*
+Open a port in another machine on your network
+~(pc2)$ nc -l 1337~
+~(local)$ nc 192.168.99.100 1337~
+
+This will give you a realtime improvised chat, sending information forward and backwards.
+
+** cp
+:PROPERTIES:
+:ID:       084d0d01-47d2-4833-a60d-c9618ca20216
+:END:
+
+
+*COPYING FILES IN OTHER WAYS*
+
+[[https://askubuntu.com/questions/17275/how-to-show-the-transfer-progress-and-speed-when-copying-files-with-cp][How to show the transfer progress and speed when copying files with cp? - StackExchange]]
+
+While ~cp~ works without any problem, you may want to see a progress bar or more output regarding the copy of the file, for this we can use [[id:a2ac1ae0-71ad-47e2-878c-e0a0a9f98c03][rsync]] or curl(MAKE NOTE)  
+
+1. *rsync*
+   Use like this, it also suports the ~-r~ (recursive) flag
+   ~$ rsync -ah --progress <source> <destination>~
+
+   Have a better progress display
+   ~$ rsync -ah --info=progress2 <source> <destination>~
+
+   Make an alias in ~.bashrc~ / ~.zshrc~ !
+   ~alias cp='rsync -ah --info=progress2'~
+
+2. *curl*
+
+   ~$ curl -o /path/to/destination file:///path/to/source/file~
+
+3. *cat* and a shell redirection (for simple files)
+
+   ~$ cat <source-file> > <target-file>~
+
+** grep
+:PROPERTIES:
+:ID:       7977933d-3ef4-449a-ac6c-c46736fb1b02
+:END:
+
+[[https://www.howtogeek.com/496056/how-to-use-the-grep-command-on-linux/][How to Use the grep Command on Linux - How-To Geek]]
+
+Looking for a word, ignore case (ignore if it's uppercase or lowercase)
+~$ grep -i <word> file.log~
+
+Display lines that don't have the word you're looking for (invert match)
+~$ grep -v <word> file.log~
+_note_: No colors as it doesn't find the searched word.
+
+Grep also has a quiet flag. You can use ~echo $?~ to show you if grep worked or not.
++ 0 if it works, find a match
++ 1 if it doesn't, gives an error
+~$ grep -q 'To Do' file.txt~
+then
+~$ echo $?~
+
+It's preffered to use grep with the color flag:
+~$ grep --colour=auto~
+or do an alias in ~~/.bashrc~ / ~~/.zshrc~
+~alias grep='grep --colour=auto'~
+
+** sort 
+:PROPERTIES:
+:ID:       e922cd19-3cfa-44f2-b7af-4742c507696d
+:END:
+
+This can give you a random sorting of files, useful in script where you want to randomize a file path output, like a _wallpaper change script_.
+~sort -R~ -> sort on file hash (almost random)
+
+** uniq
+:PROPERTIES:
+:ID:       d34d8bbf-305d-4f45-820d-194b7a8f1d90
+:END:
+
+** shuf
+:PROPERTIES:
+:ID:       9de9678d-6fcb-471b-b49e-6b98d5034300
+:END:
+
+[[https://stackoverflow.com/questions/2153882/how-can-i-shuffle-the-lines-of-a-text-file-on-the-unix-command-line-or-in-a-shel/2153889#2153889][How can I shuffle the lines of a text file on the Unix command line or in a shell script? - stackoverflow]]
+
+shuffle
+
+~-n <number>~ -> shuffle then output the first line.
+
+** watch
+:PROPERTIES:
+:ID:       532f1c61-926c-475d-9690-573120aedf3e
+:END:
+
+_example_: ~$ watch -n 1 systemctl list-timers~
+
+flags
+~-n~ -> specify the seconds taken before refreshing
+
+
+[[https://phoenixnap.com/kb/linux-watch-command][How to Use the Linux watch Command with Examples - phoenixNAP]]
+
+--- /IN PROGRESS/ ---
+
+run with:
+
+flags:
+~-n~, ~--interval~ -> specify the interval between output updates
+
+** cut
+:PROPERTIES:
+:ID:       386e0475-2178-427c-a74e-831940a190d4
+:END:
+
+** chmod
+:PROPERTIES:
+:ID:       5e974334-c235-41f7-b990-ec8897d81e9c
+:END:
+
+[[https://linuxize.com/post/understanding-linux-file-permissions/][Understanding Linux File Permissions - Linuxize]]
+[[https://wiki.archlinux.org/title/File_permissions_and_attributes][File permissions and atributes - arch wiki]]
+[[https://linuxhandbook.com/linux-file-permissions/][Linux File Permissions and Ownership Explained with Examples - LINUX HANDBOOK]]
+
+*RECURSIVE CHMOD*
+recursive chmod 644 and chmod +x for *.sh (make script)
+
+for files 644
+for folders 755
+
+** hostnamectl
+:PROPERTIES:
+:ID:       7f64aa31-0aa5-4825-912f-848534223331
+:END:
+
+[[https://www.geeksforgeeks.org/hostnamectl-command-in-linux-with-examples/][hostnamectl command in Linux with Examples - GeeksforGeeks]]
+
+** chown
+:PROPERTIES:
+:ID:       46d052d3-7c3a-4cdf-8ceb-816eee29627e
+:END:
+
+"CHange OWNer"
+
+[[https://devconnected.com/how-to-chown-recursive-on-linux][How To Chown Recursively on Linux - devconnected]]
+
+~$ chown -R <user>:<group> <folder> <folder2> ... <folder-n>~
+
+do a recursive chown to root:
+~$ chown -R user /home/user~
+all files and subdirectories on ~/home/user~ will be changed to ~user~
+
+recursive chown to root for all files and folders:
+~$ chown -R root *~
+
+** chgrp
+** tee
+:PROPERTIES:
+:ID:       1b7c4893-f503-4cee-ae4d-e3ce5c7b5cb9
+:END:
+
+[[https://superuser.com/questions/7448/can-the-output-of-one-command-be-piped-to-two-other-commands][Can the output of one command be piped to two other commands? - StackExchange]]
+
+Piping the output into two commands like this:
+~$ something | tee >(command1) >(command2)~
+
+This can be very useful, for example in changing your wallpaper (i use [[id:908b1652-a628-438d-99fd-9a4954cd67a8][swww]]) and also changing the terminal colorscheme ([[id:fd9ac2ec-672b-4fda-8e85-d13cbebbe3f1][pywal]]) at the same time.
+
+#+begin_src bash
+fd . <path/to/wallpaper/folder> -e jpg -e png | fzf | tee >(xargs wal -i) >(xargs swww img -o <display>)
+#+end_src
+
+** cron
+:PROPERTIES:
+:ID:       e52bd090-8dc2-4b07-bce9-774e57246aa7
+:END:
+
+[[https://unix.stackexchange.com/questions/278564/cron-vs-systemd-timers][Cron vs systemd timers - StackExchange]]
+[[https://nixos.wiki/wiki/Cron][Cron - nixos wiki]]
+
+*** systemd timers
+
+"/Timers are systemd unit files whose name ends in ~.timer~ that control ~.service~ files or events. Timers can be used as an alternative to cron. Timers have built-in support for calendar time events, monotonic time events, and can be run asynchronously./"
+
+[[https://wiki.archlinux.org/title/Systemd/Timers][arch wiki]]
+
+[[https://techviewleo.com/configuring-cron-jobs-in-linux-using-systemd-timers/][Configuring Cron Jobs in Linux using Systemd Timers - techviewleo]]
+
+List active timers and their current state
+~$ systemctl list-timers~
+
+Manually run service once for testing purposes
+~$ systemctl start <service>~
+_example_: ~$ systemctl start hello-world~
+
+*CREATING A .SERVICE*
+1. Create a script file in ~/etc/systemd/system~
+   ~# vim /etc/systemd/system/my-task.sh~
+   
+   #+begin_src sh
+   #!/bin/sh
+   echo "This is the list of files under /etc directory: $(ls -alh /etc)" >> "/etc/myfiles.txt"
+   #+end_src
+
+   Make it executable
+   ~# chmod +x /etc/systemd/system/my-task.sh~ 
+
+2. Create the ~.service~ Unit
+
+   ~# vim /etc/systemd/system/my-task.service~
+   #+begin_src
+   [Unit]
+   Description=A job to list /etc directory files
+
+   [Service]
+   Type=simple
+   ExecStart=/etc/systemd/system/my-task.sh
+   
+   [Install]
+   WantedBy=default.target
+   #+end_src
+
+   Enable it
+   ~$ systemctl enable my-task.service~
+   #+begin_src
+   Created symlink /etc/systemd/system/default.target.wants/my-task.service -> /etc/systemd/system/my-task.service
+   #+end_src
+   
+   Start it
+   ~$ systemctl start my-task.service~
+
+   Check the service status
+   ~$ systemctl status my-task.service~
+   It should say *active*
+
+*CREATING A TIMER*
+1. Create a ~.timer~ unit file that _schedules_ the ~.service~ unit you just made, it should be saved on the same directory.
+   ~# vim /etc/systemd/system/my-task.timer~
+
+   The contents should be as follows
+   #+begin_src
+   [Unit]
+   Description=List the files of /etc directory every minute
+   RefuseManualStart=no
+   RefuseManualStop=no
+
+   [Timer]
+   #Execute job if it missed a run due to machine being off
+   Persistent=true
+   #Run 120 seconds after boot for the first time
+   OnBootSec=120
+   #Run every 1 minute thereafter
+   OnUnitActiveSec=60
+   #File describing job to execute
+   Unit=my-task.service
+   
+   [Install]
+   WantedBy=timers.target
+   #+end_src
+
+2. Enable the timer
+   ~$ systemctl enable my-task.timer~
+
+   #+begin_src
+   Created symlink /etc/systemd/system/timers.target.wants/my-task.timer -> /etc/systemd/system/my-task.timer
+   #+end_src
+
+   Start the timer
+   ~$ systemctl start my-task.timer~
+
+   Check the timer status
+   ~$ systemctl status my-task.timer~
+   It should say *active*
+
+*** systemd timers / NixOS
+
+[[https://nixos.wiki/wiki/Systemd/Timers][nixos wiki]]
+
+*RESOURCES*
+[[https://www.codyhiar.com/blog/repeated-tasks-with-systemd-service-timers-on-nixos][Repeated Tasks with Systemd Service/Timers on NixOS]]
+[[https://stackoverflow.com/questions/58243712/how-to-install-systemd-service-on-nixos][How to install systemd service on nixos - stackoverflow]]
+
+Whenever we try to write a ~.service~ file to ~/etc~ it will output that it's a /read-only file system/.
+
+The reason it's broken is that *NixOS* is a _declarative operating system_. This means that directories like ~/etc~ live inside the _read-only_ ~/nix/store~ directory. Only the *nix-daemon* is allowed to mount the *nix-store* as writable. Therefore, you must create a /systemd.services.<yourservice>/ entry in your *configuration.nix* to interact with the underlying system; alternatively you can patch nixpkgs directly and point your configuration to your fork.
+
+All running services not declared explicitly by the user can be assumed to live inside *nixpkgs/nixos/modules*.
+
+_example_:
+-> ~/etc/nixos/configuration.nix~
+#+begin_src nix
+{
+  systemd.services.foo = {
+    enable = true;
+    description = "bar";
+    unitConfig = {
+      Type = "simple";
+      # ...
+    };
+    serviceConfig = {
+      ExecStart = "${foo}/bin/foo";
+      # ...
+    };
+    wantedBy = [ "multi-user.target" ];
+    # ...
+  };
+}
+#+end_src
+
+*USER SERVICES*
+Almost identical except they begin with ~systemd.user.services~. In addition, user home directories are not managed declaratively, so you can also place a regular systemd unit file under ~$XDG_CONFIG_DIR/systemd~ as usual.
+
+*** cron
+
+"time-based job scheduler."
+
+[[https://crontab.guru/][crontab guru]]
+
+*RESOURCES*
+[[https://youtu.be/QZJ1drMQz1A][Linux/Mac Tutorial: Cron Jobs - How to Schedule Commands with crontab - Corey Schafer (youtube video)]]
+
+see current user cron jobs with -> `crontab -l`
+edit list of cron jobs by using -> `crontab -e`
+delete all cron tabs -> `crontab -r`
+
+_my cron job_
+```
+# change feh background every 15 mins
+*/10 * * * * DISPLAY=:0 feh --bg-fill --randomize ~/sync/sys/wallpapers/3840x2160/
+
+# dotfiles rsync into sync dotfiles
+0 */3 * * * rsync -aq --delete ~/.config/ ~/sync/sys/dotfiles/
+
+# portage rsync into dotfiles portage
+0 */3 * * * rsync -aq --delete /etc/portage/ ~/sync/sys/distro/gentoo/portage/
+```
+
+#+begin_src
+# ┌───────────── minute (0/59)
+# │ ┌───────────── hour (0/23)
+# │ │ ┌───────────── day of month (1/31)
+# │ │ │ ┌───────────── month (1/12)
+# │ │ │ │ ┌───────────── weekday (0/6) (sun/sat*)
+# │ │ │ │ │
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * *  command_to_execute
+
+*7 is also Sunday on some systems
+
+###### Sample crontab ######
+
+# Empty temp folder every Friday at 5pm
+0 5 * * 5 rm -rf /tmp/*
+
+# Backup images to Google Drive every night at midnight
+0 0 * * * rsync -a ~/Pictures/ ~/Google\ Drive/Pictures/
+
+###### Sample crontab ######
+# Empty temp folder every Friday at 5pm
+#0 5 * * 5 rm -rf /tmp/*
+# Backup images to Google Drive every night at midnight
+# 0 0 * * * rsync -a ~/Pictures/ ~/Google\ Drive/Pictures/
+
+0 0 1,15 * * echo 'Hello' > /tmp/test.txt 
+
+# run command every ten minutes of the day
+# */10 * * * * echo 'Hello' > /tmp/test.txt
+
+# run command every three hours of the day
+# 0 */3 * * * echo 'Hello' > /tmp/test.txt
+
+# run command every 30mins Mon-Fri from 9am-5pm
+# */30 9-17 * * 1-5 echo 'Hello' >> /tmp/test.txt
+#+end_src
+
+** xattr
+
+i remember using this to change the dns on gentoo, you add it so a file can't be changed by anything
+
+** command
+:PROPERTIES:
+:ID:       4b63d31b-ec0f-40e1-8e7d-5f288be752ba
+:END:
+"/omit aliases/"
+
+run a command ommiting the alias
+_example_: ~$ command ls~
+
+** dd
+:PROPERTIES:
+:ID:       5dd54b91-0281-4d80-948f-741305a254b3
+:END:
+"/creating a bootable usb/"
+
+_note_: another good option is [[id:3bc59813-349b-4aba-aee4-8fce96b84b32][Ventoy]]
+_note_: be extra careful as it doesn't ask for confirmation
+
+now, you can use ~dd~ command to create a usb by using the next command
+#+begin_src bash
+dd if="./<file>.iso" of="/dev/<disk>" status="progress" conv="fsync"
+#+end_src
+
+~dd~ -> main command
+~if~ -> path to the ISO image file
+~of~ -> path to the USB disk
+~status~ -> show status of the dd command
+~conv~ -> sync data for correct completion
+
+** df
+:PROPERTIES:
+:ID:       c49842f3-6284-4c52-a606-9e05f4427d3f
+:END:
+
+How much "d"isk space is "f"ree on a given filesystem, or on the system as a whole.
+
+** du
+:PROPERTIES:
+:ID:       6fe84f8c-61bf-4c16-8398-035108fe583b
+:END:
+
+How many "*d*"isk blocks are "*u*"sed for given files and directories.
+
+Get a list of files and directories sorted:
+~$ du -s * | sort -nr~
+
+** tar
+:PROPERTIES:
+:ID:       1140e048-b2ad-48bf-9c3e-5e70a1cc4433
+:END:
+"/compressing and uncompressing files/"
+
+[[https://www.howtogeek.com/248780/how-to-compress-and-extract-files-using-the-tar-command-on-linux/][How to Compress and Extract Files Using the tar Command on Linux - How-To Geek]]
+[[https://www.freecodecamp.org/news/how-to-compress-files-in-linux-with-tar-command/][Linux tar Command - How to Compress Files in Linux - freeCodeCamp]]
+
+compressing a file
+~$ tar -czvf <filename>.tar.gz <files-to-compress>~
+~$ tar -czvf <filename>.tar.gz * --remove-files~
+~--remove-files~ -> will remove original files after compression
+
+view contents
+~$ tar -tvf <archive>.tar.gz~
+
+extract
+~$ tar -xzvf <archive>.tar.gz <extract-into-path>~
+
+_tip_: add a /&/ at the end so it runs as a process
+
+** pv
+:PROPERTIES:
+:ID:       949501c8-9e5a-4e77-b076-36b2f9765673
+:END:
+"/monitor the progress of linux commands/"
+
+** xargs
+:PROPERTIES:
+:ID:       9cd738c5-a09f-4945-9cb3-36ed2a282947
+:END:
+"/take input of one command and send to another as parameters/"
+
+[[https:wwww.howtogeek.com/435164/how-to-use-the-xargs-command-on-linux/][How to Use the xargs Command on Linux - How-To Geek]]
+
+if you don't give it a command it defaults to echo
+_example_: ~$ seq 5 | xargs~
+
+~-t~ -> will tell you the final command that is going to be used
+~-I~ -> allows to specify a output of previous command
+~-n~ -> specify the number of arguments
+~-P~ -> number of processes at a time
+
+_example_: seeing your linux system's users
+~$ cut -d: -f1 < /etc/passwd | sort | xargs~
+
+- ~cut~ = cut lines
+  ~-d:~ use ~:~ as a delimeter
+  ~-f1~ grab first column of each line until ~:~
+- ~sort~ = sort alphabetically
+- ~xargs~ = will run by default as ~echo~
+
+_other examples_:
+
+~$ ls | xargs -I {} echo "/home/asynthe/{}"~
+
+create 1000 files, each one with .txt extension
+~$ seq 1000 | xargs -I {} touch {}.txt~
+
+rename all files from .txt to .text
+~$ ls | cut -d. -f1 | xargs -I {} mv {}.txt {}.text~
+
+_slow_: remove all /.text/ files from /foo/ dir
+~$ find foo -type -f -name "*.text" -exec rm {} \;~
+_fast_: using xargs
+~$ find foo -type f -name "*.txt" | xargs rm~
+
+** shred (for HDD's)
+:PROPERTIES:
+:ID:       bee03974-7ac0-4f13-ac2b-39f566de7e2a
+:END:
+
+_note_: this is applicable for HDD file deletion, in case of SSD, trim is more important
+
+~$ shred -zvun~
+
+~z~ -> final pass overwriting file 0's
+~v~ -> verbose
+~u~ -> truncate and remove file after shredding
+~n~ -> specify number of passes to make while overwriting the file
+
+** shutdown
+
+shutdown
+shutdown <hour>
+shutdown -c (cancel)
+
+** su / su -
+
+[[https://www.geeksforgeeks.org/difference-between-su-and-su-command-in-linux][Difference Between su and su - Command in Linux - GeeksForGeeks]]
+
+** ip
+:PROPERTIES:
+:ID:       40d39dfa-e88c-45c7-916c-da3ec9d894b3
+:ROAM_ALIASES: IP
+:END:
+
+*ifconfig* vs *ip*
+[[https://www.redhat.com/sysadmin/ifconfig-vs-ip][Linux networking: ifconfig versus ip - Red Hat]]
+[[https://www.thegeekdiary.com/comparing-net-tools-v-s-iproute-package-commands][Comparing NET-TOOLS V/s IPROUTE Package Commands (ip Vs ifconfig command comparison) - The Geek Diary]]
+[[https://serverfault.com/questions/458628/should-i-quit-using-ifconfig?noredirect=1&lq=1][Should I quit using Ifconfig? - StackExchange]]
+
+*Show network devices and configuration*
+~$ ifconfig~
+
+~$ ip addr show~
+~$ ip link show~
+
+*Enable a network interface*
+~$ ifconfig eth0 up~
+~$ ip link set eth0 up~
+
+A network interface is disabled in a similar way:
+~$ ifconfig eth0 down~
+~$ ip link set eth0 down~
+
+** Replacing ifconfig for [[id:40d39dfa-e88c-45c7-916c-da3ec9d894b3][ip]]
+
+[[https://serverfault.com/questions/633087/where-is-the-statement-of-deprecation-of-ifconfig-on-linux][Where is the statement of deprecation of ifconfig (on linux)? - StackExchange]]
+
+The [[https://lists.debian.org/debian-devel/2009/03/msg00780.html][official statement]].
+
+#+begin_src text
+    Luk Claes and me, as the current maintainers of net-tools, we've been thinking about it's future. Net-tools has been a core part of Debian and any other linux based distro for many years, but it's showing its age.
+
+    It doesnt support many of the modern features of the linux kernel, the interface is far from optimal and difficult to use in automatisation, and also, it hasn't got much love in the last years.
+
+    On the other side, the iproute suite, introduced around the 2.2 kernel line, has both a much better and consistent interface, is more powerful, and is almost ten years old, so nobody would say it's untested.
+
+    Hence, our plans are to replace net-tools completely with iproute, maybe leading the route for other distributions to follow. Of course, most people and tools use and remember the venerable old interface, so the first step would be to write wrappers, trying to be compatible with net-tools.
+
+    At the same time, we believe that most packages using net-tools should be patched to use iproute instead, while others can continue using the wrappers for some time. The ifupdown package is obviously the first candidate, but it seems that a version using iproute has been available in experimental since 2007.
+#+end_src
+
+** ln
+:PROPERTIES:
+:ID:       837bb05c-5ab1-456b-9b32-120d45b89d85
+:END:
+
+[[https://www.howtogeek.com/287014/how-to-create-and-use-symbolic-links-aka-symlinks-on-linux][How to Create and Use Symbolic Links (aka Symlinks) on Linux - How-To Geek]]
+
+** locale
+:PROPERTIES:
+:ID:       10786e67-170b-431d-80f6-cf7ff9425297
+:END:
+
+[[https://linuxconfig.org/how-to-install-generate-and-list-locale-on-linux][How to install, generate and list Locale on Linux - Linuxconfig.org]]
+
+List the current config
+~$ locale~
+
+List the locales in your system
+~$ locale -a~
+
+** tail
+
+[[https://www.howtogeek.com/481766/how-to-use-the-tail-command-on-linux/][How to Use the tail Command on Linux - How-To Geek]]
+
+** head
+* APPS
+** figlet
+:PROPERTIES:
+:ID:       f11eb91c-e723-48d0-8286-8b68b9f6cf76
+:END:
+
+Check the cheatsheet for the different ways to display text.
+[[https://devhints.io/figlet][Figlet cheatsheet]]
+
+** lolcat
+:PROPERTIES:
+:ID:       5a281058-795f-4325-a033-17a5122958b3
+:END:
+
+** zip
+:PROPERTIES:
+:ID:       9a35e932-7e99-4e77-9792-916e2314ce2d
+:END:
+
+[[https://phoenixnap.com/kb/how-to-zip-a-file-in-linux][How to Zip a File in Linux - phoenixNAP]]
+
+*compress* a file like this:
+~$ zip -r <filename>.zip <filename>~
+_example_: ~$ zip files *.txt~
+
+*create* and *encrypt* zip
+~$ zip -e <filename>.zip <files>~
+
+~-<0-9>~ -> compression level
+~-e~ -> add encryption
+
+*list* a zipfile contents:
+~$ zip -sf <filename>.zip~
+
+delete files inside a zip archive:
+list files
+~$ zip -sf <filename>.zip~
+then delete them
+~$ zip -d <filename>.zip <files-to-be-deleted>~
+_example_:
+~$ zip -d files.zip file5.txt~
+
+*** flags
+
+~-r~ -> Compress
+
+*** compress a folder with folder name
+
+Do it like this:
+~$ zip -r <folder>{.zip,}~
+
+bash function that does this: (in ~.bashrc~)
+#+begin_src bash
+function fzip {
+    zip -r $1 $1
+}
+#+end_src
+Use it like this:
+~$ fzip <folder>~
+
+** unzip
+:PROPERTIES:
+:ID:       cf934f3f-fa67-4f65-bdda-33dbdb8aed98
+:END:
+
+[[https://linuxize.com/post/how-to-unzip-files-in-linux/][How to Unzip Files in Linux - Linuxize]]
+
+*** flags
+
+~-o~ -> Overwrite files (If already extracted. Will ask if flag not specified)
+~-n~ -> Skip files that are already extracted
+~-q~ -> Supress output
+~-P <password>~ -> specify a password for the zip file (It will still ask for pass if not specified)
+~-x <file1> <file2>~ -> Exclude files from unzipping
+  _example_: ~$ unzip file.zip -x "*.git/ *"~
+  
+~-l~ -> List the contents of the zip file
+
+*** unzip multiple zips
+
+You can unzip all files only using one command:
+~$ unzip '*.zip'~
+
+*** unzip into a custom dir
+
+~$ unzip <file>.zip -d <directory>~
+
+mkdir <directory> &&
+
+find script that takes the name of the zip, makes a folder, and unzips into that folder
+
+** 7z
+:PROPERTIES:
+:ID:       07ada693-b886-43fa-8e86-76ef26d999d0
+:END:
+
+*package*
+arch ->
+gentoo ->
+nixos -> ~p7zip~
+
+*usage*
+Extracting .7z files
+~$ 7z x <file>.7z~
+
+** rar
+:PROPERTIES:
+:ID:       db0e1d4a-f8d7-4270-b254-e9d4ba9818d3
+:END:
+
+*** extract
+
+Extract a file by simply doing
+~$ rar -e <file>.rar~
+
+** gzip
+:PROPERTIES:
+:ID:       0fa01290-4bdd-42ee-9bc6-774f9ea5496d
+:END:
+
+[[https://www.howtogeek.com/791705/zip-and-unzip-files-with-gzip-on-linux/][How to Zip and Unzip Files With Gzip on Linux - How-To Geek]]
+
+* APPS - INTERESTING BUT TESTING
+** NetHogs
+
+"Monitor network"
+
+https://github.com/raboof/nethogs
+
+** advcpmv
+
+https://github.com/jarun/advcpmv
+
+* OTHER IMPLEMENTATIONS
+** BusyBox
+:PROPERTIES:
+:ID:       7f69b5ca-473d-4683-b9c2-3709dabccce6
+:END:
+
+** uutils
+:PROPERTIES:
+:ID:       9a767bcc-b595-4ac3-a0ac-5e119f5bd10b
+:END:
+
+[[https://github.com/uutils/coreutils][uutils - coreutils in Rust]]
+
+[[https://www.phoronix.com/news/Rust-Coreutils-uutils-2023][The Rust Implementation Of GNU Coreutils Is Becoming Remarkably Robust - phoronix]]
+
+
+REPLACING COREUTILS WITH UUTILS
++ *NIXOS*
+  On ~/etc/nixos/configuration.nix~
+  #+begin_src nix
+    environment.systemPackages = with pkgs; [
+      (pkgs.uutils-coreutils.override { prefix = ""; })
+    ];
+    #+end_src
+
+  On ~~/.config/home-manager/home.nix~
+  #+begin_src nix
+  home.packages = with pkgs; [
+    (pkgs.uutils-coreutils.override { prefix = ""; })
+    ];
+  #+end_src
+
+* TUTORIALS
+** Filtering .log files, with cat, grep, cut, sort, and uniq
+
+[[https://www.youtube.com/watch?v=L2BFDyYknIg][youtube video]]
+
+cd into ~/var/log~
+
+auth.log -> logs everytime a user connects or authorisation fails
+
+if you ~$ cat auth.log~
+It's a really messy file
+
+_Making the line_
+
+Take the contents of auth.log and pipe it
+~cat auth.log |~
+
+Get the lines that i'm insterested in
+~cat auth.log | grep "Failed"~
+
+Let's look for /invalid/, as this are users that don't exist
+~cat auth.log | grep "invalid"~
+
+Let's pipe into cut,
+- give it a *space* (" ") as a delimeter (~-d~), it will _cut_ all the lines where there's a space
+  
+- give it a *field* (~-f~) and number (11).
+  Looking at the results before, we see that the user it's located on the word 11, that's the one we want.
+
+Now we have the list of users that were tried to enter the server. It's still a confusing list.
+
+Let's sort it *numerically* first then *alphabetically*
+~cat auth.log | grep "invalid" | cut -d " " -f 11 | sort~
+
+We see that there are some duplicated names, let's remove them with *uniq*
+~cat auth.log | grep "invalid" | cut -d " " -f 11 | sort | uniq~
+
+Now, how many lines there are in this list?
+How many unique usernames were tried?
+Let's use ~wc~ to count the words
+~cat auth.log | grep "invalid" | cut -d " " -f 11 | sort | uniq | wc -l~
+
+** Continuing with fail2ban
+
+Detects if people are trying to get into your system and if they fail a certain amount of times they get banned.
+
+It can be configured to ban for 10 minutes or longer times.
+
+Let's see the log file
+~cd /var/log~
+~cat fail2ban.log~
+
+And do the same command we did before
+~cat fail2ban.log | grep "Ban"~
+
+Now, when restarting the server the bans will also be restarted and restored.
+You may see that they also got ~grep~'d, and we don't want to have a copy of the ~Ban~ list. Let's _remove_ that also with grep
+~cat fail2ban.log | grep "Ban" | grep -v "Restore"~
+
+Let's keep doing the command
+~cat fail2ban.log | grep "Ban" | grep -v "Restore" | cut -d " " -f 16~
+- The ip address is the 16th field
+
+Pipe it into sort and uniq
+~cat fail2ban.log | grep "Ban" | grep -v "Restore" | cut -d " " -f 16 | sort | uniq~
+
+It's ready, now we have the list of IP Addresses that were trying to log into the computer.
+
+Count them
+~cat fail2ban.log | grep "Ban" | grep -v "Restore" | cut -d " " -f 16 | sort | uniq | wc -l~
+
+uniq has a flag ~-d~
+-> Gives us only the duplicates
+
+Write into a file
+~cat fail2ban.log | grep "Ban" | grep -v "Restore" | cut -d " " -f 16 | sort | uniq -d > ~~/uniq_ips.txt~
+
+Blacklist these ips
+
+** cdrtools / cdrkit
+
+*FIGHT*
+https://en.wikipedia.org/wiki/Cdrtools
+https://en.wikipedia.org/wiki/Cdrkit
+
+** mdf2iso
+** isoinfo in cdrtools / cdrkit (?)
+** WRITING TO A FILE WITH THE CLI
+
+[[https://stackoverflow.com/questions/17701989/how-do-i-append-text-to-a-file][How do I append text to a file? - Stack Overflow]]
+[[https://www.baeldung.com/linux/cat-writing-file][Writing Text to File Using Linux Cat Command - Baeldung]]
+
+** EXTRACT A ISO IMAGE
+
+[[https://www.baeldung.com/linux/iso-quick-extract][How to Quickly Extract an ISO Image in Linux - Baeldung]]
+
+Simply, use 7z contained in the ~p7zip~ package
+
+~$ 7z x <filename>.iso~
+

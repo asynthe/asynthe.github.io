@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sccache</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">sccache</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a> -&gt; [BROKEN LINK: 24056e55-2aa2-4630-ae53-b7609d42d892]
+</p>
+
+<p>
+<a href="https://github.com/mozilla/sccache">github page</a>
+<a href="https://wiki.gentoo.org/wiki/Sccache">gentoo wiki</a>
+</p>
+
+<div id="outline-container-orgb5337e4" class="outline-2">
+<h2 id="orgb5337e4">package</h2>
+<div class="outline-text-2" id="text-orgb5337e4">
+<p>
+arch -&gt; <code>...</code>
+gentoo -&gt; <code>dev-util/sccache</code>
+windows (scoop) -&gt; <code>sccache</code>
+cargo -&gt; <code>sccache</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org85a5e39" class="outline-2">
+<h2 id="org85a5e39">install</h2>
+<div class="outline-text-2" id="text-org85a5e39">
+<p>
+create the cache directory:
+<code># mkdir -p /var/cache/sccache</code>
+<code># chown root:portage /var/cache/sccache</code>
+<code># chmod 2775 /var/cache/sccache</code>
+</p>
+
+<p>
+allow write access to the cache directory when running under sandbox
+-&gt; <code>/etc/sandbox.d/20sccache</code>
+</p>
+<pre class="example">
+# Allow write access to sccache cache directory
+SANDBOX_WRITE="/var/cache/sccache"
+</pre>
+
+<p>
+-&gt; <code>/etc/portage/make.conf</code>
+</p>
+<pre class="example">
+RUSTC_WRAPPER=/usr/bin/sccache
+SCCACHE_DIR=/var/cache/sccache
+SCCACHE_MAX_FRAME_LENGTH=104857600
+</pre>
+
+<p>
+<b>NOTE</b>: enable sccache for the current user like this
+-&gt; <code>.zshrc</code> or <code>.bashrc</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold;">export</span> <span style="font-weight: bold; font-style: italic;">RUSTC_WRAPPER</span>=/usr/bin/sccache
+<span style="font-weight: bold;">export</span> <span style="font-weight: bold; font-style: italic;">SCCACHE_DIR</span>=/var/cache/sccache
+<span style="font-weight: bold;">export</span> <span style="font-weight: bold; font-style: italic;">SCCACHE_MAX_FRAME_LENGTH</span>=104857600
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgedf2e81" class="outline-2">
+<h2 id="orgedf2e81">usage</h2>
+<div class="outline-text-2" id="text-orgedf2e81">
+<p>
+get cache hit statistics with
+<code>$ SCCACHE_DIR=/var/cache/sccache sccache -s</code>
+(it can only read it when it's running)
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

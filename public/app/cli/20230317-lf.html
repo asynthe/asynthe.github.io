@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>lf</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">lf</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a> / <a href="../../other/main/20230428-bsd.html#ID-5b8d8a26-f3dd-4e50-b144-9eff85eadf96">BSD</a> / <a href="../../system/windows/20230428-windows.html#ID-0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b">WINDOWS ウィンドウズ</a> -&gt; <a href="../../other/main/20230428-sysapps.html#ID-9be91f09-e446-4d22-931e-c05792d8f582">SYSAPPS アプリ</a>
+</p>
+
+<p>
+<a href="https://github.com/gokcehan/lf">github page</a>
+[[][official webpage] ]
+[[][gentoo wiki] ]
+[[][arch wiki] ]
+</p>
+
+<div id="outline-container-org3830dc8" class="outline-2">
+<h2 id="org3830dc8">package</h2>
+<div class="outline-text-2" id="text-org3830dc8">
+<p>
+arch -&gt; <code>...</code>
+gentoo -&gt; <code>...</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org32c5e1a" class="outline-2">
+<h2 id="org32c5e1a">usage</h2>
+<div class="outline-text-2" id="text-org32c5e1a">
+<p>
+start it with <code>lf</code>
+</p>
+
+<p>
+you can use it with a terminal multiplexer, and it will keep the progress on both of your screens, as it runs a server/client architecture
+</p>
+</div>
+</div>
+
+<div id="outline-container-org46884e9" class="outline-2">
+<h2 id="org46884e9">keybindings</h2>
+<div class="outline-text-2" id="text-org46884e9">
+<p>
+<b>MAIN</b>
+<code>q</code> -&gt; quit (quit)
+</p>
+
+<p>
+<b>MOVEMENT</b>
+<code>k</code> and <code>&lt;up&gt;</code> -&gt; move up (up)
+<code>j</code> and <code>&lt;down&gt;</code> -&gt; move down (down)
+</p>
+
+<p>
+<code>&lt;c-u&gt;</code> and <code>half-up</code> (?) -&gt; move half a page up (half-up)
+<code>&lt;c-d&gt;</code> and <code>half-down</code> (?) -&gt; move half a page down (half-down)
+</p>
+
+<p>
+<code>&lt;c-b&gt;</code> and <code>&lt;pgup&gt;</code> (Page Up) -&gt; move a full page up (page-up)
+<code>&lt;c-f&gt;</code> and <code>&lt;pgdn&gt;</code> (Page Down) -&gt; move a full page down (page-down)
+</p>
+
+<p>
+<code>h</code> and <code>&lt;left&gt;</code> -&gt; move to a parent directory (updir)
+<code>l</code> and <code>&lt;right&gt;</code> -&gt; open a directory or open a file (open)
+</p>
+
+<p>
+<code>gg</code> and <code>&lt;home&gt;</code> -&gt; move to beginning of list (top)
+<code>G</code> and <code>&lt;end&gt;</code> -&gt; mote to end of list (bottom)
+</p>
+
+<p>
+<b>SELECTION / CUT / PASTE</b>
+<code>&lt;space&gt;</code> -&gt; set selection in the current folder (toggle)
+<code>v</code> -&gt; invert current selection (invert)
+<code>u</code> -&gt; unmark all selections (unmark)
+<code>y</code> -&gt; copy the current file or selection (copy)
+<code>d</code> -&gt; cut " (cut)
+<code>r</code> -&gt; rename file
+<code>p</code> -&gt; paste " (paste)
+<code>c</code> -&gt; clear copied or cut files (clear)
+</p>
+
+<p>
+<b>COMMAND INPUT</b>
+<code>:</code> -&gt; read builtin or custom command (read)
+<code>$</code> -&gt; run a command in shell (shell)
+<code>%</code> -&gt; run a command in shell and see output in lf's ui (shell-pipe)
+<code>!</code> -&gt; run a command in shell and wait for key press (shell-wait)
+<code>&amp;</code> -&gt; run a command in the background (shell-async)
+</p>
+
+<p>
+<code>/</code> -&gt; search a pattern
+<code>?</code> -&gt; search in opposite pattern direction (search-back)
+<code>n</code> -&gt; find next file matching pattern (search-next)
+<code>N</code> -&gt; find previous file matching pattern (search-prev)
+</p>
+
+<p>
+<b>KEYBINDINGS</b>
+default keybindings
+<code>z</code> -&gt; default keybindings provided
+<code>s</code> -&gt; change the values of <code>sortby</code> and <code>info</code> options
+</p>
+
+<p>
+<code>e</code> -&gt; launch an editor
+<code>i</code> -&gt; launch a pager
+<code>w</code> -&gt; launch a shell
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6a1f36f" class="outline-2">
+<h2 id="org6a1f36f">configuration</h2>
+<div class="outline-text-2" id="text-org6a1f36f">
+<p>
+first, copy the configuration file
+<code>curl https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfrc.example -o ~/.config/lf/lfrc</code>
+</p>
+
+<p>
+for the next step, inside of <code>~/.config/lf/lfrc</code> set <code>...</code> to true
+colors
+</p>
+
+<p>
+<a href="https://github.com/gokcehan/lf/wiki/Colors-and-Icons">Colors and Icons</a>
+<a href="https://github.com/gokcehan/lf/wiki/Tips">Tips</a> (+ integrations)
+</p>
+</div>
+
+<div id="outline-container-orgff2b21d" class="outline-3">
+<h3 id="orgff2b21d">lfcd</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

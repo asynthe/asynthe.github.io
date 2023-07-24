@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       75f367f9-80d5-4799-abf3-028afb1f412f
+:ROAM_ALIASES: "PACKET TRACER" "CISCO PACKET TRACER" "Packet Tracer"
+:END:
+#+title: Cisco Packet Tracer
+
+-> [[id:6c2cc908-5784-465d-9979-74811b0a3255][NETWORKING ネットワーキング]] 
+
+[[https://www.netacad.com/courses/packet-tracer][netacad page]]
+[[https://en.wikipedia.org/wiki/Packet_Tracer][wikipedia page]]
+[[https://wiki.archlinux.org/title/PacketTracer][arch wiki]]
+
+https://youtu.be/ImX0Xglf9gQ
+
+https://mycomputernotes.com/verify-and-configure-ipv6-address/
+https://www.networkworld.com/article/2344096/how-to-configure-cisco-variable-length-subnet-masks--vlsms-.html
+https://networklessons.com/rip/how-to-configure-rip-on-a-cisco-router
+https://youtu.be/X7f5sgfAsAo
+https://upaae.com/how-to-add-and-configure-static-routes-on-cisco-router/
+https://youtu.be/rZw_b0wpQ00
+
+* PACKAGE
+
+arch -> ~packettracer~ (aur)
+gentoo -> ~gui-apps/packettracer~ through ~guru~ overlay
+nixos -> ~ciscoPacketTracer8~
+
+download packet tracer from here (requires NetAcad account):
+[[https://www.netacad.com/portal/resources/packet-tracer][NetAcad packet tracer link]]
+
+* INSTALL
+
+you will need the Installer from NetAcad
+before installing it, download ~CiscoPacketTracer_820_Ubuntu_64bit.deb~
+
+** UBUNTU
+
+[[https://www.solvetechnow.com/post/cisco-packet-tracer-installation-on-ubuntu][How to install Cisco Packet Tracer on Ubuntu - SolveTechNow]]
+
+run the next command on the Downloads folder.
+~# dpkg -i <packet-tracer>.deb~
+
+you can get a ~dialog~ problem, which you can solve with:
+~# apt --fix-broken install~
+then
+~# apt install dialog~
+
+now run the first command again
+~# dpkg -i <packet-tracer>.deb~
+
+run it with
+~$ packettracer~
+
+* KEYBINDS
+
+~N~ -> Place Note
+
+* CONFIGURATION
+** TURN DARK MODE ON
+** SHOW CONNECTED CABLE PORTS
+
+- Options -> Preferences
+- Always Show Port Labels in Logical Workspace

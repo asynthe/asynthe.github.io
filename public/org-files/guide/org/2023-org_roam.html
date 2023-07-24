@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org Roam</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Org Roam</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a>
+</p>
+
+<p>
+<a href="https://www.orgroam.com/manual.html">Org-roam user manual</a>
+</p>
+
+<div id="outline-container-org41c9919" class="outline-2">
+<h2 id="org41c9919">Main</h2>
+<div class="outline-text-2" id="text-org41c9919">
+<p>
+from
+-&gt; <a href="../emacs/20230428-emacs.html#ID-ceec713c-7576-418e-908f-8084c45f83d4">Emacs</a> / <a href="../emacs/20230227-doom_emacs.html#ID-8969b600-ed83-4a1c-b745-5265904c3a48">Doom Emacs</a>
+-&gt; <a href="2023-org_mode.html#ID-6f1167d5-1cf6-49de-9f10-df121e03d42f">Org Mode</a>
+</p>
+</div>
+
+<div id="outline-container-org5e44f71" class="outline-3">
+<h3 id="org5e44f71"><span class="todo TODO">TODO</span> template for dailies with the custom TODO statuses</h3>
+</div>
+<div id="outline-container-orgea481d7" class="outline-3">
+<h3 id="orgea481d7"><span class="todo TODO">TODO</span> rebind dailies to easier keybinds ?</h3>
+</div>
+</div>
+
+<div id="outline-container-org0a290c1" class="outline-2">
+<h2 id="org0a290c1">Main keybinds</h2>
+<div class="outline-text-2" id="text-org0a290c1">
+<p>
+<code>SPC n r n</code> -&gt; org roam capture
+<code>SPC n r i</code> -&gt; insert a node link
+<code>SPC n r r</code> -&gt; see backlinks
+</p>
+</div>
+</div>
+<div id="outline-container-org18c0d8e" class="outline-2">
+<h2 id="org18c0d8e">Nodes</h2>
+<div class="outline-text-2" id="text-org18c0d8e">
+<p>
+a node is a simply note or a heading with an ID property, which will make it identifiable to org-roam
+</p>
+</div>
+
+<div id="outline-container-orga9cf3b3" class="outline-3">
+<h3 id="orga9cf3b3">Creating a node</h3>
+<div class="outline-text-3" id="text-orga9cf3b3">
+<p>
+you make regular org-roam nodes with
+<code>org-roam-capture</code> (SPC n r n)
+</p>
+
+<p>
+you can also put a node on a regular heading with:
+<code>org-id-get-create</code> (SPC m I)
+</p>
+</div>
+</div>
+<div id="outline-container-org29d80d0" class="outline-3">
+<h3 id="org29d80d0">Aliases for nodes</h3>
+<div class="outline-text-3" id="text-org29d80d0">
+<p>
+easily create an alias while in a node <code>:PROPERTIES:</code> with:
+<code>org-roam-alias-add</code> (SPC m m o a)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb78feec" class="outline-2">
+<h2 id="orgb78feec">Completion at point</h2>
+<div class="outline-text-2" id="text-orgb78feec">
+<p>
+using <code>completion-at-point</code> you can auto-complete words with their respective org-roam node link.
+</p>
+
+<p>
+add this to your <code>~/.doom.d/config.el</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(map! <span style="font-weight: bold;">:leader</span>
+      <span style="font-weight: bold;">:desc</span> <span style="font-style: italic;">"Completion at point"</span>
+      <span style="font-style: italic;">"n r c"</span> #'completion-at-point)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3283984" class="outline-2">
+<h2 id="org3283984">Database Sync</h2>
+<div class="outline-text-2" id="text-org3283984">
+<p>
+convert a file for org roam with ~org-id-create
+</p>
+
+<p>
+in case of deleting, renaming, or moving notes database.
+</p>
+<ul class="org-ul">
+<li>clean the database with <code>org-roam-db-clear-all</code></li>
+<li>re-scan the database with <code>org-roam-db-sync</code> or <code>M-SPC n r s</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org545efb8" class="outline-2">
+<h2 id="org545efb8">Dailies</h2>
+<div class="outline-text-2" id="text-org545efb8">
+<p>
+<span class="underline">today</span>
+capture a note for <b>today</b>
+<code>org-roam-dailies-capture-today</code>
+with <code>SPC n r d T</code>
+go to <b>today's</b> notes
+<code>org-roam-dailies-goto-today</code>
+with <code>SPC n r d t</code>
+</p>
+
+<p>
+<span class="underline">specific date</span>
+capture a note for a <b>specific date</b>
+<code>org-roam-capture-date</code>
+with <code>SPC n r d D</code>
+go to a <b>specific date</b> note
+<code>org-roam-goto-date</code>
+with <code>SPC n r d d</code>
+(<b>note</b>: move around dates with <code>SHIFT + ARROW KEYS</code>, can also use mouse)
+</p>
+
+<p>
+<span class="underline">tomorrow</span>
+capture a note for <b>tomorrow</b>
+<code>org-roam-dailies-capture-tomorrow</code>
+with <code>SPC n r d M</code>
+go to <b>tomorrow's</b> notes
+<code>org-roam-dailies-goto-today</code>
+with <code>SPC n r d m</code>
+</p>
+
+<p>
+<span class="underline">yesterday</span>
+capture a note for <b>yesterday</b>
+<code>org-roam-dailies-capture-yesterday</code>
+with <code>SPC n r d Y</code>
+go to <b>yesterday's</b> notes
+<code>org-roam-dailies-goto-yesterday</code>
+with <code>SPC n r d y</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgeece5f1" class="outline-2">
+<h2 id="orgeece5f1">GRAPH (org-roam-ui)</h2>
+<div class="outline-text-2" id="text-orgeece5f1">
+<p>
+<a href="https://github.com/org-roam/org-roam-ui">https://github.com/org-roam/org-roam-ui</a>
+<a href="https://org-roam.discourse.group/t/how-to-generate-the-roam-graph-to-appear-in-emacs/310">https://org-roam.discourse.group/t/how-to-generate-the-roam-graph-to-appear-in-emacs/310</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

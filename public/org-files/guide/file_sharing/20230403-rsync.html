@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>rsync</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">rsync</h1>
+<p>
+"<i>copying files with progress bar</i>"
+</p>
+
+<p>
+<a href="https://wiki.gentoo.org/wiki/Rsync">gentoo wiki</a>
+</p>
+
+<p>
+[synchronize linux - baeldung](<a href="https://www.baeldung.com/linux/synchronize-linux-directories">https://www.baeldung.com/linux/synchronize-linux-directories</a>)
+[using a rsync script to mirror hard drives - francium](<a href="https://francium.github.io/blog/using-rsync-to-backup-mirror-drives/">https://francium.github.io/blog/using-rsync-to-backup-mirror-drives/</a>)
+[rsync command - phoenixNAP](<a href="https://phoenixnap.com/kb/rsync-command-linux-examples">https://phoenixnap.com/kb/rsync-command-linux-examples</a>)
+[how to use rsync to copy files - linuxhint](<a href="https://linuxhint.com/rsync_copy_files/">https://linuxhint.com/rsync_copy_files/</a>)
+<a href="https://youtu.be/qE77MbDnljA">rsync tutorial - Corey Shafer</a>
+luke smith
+<a href="https://youtu.be/iTnWIKHtOnA">https://youtu.be/iTnWIKHtOnA</a>
+</p>
+
+<div id="outline-container-org041a294" class="outline-2">
+<h2 id="org041a294">package</h2>
+<div class="outline-text-2" id="text-org041a294">
+<p>
+arch -&gt; <code>...</code>
+gentoo -&gt; <code>net-misc/rsync</code>
+nixos -&gt; <code>...</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org89cc070" class="outline-2">
+<h2 id="org89cc070">usage</h2>
+<div class="outline-text-2" id="text-org89cc070">
+<p>
+First we need to have a <code>source</code> and a <code>target</code> <i>folder</i>.
+</p>
+
+<p>
+Simple rsync command
+<code>$ rsync -a --delete source/ target/</code>
+</p>
+
+<p>
+More detailed rsync
+<code>$ rsync -ahvP --delete --stats source/ target/</code>
+</p>
+
+<p>
+<b>flags</b>
+<code>r</code> -&gt; recurse: copies data recursively
+<code>q</code> -&gt; quiet: suppress output
+<code>a</code> -&gt; archive: this will include below
+  <code>-r</code> -&gt; recurse into directories
+  <code>-l</code> -&gt; copy symlinks as symlinks
+  <code>-p</code> -&gt; preserve permissions
+  <code>-t</code> -&gt; preserve modification times
+  <code>-g</code> -&gt; preserve group
+  <code>-o</code> -&gt; preserve owner
+  <code>-D</code> -&gt; preserve device files and special files
+<code>z</code> -&gt; compress: compresses data using zlib (?)
+</p>
+
+<p>
+<b>verbose flags</b>
+<code>h</code> -&gt; Human readable: numbers instead of bytes
+<code>v</code> -&gt; verbose: show detailed info of the process
+<code>p</code> -&gt; progress: shows the progress bar
+<code>P</code> -&gt; display stats of the whole transfer
+</p>
+
+<p>
+<code>--delete</code> -&gt; deletes files that were deleted on the <i>source</i> on the <i>target</i>, kind of like a hard sync
+<code>--stats</code> -&gt; show file-transfer stats
+</p>
+
+<hr />
+
+<p>
+to sync all the files from a folder to another.
+<code>$ rsync Original/* Backup/</code>
+<span class="underline">note</span>: just writing <code>Original</code> will copy the directory inside the <code>Backup</code> one.
+</p>
+
+<p>
+to sync the entire directory (with subdirectories).
+<code>$ rsync -r Original/ Backup/</code>
+</p>
+
+<p>
+you can change <code>-r</code> for <code>-a</code> which is archive mode, it will preserve most of permissions and other things.
+</p>
+
+<p>
+To try a sync without copying any files you can use <code>--dry-run</code> and <code>-v</code> (verbose) to know what files are going to be copied.
+<code>$ rsync -av --dry-run Original/ Backup/</code>
+</p>
+
+<p>
+Use <code>--delete</code> to remove extra files that are on <code>Backup/</code>.
+<code>$ rsync -av --delete Original/ Backup/</code>
+</p>
+
+<ul class="org-ul">
+<li>Be careful with this, always check that your source has your files. If run with a <b>empty</b> source, both <i>source</i> and <i>backup</i> will be empty.</li>
+<li>It always good to run it with <code>--dry-run</code> before, to know what is going to be deleted.</li>
+</ul>
+
+<p>
+Compress data, archive, show progress from your system to a another system that has SSH access.
+<code>$ rsync -zaP ~/Projects/my_site coreyms@192.168.56.100:~/public/</code>
+</p>
+
+<p>
+From another system to your system.
+<code>$ rsync -zaP coreyms@192.168.56.100:~/public/my_site/backups ~/Projects/my_site/</code>
+</p>
+
+<p>
+You can use <a href="../../app/cli/20230323-cron.html#ID-e52bd090-8dc2-4b07-bce9-774e57246aa7">cron</a> jobs with the rsync command to program backups.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8196561" class="outline-2">
+<h2 id="org8196561">transfering through <a href="20230509-ssh.html#ID-bc2233db-f8fd-4de6-8a9a-bb519804ba85">SSH</a></h2>
+<div class="outline-text-2" id="text-org8196561">
+<p>
+Force rsync to run with the <a href="20230509-ssh.html#ID-bc2233db-f8fd-4de6-8a9a-bb519804ba85">SSH</a> protocol with:
+<code>-e "ssh"</code> -&gt; this specifies to use the SSH safe protocol.
+<code>$ rsync -e "ssh" -avz &lt;filename&gt; user@guestvm:/home/user</code>
+</p>
+
+<p>
+Reverse transfer (from guest to host, inside host).
+<code>$ rsync -e "ssh" -avz &lt;user&gt;@&lt;guest&gt;:/home/&lt;user&gt;/filename.txt /home/&lt;host-user&gt;</code>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

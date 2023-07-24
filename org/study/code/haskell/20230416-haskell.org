@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       cb419f66-778d-40a2-abe5-8d63dd570e3a
+:ROAM_ALIASES: HASKELL
+:END:
+#+title: Haskell
+
+-> [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][STUDY 勉強]]
+
+* RESOURCES
+
+*BOOKS*
++ Learn You a Haskell for Great Good!
++ Real World Haskell
++ Haskell From First Principles

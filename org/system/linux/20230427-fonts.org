@@ -1,0 +1,15 @@
+
+if you want to find a font, write on google
+~site:github.com <fontname>.ttf~
+
+
+* PROGRAMMING
+** PragmataPro
+** Fira Code
+** Iosevka
+
+* BOOKS
+** [[https://edwardtufte.github.io/et-book/][ET Book]]
+** Iosevka
+
+* JAPANESE

@@ -1,0 +1,49 @@
+:PROPERTIES:
+:ID:       98f94da7-e51a-46f5-99c1-02a478624f8c
+:ROAM_ALIASES: "GENTOO ジェンツー"
+:END:
+#+title: Gentoo
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+
+[[https://www.gentoo.org][main page]]
+[[https://wiki.gentoo.org/wiki/Main_page][gentoo wiki]]
+[[https://packages.gentoo.org][packages]]
+[[http://gpo.zugaina.org][portage overlays]]
+[[https://en.wikipedia.org/wiki/Gentoo_Linux][wikipedia page]]
+
+*RESOURCES*
+https://github.com/fatalhalt/gentoox
+https://github.com/szorfein/Gentoo-ZFS
+https://pinkhat.zsh.li/es # PRINCESS GENTOO
+
+*TMP*
+all the ebuild stuff is in
+~/var/db/pkg~
+the repositories ebuild is on
+~/var/db/repos~
+
+Most of this optimizations will be oriented towards [[id:98f94da7-e51a-46f5-99c1-02a478624f8c][GENTOO ジェンツー]], to get as much faster compile times and binaries as possible.
+
+* [[id:be96ec4b-dcd7-41b1-9a54-b05f8938a033][distcc]]
+* SYSTEM
+** OPTIMIZING [[id:0f3491ae-96b7-4be4-8053-0f8b78df5bef][KERNEL カーネル]]
+** sh -> [[id:c3b942d1-3420-477a-8a39-9590498aa5dd][dash]]
+** hardened + no multilib gentoo profile
+-> try to avoid 32bit libraries such as WINE and Steam, you can install those by using something like [[id:9b6ccaa4-a3e5-4ee3-867c-c7c1d7254d11][Flatpak]]
+** O3, lto and Graphite
+** gcc to Clang
+** ~amd64 for experimental packages
+** [[id:2bf472e6-2b54-419b-a8a5-3f015d8ba4e4][ccache]] / [[id:004e489d-4cd4-45ef-b6d6-4e2238f61255][sccache]]
+** [[id:be96ec4b-dcd7-41b1-9a54-b05f8938a033][distcc]] <- multiple machine compilation
+** [[id:52716fb0-0d60-4557-b0bf-1a9a6b886ca5][Portage TMPDIR on tmpfs]]
+** Changing emerge --sync from rsync to git
+** fixing time on Windows and Gentoo
+FIXING TIME ON GENTOO + WINDOWS
+https://wiki.gentoo.org/wiki/System_time
+https://forums.gentoo.org/viewtopic-t-1066976-start-0.html
+
+* MUSL and GLIBC
+https://www.etalabs.net/compare_libcs.html
+* KERNEL
+* Kernel Stripping

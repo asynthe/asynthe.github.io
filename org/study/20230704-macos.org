@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       55b93fd8-6d24-4f4c-815b-d12f9f6f185f
+:ROAM_ALIASES: "MACOS マックオーエス" macOS MACOS
+:END:
+#+title: MacOS
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][STUDY 勉強]] ->
+
+asdas
+
+[[https://en.wikipedia.org/wiki/MacOS][wikipedia page]]
+
+* Yabai
+:PROPERTIES:
+:ID:       3591e607-6617-45f2-b0ad-2024872ea1e5
+:END:
+
+[[https://github.com/koekeishiya/yabai][github page]]
+
+** skhd
+:PROPERTIES:
+:ID:       45fcf2a7-7ddd-4891-b8be-9afda10278a8
+:END:
+
+[[https://github.com/koekeishiya/skhd][github page]]
+
+* Hackintosh
+
+[[https://hackintosh.com/][main page]]

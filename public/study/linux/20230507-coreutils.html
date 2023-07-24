@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>coreutils</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">coreutils</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a>
+</p>
+
+<p>
+main page
+<a href="https://github.com/uutils/coreutils">uutils - coreutils in Rust</a>
+BusyBox
+</p>
+
+<div id="outline-container-org6407383" class="outline-2">
+<h2 id="org6407383">chmod</h2>
+<div class="outline-text-2" id="text-org6407383">
+<p>
+<b>RECURSIVE CHMOD</b>
+recursive chmod 644 and chmod +x for *.sh (make script)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcfb2a86" class="outline-2">
+<h2 id="orgcfb2a86">chown</h2>
+</div>
+<div id="outline-container-orgf395049" class="outline-2">
+<h2 id="orgf395049">chgrp</h2>
+</div>
+<div id="outline-container-org948bf2a" class="outline-2">
+<h2 id="org948bf2a">xattr</h2>
+<div class="outline-text-2" id="text-org948bf2a">
+<p>
+i remember using this to change the dns on gentoo, you add it so a file can't be changed by anything
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-4b63d31b-ec0f-40e1-8e7d-5f288be752ba" class="outline-2">
+<h2 id="ID-4b63d31b-ec0f-40e1-8e7d-5f288be752ba">command</h2>
+<div class="outline-text-2" id="text-orgcca243e">
+<p>
+"<i>omit aliases</i>"
+</p>
+
+<p>
+run a command ommiting the alias
+<span class="underline">example</span>: <code>$ command ls</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-5dd54b91-0281-4d80-948f-741305a254b3" class="outline-2">
+<h2 id="ID-5dd54b91-0281-4d80-948f-741305a254b3">dd</h2>
+<div class="outline-text-2" id="text-org374c7de">
+<p>
+"<i>creating a bootable usb</i>"
+</p>
+
+<p>
+<span class="underline">note</span>: another good option is <a href="../../app/gui/20230317-ventoy.html#ID-3bc59813-349b-4aba-aee4-8fce96b84b32">Ventoy</a>
+<span class="underline">note</span>: be extra careful as it doesn't ask for confirmation
+</p>
+
+<p>
+now, you can use <code>dd</code> command to create a usb by using the next command
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">dd <span style="font-weight: bold; font-style: italic;">if</span>=<span style="font-style: italic;">"./&lt;file&gt;.iso"</span> <span style="font-weight: bold; font-style: italic;">of</span>=<span style="font-style: italic;">"/dev/&lt;disk&gt;"</span> <span style="font-weight: bold; font-style: italic;">status</span>=<span style="font-style: italic;">"progress"</span> <span style="font-weight: bold; font-style: italic;">conv</span>=<span style="font-style: italic;">"fsync"</span>
+</pre>
+</div>
+
+<p>
+<code>dd</code> -&gt; main command
+<code>if</code> -&gt; path to the ISO image file
+<code>of</code> -&gt; path to the USB disk
+<code>status</code> -&gt; show status of the dd command
+<code>conv</code> -&gt; sync data for correct completion
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-1140e048-b2ad-48bf-9c3e-5e70a1cc4433" class="outline-2">
+<h2 id="ID-1140e048-b2ad-48bf-9c3e-5e70a1cc4433">tar</h2>
+<div class="outline-text-2" id="text-orgaa5ad71">
+<p>
+"<i>compressing and uncompressing files</i>"
+</p>
+
+<p>
+<a href="https://www.howtogeek.com/248780/how-to-compress-and-extract-files-using-the-tar-command-on-linux/">How to Compress and Extract Files Using the tar Command on Linux - How-To Geek</a>
+<a href="https://www.freecodecamp.org/news/how-to-compress-files-in-linux-with-tar-command/">Linux tar Command - How to Compress Files in Linux - freeCodeCamp</a>
+</p>
+
+<p>
+compressing a file
+<code>$ tar -czvf &lt;filename&gt;.tar.gz &lt;files-to-compress&gt;</code>
+<code>$ tar -czvf &lt;filename&gt;.tar.gz * --remove-files</code>
+<code>--remove-files</code> -&gt; will remove original files after compression
+</p>
+
+<p>
+view contents
+<code>$ tar -tvf &lt;archive&gt;.tar.gz</code>
+</p>
+
+<p>
+extract
+<code>$ tar -xzvf &lt;archive&gt;.tar.gz &lt;extract-into-path&gt;</code>
+</p>
+
+<p>
+<span class="underline">tip</span>: add a <i>&amp;</i> at the end so it runs as a process
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-949501c8-9e5a-4e77-b076-36b2f9765673" class="outline-2">
+<h2 id="ID-949501c8-9e5a-4e77-b076-36b2f9765673">pv</h2>
+<div class="outline-text-2" id="text-orgaffb9f8">
+<p>
+"<i>monitor the progress of linux commands</i>"
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-9cd738c5-a09f-4945-9cb3-36ed2a282947" class="outline-2">
+<h2 id="ID-9cd738c5-a09f-4945-9cb3-36ed2a282947">xargs</h2>
+<div class="outline-text-2" id="text-org52edf22">
+<p>
+"<i>take input of one command and send to another as parameters</i>"
+</p>
+
+<p>
+<a href="https:wwww.howtogeek.com/435164/how-to-use-the-xargs-command-on-linux/">How to Use the xargs Command on Linux - How-To Geek</a>
+</p>
+
+<p>
+if you don't give it a command it defaults to echo
+<span class="underline">example</span>: <code>$ seq 5 | xargs</code>
+</p>
+
+<p>
+<code>-t</code> -&gt; will tell you the final command that is going to be used
+<code>-I</code> -&gt; allows to specify a output of previous command
+<code>-n</code> -&gt; specify the number of arguments
+<code>-P</code> -&gt; number of processes at a time
+</p>
+
+<p>
+<span class="underline">example</span>: seeing your linux system's users
+<code>$ cut -d: -f1 &lt; /etc/passwd | sort | xargs</code>
+</p>
+
+<ul class="org-ul">
+<li><code>cut</code> = cut lines
+<code>-d:</code> use <code>:</code> as a delimeter
+<code>-f1</code> grab first column of each line until <code>:</code></li>
+<li><code>sort</code> = sort alphabetically</li>
+<li><code>xargs</code> = will run by default as <code>echo</code></li>
+</ul>
+
+<p>
+<span class="underline">other examples</span>:
+</p>
+
+<p>
+<code>$ ls | xargs -I {} echo "/home/asynthe/{}"</code>
+</p>
+
+<p>
+create 1000 files, each one with .txt extension
+<code>$ seq 1000 | xargs -I {} touch {}.txt</code>
+</p>
+
+<p>
+rename all files from .txt to .text
+<code>$ ls | cut -d. -f1 | xargs -I {} mv {}.txt {}.text</code>
+</p>
+
+<p>
+<span class="underline">slow</span>: remove all <i>.text</i> files from <i>foo</i> dir
+<code>$ find foo -type -f -name "*.text" -exec rm {} \;</code>
+<span class="underline">fast</span>: using xargs
+<code>$ find foo -type f -name "*.txt" | xargs rm</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-45be67ad-c076-48e0-ba5a-8869aba35f16" class="outline-2">
+<h2 id="ID-45be67ad-c076-48e0-ba5a-8869aba35f16">watch</h2>
+<div class="outline-text-2" id="text-org3f19945">
+<p>
+<a href="https://phoenixnap.com/kb/linux-watch-command">How to Use the Linux watch Command with Examples - phoenixNAP</a>
+</p>
+
+<p>
+&#x2014; <i>IN PROGRESS</i> &#x2014;
+</p>
+
+<p>
+run with:
+</p>
+
+<p>
+flags:
+<code>-n</code>, <code>--interval</code> -&gt; specify the interval between output updates
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-bee03974-7ac0-4f13-ac2b-39f566de7e2a" class="outline-2">
+<h2 id="ID-bee03974-7ac0-4f13-ac2b-39f566de7e2a">shred (for HDD's)</h2>
+<div class="outline-text-2" id="text-org37f7897">
+<p>
+<span class="underline">note</span>: this is applicable for HDD file deletion, in case of SSD, trim is more important
+</p>
+
+<p>
+<code>$ shred -zvun</code>
+</p>
+
+<p>
+<code>z</code> -&gt; final pass overwriting file 0's
+<code>v</code> -&gt; verbose
+<code>u</code> -&gt; truncate and remove file after shredding
+<code>n</code> -&gt; specify number of passes to make while overwriting the file
+</p>
+</div>
+</div>
+
+<div id="outline-container-org115e374" class="outline-2">
+<h2 id="org115e374">shutdown</h2>
+<div class="outline-text-2" id="text-org115e374">
+<p>
+shutdown
+shutdown &lt;hour&gt;
+shutdown -c (cancel)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6efa2f1" class="outline-2">
+<h2 id="org6efa2f1">su / su -</h2>
+<div class="outline-text-2" id="text-org6efa2f1">
+<p>
+<a href="https://www.geeksforgeeks.org/difference-between-su-and-su-command-in-linux">Difference Between su and su - Command in Linux - GeeksForGeeks</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-40d39dfa-e88c-45c7-916c-da3ec9d894b3" class="outline-2">
+<h2 id="ID-40d39dfa-e88c-45c7-916c-da3ec9d894b3">ip</h2>
+<div class="outline-text-2" id="text-org0531c39">
+<p>
+<b>ifconfig</b> vs <b>ip</b>
+<a href="https://www.redhat.com/sysadmin/ifconfig-vs-ip">Linux networking: ifconfig versus ip - Red Hat</a>
+<a href="https://www.thegeekdiary.com/comparing-net-tools-v-s-iproute-package-commands">Comparing NET-TOOLS V/s IPROUTE Package Commands (ip Vs ifconfig command comparison) - The Geek Diary</a>
+<a href="https://serverfault.com/questions/458628/should-i-quit-using-ifconfig?noredirect=1&amp;lq=1">Should I quit using Ifconfig? - StackExchange</a>
+</p>
+
+<p>
+<b>Show network devices and configuration</b>
+<code>$ ifconfig</code>
+</p>
+
+<p>
+<code>$ ip addr show</code>
+<code>$ ip link show</code>
+</p>
+
+<p>
+<b>Enable a network interface</b>
+<code>$ ifconfig eth0 up</code>
+<code>$ ip link set eth0 up</code>
+</p>
+
+<p>
+A network interface is disabled in a similar way:
+<code>$ ifconfig eth0 down</code>
+<code>$ ip link set eth0 down</code>
+</p>
+</div>
+
+<div id="outline-container-orge6a177c" class="outline-3">
+<h3 id="orge6a177c">Replacing ifconfig for <a href="#ID-40d39dfa-e88c-45c7-916c-da3ec9d894b3">ip</a></h3>
+<div class="outline-text-3" id="text-orge6a177c">
+<p>
+<a href="https://serverfault.com/questions/633087/where-is-the-statement-of-deprecation-of-ifconfig-on-linux">Where is the statement of deprecation of ifconfig (on linux)? - StackExchange</a>
+</p>
+
+<p>
+The <a href="https://lists.debian.org/debian-devel/2009/03/msg00780.html">official statement</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">Luk Claes and me, as the current maintainers of net-tools, we've been thinking about it's future. Net-tools has been a core part of Debian and any other linux based distro for many years, but it's showing its age.
+
+It doesnt support many of the modern features of the linux kernel, the interface is far from optimal and difficult to use in automatisation, and also, it hasn't got much love in the last years.
+
+On the other side, the iproute suite, introduced around the 2.2 kernel line, has both a much better and consistent interface, is more powerful, and is almost ten years old, so nobody would say it's untested.
+
+Hence, our plans are to replace net-tools completely with iproute, maybe leading the route for other distributions to follow. Of course, most people and tools use and remember the venerable old interface, so the first step would be to write wrappers, trying to be compatible with net-tools.
+
+At the same time, we believe that most packages using net-tools should be patched to use iproute instead, while others can continue using the wrappers for some time. The ifupdown package is obviously the first candidate, but it seems that a version using iproute has been available in experimental since 2007.
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-ID-837bb05c-5ab1-456b-9b32-120d45b89d85" class="outline-2">
+<h2 id="ID-837bb05c-5ab1-456b-9b32-120d45b89d85">ln</h2>
+<div class="outline-text-2" id="text-org78c3d2e">
+<p>
+<a href="https://www.howtogeek.com/287014/how-to-create-and-use-symbolic-links-aka-symlinks-on-linux">How to Create and Use Symbolic Links (aka Symlinks) on Linux - How-To Geek</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-10786e67-170b-431d-80f6-cf7ff9425297" class="outline-2">
+<h2 id="ID-10786e67-170b-431d-80f6-cf7ff9425297">locale</h2>
+<div class="outline-text-2" id="text-org35ef59c">
+<p>
+<a href="https://linuxconfig.org/how-to-install-generate-and-list-locale-on-linux">How to install, generate and list Locale on Linux - Linuxconfig.org</a>
+</p>
+
+<p>
+List the current config
+<code>$ locale</code>
+</p>
+
+<p>
+List the locales in your system
+<code>$ locale -a</code>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

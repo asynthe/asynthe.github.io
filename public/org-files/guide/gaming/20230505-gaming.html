@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GAMING</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">GAMING</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a>
+</p>
+
+<p>
+"<i>This note will explain how to setup <a href="20230505-steam.html#ID-d7e0189d-dcd7-4527-8a18-e1fd265a203d">Steam</a> on your Linux system + how to have japanese <a href="visual_novel/20230514-visual_novel.html#ID-83850e1f-4f0b-4426-8ec6-403940630095">VN</a>s running through Wine.</i>"
+</p>
+
+<p>
+<a href="https://github.com/sonic2kk/steamtinkerlaunch">Steam Tinker Launch - github page</a>
+</p>
+
+<div id="outline-container-orgd8f9c97" class="outline-2">
+<h2 id="orgd8f9c97">SETUP</h2>
+<div class="outline-text-2" id="text-orgd8f9c97">
+</div>
+<div id="outline-container-org4a08381" class="outline-3">
+<h3 id="org4a08381">DRIVERS - <a href="20230508-nvidia.html#ID-01feec68-6af0-477d-9265-50e5b1d0d1ad">NVIDIA</a> / AMD</h3>
+</div>
+<div id="outline-container-org1bd5377" class="outline-3">
+<h3 id="org1bd5377"><a href="20230505-steam.html#ID-d7e0189d-dcd7-4527-8a18-e1fd265a203d">STEAM</a></h3>
+</div>
+<div id="outline-container-org2479920" class="outline-3">
+<h3 id="org2479920"><a href="20230505-steam.html#ID-3550ff4d-2d0c-4895-a622-988aed22e7e2">PROTON</a></h3>
+</div>
+</div>
+<div id="outline-container-org171bbce" class="outline-2">
+<h2 id="org171bbce"><a href="../../study/linux/20230516-gpu_passthrough.html#ID-0a1e6a5c-3703-491d-b60f-43851b55e014">GPU PASSTHROUGH</a></h2>
+<div class="outline-text-2" id="text-org171bbce">
+</div>
+<div id="outline-container-org8ae2e51" class="outline-3">
+<h3 id="org8ae2e51">NON-NIXOS</h3>
+</div>
+<div id="outline-container-org245ff2f" class="outline-3">
+<h3 id="org245ff2f">NIXOS</h3>
+</div>
+</div>
+<div id="outline-container-orge956285" class="outline-2">
+<h2 id="orge956285">APPS</h2>
+<div class="outline-text-2" id="text-orge956285">
+</div>
+<div id="outline-container-ID-dc2cf905-be9b-45db-a939-f8e92b9a6892" class="outline-3">
+<h3 id="ID-dc2cf905-be9b-45db-a939-f8e92b9a6892">GAMEMODE</h3>
+<div class="outline-text-3" id="text-org83da6aa">
+<p>
+"<i>daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS and/or a game process.</i>"
+</p>
+
+<p>
+<a href="https://github.com/FeralInteractive/gamemode">github page</a>
+<a href="https://wiki.archlinux.org/title/Gamemode">arch wiki</a>
+</p>
+
+<p>
+<b>PACKAGE</b>
+arch -&gt; <code>...</code>
+gentoo -&gt; <code>games-util/gamemode</code>
+nixos -&gt; <code>gamemode</code>
+</p>
+
+<p>
+<b>USAGE</b>
+launch the game like this:
+<code>$ gamemoderun ./game</code>
+or in <a href="20230505-steam.html#ID-d7e0189d-dcd7-4527-8a18-e1fd265a203d">Steam</a> launch options
+<code>$ gamemoderun %command%</code>
+</p>
+
+<p>
+check if gamemode is running (when game is open)
+<code>$ gamemoded -s</code>
+</p>
+
+<p>
+check if gamemode works
+<code>$ gamemoded -t</code>
+</p>
+
+<p>
+<b>CONFIGURATION</b>
+configuration is made in <code>gamemode.ini</code>, which can be located in:
+</p>
+<ol class="org-ol">
+<li><code>/etc/</code></li>
+<li><code>/usr/share/gamemode/</code></li>
+</ol>
+<p>
+you can also set in <code>$PWD</code> and <code>$XDG_CONFIG_HOME</code> / <code>$HOME/.config/</code>, but GPU settings won't have effect here.
+</p>
+
+<p>
+<span class="underline">note</span>: add to steam as <code>gamemoderun %command%</code> or to lutris
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-37e39691-dd35-43aa-ba61-41da1851380a" class="outline-3">
+<h3 id="ID-37e39691-dd35-43aa-ba61-41da1851380a">GAMESCOPE</h3>
+<div class="outline-text-3" id="text-org5013d28">
+<p>
+<a href="https://www.visualnovelwiki.org/en/linux/gamescope-vn-upscaler">Gamescope - vn wiki</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org42df9f7" class="outline-3">
+<h3 id="org42df9f7"><a href="../20230514-lutris.html#ID-af479695-2d0f-4121-a36b-e2083b17f0f3">LUTRIS</a></h3>
+</div>
+</div>
+<div id="outline-container-org2df9fa1" class="outline-2">
+<h2 id="org2df9fa1">GAME DEVELOPMENT ON <a href="../20230507-unreal_engine.html#ID-12851852-3bbe-4a6b-ace1-d8cc7414a0e4">UNREAL ENGINE</a></h2>
+</div>
+<div id="outline-container-org89aded5" class="outline-2">
+<h2 id="org89aded5"><a href="20230428-games.html#ID-32dcd12b-c138-4efb-896b-3d99d4da0b18">GAMES</a> ON LINUX</h2>
+</div>
+<div id="outline-container-org1b1f0f0" class="outline-2">
+<h2 id="org1b1f0f0"><a href="visual_novel/20230514-visual_novel.html#ID-83850e1f-4f0b-4426-8ec6-403940630095">VISUAL NOVELS</a> ON LINUX</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

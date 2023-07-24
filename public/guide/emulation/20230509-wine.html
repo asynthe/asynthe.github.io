@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wine</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Wine</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="20230508-emulation.html#ID-820af444-d90f-44e4-8723-c4d6e82b42b5">EMULATION</a>
+</p>
+
+<p>
+"WINE Is Not an Emulator"
+</p>
+
+<p>
+<a href="https://www.winehq.org">WineHQ</a>
+<a href="https://appdb.winehq.org">WineHQ AppDB</a>
+</p>
+
+<div id="outline-container-org8028334" class="outline-2">
+<h2 id="org8028334">RESOURCES</h2>
+<div class="outline-text-2" id="text-org8028334">
+<p>
+I think "compatibility layer" is the more technical term for what Wine actually is, as it converts low-level Windows system calls to something that the Linux (and other UNIX/POSIX) kernels can understand and execute, and effectively runs the application "natively" (or semi-natively?). It's equivalent to the old code in 32-bit versions of Windows that allowed MS-DOS programs to run, or Windows' own settings to allow programs to run in "compatibility mode" for older versions of the OS.
+</p>
+
+<p>
+Wine does not emulate an entire CPU like, for example, DOSBox, BSNES and KEGA Fusion&#x2026; so therefore, "Wine is not an emulator." It just translates things meant for the Windows kernel in such a way that other kernels can understand.
+</p>
+
+<p>
+<span class="underline">note</span>: always run as user.
+<span class="underline">note</span>: you can use <a href="20230515-bottles.html#ID-57f6a4b2-5649-4aa2-95f1-a665045176df">Bottles</a> which is a easier way to manage Wine apps.
+</p>
+
+<p>
+<a href="https://www.maketecheasier.com/install-wine-on-linux">How to Install Wine on Linux - maketecheasier</a>
+<a href="https://linuxize.com/post/how-to-install-wine-on-ubuntu-20-04">How to Install and Use Wine on Ubuntu 20.04 - Linuxize</a>
+<a href="https://itsfoss.com/use-windows-applications-linux">How To Run Windows Applications On Linux [Beginners Guide] - It's FOSS</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgada66df" class="outline-2">
+<h2 id="orgada66df">PACKAGES</h2>
+<div class="outline-text-2" id="text-orgada66df">
+<p>
+arch -&gt;
+gentoo -&gt;
+nixos -&gt;
+</p>
+
+<p>
+wine wine64 wineasio winetricks
+</p>
+
+<p>
+airwave -&gt; VST bridge for Linux
+</p>
+</div>
+
+<div id="outline-container-org38f7f86" class="outline-3">
+<h3 id="org38f7f86">different versions</h3>
+</div>
+</div>
+<div id="outline-container-org169516a" class="outline-2">
+<h2 id="org169516a">WINETRICKS</h2>
+<div class="outline-text-2" id="text-org169516a">
+<p>
+<a href="https://linuxconfig.org/configuring-wine-with-winetricks">Configuring WINE with Winetricks - Linuxconfig.org</a>
+</p>
+
+<p>
+It's a Wine system config tool built on zenity (zenity generates dialog with options from a <b>bash script</b>)
+It can allow you to install needed software such as DirectX, DotNet, Visual C++ Distributable and more.
+</p>
+
+<p>
+It use as follows:
+<code>$ WINEPREFIX=~/wine/pfx32 winetricks d3dx9 dirac dotnet35 dotnet40 dxvk lavfilters vcrun2003 vcrun2005 vcrun2008 wmp9</code>
+</p>
+
+<p>
+This will install different programs into the WINEPREFIX.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org868df24" class="outline-2">
+<h2 id="org868df24">USAGE</h2>
+<div class="outline-text-2" id="text-org868df24">
+</div>
+<div id="outline-container-org42118b1" class="outline-3">
+<h3 id="org42118b1">ENV PARAMETERS</h3>
+<div class="outline-text-3" id="text-org42118b1">
+<p>
+WINEPREFIX=&lt;dir&gt;
+</p>
+
+<p>
+WINEARCH=win32 or win64
+</p>
+<ul class="org-ul">
+<li>Use win32 for any app</li>
+<li>Use win64 for any game</li>
+</ul>
+
+<p>
+winetricks
+mimeassoc=off
+fontsmooth=rgb
+</p>
+
+<p>
+<span class="underline">after wine</span>
+regedit
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3483ba8" class="outline-3">
+<h3 id="org3483ba8">KILLING WINE SERVER</h3>
+<div class="outline-text-3" id="text-org3483ba8">
+<p>
+Kill wine processes
+<code>$ wineserver -k</code>
+</p>
+
+<p>
+Force kill wine processes
+<code>$ wineserver -k9</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2be316a" class="outline-2">
+<h2 id="org2be316a">APPS</h2>
+<div class="outline-text-2" id="text-org2be316a">
+</div>
+<div id="outline-container-org7b20a8e" class="outline-3">
+<h3 id="org7b20a8e"><a href="../audio_on_linux/20230513-ableton.html#ID-5aea11d7-3892-4265-b729-b52a3b5d80eb">ABLETON</a></h3>
+</div>
+<div id="outline-container-ID-58b03e01-4b38-4cf9-8545-249e302ae764" class="outline-3">
+<h3 id="ID-58b03e01-4b38-4cf9-8545-249e302ae764">FAKIN' THE FUNK</h3>
+<div class="outline-text-3" id="text-orgb4d8e93">
+<p>
+<a href="https://fakinthefunk.net/en">main page</a>
+</p>
+
+<p>
+<b>INSTALL</b>
+</p>
+
+<p>
+<a href="https://youtu.be/5kbDTxVR17c">How to install Fakin' The Funk? - On Linux (youtube video)</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3277e0f" class="outline-2">
+<h2 id="org3277e0f">REVISE</h2>
+<div class="outline-text-2" id="text-org3277e0f">
+</div>
+<div id="outline-container-orgbcf0b33" class="outline-3">
+<h3 id="orgbcf0b33">usage</h3>
+<div class="outline-text-3" id="text-orgbcf0b33">
+<p>
+Check if it's installed with:
+<code>$ wine --version</code>
+</p>
+
+<p>
+Wine default folder is <code>~/.wine</code>, this is where your emulated windows machine will be.
+</p>
+<ul class="org-ul">
+<li>You can specify another directory by specifying <code>WINE_PREFIX=~/&lt;path&gt;</code></li>
+</ul>
+
+<p>
+Now, you can install <span class="underline">two</span> applications, but their app requirements may be different and even make a <span class="underline">conflict</span>. That's why it's better to set a <b>main folder</b> with folders (this will be the different PREFIXES) for differents app. (<a href="20230515-bottles.html#ID-57f6a4b2-5649-4aa2-95f1-a665045176df">Bottles</a> makes this easier.)
+</p>
+
+<p>
+<b>WINECFG - WINE CONFIGURATION</b>
+Now configure your Wine subsystem
+<code>$ winecfg</code> (will open the configuration for <code>~/.wine</code>.)
+<code>$ WINE_PREFIX=~/wine/&lt;folder&gt;</code> (will open the configuration for <code>~/wine/&lt;folder&gt;</code>.)
+</p>
+
+<p>
+<b>INSTALLING AN .EXE</b>
+To run a Windows <code>.exe</code> on Linux, open it like this.
+<code>$ wine &lt;installer&gt;.exe</code>
+or
+<code>$ WINE_PREFIX=~/wine/&lt;folder&gt; wine &lt;installer&gt;.exe</code>
+</p>
+
+<p>
+<b>UNINSTALLING</b>
+To uninstall any Windows software, open terminal and bring a Windows-style control panel.
+<code>$ wine uninstaller</code>
+or
+<code>$ WINE_PREFIX=~/wine/&lt;folder&gt; wine uninstaller</code>
+</p>
+
+<p>
+<b>RUNNING</b>
+You will have to go into the Wine folder and find the application executable.
+It will probably be in the "Program Files" or "Program Files (x86)" in the prefix created C drive.
+<code>~/.wine/drive_c</code>
+</p>
+
+<p>
+Go into that directory and simply run it like this:
+<code>$ wine program.exe</code>
+or
+<code>$ WINE_PREFIX=~/wine/&lt;folder&gt; wine program.exe</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1c901ad" class="outline-3">
+<h3 id="org1c901ad">WINE FRONTENDS AND MANAGERS</h3>
+<div class="outline-text-3" id="text-org1c901ad">
+<ul class="org-ul">
+<li>PlayOnLinux</li>
+</ul>
+<p>
+popular tool, but it hasn't been mantained for a long time.
+</p>
+<ul class="org-ul">
+<li>Q4Wine</li>
+</ul>
+<p>
+confusing user interface
+</p>
+<ul class="org-ul">
+<li>crossover</li>
+</ul>
+<p>
+is it worth to pay for windows apps on linux?
+</p>
+<ul class="org-ul">
+<li>steam + lutris</li>
+</ul>
+<p>
+lutris gives you a frontend for all your game storefronts.
+</p>
+<ul class="org-ul">
+<li>bottles</li>
+</ul>
+<p>
+one of the best choices.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc6cb890" class="outline-3">
+<h3 id="orgc6cb890">finding dependencies</h3>
+<div class="outline-text-3" id="text-orgc6cb890">
+<p>
+winehq appdb -&gt; check for dependencies
+launching through terminal and looking at logs
+</p>
+
+<p>
+Depedency Walker 2.2 -&gt; windows app
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb46cb4c" class="outline-3">
+<h3 id="orgb46cb4c">usage - Chris Titus Tech</h3>
+<div class="outline-text-3" id="text-orgb46cb4c">
+<p>
+defacto wine dir, wine bottle
+<code>~/.wine</code>
+</p>
+
+<p>
+create a wine folder
+<code>$ mkdir wine</code>
+</p>
+
+<p>
+do we want it to be win64 or win32
+<code>$ WINEARCH=win32</code> or
+<code>$ WINEARCH=win64</code>
+</p>
+
+<p>
+use win32 for any app
+use win64 for any game
+</p>
+
+<p>
+do a wine prefix
+<code>$ WINEARCH=win32 WINEPREFIX=~/wine/testbottle winetricks</code>
+</p>
+
+<p>
+once the winetricks gui is open, you can select different options, we are going to go w <code>Select the default wineprefix</code>
+</p>
+
+<p>
+do you install any d3dx?
+leave it as stock unless you need d3dx9 or special
+</p>
+
+<p>
+<span class="underline">DotNet</span>
+recommended dotnet order
+<code>dotnet35</code>, <code>dotnet452</code>
+</p>
+
+<p>
+<span class="underline">DXVK</span>
+use dxvk instead of direct x
+<code>dxvk</code>
+</p>
+
+<p>
+<span class="underline">Visual C++ Libraries</span>
+<code>vcrun2015</code>, <code>vcrun2017</code>, <code>vcrun2019</code> and <code>vcrun2022</code> have the same files, so choose one of the two, better to choose <code>vcrun2022</code>
+</p>
+
+<p>
+<span class="underline">Xbox controller support</span>
+choose <code>xinput</code>
+</p>
+
+<p>
+<span class="underline">XACT</span>
+if required
+<code>xact</code> or <code>xact_x64</code> (64-bit)
+</p>
+
+<p>
+<span class="underline">MS GDI+</span>
+Some applications may require gdiplus
+<code>gdiplus</code>
+</p>
+
+<p>
+after the install, let's configure the fonts in winetricks.
+</p>
+
+<p>
+<b>FONTS</b>
+<code>corefonts</code> -&gt; Core microsoft fonts, needed for most applications.
+<code>tahoma</code> -&gt;
+</p>
+
+<p>
+now, run <code>winecfg</code> to set up you preffered windows version.
+</p>
+
+<p>
+<b>recommended to start</b> with <code>windows7</code> or <code>windows10</code>
+</p>
+
+<p>
+quit and go inside the wine bottle
+</p>
+
+<p>
+it will have this structure.
+</p>
+<pre class="example">
+dosdevices
+drive_c
+system.reg
+userdef.reg
+user.reg
+</pre>
+
+<p>
+"<code>drive_c</code>" will be our root, so you can put a <code>.exe</code> program inside and run it like this:
+<code>$ WINEARCH=win32 WINEPREFIX=~/wine/&lt;folder&gt; wine ~/wine/&lt;folder&gt;/drive_c/&lt;program&gt;.exe</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3d36d4e" class="outline-3">
+<h3 id="org3d36d4e"><span class="underline">note</span>: WINE IN DIFFERENT NIXOS ARCHs</h3>
+<div class="outline-text-3" id="text-org3d36d4e">
+<p>
+on <code>x86_64-linux</code> wine supports by default <code>32-bit</code> and <code>64-bit</code> applications.
+In other architectures, it <b>only</b> supports <code>32-bit</code> applications.
+</p>
+
+<p>
+If you're using another architecture like <a href="../../study/20230513-risc_v.html#ID-f0bbf7fe-4572-418c-8534-06ea190f236a">RISC-V</a>, you can override the Wine package so it includes <code>64-bit</code> applications.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nix">{
+  environment.systemPackages = with pkgs; [
+
+    # support both 32- and 64-bit applications
+    wineWowPackages.stable
+
+    # support 32-bit only
+    wine
+
+    # support 64-bit only
+    (wine.override { wineBuild = "wine64"; })
+
+    # wine-staging (version with experimental features)
+    wineWowPackages.staging
+
+    # winetricks (all versions)
+    winetricks
+
+    # native wayland support (unstable)
+    wineWowPackages.waylandFull
+  ];
+}
+</pre>
+</div>
+
+<p>
+In other <b>architectures</b>, replace this line
+</p>
+<div class="org-src-container">
+<pre class="src src-nix"># support 64-bit only
+(wine.override { wineBuild = "wine64"; })
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

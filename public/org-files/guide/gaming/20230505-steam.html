@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Steam</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Steam</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a>
+</p>
+
+<p>
+<a href="https://wiki.archlinux.org/title/steam">arch wiki</a>
+</p>
+
+<p>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1787799592">Optimizing Linux for Gaming - Steam Community</a>
+</p>
+
+<div id="outline-container-org4f912db" class="outline-2">
+<h2 id="org4f912db">package</h2>
+<div class="outline-text-2" id="text-org4f912db">
+<p>
+arch -&gt;
+gentoo -&gt;
+nixos -&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2bbec95" class="outline-2">
+<h2 id="org2bbec95">SET UP</h2>
+<div class="outline-text-2" id="text-org2bbec95">
+</div>
+<div id="outline-container-orgd45bfe6" class="outline-3">
+<h3 id="orgd45bfe6">NVIDIA-OFFLOAD PARAMETER (FOR OPTIMUS LAPTOPS)</h3>
+<div class="outline-text-3" id="text-orgd45bfe6">
+<p>
+Add the next parameters to a game.
+</p>
+<ul class="org-ul">
+<li>Click on a game cover art</li>
+<li>Click on the <b>cog</b> button</li>
+<li>On <b>General</b>, add the next parameters to <b>LAUNCH OPTIONS</b></li>
+</ul>
+
+<p>
+<span class="underline">note</span>: <code>gamemoderun</code> provided by <a href="20230505-gaming.html#ID-dc2cf905-be9b-45db-a939-f8e92b9a6892">gamemode</a>, remove if not using gamemode.
+</p>
+<pre class="example">
+__NV_PRIME_RENDER_OFFLOAD=1 __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only gamemoderun %command%
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb4a0248" class="outline-3">
+<h3 id="orgb4a0248">CHANGE TO STEAM BETA</h3>
+<div class="outline-text-3" id="text-orgb4a0248">
+<p>
+<span class="underline">note</span>: While the Beta is working for me without any problems, i can't get the file browser to work. That's why i will temporarily stay on the Stable version.
+</p>
+
+<ul class="org-ul">
+<li>Click on <b>Steam</b></li>
+<li>Go into <b>Settings</b></li>
+<li><b>Account</b> -&gt; <b>Beta participation</b> -&gt; <b>CHANGE&#x2026;</b></li>
+<li><b>Beta participation:</b> -&gt; <b>Steam Beta Update</b></li>
+<li>Restart Steam</li>
+</ul>
+
+<p>
+<b>CLIENT HARDWARE ACCELERATION</b>
+</p>
+
+<p>
+Steam -&gt; Settings -&gt; Interface
+</p>
+<ul class="org-ul">
+<li>Scale text and icons to match monitor settings (requires restart)</li>
+<li>Enable smooth scrolling in web views (requires restart)</li>
+<li>Enable GPU accelerated rendering in web views (requires restart)</li>
+<li>Enable hardware video decoding, if supported (requires restart)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbd8d22a" class="outline-3">
+<h3 id="orgbd8d22a">LAUNCH PARAMETERS</h3>
+<div class="outline-text-3" id="text-orgbd8d22a">
+<p>
+<code>LANG=ja_JP.UTF-8</code>
+</p>
+
+<p>
+%command%
+</p>
+
+<p>
+<code>-localdata</code> -&gt;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-ID-3550ff4d-2d0c-4895-a622-988aed22e7e2" class="outline-2">
+<h2 id="ID-3550ff4d-2d0c-4895-a622-988aed22e7e2">PROTON</h2>
+<div class="outline-text-2" id="text-orgc8c5404">
+<p>
+<a href="https://www.protondb.com/">ProtonDB</a>
+<a href="https://usebottles.com/">GNOME Bottles</a>
+</p>
+</div>
+
+<div id="outline-container-org278baf6" class="outline-3">
+<h3 id="org278baf6">INSTALL / SETUP</h3>
+<div class="outline-text-3" id="text-org278baf6">
+<p>
+Steam will automatically download and set up Proton for your games, you have to set it up System-wide or Per-game, after which Steam will download the selected version.
+</p>
+
+<p>
+<b>STEAM LIBRARY WIDE</b>
+Go into
+<code>Steam</code> -&gt; <code>Settings</code> -&gt; <code>Steam Play</code>
+and you should see 
+</p>
+
+<p>
+<b>PER-GAME</b>
+In the library, on the game page
+Go into the cog (first one of three buttons, in the right side bellow banner)
+</p>
+
+<p>
+<code>Cog</code> -&gt; <code>Properties</code> -&gt; <code>Compatibility</code>
+Tick the box of <b>Force the use of a specific Steam Play compatibility tool</b>
+And then choose the version of Proton you're running.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc8aa390" class="outline-3">
+<h3 id="orgc8aa390">PROTON-GE</h3>
+<div class="outline-text-3" id="text-orgc8aa390">
+<p>
+<b>INSTALL [PROTONUP]</b>
+install <code>protonup-ng</code> and <code>protonup-qt</code>
+</p>
+
+<p>
+run
+<code>$ protonup</code>
+</p>
+
+<p>
+you can also run
+<code>$ protonup-qt</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc78b3dd" class="outline-3">
+<h3 id="orgc78b3dd">FIXING</h3>
+<div class="outline-text-3" id="text-orgc78b3dd">
+<p>
+<b>steam compatibility tool configuration failed</b>
+</p>
+
+<p>
+<a href="https://steamcommunity.com/app/1675200/discussions/0/3395175706749690655/">How to force uninstall or force update Proton Experimental w missing files - Steam Community</a>
+<a href="https://forum.manjaro.org/t/steam-compatibility-tool-configuration-failed/76193/2">"steam compatibility tool configuration failed" - Manjaro forum</a>
+</p>
+
+<p>
+I think my fix was something like this.
+</p>
+
+<p>
+<b>PROTON APPID's</b>
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">APPID</th>
+<th scope="col" class="org-left">NAME</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1493710</td>
+<td class="org-left">Proton Experimental</td>
+</tr>
+
+<tr>
+<td class="org-right">2348590</td>
+<td class="org-left">Proton 8.0</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Go into <a href="https://steamdb.info">SteamDB</a>, and search for Proton.</li>
+<li>Go into your custom <code>steamapps</code> folder or <code>~/.local/share/Steam/steamapps</code>. (default)</li>
+<li>Delete Proton <code>appmanifest_&lt;appid&gt;</code>.</li>
+<li>Delete Proton folder in <code>common</code>.</li>
+<li>Delete Proton folder in <code>compatdata</code>, if found.</li>
+<li>Reboot Steam.</li>
+<li>Install proton to another directory.</li>
+<li>Go into that directory and copy Proton <code>steamapps</code> folder.</li>
+<li>Copy that folder into the original <code>steamapps</code>.</li>
+</ul>
+
+<p>
+Another thing that may have helped.
+<b>Unchecking</b> and <b>rechecking</b> the next settings.
+</p>
+<ul class="org-ul">
+<li>Steam Shader Pre-Caching.</li>
+<li>Allow background processing.</li>
+<li>Enable Steam Play for supported titles.</li>
+<li>Enable Steam Play for all other titles.</li>
+</ul>
+
+<p>
+<span class="underline">note</span>: I have Enable Steam Play for all other titles disabled.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec9e281" class="outline-2">
+<h2 id="orgec9e281">STEAM IN A FLATPAK</h2>
+<div class="outline-text-2" id="text-orgec9e281">
+<p>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2615011323">Using Steam in a Flatpak - Steam Community</a>
+</p>
+
+<p>
+Install the next packages through <a href="../../app/system/20230227-flatpak.html#ID-9b6ccaa4-a3e5-4ee3-867c-c7c1d7254d11">Flatpak</a>.
+<code>$ flatpak install flathub</code>
+Steam - <code>com.valvesoftware.Steam</code>
+Proton - <code>com.valvesoftware.Steam.CompatibilityTool.Proton</code>
+ProtonGE - <code>com.valvesoftware.Steam.CompatibilityTool.Proton-GE</code>
+</p>
+
+<p>
+ProtonUp-Qt - <code>net.davidotek.pupgui2</code> / run <code>net.davidotek.pupgui2</code>
+Protontricks - <code>com.github.Matoking.protontricks</code> / run <code>com.github.Matoking.protontricks</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org97c2032" class="outline-2">
+<h2 id="org97c2032">EXTRA</h2>
+<div class="outline-text-2" id="text-org97c2032">
+</div>
+<div id="outline-container-orgd0acfc3" class="outline-3">
+<h3 id="orgd0acfc3">STEAM CMD</h3>
+<div class="outline-text-3" id="text-orgd0acfc3">
+<p>
+$ steamcmd
+cmd&gt; login
+</p>
+
+<p>
+If you want the steam-tui client you'll have to install it, 
+but since it relies on `steamcmd` being set up, you'll have to set that up, just to generate the right files.
+nix-shell -p steamcmd &#x2013;run steamcmd
+</p>
+
+<p>
+And then log in:
+login &lt;username&gt; &lt;password&gt; &lt;steam 2fa password&gt;
+After that, steam-tui should start fine. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org12123af" class="outline-3">
+<h3 id="org12123af">steam-tui</h3>
+<div class="outline-text-3" id="text-org12123af">
+<p>
+<a href="https://github.com/dmadisetti/steam-tui">https://github.com/dmadisetti/steam-tui</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org975d72b" class="outline-3">
+<h3 id="org975d72b">RUN A STEAM GAME FROM CLI</h3>
+<div class="outline-text-3" id="text-org975d72b">
+<p>
+<a href="https://steamcommunity.com/app/221410/discussions/0/1621724915820500210/">Is there a way to launch games via the terminal? - Steam community</a>
+<a href="https://developer.valvesoftware.com/wiki/Command_Line_Options#Steam">Command-Line Parameters - Steam Developer docs</a>
+</p>
+
+<p>
+find the steam game APPID in <a href="https://steamdb.info">https://steamdb.info</a>
+run it like this:
+<code>$ steam steam://rungameid/&lt;game-id&gt;</code>
+</p>
+
+<p>
+try this:
+<code>$ steam -applaunch &lt;appID&gt; [launch parameters]</code>
+</p>
+
+<p>
+you can then make a alias or a script, so you don't memorize the game id.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1644983" class="outline-3">
+<h3 id="org1644983"><span class="underline">FIX</span>: X Window Error</h3>
+<div class="outline-text-3" id="text-org1644983">
+<p>
+Make sure to:
+</p>
+<ul class="org-ul">
+<li>Have Proton / ProtonGE updated (with protonup in case of ProtonGE)</li>
+<li>Have your system packages updated, specially GPU drivers like nvidia-drivers</li>
+</ul>
+
+
+<p>
+try:
+clogging the log with the same message, start like this
+<code>$ steam &gt; /dev/null 2&gt;&amp;1 &amp;</code>
+get rid of error and keep other steam messages
+<code>$ steam 2&gt;/dev/null</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d7f831" class="outline-2">
+<h2 id="org3d7f831">CONFIGURING GAME ART</h2>
+<div class="outline-text-2" id="text-org3d7f831">
+<p>
+Now you can edit the game's cover art in steam.
+<a href="https://www.steamgriddb.com">SteamGridDB</a>
+</p>
+
+<ol class="org-ol">
+<li>Portrait picture</li>
+<li>Banner picture (aka hero)</li>
+<li>Logo</li>
+<li>Mini landscape header picture</li>
+<li>Icon (optional)</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SSH</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">SSH</h1>
+<p>
+-&gt; [BROKEN LINK: MAIN メイン] -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a>
+</p>
+
+<p>
+<b>"Secure Shell Protocol"</b>
+</p>
+
+<p>
+<a href="https://youtu.be/ORcvSkgdA58">How Secure Shell Works (SSH) - Computerphile (youtube video)</a>
+<a href="https://www.youtube.com/watch?v=Dm4_k25PEow">How SSH Works - Mental Outlaw (2021, youtube video)</a>
+<a href="https://www.youtube.com/watch?v=5JvLV2-ngCI">How SSH Works - Mental Outlaw (2022, youtube video)</a>
+</p>
+
+<p>
+<a href="https://youtu.be/3FKsdbjzBcc">OpenSSH for Absolute Beginners - Veronica Explains / Youtube</a>
+<a href="https://youtu.be/2QXkrLVsRmk">The Beginner's Guide to SSH - DistroTube / Youtube</a>
+</p>
+
+<p>
+<a href="https://youtu.be/hQWRp-FdTpc">SSH Crash Course | With Some DevOps - Traversy Media (youtube video)</a>
+</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=2QXkrLVsRmk">https://www.youtube.com/watch?v=2QXkrLVsRmk</a>
+<a href="https://www.youtube.com/watch?v=9FBhcOnCxM8">https://www.youtube.com/watch?v=9FBhcOnCxM8</a>
+<a href="https://www.youtube.com/watch?v=m4cHMIMc0Cs">https://www.youtube.com/watch?v=m4cHMIMc0Cs</a>
+</p>
+
+<div id="outline-container-org3f25710" class="outline-2">
+<h2 id="org3f25710">what is SSH</h2>
+<div class="outline-text-2" id="text-org3f25710">
+<p>
+What is SSH?: It means Secure SHell, and it's used to connect to remote <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">Linux</a> or [BROKEN LINK: 1c0db150-cde1-453f-8912-cc641fc11a51] servers, although it can also work with <a href="../../system/windows/20230428-windows.html#ID-0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b">Windows</a> servers.
+</p>
+
+<p>
+It is intended to send and receive secure and encrypted information between two machines: the <b>local machine</b> and a <b>remote machine</b>.
+</p>
+
+<p>
+There are two programs that are needed for this to work
+</p>
+<ul class="org-ul">
+<li>The SSH Server (a daemon in the remote machine, always running and listening through an <a href="../../study/networking/20230429-networking.html#ID-69b25fa5-0e1c-495d-ba8c-f88a350feb4c">TCP/IP</a> port for a connection)</li>
+<li>The SSH Client (local machine, if it has the correct credentials, it can connect to the remote machine)</li>
+</ul>
+
+<p>
+You can use <a href="#ID-0c903167-c8a8-4637-adb1-6c2887ff5c64">SSH KEYS</a> to authenticate your session, making it more secure than using passwords everytime.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb6f091d" class="outline-2">
+<h2 id="orgb6f091d">package</h2>
+<div class="outline-text-2" id="text-orgb6f091d">
+<p>
+arch -&gt; openssh
+gentoo -&gt;
+nixos -&gt;
+ubuntu -&gt; openssh-server openssh-client
+</p>
+
+<p>
+termux (android) -&gt; <code>openssh</code>
+</p>
+</div>
+
+<div id="outline-container-org4896728" class="outline-3">
+<h3 id="org4896728">clients for SSH</h3>
+<div class="outline-text-3" id="text-org4896728">
+<p>
+Remmina
+TRAMP -&gt; emacs SSH
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga2fb066" class="outline-2">
+<h2 id="orga2fb066">setup</h2>
+<div class="outline-text-2" id="text-orga2fb066">
+<p>
+Check if the ssh servers is running with
+<code># systemctl status ssh</code>
+</p>
+
+<p>
+If it's not running, <span class="underline">enable</span> it
+<code># systemctl enable --now ssh</code>
+</p>
+
+<p>
+Some systems may not allow ssh to work because of a ufw firewall
+<code># systemctl status ufw</code>
+allow ssh in ufw firewall
+<code># ufw allow ssh</code>
+</p>
+
+<p>
+Remote machine - Get the IP
+<code>$ ip a</code>
+inet 192.168.122.112/24 &lt;- this number is the IP
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4e2eb27" class="outline-2">
+<h2 id="org4e2eb27">flags</h2>
+<div class="outline-text-2" id="text-org4e2eb27">
+<p>
+flags for <code>ssh</code>:
+</p>
+
+<p>
+<code>-o</code> -&gt;
+  <code>IdentitiesOnly=yes/no</code> -&gt;
+<code>-i</code> -&gt;
+</p>
+
+
+<p>
+<span class="underline">example</span>: using <code>-o "IdentitiesOnly"</code> and <code>-i</code> will tell SSH to only use specified key.
+<code>$ ssh -i &lt;private-key-filename&gt;</code> -&gt; Use the default key (<code>id_ed25519.pub</code>, <code>id_rsa.pub</code>) and take that private as an extra.
+<code>$ ssh -o "IdentitiesOnly=yes" -i &lt;private-key-filename&gt;</code> -&gt; Use that private key as the only key.
+</p>
+
+<p>
+flags for <code>ssh-keygen</code>:
+</p>
+
+<p>
+<code>-t</code> -&gt; specify encryption
+<code>-C "email@domain.com"</code> -&gt;
+</p>
+
+<p>
+flags for <code>ssh-copy-id</code>:
+</p>
+
+<p>
+<code>-i</code> / <code>identity_file</code> -&gt; if you're specifying another key from the default (<code>~/.ssh/id_ed25519.pub</code>, <code>~/.ssh/id_rsa.pub</code>)
+<code>-f</code> -&gt; force keys, don't check if they are already installed
+<code>-p</code> -&gt; port
+<code>-n</code> -&gt; dry run, no keys are copied
+<code>-s</code> -&gt; use sftp, uses sftp instead of remote-commands.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org8c309fd" class="outline-2">
+<h2 id="org8c309fd">SECURING A SSH SERVER</h2>
+<div class="outline-text-2" id="text-org8c309fd">
+<p>
+<a href="https://www.tecmint.com/secure-openssh-server">How to Secure and Harden OpenSSH Server - TecMint</a>
+</p>
+</div>
+
+<div id="outline-container-org16d78e0" class="outline-3">
+<h3 id="org16d78e0">CHANGING THE DEFAULT SSH PORT</h3>
+<div class="outline-text-3" id="text-org16d78e0">
+<p>
+<a href="https://linuxize.com/post/how-to-change-ssh-port-in-linux/">https://linuxize.com/post/how-to-change-ssh-port-in-linux/</a>
+</p>
+
+<p>
+This will reduce the risk of automated attacks.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb384e5f" class="outline-2">
+<h2 id="orgb384e5f">REVISE MATERIAL</h2>
+<div class="outline-text-2" id="text-orgb384e5f">
+</div>
+<div id="outline-container-org1ff15d6" class="outline-3">
+<h3 id="org1ff15d6">VERONICA EXPLAINS</h3>
+<div class="outline-text-3" id="text-org1ff15d6">
+<p>
+<b>ALWAYS</b> make sure SSH is installed on both <b>Client</b> and <b>Server</b>
+</p>
+
+<p>
+on <a href="../../system/windows/20230428-windows.html#ID-0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b">Windows</a> -&gt; WSL
+client -&gt; host
+server -&gt; guest (vm)
+</p>
+
+<p>
+you can make sure ssh is installed with:
+<code>$ ssh -V</code>
+</p>
+
+<p>
+If you don't have SSH available, you can use <a href="../../study/networking/20230502-putty.html#ID-139448f4-2bfb-4a5b-ad44-3a84ee146458">PuTTY</a>.
+</p>
+
+<p>
+Make sure the SSH daemon is running with
+<code># systemctl status sshd</code>
+</p>
+
+<p>
+if not <span class="underline">activated</span>:
+<code># systemctl start sshd</code>
+(this will enable on boot.)
+<code># systemctl enable sshd</code>
+</p>
+
+<ul class="org-ul">
+<li>get your <b>IP ADDRESS</b> with</li>
+</ul>
+<p>
+<code>$ ip a</code>
+or a <span class="underline">simpler</span> way
+<code>$ hostname -I</code>
+</p>
+
+<p>
+<b>CONNECTING</b>
+While you can SSH into a server with just the IP, this will use your own <b>username</b> as default, which can lead to problems.
+<span class="underline">example</span>: <code>$ ssh 192.168.122.219</code>
+</p>
+
+<p>
+So it's preferred to do it this way.
+Find your server username with:
+<code>[server]$ whoami</code>
+</p>
+
+<p>
+then do SSH like this:
+<code>[client]$ ssh &lt;server-hostname&gt;@192.168.122.219</code>
+</p>
+
+
+<p>
+<span class="underline">Note</span>: <i>Setting a [STATIC IP] can make IPs easier</i>
+<span class="underline">Note</span>: <i>Windows has native support for SSH connections from 2019</i>.
+</p>
+<ul class="org-ul">
+<li>Search it in Optional Features</li>
+<li>So you can set it at boot</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6819876" class="outline-3">
+<h3 id="org6819876">SSH w GPG keys (revise, no such thing as GPG in SSH)</h3>
+<div class="outline-text-3" id="text-org6819876">
+<p>
+create a key with
+<code>$ ssh-keygen -t ed25519 -C temp@example.com</code>
+</p>
+
+<p>
+-t -&gt; encryption
+-C -&gt; email
+</p>
+
+<p>
+start up the ssh agent
+<code>$ eval "$(ssh-agent -s)"</code>
+</p>
+
+<p>
+create the config file
+<code>$ nvim ~/.ssh/config</code>
+and edit
+</p>
+<pre class="example">
+Host *
+AddKeysToAgent yes
+IdentityFile $HOME/.ssh/id_ed25519
+</pre>
+
+<p>
+&gt;$ ssh-add ~/.ssh/id<sub>ed25519</sub>
+</p>
+
+<p>
+now go to the github ssh page, until it ask you for the key, copy and paste
+&gt;$ cat ~/.ssh/id<sub>ed25519.pub</sub>
+</p>
+
+<p>
+test if it works with
+&gt;$ ssh -T git@github.com
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-ID-0c903167-c8a8-4637-adb1-6c2887ff5c64" class="outline-2">
+<h2 id="ID-0c903167-c8a8-4637-adb1-6c2887ff5c64">SSH KEYS</h2>
+<div class="outline-text-2" id="text-org46f1111">
+<p>
+<a href="https://youtu.be/vpk_1gldOAE">Linux/Mac Tutorial: SSH Key-Based Authentication - How to SSH Without a Password - Corey Schafer (youtube video)</a>
+<a href="https://youtu.be/dPAw4opzN9g">SSH Keys - RobEdwards (youtube video)</a>
+<a href="https://www.hostinger.com/tutorials/ssh/how-to-set-up-ssh-keys">How to Set Up SSH Keys - Hostinger Tutorials</a>
+</p>
+
+<p>
+<span class="underline">note</span>: Adding a passphrase makes it more secure, without it + disabling password authentication, you can log in to a remote machine without any trouble. The trouble comes when someone realizes you have that kind of setup.
+</p>
+
+<p>
+Create a key on your local machine.
+<code>$ ssh-keygen -t ed25519</code>
+add a secure passphrase too
+</p>
+
+<p>
+Send the password through SSH to the remote machine
+<code>$ ssh-copy-id &lt;remote-user&gt;@&lt;remote-ip&gt;</code>
+</p>
+
+<p>
+Log into the machine typing your passphrase
+<code>$ ssh &lt;remote-user&gt;@&lt;remote-ip&gt;</code>
+</p>
+</div>
+
+<div id="outline-container-org301c03a" class="outline-3">
+<h3 id="org301c03a">DISABLING PASSWORD AUTHENTICATION</h3>
+<div class="outline-text-3" id="text-org301c03a">
+<p>
+In the remote machine, edit <code>/etc/ssh/sshd_config</code>, and uncomment the next line:
+</p>
+<pre class="example">
+# To disable tunneled clear text passwords, change to no here!
+#PasswordAuthentication yes
+</pre>
+<p>
+to
+</p>
+<pre class="example">
+# To disable tunneled clear text passwords, change to no here!
+PasswordAuthentication no
+</pre>
+
+<p>
+Reboot the SSH daemon in the remote machine
+<code># systemctl reload sshd</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6ad261d" class="outline-3">
+<h3 id="org6ad261d">PASSWORDLESS AUTHENTICATION</h3>
+<div class="outline-text-3" id="text-org6ad261d">
+<p>
+<a href="https://linuxize.com/post/how-to-setup-passwordless-ssh-login">How to Setup Passwordless SSH Login - Linuxize</a>
+<a href="https://superuser.com/question/772660/howto-force-ssh-to-use-a-specific-private-key">How to force ssh to use a specific private key? - StackExchange</a>
+</p>
+
+<ol class="org-ol">
+<li><p>
+Make a ssh key without a passphrase.
+</p>
+
+<p>
+<code>$ ssh-keygen -t ed25519</code>
+</p>
+
+<p>
+If a custom file is specified
+<span class="underline">example</span>: <code>/home/user/debiankey</code>
+In this directory (<code>/home/user</code>), two files will be created
+</p>
+<ul class="org-ul">
+<li>A private key, <code>debiankey</code></li>
+<li>A public key, <code>debiankey.pub</code></li>
+</ul></li>
+
+<li><p>
+Import this passphrase to the server.
+</p>
+
+<p>
+<code>$ ssh-copy-id &lt;server-user&gt;@&lt;server-ip&gt;</code>
+or, with a custom key (make sure it's the public, stupid)
+<code>$ ssh-copy-id -i ~~/temp/ssh/debiankey.pub &lt;server-user&gt;@&lt;server-ip&gt;</code>
+</p>
+
+<p>
+In case the <code>ssh-copy-id</code> is not available, you can use the following command.
+<code>$ cat ~~/.ssh/id_ed25519 | ssh &lt;server-user&gt;@&lt;server-ip&gt; "mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys"</code>
+</p></li>
+
+<li><p>
+Logging into the server with the SSH keys
+</p>
+
+<p>
+Now, you log in with SSH, it shouldn't ask for a password now.
+<code>$ ssh &lt;server-user&gt;@&lt;server-ip&gt;</code>
+</p>
+
+<p>
+<span class="underline">note</span>: This uses your default keys found in <code>~/.ssh/id_ed25519.pub</code> or <code>~/.ssh/id_rsa.pub</code>.
+To specify a key in another directory or file, use:
+<code>$ ssh -o "IdentitiesOnly=yes" -i ~~/temp/ssh/debiankey &lt;server-user&gt;@&lt;server-ip&gt;</code>
+<span class="underline">remember</span>, it's the <span class="underline">private key</span> in this case.
+</p></li>
+
+<li><p>
+<b>OPTIONAL</b>: Disable SSH Password Authentication on the Server
+</p>
+
+<p>
+<b>CAUTION</b>: Make sure all the steps above work for you, and that you user has <span class="underline">sudo privileges</span>.
+</p>
+
+<p>
+This can add a layer of security to your server, as <span class="underline">passwords will be disabled</span> and the <b>only</b> way to connect will be through the aforementioned SSH keys.
+</p>
+
+<ol class="org-ol">
+<li>Log into the remote server with SSH (root / user with sudo privileges)</li>
+<li><p>
+On the server, edit <code>/etc/ssh/sshd_config</code> as it follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ssh">PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM no
+</pre>
+</div>
+
+<p>
+Once done, restart the service
+<code># systemctl restart ssh</code>
+<b>CentOS</b> or <b>Fedora</b>: <code># systemctl restart sshd</code>
+</p></li>
+
+<li>Done, try loggin in with password and with keys.</li>
+</ol></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae6adbd" class="outline-2">
+<h2 id="orgae6adbd">SSH ON A COMPUTER USING USB TETHERING</h2>
+<div class="outline-text-2" id="text-orgae6adbd">
+<p>
+This is not possible at a glance, because the phone acts as a router in itself, making another network.
+It may be possible doing a <b>iptable modification</b> (as android is linux), it requires phone to be <b>rooted</b>.
+</p>
+
+<p>
+<a href="https://superuser.com/questions/1491625/ssh-to-server-with-access-to-internet-over-usb-tethering">ssh to server with access to the internet over USB-Tethering - StackExchange</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga808780" class="outline-2">
+<h2 id="orga808780">SSH INTO <a href="../../system/android/20230428-android.html#ID-7e52c960-b6f9-4c1d-8b4d-aba03fa899fc">ANDROID</a> [TERMUX]</h2>
+<div class="outline-text-2" id="text-orga808780">
+<p>
+<a href="https://ibnuhx.com/remote-ssh-to-android-termux">Remote SSH into Android Termux - Muhammad Ibnuh</a>
+</p>
+
+<p>
+make sure everything's updated
+<code>[termux]$ pkg upgrade</code>
+</p>
+
+<p>
+install the required packages
+<code>[termux]$ pkg install openssh</code>
+</p>
+
+<p>
+start the ssh daemon
+<code>[termux]$ sshd</code>
+you can kill it with <code>pkill sshd</code>
+</p>
+
+<p>
+<b>password authentication</b>
+you can skip this part if you want. review the configuration by running.
+<code>[termux]$ cat $PREFIX/etc/ssh/sshd_config</code>
+</p>
+
+<p>
+it should look like this.
+</p>
+<pre class="example">
+PrintMotd yes
+PasswordAuthentication yes
+PubkeyAcceptedKeyTypes +ssh-dss
+Sybsystem sftp /data/data/com.termux/files/usr/libexec/sftp-server
+</pre>
+
+<p>
+set a new password.
+<code>[termux]$ passwd</code>
+</p>
+
+<p>
+<b>connecting from a remote machine</b>
+get the ip address. (wlan0)
+<code>[termux]$ ifconfig</code>
+-&gt; <code>inet 192.168.100.92</code>
+</p>
+
+<p>
+now connect from remote to the android device.
+<code>[remote]$ &lt;anything&gt;@IP -p 8022</code>
+you can connect using <span class="underline">any</span> username, termux doesn't care.
+</p>
+
+<p>
+put the password, then you're in
+check your linux ver: <code>[remote]$ uname -a</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga8cf96b" class="outline-2">
+<h2 id="orga8cf96b">SSH INTO <a href="../../system/windows/20230428-windows.html#ID-0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b">WINDOWS</a></h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

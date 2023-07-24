@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GTK / QT</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">GTK / QT</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a>
+</p>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/GTK">GTK - wikipedia page</a>
+</p>
+
+<p>
+<a href="https://github.com/FedoraQt/adwaita-qt">https://github.com/FedoraQt/adwaita-qt</a>
+</p>
+
+<p>
+<a href="https://unix.stackexchange.com/questions/129355/what-is-difference-between-gtk-and-qt-applications">https://unix.stackexchange.com/questions/129355/what-is-difference-between-gtk-and-qt-applications</a>
+<a href="https://askubuntu.com/questions/249150/what-is-kde-gtk-gtk-qt-and-or-gnome">https://askubuntu.com/questions/249150/what-is-kde-gtk-gtk-qt-and-or-gnome</a>
+<a href="https://stackoverflow.com/questions/1801074/what-are-the-differences-between-gtk-and-qt">https://stackoverflow.com/questions/1801074/what-are-the-differences-between-gtk-and-qt</a>
+<a href="https://www.makeuseof.com/tag/difference-gtk-qt/">https://www.makeuseof.com/tag/difference-gtk-qt/</a>
+<a href="https://info-4geek.com/which-one-is-better-gtk-or-qt/">https://info-4geek.com/which-one-is-better-gtk-or-qt/</a>
+<a href="https://discourse.nixos.org/t/how-do-you-theme-your-desktop/2147">https://discourse.nixos.org/t/how-do-you-theme-your-desktop/2147</a>
+</p>
+
+<div id="outline-container-org39d42a3" class="outline-2">
+<h2 id="org39d42a3">NixOS</h2>
+<div class="outline-text-2" id="text-org39d42a3">
+<p>
+<a href="https://unix.stackexchange.com/questions/632879/how-to-set-a-system-wide-gtk-theme-in-nixos">https://unix.stackexchange.com/questions/632879/how-to-set-a-system-wide-gtk-theme-in-nixos</a>
+</p>
+
+<p>
+<a href="https://discourse.nixos.org/t/changing-gtk-theme/3048">https://discourse.nixos.org/t/changing-gtk-theme/3048</a>
+</p>
+
+<p>
+<a href="https://www.reddit.com/r/NixOS/comments/nryv23/can_configurationnix_manage_gtk_themes/">https://www.reddit.com/r/NixOS/comments/nryv23/can_configurationnix_manage_gtk_themes/</a>
+</p>
+
+<p>
+fix is installing a theme through <code>nix-env</code> (?)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge3f3828" class="outline-2">
+<h2 id="orge3f3828">lxappearance</h2>
+<div class="outline-text-2" id="text-orge3f3828">
+<p>
+lxappearance
+lxappearance-gtk
+</p>
+</div>
+
+<div id="outline-container-orgb0a3f19" class="outline-3">
+<h3 id="orgb0a3f19">FIX:</h3>
+<div class="outline-text-3" id="text-orgb0a3f19">
+<p>
+to run in <a href="../../app/wayland/20230227-wayland.html#ID-6858a013-6326-4b0a-943e-2272298a3fe2">Wayland</a>, use:
+<code>$ GDK_BACKEND=x11 lxappearance</code>
+</p>
+
+<p>
+you may have to symlink <code>~/.nix-profile/share/themes</code> to <code>~/.themes</code> to have them shown in lxappearance but they won't be applied anyway.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

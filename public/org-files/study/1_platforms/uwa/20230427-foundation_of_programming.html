@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Foundations of Programming</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Foundations of Programming</h1>
+<p>
+-&gt; <a href="../../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../../other/main/20230428-study.html#ID-c9156aa2-0d9f-45dd-bf1a-e114e74c13b5">STUDY 勉強</a> -&gt; <a href="20230427-uwa.html#ID-73d58781-2164-4848-ad3d-df11363ced1f">UWA</a>
+</p>
+
+<p>
+<span class="underline">See also</span>: Infomatics, ISO Standarts for maths.
+</p>
+
+<div id="outline-container-org8dab01f" class="outline-2">
+<h2 id="org8dab01f">RESOURCES</h2>
+<div class="outline-text-2" id="text-org8dab01f">
+<ul class="org-ul">
+<li>learn more RISC-V ASSEMBLY for Programming Fundamentals class</li>
+</ul>
+
+<p>
+<a href="https://www.gbmb.org/">https://www.gbmb.org/</a>
+<a href="https://www.onlinegdb.com/">https://www.onlinegdb.com/</a>
+godbolt.org -&gt; dissasemble code and show line by line in assembly
+[BROKEN LINK: cplusplus.com]
+cppreference.com
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0f6d30c" class="outline-2">
+<h2 id="org0f6d30c">2023-04-27</h2>
+<div class="outline-text-2" id="text-org0f6d30c">
+<p>
+<i>electronic computer</i>: electronic machine which did the job title computer.
+<span class="underline">what is it</span>: a machine that perfoms computations<sub>1</sub>.
+</p>
+
+<p>
+what is a computable function
+</p>
+<ul class="org-ul">
+<li>receive some input information</li>
+<li>halt</li>
+<li>give some output information</li>
+</ul>
+
+<p>
+<span class="underline">see for more detail</span>:
+</p>
+<ul class="org-ul">
+<li><b>the Halting Problem</b></li>
+</ul>
+
+<p>
+Maths will save us with <span class="underline">The Lambda Calculus</span>
+<b>Syntax</b>: ~/\ := x | (lambdax.M) | (M N)
+x -&gt; is a variable
+M N -&gt; lambda expressions
+</p>
+
+<p>
+<b>Operations</b>:
+<code>(lambdax.M[x]) -&gt; (lambday.M[y])</code> conversion (renaming)
+<code>((lambdax.M) E) -&gt; (M[x:=E])</code> reduction (application)
+</p>
+
+<p>
+<span class="underline">example</span>: <code>(((lambdax.(lambday.(x y)) M) N) -&gt; (M N)</code>
+</p>
+
+<hr />
+
+<p>
+so finally, what is a <span class="underline">COMPUTER</span>?
+</p>
+
+<p>
+"<i>A machine that can reduce any lambda calculus expression</i>"
+The construction of such machine is not immediately obvious.
+(understatement of the century)
+<a href="https://lambdacalc.io/">https://lambdacalc.io/</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(+ 3 2)
+</pre>
+</div>
+
+<p>
+getting 0 in lambda calculations
+<code>$ succ 0</code>
+</p>
+
+<hr />
+
+<p>
+The Church-Turing Thesis
+</p>
+
+<ul class="org-ul">
+<li>Alonzo Church defined lambda calculus</li>
+<li>Alan Turing defined a theoretical machine</li>
+<li>They went to prove in 1938, That a Turing machine can perform any computation that lambda calculus can, and vice versa.</li>
+</ul>
+
+<p>
+<b>Turing Complete</b>: a turing complete machine is a <span class="underline">turing machine</span>
+<b>Turing Machine</b>:
+</p>
+<ul class="org-ul">
+<li>A data tape with two symbols</li>
+<li>A read-write head that can move up / down</li>
+<li>A state transition table</li>
+</ul>
+<p>
+<a href="https://turingmachine.io/">https://turingmachine.io/</a>
+</p>
+
+<p>
+<span class="underline">Side Note</span>: Babbage and Lovelace
+Lovelace is Lord Byron daughter
+</p>
+
+<hr />
+
+<p>
+<span class="underline">How to Build a Universal Turing Machine?</span>
+</p>
+
+<ol class="org-ol">
+<li>Exists in real life</li>
+<li>More values than just 0 and 1</li>
+<li>Ability to jump anywhere on the tape instantly</li>
+<li>More operations (like arithmetic)</li>
+
+<li>Boolean Logic
+only True (1) and False (0)
+then we make -&gt; Transistors
+Logic Gates</li>
+
+<li><p>
+Binary and Friends
+Decimal numbers are just sums of powers of 10:
+384 = 3*10<sub>2</sub> + 8*10<sub>1</sub> + 4*10<sub>0</sub>
+Power of 2 (binary):
+0b110 = 1*2<sub>2</sub> + 1*2<sub>1</sub> + 0*2<sub>0</sub> = 4 + 2 + 0 = 6
+</p>
+
+<p>
+bit = binary digit
+4-bit = nibble
+8 bits = can represent 256 values, called a <i>byte</i>
+</p></li>
+
+<li>Random Access Memory
+<ul class="org-ul">
+<li>SR NOR latch
+CPU have registers, a little bit of ram which plays with the computer ram</li>
+</ul></li>
+
+<li>Binary Arithmetic
+we can use logic gates to build a binary adder</li>
+</ol>
+
+<p>
+Von Neumann Architecture
+Von Neumann machine, galaxy pods
+</p>
+
+<p>
+Imperative: we are telling the program what to do, step by step
+</p>
+
+<p>
+RISC-V Instructions
+RISC-V reference cards
+RISC-V decoder
+</p>
+
+<hr />
+
+<p>
+Fibonacci in RISC-V
+RISC-V architecture simulator: <a href="https://venus.kvakil.me">https://venus.kvakil.me</a>
+</p>
+
+<p>
+Text
+ASCII covers 128 english characters and friends
+Unicode extends this to 1,112,064 (with 2,823 emoji as of June 2018)
+</p>
+
+<p>
+Colour
+</p>
+
+<hr />
+
+<p>
+"<i>Computers are very dumb, very fast, and can do anything.</i>"
+</p>
+
+<p>
+<span class="underline">read more</span>:
+</p>
+<ul class="org-ul">
+<li>The Church-Turing Thesis</li>
+<li>The Halting Problem</li>
+</ul>
+
+<p>
+computation<sub>1</sub>: receives some input, gives a corresponding output. it gives information<sub>2</sub>, it is just a mathemathical function<sub>3</sub>.
+</p>
+
+<p>
+information<sub>2</sub>: pretty abstract and philosophical, description of a thing.
+the smallet amount of information we can give abt something.
+</p>
+
+<p>
+function<sub>3</sub>: mapping from <span class="underline">input</span> to <span class="underline">output</span>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1518ff1" class="outline-2">
+<h2 id="org1518ff1">2023-05-04</h2>
+<div class="outline-text-2" id="text-org1518ff1">
+</div>
+<div id="outline-container-orgc3e0919" class="outline-3">
+<h3 id="orgc3e0919">"<i>Veni Vidi Vi-C</i>"</h3>
+<div class="outline-text-3" id="text-orgc3e0919">
+<p>
+Computer just performs <b>Simple operations</b> really fast
+</p>
+<ul class="org-ul">
+<li>Unique numeric identifier (opcode)</li>
+</ul>
+<p>
+A <i>program</i> is a sequences of opcode stored in RAM
+</p>
+
+<p>
+<span class="underline">Assembly</span> writes a program that convers from mnemonics (SUB, substract)
+to opcodes (like <b>0x28</b>)
+</p>
+<ul class="org-ul">
+<li>Lowest level "programming language"</li>
+</ul>
+
+<p>
+Humans are <span class="underline">bad</span> at writing Assembly, that's why we create other programming languages.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfb428dd" class="outline-3">
+<h3 id="orgfb428dd">Programming languages need strict syntax</h3>
+<div class="outline-text-3" id="text-orgfb428dd">
+<p>
+You can't change the syntax, it will just won't work
+<span class="underline">example</span>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="font-weight: bold;">SELECT</span> * <span style="font-weight: bold;">FROM</span> users <span style="font-weight: bold;">WHERE</span> clue &gt; 0;
+</pre>
+</div>
+<p>
+can not be written as
+</p>
+<div class="org-src-container">
+<pre class="src src-sql">CHOOSE * <span style="font-weight: bold;">FROM</span> users <span style="font-weight: bold;">WHERE</span> clue &gt; 0;
+</pre>
+</div>
+
+<p>
+<b>CHOOSE</b> does not exist in <b>SQL</b> vocabulary.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org185d732" class="outline-3">
+<h3 id="org185d732">Compilation</h3>
+<div class="outline-text-3" id="text-org185d732">
+<p>
+We can write a program (<i>by hand</i>) to convert to machine code
+This is called a <b>compiler</b>.
+<span class="underline">example</span>:
+</p>
+<ul class="org-ul">
+<li>gcc</li>
+<li>clang</li>
+<li>llvm</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1fba619" class="outline-3">
+<h3 id="org1fba619">Programming Paradigms</h3>
+<div class="outline-text-3" id="text-org1fba619">
+<p>
+Sets of rules that programs must follow.
+So far we only looked at <i>Imperative Programming</i>, there are others that change the rules, we'll look at them later.
+</p>
+
+<ul class="org-ul">
+<li>All python are dictionaries under the hood</li>
+</ul>
+</div>
+
+<div id="outline-container-org8a625e1" class="outline-4">
+<h4 id="org8a625e1">Object-Based Programming (NOT Object-Oriented)</h4>
+</div>
+<div id="outline-container-orgda874b1" class="outline-4">
+<h4 id="orgda874b1">Procedural Programming</h4>
+<div class="outline-text-4" id="text-orgda874b1">
+<ul class="org-ul">
+<li>Restricted ver. of Imperative Programming.</li>
+<li>Humans are bad at comprehending long programs.</li>
+<li>Breaks programs into <i>Procedures</i> (aka <i>functions</i>)
+that a human can understand.</li>
+<li>Each procedure <i>should</i> be independent from others.</li>
+<li>A <i>procedure</i> can <b>call</b> another <i>procedure</i>, which will run then <b>return</b> to the former <i>procedure</i>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf23eb6" class="outline-3">
+<h3 id="orgdf23eb6">C</h3>
+<div class="outline-text-3" id="text-orgdf23eb6">
+<p>
+C is a <b>procedural</b>, <b>object-based</b> programming language.
+</p>
+<ul class="org-ul">
+<li>Windows, Linux and a lot of things were written in C</li>
+<li>Many other languages "borrow" C-style syntax</li>
+<li>C is still very low-level and gives you an idea of what is going at a <b>machine code</b> level.</li>
+</ul>
+
+<p>
+<span class="underline">tip</span>: if using continue, use it right at the top.
+</p>
+</div>
+
+<div id="outline-container-orgc407025" class="outline-4">
+<h4 id="orgc407025">C Syntax</h4>
+<div class="outline-text-4" id="text-orgc407025">
+<p>
+White is <span class="underline">insignificant</span> in C, this means that
+You can format the code in any want.
+</p>
+
+<p>
+<code>//</code> -&gt; this is a comment since 99'
+<code>/*</code> -&gt; beggining of comment
+<code>*/</code> -&gt; end of comment
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgbc98f79" class="outline-4">
+<h4 id="orgbc98f79">Statements</h4>
+<div class="outline-text-4" id="text-orgbc98f79">
+<p>
+C is a imperative language, we have to write a <b>oredered</b> list of instructions:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">statement1;
+statement2;
+</pre>
+</div>
+
+<p>
+Statement can be
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold; text-decoration: underline;">type</span> <span style="font-weight: bold; font-style: italic;">name</span>;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">age</span>;
+<span style="font-weight: bold; text-decoration: underline;">char</span> <span style="font-weight: bold; font-style: italic;">initial</span>;
+<span style="font-weight: bold; text-decoration: underline;">float</span> <span style="font-weight: bold; font-style: italic;">X</span>, <span style="font-weight: bold; font-style: italic;">Y</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org731125e" class="outline-4">
+<h4 id="org731125e">Variable Manipulation</h4>
+<div class="outline-text-4" id="text-org731125e">
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">age</span>;      <span style="font-weight: bold; font-style: italic;">// </span>
+age = 21;     <span style="font-weight: bold; font-style: italic;">//</span>
+age = age+1;  <span style="font-weight: bold; font-style: italic;">//</span>
+</pre>
+</div>
+
+<p>
+Basic arithmetic: <code>age = age-1; age = 4*age; age = age/2</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org86eb771" class="outline-4">
+<h4 id="org86eb771">C Memory: The Stack</h4>
+<div class="outline-text-4" id="text-org86eb771">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Address</td>
+<td class="org-left">Data</td>
+</tr>
+
+<tr>
+<td class="org-left">Esp</td>
+<td class="org-left">X</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgd989c69" class="outline-4">
+<h4 id="orgd989c69">C Memory: The Heap</h4>
+<div class="outline-text-4" id="text-orgd989c69">
+<p>
+If we want a <b>varying amount of memory</b>, we use the rest of memory. called <b>The Heap</b>.
+<i>Asking the operating system nicely for a block of memory.</i>
+</p>
+
+<p>
+You will get a <code>SEGFAULT</code> if you try to access memory more than the limit.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0b7506a" class="outline-4">
+<h4 id="org0b7506a">Function Declaration</h4>
+<div class="outline-text-4" id="text-org0b7506a">
+<p>
+&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org89f59c7" class="outline-4">
+<h4 id="org89f59c7">Function Calls</h4>
+<div class="outline-text-4" id="text-org89f59c7">
+<p>
+One function can run the code inside another function by <b>calling</b> it.
+</p>
+
+<p>
+<span class="underline">Example</span>:
+</p>
+<div class="org-src-container">
+<pre class="src src-c">...
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf2002d7" class="outline-4">
+<h4 id="orgf2002d7">Function Calls on the Stack</h4>
+<div class="outline-text-4" id="text-orgf2002d7">
+<p>
+When a function is called, its arguments are pushed to the <b>stack</b>
+</p>
+
+<ul class="org-ul">
+<li>function pushes a copy of EBP and moves the EBP to ESP
+&#x2026;</li>
+</ul>
+
+<p>
+[BROKEN LINK: manybutfinite.com/post/journey-to-the-stack/]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1cf7933" class="outline-4">
+<h4 id="org1cf7933">Arrays</h4>
+<div class="outline-text-4" id="text-org1cf7933">
+<p>
+<span class="underline">What if we need 200 variables?</span>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold; text-decoration: underline;">char</span> <span style="font-weight: bold; font-style: italic;">name</span>[200] = {<span style="font-style: italic;">'G'</span>, <span style="font-style: italic;">'o'</span>, <span style="font-style: italic;">'z'</span>};
+<span style="font-weight: bold; text-decoration: underline;">name</span>[3] = name[2];
+</pre>
+</div>
+
+<p>
+name[i]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org33c8174" class="outline-4">
+<h4 id="org33c8174">Pointers</h4>
+<div class="outline-text-4" id="text-org33c8174">
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">p</span>, <span style="font-weight: bold; font-style: italic;">x</span>, <span style="font-weight: bold; font-style: italic;">y</span>;
+p = &amp;x;
+x = 4;
+y = *p;
+</pre>
+</div>
+
+<p>
+type is <code>int</code>, but we are annotating the variable with <code>*p</code> which says it is a pointer. So it allocates another variable.
+<code>x</code> and <code>y</code> are int's
+</p>
+
+<p>
+<code>p</code> is the pointer
+<code>*p</code> is an <code>int</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2b22bb1" class="outline-4">
+<h4 id="org2b22bb1">Memory Allocation (on the Heap)</h4>
+<div class="outline-text-4" id="text-org2b22bb1">
+<p>
+When you're done, give the memory back to the OS
+<code>free(px); free(py);</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org652da2f" class="outline-4">
+<h4 id="org652da2f">Strings</h4>
+<div class="outline-text-4" id="text-org652da2f">
+<p>
+Strings are sequences of characters
+</p>
+<ul class="org-ul">
+<li>The end of the string is marked by a <b>null</b> character
+<code>'\0' = 0</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org21a445e" class="outline-4">
+<h4 id="org21a445e">The <code>main()</code> function</h4>
+<div class="outline-text-4" id="text-org21a445e">
+<p>
+Every program must start somewhere
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold; text-decoration: underline;">int</span>
+</pre>
+</div>
+
+<p>
+<code>0</code> -&gt; runs OK
+<code>1</code> -&gt; error
+</p>
+
+<ul class="org-ul">
+<li>Pointer to pointers of characters</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org70c365e" class="outline-3">
+<h3 id="org70c365e">EXERCISES</h3>
+</div>
+
+<div id="outline-container-orgb18faac" class="outline-3">
+<h3 id="orgb18faac">EXERCISE: fibonacci</h3>
+<div class="outline-text-3" id="text-orgb18faac">
+<p>
+[BROKEN LINK: godbold.org]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf88e8d0" class="outline-3">
+<h3 id="orgf88e8d0"><span class="underline">Note</span>: Reverse polish notation</h3>
+<div class="outline-text-3" id="text-orgf88e8d0">
+<p>
+used in FORTH (lang)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org93b6610" class="outline-2">
+<h2 id="org93b6610">2023-05-11</h2>
+<div class="outline-text-2" id="text-org93b6610">
+</div>
+<div id="outline-container-orgaecd7e3" class="outline-3">
+<h3 id="orgaecd7e3">"Hello World!"</h3>
+<div class="outline-text-3" id="text-orgaecd7e3">
+<ul class="org-ul">
+<li><code>prinf()</code> (print formatted) has been declared for us in <code>stdio.h</code> (standard io)</li>
+<li><p>
+'<code>\n</code>' is the newline character
+</p>
+
+<p>
+Most basic use case it using a string to print.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
+
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  printf(<span style="font-style: italic;">"Hello, World!\n"</span>);
+  <span style="font-weight: bold;">return</span> 0;
+}
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3d753dd" class="outline-3">
+<h3 id="org3d753dd"><span class="underline">exercise</span>: variables</h3>
+<div class="outline-text-3" id="text-org3d753dd">
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span> = 8, <span style="font-weight: bold; font-style: italic;">b</span> = 4;
+  b = a * b;
+  print(<span style="font-style: italic;">"a = %d, b = %d\n"</span>, a, b);
+};
+</pre>
+</div>
+
+<p>
+<code>%d</code> is a decimal integer.
+<code>%s</code> is a string, etc.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge17f460" class="outline-3">
+<h3 id="orge17f460">flow control</h3>
+<div class="outline-text-3" id="text-orge17f460">
+<p>
+<b>assembly</b> -&gt; jumps
+<b>c</b> -&gt; flow control
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgeb2daaf" class="outline-3">
+<h3 id="orgeb2daaf">If statements</h3>
+<div class="outline-text-3" id="text-orgeb2daaf">
+<p>
+<code>if (condition) statement1;</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold;">if</span> (con
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaad37eb" class="outline-3">
+<h3 id="orgaad37eb">else statement: do otherwise</h3>
+<div class="outline-text-3" id="text-orgaad37eb">
+<p>
+<code>if (condition) statement1;</code>
+<code>else statement2;</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold;">if</span> (condition1) statement1;
+<span style="font-weight: bold;">elseif</span> (condition2) statement2;
+<span style="font-weight: bold;">else</span> statement3;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc5d411a" class="outline-3">
+<h3 id="orgc5d411a">if-else</h3>
+<div class="outline-text-3" id="text-orgc5d411a">
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold;">if</span> (x &lt; 0) {
+  y = -x;
+  x = 0;
+ } <span style="font-weight: bold;">else</span> <span style="font-weight: bold;">if</span> (x &gt; 0) {
+  y = x;
+  x = 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc7793f3" class="outline-3">
+<h3 id="orgc7793f3">conditional logic</h3>
+<div class="outline-text-3" id="text-orgc7793f3">
+<p>
+more than a basic condition in C
+</p>
+
+<p>
+<code>||</code> -&gt; Or
+<code>if (x || y)</code>
+</p>
+
+<p>
+<code>&amp;&amp;</code> -&gt; And
+<code>if (x &amp;&amp; y)</code>
+</p>
+
+<p>
+<code>!</code> -&gt; Not
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org5b7ce36" class="outline-3">
+<h3 id="org5b7ce36">loops</h3>
+<div class="outline-text-3" id="text-org5b7ce36">
+<p>
+C has three kinds of loops: <code>while</code>, <code>do</code>, <code>for</code>
+</p>
+
+<p>
+<span class="underline">while</span>: it keeps repeating
+</p>
+
+<p>
+<span class="underline">do-while</span>: loos at least once
+</p>
+
+<p>
+<span class="underline">for</span>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">init</span>
+<span style="font-weight: bold;">while</span> (i &lt; 6) { <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">test</span>
+  do_something();
+  ++i; <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">update (increment i)</span>
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3888251" class="outline-3">
+<h3 id="org3888251">functions</h3>
+<div class="outline-text-3" id="text-org3888251">
+<div class="org-src-container">
+<pre class="src src-c"><span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">subtract</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">b</span>) {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">c</span> = a - b;
+  <span style="font-weight: bold;">return</span> c; <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">end function</span>
+} <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">braces form a scope</span>
+</pre>
+</div>
+
+<hr />
+
+<p>
+different compiles will produce different assembly
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

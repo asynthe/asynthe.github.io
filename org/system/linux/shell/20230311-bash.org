@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       5f4c11c6-091c-4e9a-9704-7f9fb37b95bc
+:ROAM_ALIASES: BASH
+:END:
+#+title: Bash
+
+-> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+
+[[https:en.wikipedia.org/wiki/Bash_(Unix_shell)][wikipedia page]]
+[[https://www.howtogeek.com/726559/what-is-the-bash-shell-and-why-is-it-so-important-to-linux/][What Is the Bash Shell, and Why Is It So Important to Linux? - How-To Geek]]
+
+*Bourne Again SHell*
+
+Bash is the shell that is implemented by default on most linux distributions, that's why i'm going to try to learn it and implement it with [[id:2cd50d56-b3fa-4e6b-a005-d0769ae58995][ZSH]].
+
+* SHEBANG
+
+The most portable way to use it in a script is like this:
+#+begin_src bash
+#!/usr/bin/env bash
+#+end_src

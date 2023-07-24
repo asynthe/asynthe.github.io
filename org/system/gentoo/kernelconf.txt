@@ -1,0 +1,31 @@
+let's invoke the kernel configuration menu
+```
+# cd /usr/src/linux
+# make menuconfig
+```
+
+add this necessary configuration to the kernel
+```
+EFI
+---> Processor type and features
+         [*] EFI runtime service support
+
+ZLIB KERNEL SUPPORT
+General Architecture Dependent Options --->
+  GCC plug ins  --->  
+    [ ]   Randomize layout of sensitive kernel structures 
+Cryptographic API --->
+  <*> Deflate compression algorithm
+Security options  ---> 
+  [ ] Harden common str/mem functions against buffer overflows
+
+SYSTEMD (delete?)
+Gentoo Linux --->
+  [*] Gentoo Linux support
+  [*]   Linux dynamic and persistent device naming (userspace devfs) support
+  [*]   Select options required by Portage features
+        Support for init systems, system and service managers  --->
+          [*] systemd
+          [*] openrc
+
+```

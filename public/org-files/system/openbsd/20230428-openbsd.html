@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OpenBSD</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">OpenBSD</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-bsd.html#ID-5b8d8a26-f3dd-4e50-b144-9eff85eadf96">BSD</a>
+</p>
+
+<p>
+<a href="https://www.openbsd.org/index.htm">main page</a>
+<a href="http://firmware.openbsd.org/firmware/">OpenBSD Firmware</a>
+<a href="https://cdn.openbsd.org/pub/OpenBSD/snapshots/packages/amd64/">OpenBSD Packages</a>
+<a href="https://fuguita.org/">FugiUta</a> (OpenBSD live USB)
+</p>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/OpenBSD">wikipedia page</a>
+</p>
+
+<p>
+<a href="https://www.cyberciti.biz/faq/openbsd-connect-serial-console">OpenBSD: Setup a Serial Console - nixCraft</a>
+</p>
+
+<div id="outline-container-orga9ed9bf" class="outline-2">
+<h2 id="orga9ed9bf">usage</h2>
+<div class="outline-text-2" id="text-orga9ed9bf">
+</div>
+<div id="outline-container-orgfa43879" class="outline-3">
+<h3 id="orgfa43879">manage audio with sndioctl</h3>
+<div class="outline-text-3" id="text-orgfa43879">
+<p>
+First, enable the audio server
+<code># sndioctl server.device=1</code>
+</p>
+
+<p>
+Then, you can change the sound volume level in a absolute way
+<code># sndioctl output.level=0.8 # set it absolutely</code>
+</p>
+
+<p>
+Or in a relative way
+<code># sndioctl output.level=-0.12 # decrease it relatively</code>
+<code># sndioctl output.level=+0.04 # increase it relatively</code>
+</p>
+
+<p>
+Remember to use aliases or keybindings in KCSH[OpenBSD default shell]!
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org186e186" class="outline-2">
+<h2 id="org186e186">install - 7.3</h2>
+<div class="outline-text-2" id="text-org186e186">
+</div>
+<div id="outline-container-org1d8e7c1" class="outline-3">
+<h3 id="org1d8e7c1">overview</h3>
+<div class="outline-text-3" id="text-org1d8e7c1">
+<p>
+Note the drive you're going to install bsd to (maybe sd1) and the usb drive you're installing from, as this has important sets that will be used in the installation. (sd3)
+</p>
+
+<p>
+The installation and after setup:
+</p>
+<ol class="org-ol">
+<li>Creating the USB</li>
+<li>Installing the system</li>
+<li>Connecting to the Internet</li>
+<li>Installing the non-free firmware</li>
+<li>Installing the packages</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org3e49bd5" class="outline-3">
+<h3 id="org3e49bd5">creating the usb</h3>
+<div class="outline-text-3" id="text-org3e49bd5">
+<p>
+<span class="underline">Note</span>: <a href="../../app/gui/20230317-ventoy.html#ID-3bc59813-349b-4aba-aee4-8fce96b84b32">Ventoy</a> has not worked in this case for me (in the datasets part), so i would recommend using an entire USB device.
+</p>
+
+<p>
+first, get the <code>.img</code> image of the official page (amd64)
+then copy the <code>.img</code> into a usb drive like this:
+</p>
+
+<p>
+<code># dd if="install73.img" of="/dev/&lt;disk&gt;" status="progress" conv="fsync"</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9c4aa67" class="outline-3">
+<h3 id="org9c4aa67">system install</h3>
+<div class="outline-text-3" id="text-org9c4aa67">
+<p>
+For this install, I'm using two devices.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">device</th>
+<th scope="col" class="org-left">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">sd0</td>
+<td class="org-left">hdd</td>
+</tr>
+
+<tr>
+<td class="org-left">sd1</td>
+<td class="org-left">install usb</td>
+</tr>
+</tbody>
+</table>
+<p>
+You can check their names when selecting them by typing "<b>?".</b>
+</p>
+
+<p>
+<b>OPENBSD INSTALL</b>
+</p>
+<hr />
+
+<p>
+<code>Welcome to the OpenBSD/amd64 7.3 installation program.</code>
+<code>(I)nstall, (U)pgrade, (A)utoinstall or (S)hell?</code>
+-&gt; <b>i</b>
+</p>
+
+<p>
+<code>Choose your keyboard layout ('?' or 'L' for list) [default]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>System hostname? (short form, e.g. 'foo')</code>
+-&gt; <b>Your preferred hostname</b>
+</p>
+
+<p>
+<code>Available network interfaces are: re0 re1 vlan0</code>
+<code>Network interface to configure (name, lladdr, '?', or 'done') [re0]</code>
+-&gt; <b>done</b>
+</p>
+
+<p>
+<code>DNS domain name? (e.g. 'example.com') [my.domain]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>DNS nameservers? (IP address list or 'none') [none]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>Password for root account? (will not echo)</code>
+-&gt; <b>Your preffered password for root</b>
+<code>Password for root account? (again)</code>
+-&gt; <b>Again</b>
+</p>
+
+<p>
+<code>Start sshd(8) by default? [yes]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>Do you want the X Windor System to be started by xenodm(1)? [no]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>Change the default console to com0? [no]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>Setup a user? (enter a lower-case loginname, or 'no') [no]</code>
+-&gt; <b>Username</b>
+<code>Full name for user &lt;username&gt;? [username]</code>
+-&gt; <b>Your name</b>
+<code>Password for user &lt;username&gt;? (will not echo)</code>
+-&gt; <b>User password</b>
+<code>Password for user &lt;username&gt;? (again)</code>
+-&gt; <b>Again</b>
+</p>
+
+<p>
+<code>Allow root ssh login? (yes, no, prohibit-password) [no]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>Encrypt the root disk? (disk, 'no' or '?' for details) [no]</code>
+-&gt; <b>Enter</b> or <b>?</b> then <b>choose disk</b>
+</p>
+
+<p>
+<code>Which disk is the root disk? ('?' for details) [disk]</code>
+-&gt; <b>?</b> then <b>choose disk</b>
+<span class="underline">note</span>: remember your root and usb
+</p>
+
+<p>
+<code>Use (W)hole disk MBR, whole disk (G)PT or (E)dit? [whole]</code>
+-&gt; <b>g</b>
+</p>
+
+<p>
+<code>An EFI/GPT disk may not boot. Proceed? [no]</code>
+-&gt; <b>yes</b>
+</p>
+
+<p>
+<code>Use (A)uto layout, (E)dit auto layout, or create (C)ustom layout? [a]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>Which disk do you wish to initialize? (or 'done') [done]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>Let's install the sets!</code>
+<code>Location of sets? (cd0 disk http nfs or 'done') [cd0]</code>
+-&gt; <b>disk</b>
+</p>
+
+<p>
+<code>Is the disk partition already mounted? [yes]</code>
+-&gt; <b>no</b>
+</p>
+
+<p>
+<code>Which disk contains the install media? (or 'done') [sd1]</code>
+-&gt; <b>sd1</b> (usb disk for me)
+</p>
+
+<p>
+<code>Available sd1 partitions are: a i.</code>
+<code>Which sd1 partition has the install sets? (or 'done') [a]</code>
+-&gt; <b>a</b> (the one that says 4.2BSD)
+</p>
+
+<p>
+<code>Pathname to the sets? (or 'done') [7.3/amd64]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>Set name(s)? (or 'abort' or 'done') [done]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>Directory does not contain SHA256.sig. Continue without verification? [no]</code>
+-&gt; <b>yes</b>
+</p>
+
+<p>
+<code>[OPENBSD INSTALLATION]</code>
+</p>
+
+<p>
+<code>Location of sets? (cd0 disk http nfs or 'done') [done]</code>
+-&gt; <b>Enter</b>
+</p>
+
+<p>
+<code>What timezone are you in? ('?' for list) [Canada/Mountain]</code>
+-&gt; <b>Timezone</b> (Australia/Perth for me)
+</p>
+
+<p>
+<code>CONGRATULATIONS! Your OpenBSD install has been successfully completed!</code>
+<code>When you login to your new system the first time, please read your mail using the 'mail' command.</code>
+<code>Exit to (S)hell, (H)alt or (R)eboot? [reboot]</code>
+-&gt; <b>Enter</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org199e470" class="outline-3">
+<h3 id="org199e470">encrypting with bioctl</h3>
+<div class="outline-text-3" id="text-org199e470">
+<p>
+<span class="underline">Note</span>: this hasn't been working for me.
+</p>
+
+<p>
+bioctl -c C -l /dev/sd1a softraid0
+bioctl -c C -l sd1a softraid0
+</p>
+
+<p>
+dd if=/dev/zero of=/dev/rsd4c bs=1m count=1
+</p>
+
+<p>
+before -&gt; installboot /dev/rsd1i
+after -&gt; installboot /dev/rsd1i
+</p>
+
+<p>
+fdisk -iy -g -b 960 sd1
+dd if=/dev/zero of=/dev/sd1c bs=1m count=10
+disklabel -E sd1
+</p>
+<ul class="org-ul">
+<li>p g</li>
+<li>a i</li>
+</ul>
+
+<p>
+missing sd1i -&gt; ESP Boot
+</p>
+
+<p>
+[deleted] reddit suggestion:
+wipe hard drive -&gt; auto partitioning -&gt; delete all partitions except i:
+</p>
+
+<p>
+secured2k reddit suggestion:
+-&gt; Disk Setup -&gt; (E)dit -&gt; reinit(?) -&gt; write
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4d1ebb1" class="outline-2">
+<h2 id="org4d1ebb1">after install</h2>
+<div class="outline-text-2" id="text-org4d1ebb1">
+</div>
+<div id="outline-container-org00bdf3e" class="outline-3">
+<h3 id="org00bdf3e">usb tethering</h3>
+<div class="outline-text-3" id="text-org00bdf3e">
+<p>
+connect your phone with usb tethering enabled then
+<code># dhclient urndis0</code>
+and it should work
+</p>
+
+<p>
+test with ping
+<code>$ ping 8.8.8.8</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org67237cc" class="outline-3">
+<h3 id="org67237cc">firmware</h3>
+<div class="outline-text-3" id="text-org67237cc">
+<p>
+<b>DIRECTLY FROM URL</b>
+</p>
+
+<p>
+installing the firmware can be done in two ways
+</p>
+
+<p>
+write the link to the firmware packages you need
+<span class="underline">example</span>: asd
+</p>
+
+<p>
+now install them directly with:
+~# pkg<sub>add</sub> -i ~
+</p>
+
+<p>
+<b>INPROGRESS - using the .img inside OpenBSD (requires internet)</b>
+<b>INPROGRESS using a external usb</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1da65f2" class="outline-3">
+<h3 id="org1da65f2">connecting to the internet (wifi)</h3>
+<div class="outline-text-3" id="text-org1da65f2">
+<p>
+now, if you have the wifi driver available, connect to internet like this
+<code># ifconfig &lt;interface&gt; nwid &lt;name&gt; wpakey &lt;pass&gt;</code>
+</p>
+
+<p>
+check with ping
+<code>$ ping 8.8.8.8</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf1c082d" class="outline-3">
+<h3 id="orgf1c082d">installing packages</h3>
+<div class="outline-text-3" id="text-orgf1c082d">
+<p>
+run this command
+<code>echo 'https://cdn.openbsd.org/pub/OpenBSD' &gt; /etc/installurl</code>
+</p>
+
+<p>
+now you can install packages using <code>pkg_add</code>
+<span class="underline">example</span>: <code>pkg_add neofetch tmux neovim</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org060ab77" class="outline-3">
+<h3 id="org060ab77">app list</h3>
+<div class="outline-text-3" id="text-org060ab77">
+<p>
+<b>PACKAGE LIST</b>
+xmonad dwm bspwm i3 emacs dmenu picom alacritty kitty rofi dunst nitrogen
+feh firefox fish libreoffice pcmanfm gimp kdenlive audacity fzf mpv ncmpcpp mpd ffmpeg zathura zathura-cb zathura-pdf-mupdf zsh zsh-syntax-highlighting syncthing imagemagick keepassxc broot exa bat fzf irssi weechat xrandr xclip unrar unzip unclutter xbanish virt-manager ntfs<sub>3g</sub> pass-import pass-otp password-store
+</p>
+
+<p>
+<b>BACKUPS</b>
+restic rclone borgbackup
+rtorrent / transmission / deluge
+</p>
+
+<p>
+<b>JAPANESE</b>
+japanese
+fcitx fcitx-configtool
+fcitx-anthy ja-sazanami-ttf fcitx-gtk3
+</p>
+
+<p>
+<b>RUST</b>
+rust rust-clippy rust-rustfmt
+</p>
+</div>
+</div>
+
+<div id="outline-container-org205e068" class="outline-3">
+<h3 id="org205e068">doas config</h3>
+<div class="outline-text-3" id="text-org205e068">
+<p>
+add user to doas
+<code>echo 'asynthe permit nopass' &gt; /etc/doas.conf</code>
+you can now use your normal user with sudo
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgab35946" class="outline-3">
+<h3 id="orgab35946">setting up <code>.xsession</code></h3>
+<div class="outline-text-3" id="text-orgab35946">
+<p>
+Edit <code>~/.xsession</code> to add the next lines
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xsession">
+</pre>
+</div>
+
+<p>
+-&gt; feh + cron (a folder w images)
+(in <i>etc/11/xenodm</i>
+<code># Xsetup 0</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9a877ff" class="outline-3">
+<h3 id="org9a877ff">starting xmonad</h3>
+<div class="outline-text-3" id="text-org9a877ff">
+<p>
+start xmonad in xenodm
+<code># rcctl enable xenodm</code>
+<code># rcctl start xenodm</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc2ddabb" class="outline-2">
+<h2 id="orgc2ddabb">resources</h2>
+<div class="outline-text-2" id="text-orgc2ddabb">
+<p>
+<a href="https://flak.tedunangst.com/post/ZFS-on-OpenBSD">ZFS on OpenBSD</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7e8fb19" class="outline-2">
+<h2 id="org7e8fb19">? delete ?</h2>
+<div class="outline-text-2" id="text-org7e8fb19">
+<p>
+cd <i>dev</i>
+sh MAKEDEV sd1 sd3 sd4
+</p>
+
+<p>
+fdisk -iy -g -b 960 sd1
+</p>
+
+<p>
+disklabel -E sd1
+-&gt; p g list partitions
+-&gt; delete other partitions with d + partition number
+a i
+</p>
+<ul class="org-ul">
+<li>1024</li>
+<li>2G</li>
+<li>MSDOS</li>
+</ul>
+<p>
+a a
+</p>
+<ul class="org-ul">
+<li>1024</li>
+<li>*</li>
+<li>RAID</li>
+</ul>
+<p>
+w
+q
+</p>
+
+<p>
+Which disk is the root disk?
+Choose here the freshly created crypto disk, here sd3
+Use (W)hole disk MBR, whole disk (G)PT or (E)dit?
+</p>
+
+<p>
+Choose G - for GPT here
+An EFI/GPT disk may not boot. Proceed? yes
+choose C for custom layout
+a a [ENTER]
+offset: default
+size: *
+Type: 4.2 BSD (default)
+mount point: /
+w [ENTER]
+q [ENTER]
+Proceed with the installation as normal.
+</p>
+
+<p>
+mount /dev/sd3i /mnt
+pwd
+cd ..
+mkdir mnt2 (ignore and cd if it exists)
+mkdir -p /mnt2/efi/boot
+cd /mnt/efi/boot
+cp * /mnt2/efi/boot
+</p>
+
+<p>
+disklabel -E sd1
+a b
+</p>
+<ul class="org-ul">
+<li>.</li>
+<li>20G</li>
+<li>swp</li>
+</ul>
+<p>
+a a
+</p>
+<ul class="org-ul">
+<li>.</li>
+<li>*</li>
+<li>RAID</li>
+</ul>
+<p>
+w
+q
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

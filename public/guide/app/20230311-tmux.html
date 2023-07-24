@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>tmux</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">tmux</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../system/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a> / [BROKEN LINK: 5b8d8a26-f3dd-4e50-b144-9eff85eadf96] / [BROKEN LINK: 0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b] -&gt; [BROKEN LINK: 9be91f09-e446-4d22-931e-c05792d8f582]
+</p>
+
+<p>
+<a href="https://github.com/tmux/tmux/wiki">github wiki</a>
+<a href="https://wiki.gentoo.org/wiki/Tmux">gentoo wiki</a>
+<a href="https://wiki.archlinux.org/title/Tmux">arch wiki</a>
+</p>
+
+<p>
+<a href="https://www.stationx.net/tmux-cheat-sheet">https://www.stationx.net/tmux-cheat-sheet</a>
+</p>
+
+<div id="outline-container-org4f87685" class="outline-2">
+<h2 id="org4f87685">package</h2>
+<div class="outline-text-2" id="text-org4f87685">
+<p>
+arch -&gt; <code>tmux</code> (+ <code>tmux-bash-completion-git</code> (aur))
+gentoo -&gt; <code>app-misc/tmux</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org90fbe9b" class="outline-2">
+<h2 id="org90fbe9b">usage</h2>
+<div class="outline-text-2" id="text-org90fbe9b">
+</div>
+<div id="outline-container-org87204c6" class="outline-3">
+<h3 id="org87204c6">panes</h3>
+<div class="outline-text-3" id="text-org87204c6">
+<p>
+move between the <i>panes</i>
+<code>ctrl b + arrow keys</code>
+(resize the panes holding <code>ctrl b</code>)
+</p>
+
+<p>
+create a new <b>vertical</b> pane
+<code>ctrl b %</code>
+</p>
+
+<p>
+create a new <b>horizontal</b> pane
+<code>ctrl b "</code>
+</p>
+
+<p>
+exit them with
+<code>exit</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org08b8686" class="outline-3">
+<h3 id="org08b8686">windows</h3>
+<div class="outline-text-3" id="text-org08b8686">
+<p>
+create a new window
+<code>ctrl b c</code>
+</p>
+
+<p>
+switch between windows
+<code>ctrl b &lt;number&gt;</code>
+</p>
+
+<p>
+rename window
+<code>ctrl b ,</code>
+</p>
+
+<p>
+close a window with
+<code>exit</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge6a9c8d" class="outline-3">
+<h3 id="orge6a9c8d">sessions</h3>
+<div class="outline-text-3" id="text-orge6a9c8d">
+<p>
+detach session
+<code>ctrl b d</code>
+</p>
+
+<p>
+see sessions (in terminal)
+<code>$ tmux ls</code>
+</p>
+
+<p>
+re-attach to session (enter session)
+<code>$ tmux attach -t &lt;number&gt;</code>
+<code>attach</code> or <code>a</code>
+<code>-t</code> -&gt; target
+</p>
+
+<p>
+rename a session
+<code>$ tmux rename-session -t &lt;number&gt; &lt;name&gt;</code>
+</p>
+
+<p>
+create a session with custom name
+<code>$ tmux new -s &lt;name&gt;</code>
+example: <code>$ tmux new -s docker</code>
+</p>
+
+<p>
+delete a session
+<code>$ tmux kill-session -t &lt;name&gt;</code>
+example: <code>$ tmux kill-session -t docker</code>
+</p>
+
+<p>
+<span class="underline">note</span>: sessions will remain until system reboots
+</p>
+</div>
+</div>
+
+<div id="outline-container-org79bd3e0" class="outline-3">
+<h3 id="org79bd3e0">extra</h3>
+<div class="outline-text-3" id="text-org79bd3e0">
+<p>
+panes overview
+<code>ctrl b w</code>
+</p>
+
+<p>
+see help
+<code>ctrl b ?</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga6568e2" class="outline-2">
+<h2 id="orga6568e2">config</h2>
+<div class="outline-text-2" id="text-orga6568e2">
+<p>
+all of tmux configuration is done inside
+<code>~/.tmux.conf</code> or <code>~/.config/tmux/tmux.conf</code>
+</p>
+
+<p>
+you can see my configuration here[link to github]
+</p>
+
+<p>
+see your keybindings with
+<code>$ tmux list-keys</code>
+or <code>:list-keys</code> or <code>Ctrl + b ?</code>
+</p>
+</div>
+
+<div id="outline-container-org4717a15" class="outline-3">
+<h3 id="org4717a15">true color support (kitty + tmux)</h3>
+<div class="outline-text-3" id="text-org4717a15">
+<p>
+First, remove any <code>export TERM</code> from <code>.zshrc</code>, <code>.bashrc</code>, etc.
+Then, set up the next options in the tmux configuration file
+</p>
+
+<div class="org-src-container">
+<pre class="src src-tmux">set-g default-terminal "screen-256color"
+set-option -sa terminal-overrides ",xterm-kitty:RGB"
+</pre>
+</div>
+
+<p>
+Kill tmux, close kitty and reopen. It should be enabled now.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

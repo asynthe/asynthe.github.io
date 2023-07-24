@@ -1,0 +1,398 @@
+:PROPERTIES:
+:ID:       6f1167d5-1cf6-49de-9f10-df121e03d42f
+:ROAM_ALIASES: "ORG MODE"
+:END:
+#+title: Org Mode
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]
+
+https://michaelneuper.com/posts/replace-jupyter-notebook-with-emacs-org-mode/
+
+ORG
+-PACKAGES
+-LITERATE CONFIGURATION
+-LATEX PREVIEW
+-LATEX EXPORT
+-> TUTORIAL
+
+[[https://github.com/jkitchin/org-ref][org-ref - github page]]
+
+make a line separator by doing 5 dashes -> ~-----~
+it will look like this:
+-----
+
+*RESOURCES*
++ [[https://lucidmanager.org/productivity/ricing-org-mode][Ricing Emacs Org Mode - Lucid Manager]]
+
+* TABLE OF CONTENTS :toc:
+- [[#text][TEXT]]
+  - [[#bold-italics-code][bold, italics, code]]
+  - [[#lists][LISTS]]
+  - [[#code-blocks][code blocks]]
+  - [[#timestamps][timestamps]]
+  - [[#checkboxes][checkboxes]]
+  - [[#tables][tables]]
+  - [[#todos][todos]]
+  - [[#priorities][priorities]]
+- [[#habit][HABIT]]
+- [[#file-properties][FILE PROPERTIES]]
+  - [[#metadata-title-author][metadata (title, author)]]
+  - [[#file-attributes][file attributes]]
+  - [[#open-file-showing-level-12-or-3-headers][open file showing level 1,2 or 3 headers]]
+- [[#literate-configs][LITERATE CONFIGS]]
+  - [[#noweb][NOWEB]]
+- [[#latex-snippets][LATEX SNIPPETS]]
+- [[#latex-export][LATEX EXPORT]]
+- [[#images][IMAGES]]
+  - [[#images-at-startup][Images at startup]]
+  - [[#metadata][Metadata]]
+  - [[#changing-the-image-size][Changing the image size]]
+- [[#packages][PACKAGES]]
+  - [[#pandoc][PANDOC]]
+  - [[#org-drill][ORG DRILL]]
+  - [[#org-agenda][ORG AGENDA]]
+- [[#extra][EXTRA]]
+  - [[#vertical-bar-vert-in-a-table][Vertical Bar (\vert) in a table]]
+
+* TEXT
+** bold, italics, code
+
+*bold* -> surround word with *
+/italics/ -> surround word or paragraph with /
+~code~ -> surround code with ~
++strikethrough+ -> surround word with +
+
+** LISTS
+
+1. meow
+2. meow
+3. m2eow
+
+** code blocks
+
+adding a code block by hand can be tedious, they syntax is this
+
+~#+begin_src <language>~
+<code>
+~#+end_src~
+
+but of course you don't want to be writing that all the time that's why you can use ..., this way instead you just tipe
+write ~<s~ then press tab to convert it into a code block.
+
+** timestamps
+
+a way to add timestamps to different text or TODOs is using: ~org-time-stamp~ (*Emacs*: , *Doom*: SPC m d t)
+
+this will prompt you a calendar in which you can move with ~SHIFT + ARROW KEYS~ or the ~Mouse~
+
+- you can set a time such as ~11:00~ or ~11am~ in the prompt, it will format it for you.
+
+using ~SHIFT~ on the ~<>~ will change them from:
+- <2023-03-04 Sat> ACTIVE
+- [2023-03-04 Sat] INACTIVE
+
+using ~SHIFT + ARROW KEYS~ while cursor is on the /date/ will change the /date/
+
+** checkboxes
+
+using checkboxes is easy. you do them with the brackets in a list and they commonly have three states:
+- [ ] empty
+- [-] in progress
+- [X] done
+
+use ~C-c C-c~ (emacs way) or ~SPC m x~ (doom way) to tick them.
+
+checkboxes can have a /number/ or /percentages/ if it has c
+a listed item with a checkbox can have children, and have a completed /number/ or a completed /percentage/
+
+- [-] go to the gym
+  - [X] do 25 pull-ups
+  - [ ] do 50 push-ups
+
+- [50%] go to the gym
+  - [X] do 25 pull-ups
+  - [ ] do 50 push-ups
+
+a parent can be added the number of done checkboxes or the percentage.
+
+***** TODO go to supermarket [1/3]
+- [X] buy milk
+- [ ] buy a banana
+- [ ] pet a cat
+
+***** TODO go to the supermarket [33%]
+- [X] buy milk
+- [ ] buy a banana
+- [ ] pet a cat
+
+** tables
+
+|
+|-
+
+|------+-----------+-----------|
+| name | variable1 | variable2 |
+|------+-----------+-----------|
+| one  | x         | y         |
+| two  | h         | n         |
+|      |           |           |
+|------+-----------+-----------|
+** todos
+** priorities
+
+there are to ways to set priorities on TODOs
+- using the keybinding ~SPC m p p~
+- using ~SHIFT + ARROW KEYS~
+* HABIT
+
+[[https://orgmode.org/worg/org-tutorials/tracking-habits.html][Tracking Habits with Org-mode - worg]]
+[[https://orgmode.org/manual/Tracking-your-habits.html][5.3.3 Tracking your habits - orgmode.org]]
+
+* FILE PROPERTIES
+
+[[https://orgmode.org/manual/Properties-and-Columns.html][Properties and Columns - Org Manual]]
+
+** metadata (title, author)
+
+One of the most basic properties for a org file is it's title, which is made on top of the file like this:
+
+~#+title:~ or ~#+TITLE:~ <- note's title
+~#+author:~ or ~#+AUTHOR:~ <- note's author
+
+** file attributes
+
+~#+attr_html~ or ~#+ATTR_HTML~ <- HTML's attributes
+
+** open file showing level 1,2 or 3 headers
+
+[[https://emacs.stackexchange.com/questions/27523/org-mode-initial-visibility-with-startup][Org mode initial visibility with #+STARTUP - StackExchange]]
+[[https://orgmode.org/manual/Initial-visibility.html#Initial-visibility][2.2.2 Initial visibility - orgmode.org]]
+
+There are the next possible values for initial visibility:
+#+begin_src
+#+STARTUP: overview
+#+STARTUP: content
+#+STARTUP: showall
+#+STARTUP: show2levels
+#+STARTUP: show3levels
+#+STARTUP: show4levels
+#+STARTUP: show5levels
+#+STARTUP: showeverything
+#+end_src
+
+* LITERATE CONFIGS
+:PROPERTIES:
+:ID:       e47b0111-c11f-4b3b-b0f9-28fe59da1b8e
+:END:
+
+https://wmealing.github.io/emacs-org-babel-analysis.html
+
+[[https://leanpub.com/lit-config/read][Literate configuration - Leanpub]]
+[[https://en.wikipedia.org/wiki/Literate_programming][Literate Programming - wikipedia page]]
+
+1. Create ~README.org~, so you can use it in Github.
+   Inside of it, write the org metadata.
+   _example_:
+   ~#+title: Xmonad configuration
+   ~#+property:~
+
+2. Copy/paste and turn your config into a literate config
+3. When done, change
+
+   ~#+property: header-args :tangle xmonad.hs~
+
+   ~#+property: header-args~ -> Apply to every single source code block, globally.
+   ~:tangle~ -> write it to *this* file 
+
+4. Refresh the file
+   Put your cursor on ~#+property:~ and do a ~C-c C-c~ so it does a local refresh. (should appear on your modeline)
+
+5. Time to create the file
+   Do a ~M-x org-babel-tangle~ or ~C-c C-v t~
+
+6. Now just push your ~README.org~ to Github or Gitlab!
+
+_note_: check also for org-auto-tangle, which can help when writing literate configs.
+
+** NOWEB
+
+https://www.cs.tufts.edu/~nr/noweb/
+https://github.com/nrnrnr/noweb
+https://en.wikipedia.org/wiki/Noweb
+
+* LATEX SNIPPETS
+
+[[https://emacsdocs.org/docs/org/Embedded-LaTeX][12.5 Embedded LaTeX - Emacs Docs]]
+[[https://emacsdocs.org/docs/org/LaTeX-fragments][12.5.1 LaTeX fragments - Emacs Docs]]
+[[https://emacsdocs.org/docs/org/Previewing-LaTeX-fragments][12.5.2 Previewing LaTeX fragments - Emacs Docs]]
+[[https://orgmode.org/worg/org-tutorials/org-latex-preview.html][1. LaTeX preview in org - Worg]]
+
+You will need a _TeX-Live environment_ with *latex* and *dvipng* for this to work, make sure to set it up with your package manager.
+
+*PREVIEW*
+
+$e^{i\pi}+1=0$
+
+\[
+e^{i\pi} = -1
+\]
+
+\begin{equation}
+x=\sqrt{b}
+\end{equation}
+
+If $a^2=b$ and \( b=2 \), then the solution must be
+either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \\.
+
+MORE LATEX !
+
+
+\[
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+\]
+ 
+* LATEX EXPORT
+
+[[https://github.com/celadevra/writing/blob/master/blog/understanding-org-mode-export-dispatcher.org][Understanding Org-Mode's export dispatcher / caladevra - github]]
+
+_Note_: It is not working properly with Org Roam, it seems there is a fix but i will just export to LaTeX / PDF on regular Org files.
+
+asdasd
+~org-export-dispatch~ (C-c C-e)
+
+You can do by using the powerful Pandoc software
+
+* IMAGES
+
+[[https://emacsdocs.org/docs/org/Images][12.7 Images - Emacs Docs]]
+
+Add images into org files like this:
+(from the org file current directory)
+~[[./path/image.png]]~
+
+Use ~M-x org-toggle-inline-images~ (C-c C-x C-v) to toggle the image display.
+
+
+have the image in the directory of your note, then set it up as:
+~[[path/to/image.png]]~
+
+then run ~M-x org-display-inline-images~ to display it,
+you can also set this on ~config.el~
+#+begin_src emacs-lisp
+(setq org-startup-with-inline-images t)
+;; Keybinding to show images
+;; --- IN PROGRESS --- (as i use something different in emacs)
+#+end_src
+
+now, you can also set image metadata such as:
+
+~#+CAPTION: This is the caption for the next figure link (or table)~
+~#+NAME: fig:SED-HR4049~
+~#+ATTR_HTML: :width 300px~
+~[[./img/jp]]~
+
+** Images at startup
+
+Images can be set to be displayed automatically without having to toggle the display.
+
+*ON CONFIG.EL*
+Enable globally like this
+#+begin_src emacs-lisp
+(setq org-startup-with-inline-images t)
+#+end_src
+
+The meow of the meow[fn:1] now looks a lot better
+
+*PER FILE*
+Add the next to the file properties
+~#+STARTUP: inlineimages~
+or (if not desired)
+~#+STARTUP: noinlineimages~
+
+** Metadata
+
+~#+CAPTION: This is the caption for the next figure link (or table)~
+~#+NAME: fig:SED-HR4049~
+
+** Changing the image size 
+
+* PACKAGES
+** PANDOC
+** ORG DRILL
+:PROPERTIES:
+:ID:       34775f1e-2943-4556-b9c1-f80ea60f1372
+:ROAM_ALIASES: "ORG DRILL"
+:END:
+
+[[https://gitlab.com/phillord/org-drill/][gitlab page]]
+
+[[https://orgmode.org/worg/org-contrib/org-drill.html][org-drill.el - flashcards and spaced repetition for org-mode - worg]]
+
+** ORG AGENDA
+:PROPERTIES:
+:ID:       03841d5a-5aac-40cf-8fd4-0717ed94dca1
+:END:
+
+*** usage
+
+open org-agenda
+~M-x org-agenda~
+*Emacs*: ...
+*Doom*: ~SPC o A~
+
+use org-schedule
+~M-x org-schedule~
+*Emacs*: ~C-c C-s~
+*Doom*: ~SPC m d s~
+
+mark heading as todo
+*Doom*: ~SPC m t t~
+
+if you want to see more days than the normal 10 days shown at Org Agenda, you can press a number + org agenda keybind:
+_example_: 21 days
+~21 SPC o A~
+
+*** Setting it up
+
+is it a tool that helps you to group in a single page all TODOs that are attached to notes with certain tags.
+
+open your ~org-agenda~ with SPC o A
+
+set up your org agenda main file with: (in ~~/.doom.d/config.el~)
+#+begin_src elisp
+(after! org
+  (setq org-agenda-files
+        '("~/main/sync/docs/org/agenda.org")))
+#+end_src
+
+now, add TODOs and headings on your agenda file, but keep in mind that this one will not appear on ~org-agenda~ until they have [[id:05ed4a55-ee90-4500-b146-ae1d9fe79c3e][Timestamps]]
+
+you can also add [[id:39a19b80-c502-42fa-a281-2f19f583958b][Priorities]] on your TODOs, and they will appear on ~org-agenda~
+
+*** Making a custom view-mode
+*** Changing some characters
+
+now, in our new view-mode of org-agenda (SPC o A v)
+we will see that the separator character for the different tasks priorities will be ~=~, which does not look pretty
+
+we can change this with
+#+begin_src elisp
+(setq org-agenda-block-separator 61)
+#+end_src
+
+you can set up a character but it's better to put it's code.
+We can find it using ~describe-char~ (SPC h ') while the cursor is on the symbol, ~codepoint~ will tell what codes we can use.
+
+in this case i will use the simple dash, which code is ~45~.
+#+begin_src elisp
+(setq org-agenda-block-separator = 45)
+#+end_src
+
+now, restart your doom emacs config (SPC h r r)
+
+* EXTRA
+** Vertical Bar (\vert) in a table
+to type a "vertical bar" in a org-mode table you have to type.
+~\ vert~ (remove the space)
+
+It needs ~org-toggle-pretty-entities~ to be enabled. (~C-c C-x l~)

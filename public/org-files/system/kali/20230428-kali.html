@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kali Linux</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Kali Linux</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a>
+</p>
+
+<div id="outline-container-org37bdfa3" class="outline-2">
+<h2 id="org37bdfa3">install</h2>
+<div class="outline-text-2" id="text-org37bdfa3">
+<p>
+install is simple GUI, remember you can "Use biggest partition", so you can install it alongside Windows or Another system.
+</p>
+</div>
+
+<div id="outline-container-org52c7f14" class="outline-3">
+<h3 id="org52c7f14">apps</h3>
+<div class="outline-text-3" id="text-org52c7f14">
+<p>
+first, update with
+<code># apt update</code>
+then upgrade all packages with
+<code># apt upgrade</code>
+</p>
+</div>
+
+<div id="outline-container-orgb036ab7" class="outline-4">
+<h4 id="orgb036ab7">syncthing</h4>
+<div class="outline-text-4" id="text-orgb036ab7">
+</div>
+<ul class="org-ul">
+<li><a id="orge93b4e4"></a>install<br />
+<div class="outline-text-5" id="text-orge93b4e4">
+<p>
+install with:
+<code># apt -y install syncthing</code>
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org534a006" class="outline-4">
+<h4 id="org534a006">doas</h4>
+<div class="outline-text-4" id="text-org534a006">
+<p>
+<code># apt -y install doas</code>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2d16f1c" class="outline-2">
+<h2 id="org2d16f1c">install</h2>
+<div class="outline-text-2" id="text-org2d16f1c">
+<p>
+install is simple GUI, remember you can "Use biggest partition", so you can install it alongside Windows or Another system.
+</p>
+</div>
+
+<div id="outline-container-org6775cbd" class="outline-3">
+<h3 id="org6775cbd">apps</h3>
+<div class="outline-text-3" id="text-org6775cbd">
+<p>
+first, update with
+<code># apt update</code>
+then upgrade all packages with
+<code># apt upgrade</code>
+</p>
+</div>
+
+<div id="outline-container-org4ca1313" class="outline-4">
+<h4 id="org4ca1313">syncthing</h4>
+<div class="outline-text-4" id="text-org4ca1313">
+</div>
+<ul class="org-ul">
+<li><a id="org94dc968"></a>install<br />
+<div class="outline-text-5" id="text-org94dc968">
+<p>
+install with:
+<code># apt -y install syncthing</code>
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org76b8489" class="outline-4">
+<h4 id="org76b8489">doas</h4>
+<div class="outline-text-4" id="text-org76b8489">
+<p>
+<code># apt -y install doas</code>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7531278" class="outline-2">
+<h2 id="org7531278">setting up my desktop</h2>
+<div class="outline-text-2" id="text-org7531278">
+</div>
+<div id="outline-container-org3526fb6" class="outline-3">
+<h3 id="org3526fb6">EMACS SCRIPT</h3>
+</div>
+<div id="outline-container-org2a46cf5" class="outline-3">
+<h3 id="org2a46cf5">JAPANESE FCITX5+MOZC</h3>
+</div>
+</div>
+
+<div id="outline-container-orge65fd06" class="outline-2">
+<h2 id="orge65fd06">CHROOT</h2>
+<div class="outline-text-2" id="text-orge65fd06">
+<p>
+on your linux install or live usb, do as follows
+<code># mount /dev/&lt;root-partition&gt; /mnt</code>
+<code># mount /dev/&lt;boot-partition&gt; /mnt/boot/efi</code>
+</p>
+
+<p>
+mounting some stuff
+<code># mount --bind /dev /mnt/dev &amp;&amp;</code>
+<code># mount --bind /dev/pts /mnt/dev/pts &amp;&amp;</code>
+<code># mount --bind /proc /mnt/proc &amp;&amp;</code>
+<code># mount --bind /sys /mnt/sys</code>
+</p>
+
+<p>
+the chrooting
+<code># sudo chroot /mnt /bin/bash</code>
+-&gt; <code>/bin/bash</code> to specify a shell, as in my case i use [dash]
+</p>
+
+<p>
+the installing
+<code># grub-install --target=x86_64-efi --efi-directory=/boot/efi --removable</code>
+</p>
+
+<p>
+unmounting and saving
+<code>$ exit &amp;&amp;</code>
+<code># umount /mnt/sys &amp;&amp;</code>
+<code># umount /mnt/proc &amp;&amp;</code>
+<code># umount /mnt/dev/pts &amp;&amp;</code>
+<code># umount /mnt/dev &amp;&amp;</code>
+<code># umount /mnt</code>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

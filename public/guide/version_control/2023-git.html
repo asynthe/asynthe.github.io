@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Git</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Git</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="2023-version_control.html#ID-9a58c90f-23c4-4d06-915c-0d3d5ef17ca3">VERSION CONTROL</a>
+</p>
+
+<p>
+TAKE MATERIAL FROM MARKDOWN FILE !
+</p>
+
+<p>
+[[][github page] ]
+[[][official webpage] ]
+[[][gentoo wiki] ]
+[[][arch wiki] ]
+</p>
+
+<p>
+<a href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository">The Git Book</a>
+</p>
+
+<p>
+MATERIAL
+<a href="https://www.youtube.com/watch?v=HVsySz-h9r4">https://www.youtube.com/watch?v=HVsySz-h9r4</a>
+<a href="https://www.youtube.com/watch?v=RGOj5yH7evk">https://www.youtube.com/watch?v=RGOj5yH7evk</a>
+</p>
+
+<div id="outline-container-org7cf2113" class="outline-2">
+<h2 id="org7cf2113">package</h2>
+<div class="outline-text-2" id="text-org7cf2113">
+<p>
+arch -&gt; <code>...</code>
+gentoo -&gt; <code>dev-vcs/git</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org855a3fd" class="outline-2">
+<h2 id="org855a3fd">usage</h2>
+<div class="outline-text-2" id="text-org855a3fd">
+<p>
+&#x2014;
+</p>
+
+<p>
+system for managing your files
+</p>
+
+<p>
+start a github repo
+<code>$ git init</code>
+</p>
+
+<p>
+in <code>.gitignore</code> add the files you want git to ignore and not upload to the repository
+</p>
+
+<p>
+stage the files, to include in a commit
+<code>$ git add .</code> or <code>$ git add &lt;filename&gt;</code>
+</p>
+
+<p>
+unstage files with
+<code>$ git reset .</code> or <code>$ git reset &lt;filename&gt;</code>
+<code>--hard</code> -&gt; will unstage and delete the files
+</p>
+
+<p>
+commit files
+<code>$ git commit -m "first commit"</code>
+you can make your comment be multiline
+<code>$ git commit -m "first commit
+&gt; This is my first commit
+&gt; "</code>
+</p>
+</div>
+
+<div id="outline-container-org8977cec" class="outline-3">
+<h3 id="org8977cec">branches</h3>
+<div class="outline-text-3" id="text-org8977cec">
+<p>
+create a branch
+<code>$ git checkout -b feature</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgff336a2" class="outline-3">
+<h3 id="orgff336a2">stash</h3>
+<div class="outline-text-3" id="text-orgff336a2">
+<p>
+save current changes without commiting them, then get back to a clean working directory
+<code>$ git stash -u</code>
+</p>
+
+<p>
+get back to work with
+<code>$ git stash pop</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org74a4046" class="outline-3">
+<h3 id="org74a4046">merging</h3>
+<div class="outline-text-3" id="text-org74a4046">
+<hr />
+
+<p>
+MARKDOWN FILE
+</p>
+
+<hr />
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2ca682e" class="outline-2">
+<h2 id="org2ca682e">GitHub</h2>
+<div class="outline-text-2" id="text-org2ca682e">
+</div>
+<div id="outline-container-orga1cefaa" class="outline-3">
+<h3 id="orga1cefaa">authenticate with a [SSH]link key</h3>
+</div>
+
+<div id="outline-container-orgd6668a6" class="outline-3">
+<h3 id="orgd6668a6">create a repository</h3>
+<div class="outline-text-3" id="text-orgd6668a6">
+<p>
+then:
+</p>
+
+<p>
+(take the html from the repository)
+$ git remote add origin <a href="https://github.com/asynthe/meowfiles.git">https://github.com/asynthe/meowfiles.git</a>
+</p>
+
+<p>
+set the github branch as main
+<code>$ git branch -M main</code>
+</p>
+
+<p>
+make the first push to the repository
+<code>$ git push -u origin main</code>
+</p>
+</div>
+
+<div id="outline-container-orgb2bf995" class="outline-4">
+<h4 id="orgb2bf995">creating / using a repository (SSH[link])</h4>
+<div class="outline-text-4" id="text-orgb2bf995">
+<p>
+create a repository on <a href="#org2ca682e">https://github.com</a> then take the SSH link
+from the "Code" green button
+</p>
+
+<p>
+<code>$ git remote add origin git@github.com:asynthe/meowfiles.git</code>
+</p>
+
+<p>
+set the github branch as main
+<code>$ git branch -M main</code>
+</p>
+
+<p>
+make the first push to the repository
+<code>$ git push -u origin main</code>
+</p>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+forcing a push
+<code>$ git push -u origin main -f</code>
+</p>
+
+<p>
+when having a different repo from the main one, 
+fetch the commits from the origin repository:
+<code>$ git fetch origin</code>
+</p>
+
+<p>
+then you can choose to
+merge -&gt;
+</p>
+
+<p>
+rebase -&gt;
+and then pushing your changes
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org633fd91" class="outline-2">
+<h2 id="org633fd91">updating a git repo</h2>
+<div class="outline-text-2" id="text-org633fd91">
+<p>
+So, you have this git repo and to update is it as simple as doing
+<code>$ git pull</code>
+</p>
+
+<p>
+Now, to update git repos that are on subdirectories do this:
+<code>$ git fetch --recurse-submodules</code>
+</p>
+
+<p>
+So finally:
+<code>$ git fetch --recurse-submodules &amp;&amp; git pull</code>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

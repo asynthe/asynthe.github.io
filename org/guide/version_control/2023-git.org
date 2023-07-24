@@ -1,0 +1,331 @@
+:PROPERTIES:
+:ID:       6e767248-281b-47d1-9196-047376846648
+:ROAM_ALIASES: git GIT
+:END:
+#+title: Git
+
+-> [[id:9a58c90f-23c4-4d06-915c-0d3d5ef17ca3][VERSION CONTROL]]
+
+TAKE MATERIAL FROM MARKDOWN FILE !
+
+[[][github page] ]
+[[][official webpage] ]
+[[][gentoo wiki] ]
+[[][arch wiki] ]
+
+[[https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository][2.1 Git Basics - Getting a Git Repository - git]]
+
+MATERIAL
+https://www.youtube.com/watch?v=HVsySz-h9r4
+https://www.youtube.com/watch?v=RGOj5yH7evk
+
+* package
+
+arch -> ~...~
+gentoo -> ~dev-vcs/git~
+nixos -> ~git~
+
+* usage
+
+Check that git is installed on your system:
+~$ git --version~
+
+*CREATING A REPOSITORY*
+Start a github repo
+~$ git init~
+
+In ~.gitignore~ add the files you want git to ignore and not upload to the repository
+
+stage the files, to include in a commit
+~$ git add .~ or ~$ git add <filename>~
+
+unstage files with
+~$ git reset .~ or ~$ git reset <filename>~
+~--hard~ -> will unstage and delete the files
+
+commit files
+~$ git commit -m "first commit"~
+you can make your comment be multiline
+~$ git commit -m "first commit
+> This is my first commit
+> "~
+
+** branches
+
+create a branch
+~$ git checkout -b feature~
+
+** stash
+
+save current changes without commiting them, then get back to a clean working directory
+~$ git stash -u~
+
+get back to work with
+~$ git stash pop~
+
+** merging
+
+* creating a repository in GitHub
+** authenticate with a [SSH]link key
+** create a repository
+
+(take the html from the repository)
+$ git remote add origin https://github.com/asynthe/meowfiles.git
+
+set the github branch as main
+~$ git branch -M main~
+
+make the first push to the repository
+~$ git push -u origin main~
+
+*** creating / using a repository (SSH[link])
+
+create a repository on [[GitHub][https://github.com]] then take the SSH link
+from the "Code" green button
+
+~$ git remote add origin git@github.com:asynthe/meowfiles.git~
+
+set the github branch as main
+~$ git branch -M main~
+
+make the first push to the repository
+~$ git push -u origin main~
+
+---
+
+forcing a push
+~$ git push -u origin main -f~
+
+when having a different repo from the main one, 
+fetch the commits from the origin repository:
+~$ git fetch origin~
+
+then you can choose to
+merge ->
+
+rebase ->
+and then pushing your changes
+
+* updating a git repo
+
+So, you have this git repo and to update is it as simple as doing
+~$ git pull~
+
+Now, to update git repos that are on subdirectories do this:
+~$ git fetch --recurse-submodules~
+
+So finally:
+~$ git fetch --recurse-submodules && git pull~
+
+* FROM MARKDOWN FILE
+
+[git tutorial - Corey Shafer](https://www.youtube.com/watch?v=HVsySz-h9r4)
+
+arch -> `s`
+gentoo -> `dev-vcs/git`
+
+[[GitHub]]
+
+---
+
+check version
+```
+$ git --version
+```
+
+set global config variables
+```
+$ git config --global user.name "Benjamin Dunstan"
+$ git config --global user.email "benjadunstan@gmail.com"
+$ git config --list
+```
+
+help command
+```
+$ git help config
+or
+$ git config --help
+```
+
+---
+
+initialize a repository from existing code
+```
+$ git init
+```
+
+to stop tracking a repository, you can remove the `.git` folder inside that repository
+```
+$ rm -rf .git
+```
+
+__starting__
+before first commit, do this, to check what files are going to be commited and if there's a file or personal information to ignore
+```
+$ git status
+```
+
+ignore files or directories creating this next file
+```
+$ touch .gitignore
+```
+this is a simple text file, add what you want to ignore, you can also use wildcards.
+__EXAMPLE__ (in `.gitignore`)
+```
+.DS_Store
+.project
+*.pyc
+```
+we want to commit the `.gitignore` file so the repository can know which files to commit.
+
+![[Pasted image 20221226135009.png]]
+
+__staging area__
+Add all the files
+~$ git add -A~
+or for a individual files
+~$ git add <file>~
+
+Remove files from staging area
+~$ git reset~
+or for a individual file
+~$ git reset <file>~
+
+*commit*
+start your first commit with:
+~$ git commit -m "message"~
+
+__log__
+check the log, which displays the hash of the commit, the date and author
+```
+$ git log
+```
+
+__cloning__
+clone a remote repository with this
+```
+$ git clone <url> <directory>
+```
+if you don't use a directory, it will create one with the repo name, if you specify a directory, it will extract the files there
+
+view information about a remote repository
+```
+$ git remote -v
+$ git branch -a
+```
+
+__pushing changes__
+check the modified files 
+```
+$ git diff
+$ git add -A
+$ git commit -m "Added an extra functionality"
+```
+
+pull then push
+- pull: is important as it will pull any changes on the repository
+```
+$ git pull origin main
+then
+$ git push origin main
+```
+
+__creating a brach__
+in case of adding a desired feature, we can create a branch to work on it
+```
+$ git branch <branch-name>
+```
+just typing `git branch`, will output your local branches. The asterisk means the branch you're currently working on.
+
+Change to a different branch
+```
+$ git checkout <branch-name>
+```
+
+add to staging area, commit, push branch to remote
+```
+$ git add -A
+$ git commit -m "Added from <branch-name> :)"
+$ git push -u origin <branch-name>
+$ git branch -a
+```
+
+let's move to master branch again
+```
+$ git checkout master
+```
+
+__merge a branch with master__
+remember to always pull
+```
+$ git pull origin master
+```
+run the next command, to see which branches have been merged
+```
+$ git branch --merged
+```
+merge the branch !
+```
+$ git merge <branch-name>
+```
+now push the changes :3
+```
+$ git push origin master
+```
+
+__ERROR fix__
+branch is currently checked out
+- go back to your original folder, which should be running under the main branch
+- create a dummy branch with
+```
+$ git checkout -b dummy
+```
+- go back to your remote branch and push
+
+__deleting a branch__
+check if everything was correctly merged by
+```
+$ git branch --merged
+```
+you should see your branch above the master branch.
+
+delete the branch
+```
+$ git branch -d <branch-name>
+```
+
+we also pushed that branch to remote repo, so we need to delete it from there too
+check the branches
+```
+$ git branch -a
+```
+
+remove it with:
+```
+$ git push origin --delete meow1
+```
+
+---
+
+a routine workflow
+```
+$ git branch test
+$ git checkout test
+modify file
+$ git add -A
+$ git commit -m "Added X"
+$ git push -u origin test
+$ git checkout master
+$ git pull origin master
+$ git merge test
+$ git push origin master
+```
+
+* TEST
+* GIT
+** Adding SSH key and pushing
+
+
+
+** Adding GPG key for signing git commits
+

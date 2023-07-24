@@ -1,0 +1,97 @@
+:PROPERTIES:
+:ID:       df2f653e-62dc-46dc-9600-b19c845edabd
+:ROAM_ALIASES: OPENBSD
+:END:
+#+title: OpenBSD
+
+-> [[id:5b8d8a26-f3dd-4e50-b144-9eff85eadf96][BSD]]
+
+[[https://www.openbsd.org/index.htm][main page]]
+[[http://firmware.openbsd.org/firmware/][OpenBSD Firmware]]
+[[https://cdn.openbsd.org/pub/OpenBSD/snapshots/packages/amd64/][OpenBSD Packages]]
+[[https://fuguita.org/][FugiUta]] (OpenBSD live USB)
+
+[[https://en.wikipedia.org/wiki/OpenBSD][wikipedia page]]
+
+[[https://www.cyberciti.biz/faq/openbsd-connect-serial-console][OpenBSD: Setup a Serial Console - nixCraft]]
+
+[[https://www.openbsd.org/books.html][OpenBSD-specific books]]
+
+[[https://flak.tedunangst.com/post/ZFS-on-OpenBSD][ZFS on OpenBSD]]
+
+* [[id:9e7fbce7-a2b5-4697-a8a2-6c21ef58fb99][INSTALL]]
+* PKG
+* USAGE
+** manage audio with sndioctl
+
+First, enable the audio server
+~# sndioctl server.device=1~
+
+Then, you can change the sound volume level in a absolute way
+~# sndioctl output.level=0.8 # set it absolutely~
+
+Or in a relative way
+~# sndioctl output.level=-0.12 # decrease it relatively~
+~# sndioctl output.level=+0.04 # increase it relatively~
+
+Remember to use aliases or keybindings in KCSH[OpenBSD default shell]!
+
+* GUIDES
+** NGINX Web Server
+
+* ? delete ?
+
+cd /dev/
+sh MAKEDEV sd1 sd3 sd4
+
+fdisk -iy -g -b 960 sd1
+
+disklabel -E sd1
+-> p g list partitions
+-> delete other partitions with d + partition number
+a i
+- 1024
+- 2G
+- MSDOS
+a a
+- 1024
+- *
+- RAID
+w
+q
+
+Which disk is the root disk?
+Choose here the freshly created crypto disk, here sd3
+Use (W)hole disk MBR, whole disk (G)PT or (E)dit?
+
+Choose G - for GPT here
+An EFI/GPT disk may not boot. Proceed? yes
+choose C for custom layout
+a a [ENTER]
+offset: default
+size: *
+Type: 4.2 BSD (default)
+mount point: /
+w [ENTER]
+q [ENTER]
+Proceed with the installation as normal.
+
+mount /dev/sd3i /mnt
+pwd
+cd ..
+mkdir mnt2 (ignore and cd if it exists)
+mkdir -p /mnt2/efi/boot
+cd /mnt/efi/boot
+cp * /mnt2/efi/boot
+
+disklabel -E sd1
+a b
+- .
+- 20G
+- swp
+a a
+- .
+- *
+- RAID
+w
+q

@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       a354d96c-8e7a-4fb0-ac78-84f754246169
+:ROAM_ALIASES: pandoc PANDOC
+:END:
+#+title: Pandoc
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]
+
+[[https://pandoc.org/][main page]]

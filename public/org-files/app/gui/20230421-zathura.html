@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>zathura</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">zathura</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a> / <a href="../../other/main/20230428-bsd.html#ID-5b8d8a26-f3dd-4e50-b144-9eff85eadf96">BSD</a> -&gt; <a href="../../other/main/20230428-sysapps.html#ID-9be91f09-e446-4d22-931e-c05792d8f582">SYSAPPS アプリ</a>
+</p>
+
+<p>
+<a href="https://github.com/pwmt/zathura">github page</a>
+<a href="https://pwmt.org/projects/zathura/">official webpage</a>
+<a href="https://wiki.gentoo.org/wiki/Zathura">gentoo wiki</a>
+<a href="https://wiki.archlinux.org/title/Zathura">arch wiki</a>
+</p>
+
+<div id="outline-container-orgca0fee4" class="outline-2">
+<h2 id="orgca0fee4">package</h2>
+<div class="outline-text-2" id="text-orgca0fee4">
+<p>
+arch -&gt; <code>...</code>
+gentoo -&gt; <code>...</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org658dea6" class="outline-2">
+<h2 id="org658dea6">keybindings</h2>
+<div class="outline-text-2" id="text-org658dea6">
+<p>
+<code>h</code> / <code>left arrow</code> -&gt; move left
+<code>j</code> / <code>down arrow</code> -&gt; move down
+<code>k</code> / <code>up arrow</code> -&gt; move up
+<code>l</code> / <code>right arrow</code> -&gt; move right
+</p>
+
+<p>
+<code>shift + h</code> -&gt; move to start of page
+<code>shift + j</code> / <code>Space</code>  -&gt; next page
+<code>shift + k</code> / <code>Shift + Space</code> -&gt; previous page
+<code>shift + l</code> -&gt; move to end of page
+</p>
+
+<p>
+<code>gg</code> -&gt; go to first page
+<code>G</code> -&gt; go to last page
+<code>nG</code> -&gt; go to <code>n</code> page
+</p>
+
+<p>
+<code>=</code> -&gt; reset to normal size
+<code>-</code> -&gt; zoom out
+<code>shift + =</code> (+) -&gt; zoom in
+</p>
+
+<p>
+<code>TAB</code> -&gt; show TOC (table of contents)
+<code>q</code> -&gt; quit
+<code>a</code> -&gt; fit page
+<code>s</code> -&gt; fit width
+<code>f</code> -&gt; follow link
+<code>d</code> -&gt; dual-page view
+<code>r</code> -&gt; rotate 90 defrees
+<code>R</code> -&gt; reload document
+<code>ctrl + r</code> -&gt; invert color
+<code>ctrl + n</code> -&gt; toggle status bar
+<code>F5</code> -&gt; presentation mode
+<code>F11</code> -&gt; fullscreen mode
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8802e87" class="outline-2">
+<h2 id="org8802e87">configuration</h2>
+<div class="outline-text-2" id="text-org8802e87">
+<p>
+Zathura configuration is done inside <code>~/.config/zathura/zathurarc</code>
+</p>
+
+<p>
+<b>Copy to clipboard</b>
+enable in <code>zathurarc</code> like this
+<code>set selection-clipboard clipboard</code>
+</p>
+
+<p>
+<b>Make zathura the default pdf viewer</b>
+<code>$ xdg-mime default org.pwmt.zathura.desktop application/pdf</code>
+</p>
+
+<p>
+<b>Read Microsoft Office / LibreOffice</b>
+using <code>zaread-git</code> (aur)
+<code>$ zaread /path/to/document.docx</code>
+</p>
+
+<p>
+<b>Sandbox mode</b>
+secure environment using a strict seccomp filer. set in <code>zathurarc</code> like this
+<code>set sandbox strict</code>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

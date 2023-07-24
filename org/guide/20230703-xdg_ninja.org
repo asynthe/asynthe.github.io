@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       0fe479eb-60ab-47ce-a692-b63d88df776f
+:END:
+#+title: xdg-ninja
+
+-> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]

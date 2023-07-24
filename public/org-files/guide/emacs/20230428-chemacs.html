@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chemacs</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Chemacs</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="20230428-emacs.html#ID-ceec713c-7576-418e-908f-8084c45f83d4">EMACS</a>
+</p>
+
+<p>
+<a href="https://github.com/plexus/chemacs2">github page</a>
+</p>
+
+<div id="outline-container-org89340da" class="outline-2">
+<h2 id="org89340da">install and set up</h2>
+<div class="outline-text-2" id="text-org89340da">
+<p>
+<span class="underline">note</span>: you can put <code>~/.emacs-profiles.el</code> in <code>$XDG_CONFIG_HOME/chemacs/profile.el</code>
+and <code>~/.emacs-profile</code> in <code>XDG_CONFIG_HOME/chemacs/profile</code>.
+</p>
+
+<p>
+from github page
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">[ -f ~/.emacs ] &amp;&amp; mv ~/.emacs ~/.emacs.bak
+[ -d ~/.emacs.d ] &amp;&amp; mv ~/.emacs.d ~/.emacs.default
+git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>this moves your emacs into <code>~/.emacs.default</code></li>
+<li>and clones the directory into <code>~/.emacs.d</code></li>
+</ul>
+<p>
+chemacs will only be "the emacs you boot from", 
+this is, don't worry about <code>~/.emacs.d</code>
+</p>
+
+<p>
+there are two ways to run a custom emacs or emacs <i>distribution</i>
+<span class="underline">from command line</span>
+you can straight up run a emacs with custom configuration like this
+<code>$ emacs --with-profile '((user-emacs-directory . "/path/to/config"))'</code>
+</p>
+
+<p>
+<span class="underline">set up on file</span> 
+create a <code>~/.emacs-profiles.el</code> file
+and add it this line
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">((<span style="font-style: italic;">"default"</span> . ((user-emacs-directory . <span style="font-style: italic;">"~/.emacs.default"</span>))))
+</pre>
+</div>
+
+<p>
+-&gt; <code>~/.emacs.default</code>
+will be the directory where emacs will load all the configs (<code>init.el</code>, <code>config.el</code>, etc&#x2026;)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8513ee9" class="outline-2">
+<h2 id="org8513ee9">setting up another configuration</h2>
+<div class="outline-text-2" id="text-org8513ee9">
+<p>
+now, how to create another configuration, such as doom
+we will have to edit <code>~/.emacs-profiles.el</code> like this
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">((<span style="font-style: italic;">"default"</span> . ((user-emacs-directory . <span style="font-style: italic;">"~/.emacs.default"</span>)))
+ (<span style="font-style: italic;">"spacemacs"</span> . ((user-emacs-directory . <span style="font-style: italic;">"~/spacemacs"</span>))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga1ae5e2" class="outline-2">
+<h2 id="orga1ae5e2">Doom Emacs</h2>
+<div class="outline-text-2" id="text-orga1ae5e2">
+<div class="org-src-container">
+<pre class="src src-elisp">((<span style="font-style: italic;">"default"</span> . ((user-emacs-directory . <span style="font-style: italic;">"~/.emacs.d"</span>)))
+ (<span style="font-style: italic;">"doom"</span> . ((user-emacs-directory . <span style="font-style: italic;">"~/doom-emacs"</span>)
+           (env . ((<span style="font-style: italic;">"DOOMDIR"</span> . <span style="font-style: italic;">"~/doom-config"</span>))))))
+</pre>
+</div>
+
+<p>
+now, run doom emacs like this
+<code>$ emacs --with-profile doom</code>
+</p>
+
+<p>
+or better yet, set it as the default when running emacs
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

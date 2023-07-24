@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CorePlan</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">CorePlan</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; temp 
+</p>
+
+<div id="outline-container-orgf0de311" class="outline-2">
+<h2 id="orgf0de311">visit 24-05-2023</h2>
+<div class="outline-text-2" id="text-orgf0de311">
+<p>
+<span class="underline">Synonims</span>:
+Tenements
+</p>
+
+<ul class="org-ul">
+<li>Build reports of data</li>
+
+<li>Importers</li>
+</ul>
+<p>
+excel files -&gt; coreplan
+</p>
+
+<p>
+lookup lists
+</p>
+
+<p>
+Clients -&gt; receive info -&gt; pass it into excel
+</p>
+</div>
+
+<div id="outline-container-orgdf6905f" class="outline-3">
+<h3 id="orgdf6905f">CorePlan Platform</h3>
+<div class="outline-text-3" id="text-orgdf6905f">
+<ul class="org-ul">
+<li>BHP Nickel</li>
+</ul>
+
+<p>
+Projects:
+</p>
+<ul class="org-ul">
+<li>Drill programs</li>
+</ul>
+
+
+<p>
+Drill Programs:
+</p>
+<ul class="org-ul">
+<li>Cost per metre</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgad43c9e" class="outline-2">
+<h2 id="orgad43c9e">The CorePlan CSV Template</h2>
+<div class="outline-text-2" id="text-orgad43c9e">
+<p>
+The CSV has various rows (horizontal) and columns (vertical)
+</p>
+
+<p>
+<span class="underline">FIRST THREE COLUMNS</span> - <code>field_id</code>, <code>name</code>, <code>page</code>
+<code>field_id</code> = unique identifier for the field itself
+(keep IDs short and acronym-based, for easy reference)
+<code>name</code> = title of the field that the user sees
+<code>page</code> = title of the page the field appears on
+</p>
+
+<p>
+<span class="underline">FOURTH COLUMN</span> - <code>type</code>
+<code>type</code> = define type of input, can be any of the following.
+</p>
+<ul class="org-ul">
+<li><code>number</code> = simple number value, <b>example</b>: <i>hours</i>.</li>
+<li><code>text</code> = small text for short responses, <b>example</b>: <i>name</i>.</li>
+<li><code>textarea</code> = large text for extended responses, <b>example</b>: <i>comments</i>.</li>
+<li><code>checkbox</code> = <i>Yes</i> or <i>No</i> response field.</li>
+<li><code>select</code> = Multiple choice field with selectable options.</li>
+<li><code>geolocation</code> = GPS coordinate. (default: current device location)</li>
+<li><code>date</code> = A <i>calendar date</i> without <i>time</i>. (DDMMYYYY?)</li>
+<li><code>time</code> = A <i>time</i> without <i>date</i>. (HH:MM:SS?)</li>
+<li><code>datetime</code> = Both date and time. (HH:MM:SS,DDMMYYYY?)</li>
+<li><code>rig-select</code> = <span class="underline">Active rigs</span> as drop-down options.</li>
+<li><code>people-select</code> = <span class="underline">Active users and personnel</span> as drop-down options.</li>
+<li><code>info</code> = Text-only info message with no input
+<ul class="org-ul">
+<li><code>required</code> must be <b>FALSE.</b></li>
+<li><code>help_text</code> is <b>MANDATORY</b>.</li>
+</ul></li>
+<li><code>signature</code> = Signature input</li>
+<li><code>lookup-select</code> = Insert a lookup list
+<ul class="org-ul">
+<li>Funtions as a <code>select</code> type (<i>multiple choice field</i>)</li>
+<li>List name must be specified within <code>lookup-list</code> column</li>
+<li>Select choices are retrieved from a choosen <code>lookup-list</code> within the <code>lookup-list</code> library</li>
+<li>Able to modify the list directly in CorePlan.</li>
+</ul></li>
+</ul>
+
+<hr />
+<p>
+<span class="underline">FIFTH COLUMN</span> - <code>required</code>
+</p>
+
+<p>
+<b>TRUE</b> or <b>FALSE</b>, depending on <b>MANDATORY</b> or not field (is this REQUIRED?)
+</p>
+
+
+<hr />
+<p>
+<span class="underline">SIXTH COLUMN</span> - <code>is_multi</code>
+</p>
+
+<p>
+If you want user
+</p>
+<ul class="org-ul">
+<li>to select <b>ONE CHOICE</b>: FALSE</li>
+<li>to select more than <b>ONE CHOICE</b>: TRUE</li>
+</ul>
+
+<p>
+<span class="underline">note</span>: only use if <code>type</code> is either: <code>select</code>, <code>people-select</code>, <code>rig-select</code> or <code>lookup-select</code>
+</p>
+
+<hr />
+<p>
+<span class="underline">SEVENTH COLUMN</span> - <code>help_text</code>
+</p>
+
+<p>
+A small subtext under the field name.
+</p>
+
+<hr />
+<p>
+<span class="underline">EIGHTH COLUMN</span> - <code>help_image</code>
+</p>
+
+<p>
+Insert a form help image that exists whithin your <b>Form Images</b> library, for a user's reference when completing the field.
+<span class="underline">example</span>: Insert a Risk Assessment Matrix that is necessary for a user's visual referece to complete a JSA.
+</p>
+
+<hr />
+<p>
+<span class="underline">NINTH COLUMN</span> - <code>choices</code>
+</p>
+
+<p>
+A <span class="underline">drop-down</span> options for the <code>select</code> field.
+</p>
+<ul class="org-ul">
+<li>Separate choices with a semicolon (<code>;</code>)</li>
+<li><span class="underline">note</span>: When inputting a <code>select</code>, <code>rig-select</code>, <code>people-select</code> or <code>lookup-select</code> field type; you must input the corresponding <code>is_multi</code> choice -&gt; <b>TRUE</b> or <b>FALSE</b></li>
+</ul>
+
+<hr />
+<p>
+<span class="underline">TENTH COLUMN</span> - <code>lookup-list</code>
+</p>
+
+<p>
+Specify the lookup listname that exists within your <b>Form Lookup Lists</b> library.
+</p>
+<ul class="org-ul">
+<li>To write something here, the type must be <code>lookup-select</code>.</li>
+</ul>
+
+<hr />
+<p>
+<span class="underline">EXTRA COLUMN</span> - no name
+</p>
+
+<p>
+I've seen that theres an extra column on all the <b>Fault</b> <code>lookup-list</code>, most of them said <b>Critical</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga3de3a4" class="outline-2">
+<h2 id="orga3de3a4">email 24-05-2023</h2>
+<div class="outline-text-2" id="text-orga3de3a4">
+</div>
+<div id="outline-container-org2c88f82" class="outline-3">
+<h3 id="org2c88f82">NOTES and QUESTIONS</h3>
+<div class="outline-text-3" id="text-org2c88f82">
+<p>
+<b>NOTES</b>:
+</p>
+
+
+
+<p>
+<b>QUESTIONS</b>:
+</p>
+
+<p>
+in the REQUIRED column: from the document i can infer that the only MANDATORY section is the Sign Off section, but all the other details seem also important, so is everything mandatory or just the Sign Off section?
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

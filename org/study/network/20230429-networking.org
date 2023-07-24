@@ -1,0 +1,134 @@
+:PROPERTIES:
+:ID:       6c2cc908-5784-465d-9979-74811b0a3255
+:ROAM_ALIASES: NETWORKING ネットワーキング "NETWORKING ネットワーキング"
+:END:
+#+title: Networking
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] 
+
+https://wiki.debian.org/NetworkConfiguration#Configuring_the_interface_manually
+
+[[https://www.youtube.com/playlist?list=PLowKtXNTBypH19whXTVoG3oKSuOcw_XeW][Networking tutorial - Ben Eater (youtube playlist)]]
+
+jellyfin
+samba
+Terraform
+Bicep
+Cloud formation
+ubiquiti
+https://www.ui.com/
+
+[[https://www.youtube.com/watch?v=s_Ntt6eTn94][Subnet Mask - Explained - youtube]]
+[[https://www.redhat.com/sysadmin/network-interface-linux][3 ways to configure a network interface in Linux - Red Hat]]
+
+
+*ORGANIZE*
+https://en.wikipedia.org/wiki/MQTT
+https://en.wikipedia.org/wiki/WebSocket
+https://en.wikipedia.org/wiki/Edge_computing
+
+* BOOKS
+** [[id:7fc359d2-ae47-4d97-b2b0-6fbcb6561d4d][Network Automation Made Easy]]
+* [[id:970444d2-8aed-44fc-ae86-e977e2b0afe4][CISCO]] 
+* [[id:0c903167-c8a8-4637-adb1-6c2887ff5c64][SSH]]
+* [[id:d1093c5b-1817-4713-93d6-83fdf6377ee7][FILE SHARING]]
+* [[id:18e2483e-8a47-40d7-9a80-a79a3ca254fb][FILESYSTEMS]]
+* TOOLS
+** [[id:75f367f9-80d5-4799-abf3-028afb1f412f][PACKET TRACER]]
+** nmap
+* LEARNING
+** TCP/IP
+:PROPERTIES:
+:ID:       69b25fa5-0e1c-495d-ba8c-f88a350feb4c
+:END:
+
+[[https://youtu.be/jE_FcgpQ7Co][TCP vs UDP - Explaining Facts and Debunking Myths - TCP Masterclass - Practical Networking (youtube video)]]
+
+* SETTING UP A LINUX SERVER
+
+DISTROS -> [[id:da4f3703-0384-4a06-a797-04e19f88dbe6][NGINX]] / OPENBSD / NIXOS
+REMOTE CONNECT -> SSH / STFP / SSHFS
+? -> [[id:8ea0b243-496e-4e7c-98eb-13ade994d593][TAILSCALE]] / ZERO TIER ONE
+
+RESOURCES
+- [[https://youtu.be/be4W-pSk8Ac][Let's build a home lab server from scratch with Ubuntu Linux, OpenZFS and KVM - Christian Lempa (youtube video)]]
+- [[https://youtu.be/GUpZELktYKQ][Essential First Steps for Every New Linux Server Build - Learn Linux TV (youtube video)]]
+
+* IP
+** IPv4
+** IPv6
+*** Why IPv6 Hasn't Taken Off - youtube video
+
+From a youtube comment:
+"IPv6 wihout translation only really works well for big institutions with a fixed PI allocation and BGP multihoming to ISPs or smartphones with  temporary /64 , which also allows for temporary hotspot.
+For small business and home internet I think the solution is ULA (ptivate IPv6)  for the LAN with stateless network prefix translation to the WAN prefixes from ever changing ISPs , which could even be multiple concurrently."
+
+*TallPaulTech answer*:
+"You know, that's about the same conclusion I came to. I didn't think of the huge routing issue it would cause on the WAN, but the idea of having ULA on the LAN with stateless network prefix translation would probably be the best method I can see. Also, if you do ULA properly, then it should still be okay if you combine sites in the future so they won't clash. Stateless should be nice and light too to not be a drain on resources of the router. I think this is the way I'll go with it." 
+
+Other comment - *hex2307*:
+"My ISP gives me a dynamic ipv6 prefix. I ended up getting an ASN and a /40 and announcing it via a vps on vultr. I then used a wireguard tunnel back to my own network."
+
+-----
+
+The reason for it is1
+End-to-end comms
+
+Rule on firewall: Do masquerading
+
+Masquerading
+- Source netting on outbound interface
+
+Got prefix allegation from ISP -> ~/48~
+Set up own DHCPv6 server
+Put some reservations for own network
+
+When set up a host for LAN
+
+*When i changed my mind about all of this*. was when i changed my Internet connection from _DSL_ to _fiber_, they changed the /prefix allegation/.
+
+I could no longer could host a internet somewhere round to my own network
+
+** ULA (Unique Local Address)
+
+[[https://en.wikipedia.org/wiki/Unique_local_address][wikipedia page]]
+
+"IPv6 address in the address range fc00::/7"
+
+** NAT
+* HTTP SERVERS
+** Caddy
+
+[[https://mdleom.com/blog/2021/12/27/caddy-plugins-nixos/][Installing Caddy plugins in NixOS - mdleom]]
+
+* EXTRA / TROUBLESHOOTING
+** TURNING COMPUTER ON / OFF FROM AWAY
+
+[[https://www.pcmag.com/how-to/turn-on-computer-from-across-the-house-with-wake-on-lan][How to Turn on Your Computer From Across the House With Wake-on-LAN - PCMag]]
+
+
+To turn it off, if connected to [[id:bc2233db-f8fd-4de6-8a9a-bb519804ba85][SSH]], you can do the next steps
+
+1. ~$ su -~
+2. Enter root password
+3. ~# shutdown -h now~
+** internet through Ethernet with nm-tui / network manager applet (2 computers)
+
+So it has been usual that i have my laptop with internet and another machine that doesn't have a wifi card nor i have a wifi dongle to use, in this case, we can connect both devices using a ethernet cable like this.
+
+In laptop or PC w internet
+1. Open nm-tui / network manager applet
+2. Inside the applet or TUI add a connection, choose *Ethernet*
+3. Edit the connection, go to IPv4 Settings
+4. Choose Method: Shared to other computers
+
+Now, you may want to choose
+
+** ipconfig / ip a - NO CARRIER
+
+This means that the connection is not being detected, check the cables
+
+The "NO CARRIER" message indicates that the network interface is not receiving a carrier signal from the connected network. This can happen if the cable is disconnected, there is a hardware issue, or the network is down. It's a way for the system to inform you that there is no active connection on that particular network interface.
+
+If you encounter the "NO CARRIER" message while using ipconfig, you should check the physical connection of the network cable and ensure that it is securely connected. If the issue persists, you may need to troubleshoot further, such as checking the network switch or contacting your network administrator.
+

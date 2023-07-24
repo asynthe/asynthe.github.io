@@ -1,0 +1,1253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NixOS</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">NixOS</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a>
+</p>
+
+<p>
+<a href="https://nixos.org/">NixOS main page</a>
+<a href="https://nixos.wiki/wiki/Main_Pae">NixOS wiki main page</a>
+<a href="https://search.nixos.org/packages">nixpkgs (nix packages)</a>
+</p>
+
+<p>
+<a href="https://matthewrhone.dev/nixos-package-guide">NixOS simple package manager guide - Matthew Rhone</a>
+</p>
+
+<p>
+RESOURCES
+<a href="https://thiscute.world/en/posts/nixos-and-flake-basics/">https://thiscute.world/en/posts/nixos-and-flake-basics/</a>
+<a href="https://lazamar.github.io/download-specific-package-version-with-nix/">https://lazamar.github.io/download-specific-package-version-with-nix/</a>
+<a href="https://shen.hong.io/nixos-home-manager-wayland-sway/">https://shen.hong.io/nixos-home-manager-wayland-sway/</a>
+<a href="https://github.com/oxalica/rust-overlay">https://github.com/oxalica/rust-overlay</a>
+<a href="https://or.computer.surgery/charles/nix-rust-quickstart">https://or.computer.surgery/charles/nix-rust-quickstart</a>
+<a href="https://github.com/oxalica/nil">https://github.com/oxalica/nil</a>
+</p>
+
+<p>
+<a href="https://nixos.org/manual/nix/unstable">Nix reference manual</a>
+<a href="https://github.com/mikeroyal/NixOS-Guide">NixOS Guide, mike royal - github</a>
+<a href="https://www.tweag.io/blog/2022-11-01-hard-user-separation-with-nixos/">HARD USER SEPARATION WITH NIXOS - tweag.io</a>
+<a href="https://jiaxiaodong.com/blog/">jiaxiaodong - nix stuff</a>
+<b>OTHER DOCS</b>
+<a href="https://nixos.wiki/wiki/Bootloader">https://nixos.wiki/wiki/Bootloader</a>
+<b>DOTS</b>
+<a href="https://github.com/dmadisetti/.dots/tree/main">https://github.com/dmadisetti/.dots/tree/main</a>
+<a href="https://github.com/notohh/snowflake">https://github.com/notohh/snowflake</a>
+<b>OTHER STUFF</b>
+<a href="https://github.com/fufexan/nix-gaming">https://github.com/fufexan/nix-gaming</a>
+<a href="https://www.reddit.com/r/NixOS/comments/lior0c/gaming_on_nixos/">https://www.reddit.com/r/NixOS/comments/lior0c/gaming_on_nixos/</a>
+</p>
+
+<div id="outline-container-orgfc4c9c8" class="outline-2">
+<h2 id="orgfc4c9c8">config</h2>
+<div class="outline-text-2" id="text-orgfc4c9c8">
+</div>
+<div id="outline-container-orgf7d0c8b" class="outline-3">
+<h3 id="orgf7d0c8b">overlays</h3>
+<div class="outline-text-3" id="text-orgf7d0c8b">
+<p>
+<a href="https://nixos.wiki/wiki/Overlays">nixos wiki</a>
+</p>
+
+<p>
+<b>WAYLAND</b>
+<a href="https://github.com/nix-community/nixpkgs-wayland">https://github.com/nix-community/nixpkgs-wayland</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4b23caf" class="outline-2">
+<h2 id="org4b23caf">setup</h2>
+<div class="outline-text-2" id="text-org4b23caf">
+</div>
+<div id="outline-container-org02c5e1a" class="outline-3">
+<h3 id="org02c5e1a">Cachix</h3>
+<div class="outline-text-3" id="text-org02c5e1a">
+<p>
+<a href="https://github.com/cachix/cachix">github page</a>
+<a href="https://www.cachix.org">main page</a>
+<a href="https://docs.cachix.org">cachix docs</a>
+</p>
+
+<p>
+cachix is <b>binary as a service</b> for nix binaries
+</p>
+
+<p>
+you can install with <code>nix-env</code> or adding it to your <code>configuration.nix</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">environment.systemPackages = with pkgs; [
+  cachix
+];
+</pre>
+</div>
+
+<p>
+now, add a binary cache such as the <code>nix-community</code> one.
+<code># cachix use nix-community</code>
+</p>
+
+<p>
+add the import in <code>configuration.nix</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">imports = [ ./cachix.nix ];
+</pre>
+</div>
+
+<p>
+then run
+<code># nixos-rebuild switch</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb902fec" class="outline-3">
+<h3 id="orgb902fec">bleeding edge emacs</h3>
+<div class="outline-text-3" id="text-orgb902fec">
+<p>
+<a href="https://github.com/nix-community/emacs-overlay">nix-community/emacs-overlay</a>
+</p>
+
+<p>
+easy config in <code>configuration.nix</code>, you can replace emacsUnstable with
+</p>
+<ul class="org-ul">
+<li>emacsGit</li>
+<li>emacsUnstable</li>
+<li>emacsGit-nox</li>
+<li>emacsUnstable-nox</li>
+<li>emacsPgtk</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-nix">{config, pkgs, callPackage, ... }:
+{
+# ...
+  services.emacs.package = pkgs.emacsUnstable;
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+    }))
+  ];
+# ...
+}
+</pre>
+</div>
+
+<p>
+after that, update your nix channel
+<code># nix-channel --update</code>
+</p>
+
+<p>
+and rebuild your configuration
+<code># nixos-rebuild --switch</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6943aff" class="outline-3">
+<h3 id="org6943aff">impermanence</h3>
+<div class="outline-text-3" id="text-org6943aff">
+<p>
+"<i>Making root dissapear, be a tmpfs.</i>"
+Handle persistent state on systems with ephemeral root storage.
+</p>
+
+<p>
+<a href="https://nixos.wiki/wiki/Impermanence">Impermanence - nixos wiki</a>
+</p>
+
+<p>
+<a href="https://github.com/nix-community/impermanence">https://github.com/nix-community/impermanence</a>
+<a href="https://www.reddit.com/r/NixOS/comments/13j64qh/how_to_add_impermanence_afterwards/">https://www.reddit.com/r/NixOS/comments/13j64qh/how_to_add_impermanence_afterwards/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org898a4e4" class="outline-3">
+<h3 id="org898a4e4">locale</h3>
+<div class="outline-text-3" id="text-org898a4e4">
+<p>
+Set up a main locale
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">
+</pre>
+</div>
+
+<p>
+Set up extra locales
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">
+</pre>
+</div>
+
+<p>
+Set up locale settings
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb360618" class="outline-2">
+<h2 id="orgb360618">[BROKEN LINK: 5bf5434d-689c-49b6-b158-cf716ce14ee9]</h2>
+</div>
+<div id="outline-container-orgded04bd" class="outline-2">
+<h2 id="orgded04bd">NOTES</h2>
+<div class="outline-text-2" id="text-orgded04bd">
+</div>
+<div id="outline-container-orgc4e3a3b" class="outline-3">
+<h3 id="orgc4e3a3b">problems with packages</h3>
+<div class="outline-text-3" id="text-orgc4e3a3b">
+<p>
+Sometimes, you can have problems with a package if you have it installed through <code>nix-env</code> and by rebuilding it with <code>nixos-rebuild switch</code>, this can be solved in the next way.
+</p>
+
+<p>
+<code>$ sudo nix-channel --list</code>
+if there's a <code>nixos</code> channel, there shouldn't be a <code>nixpkgs</code> channel
+remove it with <code>$ nix-channel --remove nixpkgs</code>
+</p>
+
+<p>
+now, try to remove all packages install with <code>nix-env</code> (other than home-manager)
+<code>nix-env -q</code> to list them
+<code>nix-env -e &lt;app&gt;</code> to remove
+<code>nix-env -e '*'</code> remove all
+</p>
+
+<p>
+try garbage collecting
+<code>$ nix-collect-garbage --delete-older-than 1m</code>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4734b6b" class="outline-2">
+<h2 id="org4734b6b">OLD</h2>
+</div>
+<div id="outline-container-org9fd4ee8" class="outline-2">
+<h2 id="org9fd4ee8">everyday usage</h2>
+<div class="outline-text-2" id="text-org9fd4ee8">
+</div>
+<div id="outline-container-orgfc5ec39" class="outline-3">
+<h3 id="orgfc5ec39">updating system</h3>
+<div class="outline-text-3" id="text-orgfc5ec39">
+<ol class="org-ol">
+<li><b>updating the nix channel</b></li>
+</ol>
+<p>
+<code># nix-channel --update</code>
+</p>
+
+<ol class="org-ol">
+<li><b>updating packages</b></li>
+</ol>
+<p>
+declarative: in <i>configuration.nix</i> or other
+<code># nixos-rebuild switch</code>
+</p>
+
+<p>
+ad-hoc: <span class="underline">nix-env</span> installed packages
+<code>$ nix-env -u '*'</code>
+</p>
+
+<p>
+<span class="underline">Home Manager</span> installed packages
+<code>$ home-manager switch</code>
+</p>
+
+<p>
+do both with
+<code>$ sudo nix-channel --update &amp;&amp; sudo nixos-rebuild switch</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4e74a1b" class="outline-3">
+<h3 id="org4e74a1b">changing the nix-channel</h3>
+<div class="outline-text-3" id="text-org4e74a1b">
+<p>
+so you want to change from <i>stable</i> to <i>unstable</i>? (rolling-release)
+do the next:
+<code># nix-channel -add https://nixos.org/channels/nixos-unstable nixos</code>
+<code># nixos-rebuild --upgrade-all switch</code>
+</p>
+
+<p>
+now,
+if you do the rebuild as root, it will work for configuration.nix
+if you do as user, it will update nix-env channels
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5e2880a" class="outline-3">
+<h3 id="org5e2880a">garbage collection</h3>
+<div class="outline-text-3" id="text-org5e2880a">
+<p>
+<b>command-line</b>
+one liner:
+<code># nix-collect-garbage -d</code>
+</p>
+
+<p>
+remove undeclared packaged, dependencies and symlinks:
+<code>$ nix-collect-garbage</code>
+</p>
+
+<p>
+list generations:
+<code>$ nix-env --list-generations</code>
+</p>
+
+<p>
+remove above of older generations:
+<code>$ nix-collect-garbage --delete-old</code>
+older than <i>n</i> days:
+<code>$ nix-env --delete-generations 14d</code>
+<code>$ nix-env --delete-generations 10 11</code>
+</p>
+
+<p>
+optimize store
+<code>$ nix-store --gc</code>
+</p>
+
+<p>
+<b>as a module</b> (<i>configuration.nix</i>)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nix">nix = {
+  settings.auto-optimise-store = true;
+  gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d"
+  };
+};
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeaab7ed" class="outline-2">
+<h2 id="orgeaab7ed">package management</h2>
+<div class="outline-text-2" id="text-orgeaab7ed">
+</div>
+<div id="outline-container-org6a15fab" class="outline-3">
+<h3 id="org6a15fab">declarative</h3>
+<div class="outline-text-3" id="text-org6a15fab">
+</div>
+<div id="outline-container-org1e68aeb" class="outline-4">
+<h4 id="org1e68aeb">configuration.nix</h4>
+<div class="outline-text-4" id="text-org1e68aeb">
+<p>
+in <span class="underline">configuration.nix</span>
+add your packages on nix file
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">environment.systemPackages = with pkgs; [
+  bottles
+  firefox
+  gimp
+  ];
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1f68425" class="outline-3">
+<h3 id="org1f68425">ad-hoc</h3>
+<div class="outline-text-3" id="text-org1f68425">
+</div>
+<div id="outline-container-org7a08b3e" class="outline-4">
+<h4 id="org7a08b3e">nix-env</h4>
+<div class="outline-text-4" id="text-org7a08b3e">
+<p>
+<span class="underline">ad-hoc</span>: <b>nix-env</b> (local package manager) 
+</p>
+
+<p>
+<span class="underline">nix-env</span> will install programs on your local machine
+</p>
+
+<p>
+nix-shell will install programs on your ephemeral shell, install like this
+<code>$ nix-shell -p usbimager</code>
+exit the shell
+<code>$[nix-shell:~]$ exit</code>
+</p>
+
+<p>
+<b>system failure or break</b>
+now, there's a possibility of a system break, in which case you can reboot and choose another system state. if you make that state as the main one, do this.
+<code># nixos-rebuild --rollback</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf4a13e3" class="outline-4">
+<h4 id="orgf4a13e3">nix-shell: ephemeral shell</h4>
+<div class="outline-text-4" id="text-orgf4a13e3">
+<p>
+or <b>nix-shell</b> (ephemeral shell)
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga32089a" class="outline-2">
+<h2 id="orga32089a">overriding a package attrs</h2>
+</div>
+
+
+<div id="outline-container-ID-02141f7e-b1d0-4898-aed5-273f0fcedf12" class="outline-2">
+<h2 id="ID-02141f7e-b1d0-4898-aed5-273f0fcedf12">Flakes</h2>
+<div class="outline-text-2" id="text-org3c03eef">
+<p>
+<a href="https://www.tweag.io/blog/2020-05-25-flakes">NIX FLAKES, PART 1: AN INTRODUCTION AND TUTORIAL - tweag.io</a>
+<a href="https://www.tweag.io/blog/2020-06-25-eval-cache/">NIX FLAKES, PART 2: EVALUATION CACHING - tweag.io</a>
+<a href="https://www.tweag.io/blog/2020-07-31-nixos-flakes">NIX FLAKES, PART 3: MANAGING NIXOS SYSTEMS - tweag.io</a>
+</p>
+
+<p>
+<a href="https://youtu.be/IrxCiNnXG4M">Beginners Guide to Nix EP1: Flakes - youtube</a>
+<a href="https://youtu.be/ARjAsEJ9WVY">NixOS Flake Tour - youtube</a>
+<a href="https://youtu.be/K54KKAx2wNc">Intro to Flakes - youtube</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8832beb" class="outline-2">
+<h2 id="org8832beb">&#x2013;&#x2014; NIXOS FILE END -----</h2>
+<div class="outline-text-2" id="text-org8832beb">
+</div>
+<div id="outline-container-org858fb95" class="outline-3">
+<h3 id="org858fb95">extra</h3>
+</div>
+<div id="outline-container-orgfa2bcad" class="outline-3">
+<h3 id="orgfa2bcad">nvidia propietary driver</h3>
+<div class="outline-text-3" id="text-orgfa2bcad">
+<p>
+enable like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nix">services.xserver.videoDrivers = [ "nvidia" ];
+hardware.opengl.enable = true;
+hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5bf0499" class="outline-3">
+<h3 id="org5bf0499">printer driver (CUPS)</h3>
+<div class="outline-text-3" id="text-org5bf0499">
+<p>
+enable the printer drivers like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">services.printing.enable = true;
+services.printing.drivers = [ pkgs.pantum-driver ];
+</pre>
+</div>
+<p>
+if you need the brlaser driver instead:
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">services.printing.enable = true;
+services.printing.drivers = [ pkgs.brlaser ];
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org17f78a2" class="outline-3">
+<h3 id="org17f78a2">installing package from unstable branch when using stable (fix)</h3>
+<div class="outline-text-3" id="text-org17f78a2">
+<p>
+Suppose you wanted to use the very latest version of Polychromatic from the unstable branch. First, you'll have to tell nixos to start tracking the unstable channel. Run this
+</p>
+
+<p>
+sudo nix-channel &#x2013;add <a href="https://nixos.org/channels/nixos-unstable">https://nixos.org/channels/nixos-unstable</a> unstable
+sudo nix-channel &#x2013;update
+</p>
+
+<p>
+Then we're going to make a nix file to direct the package manager to incorporate this one package from the unstable channel into the system. Take this file and put it in the /etc/nixos directory and call it "upack.nix" (short for unstable-packages):
+</p>
+
+<p>
+{ config, pkgs, &#x2026; }:
+</p>
+
+<p>
+let
+  unstablepkgs = import &lt;unstable&gt; {};
+in {
+  environment.systemPackages = with pkgs; [
+    unstablepkgs.polychromatic
+  ];
+}
+</p>
+
+<p>
+If you wanted to add more packages from the unstable channel, just put them there on a new line after polychromatic, but remembering to add the "unstablepkgs." prefix. For example, if you also wanted DistroBox and GNOME Builder from the unstable branch, your upack.nix file would look like this:
+</p>
+
+<p>
+{ config, pkgs, &#x2026; }:
+</p>
+
+<p>
+let
+  unstablepkgs = import &lt;unstable&gt; {};
+in {
+  environment.systemPackages = with pkgs; [
+    unstablepkgs.polychromatic
+    unstablepkgs.gnome-builder
+    unstablepkgs.distrobox
+  ];
+}
+</p>
+
+<p>
+Now you'll need to incorporate the upack.nix file into the configuration.nix file. To do that, add it to the imports section. Usually, that includes the hardware-configuration.nix, so we'll just add it after that line. The imports section should then look like this:
+</p>
+
+<p>
+imports =
+  [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./upack.nix
+  ];
+</p>
+
+<p>
+Then do a normal "sudo nixos-rebuild &#x2013;upgrade-all switch" and the packages you listed in upack.nix will all be the versions from the unstable channel. If you later decide you don't want those packages from unstable installed on the system, just comment out the line in configuration.nix so that it looks like this:
+</p>
+
+<p>
+Suppose you wanted to use the very latest version of Polychromatic from the unstable branch. First, you'll have to tell nixos to start tracking the unstable channel. Run this
+</p>
+
+<p>
+sudo nix-channel &#x2013;add <a href="https://nixos.org/channels/nixos-unstable">https://nixos.org/channels/nixos-unstable</a> unstable
+sudo nix-channel &#x2013;update
+</p>
+
+<p>
+Then we're going to make a nix file to direct the package manager to incorporate this one package from the unstable channel into the system. Take this file and put it in the /etc/nixos directory and call it "upack.nix" (short for unstable-packages):
+</p>
+
+<p>
+{ config, pkgs, &#x2026; }:
+</p>
+
+<p>
+let
+  unstablepkgs = import &lt;unstable&gt; {};
+in {
+  environment.systemPackages = with pkgs; [
+    unstablepkgs.polychromatic
+  ];
+}
+</p>
+
+<p>
+If you wanted to add more packages from the unstable channel, just put them there on a new line after polychromatic, but remembering to add the "unstablepkgs." prefix. For example, if you also wanted DistroBox and GNOME Builder from the unstable branch, your upack.nix file would look like this:
+</p>
+
+<p>
+{ config, pkgs, &#x2026; }:
+</p>
+
+<p>
+let
+  unstablepkgs = import &lt;unstable&gt; {};
+in {
+  environment.systemPackages = with pkgs; [
+    unstablepkgs.polychromatic
+    unstablepkgs.gnome-builder
+    unstablepkgs.distrobox
+  ];
+}
+</p>
+
+<p>
+Now you'll need to incorporate the upack.nix file into the configuration.nix file. To do that, add it to the imports section. Usually, that includes the hardware-configuration.nix, so we'll just add it after that line. The imports section should then look like this:
+</p>
+
+<p>
+imports =
+  [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./upack.nix
+  ];
+</p>
+
+<p>
+Then do a normal "sudo nixos-rebuild &#x2013;upgrade-all switch" and the packages you listed in upack.nix will all be the versions from the unstable channel. If you later decide you don't want those packages from unstable installed on the system, just comment out the line in configuration.nix so that it looks like this:
+</p>
+
+<p>
+imports =
+  [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+</p>
+
+<p>
+];
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8a43c3f" class="outline-3">
+<h3 id="org8a43c3f">running an AppImage</h3>
+<div class="outline-text-3" id="text-org8a43c3f">
+<p>
+you will need to run AppImages through a helper application called appimage-run, add it to <code>configuration.nix</code>, <code>nix-env</code> or <code>nix-shell</code>.
+</p>
+
+<p>
+you will have to modify the .desktop file to make the launcher work
+<code>exec=/home/&lt;user&gt;/.local/share/program/program.Linux.AppImage</code>
+to
+<code>exec=appimage-run "//home/&lt;user&gt;//.local/share/program/program.Linux.AppImage"'</code>
+or
+<code>exec=nix-shell -p appimage-run --run 'app-image-run "home/&lt;user&gt;/.local/share/program/program.Linux.AppImage"'</code>
+</p>
+
+<p>
+<span class="underline">note</span>: it doesn't work when double-clicking on a file manager.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd1a0d91" class="outline-3">
+<h3 id="orgd1a0d91">running Flatpak applications</h3>
+<div class="outline-text-3" id="text-orgd1a0d91">
+<p>
+enable Flatpak on <code>configuration.nix</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">services.flatpak.enable = true;
+</pre>
+</div>
+
+<p>
+now add the Flatpak repo
+<code>$ flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org39a0e17" class="outline-2">
+<h2 id="org39a0e17">tutorial (fix)</h2>
+<div class="outline-text-2" id="text-org39a0e17">
+</div>
+<div id="outline-container-org78473b2" class="outline-3">
+<h3 id="org78473b2">package management</h3>
+<div class="outline-text-3" id="text-org78473b2">
+</div>
+<div id="outline-container-orge3a12c9" class="outline-4">
+<h4 id="orge3a12c9">nix-env</h4>
+<div class="outline-text-4" id="text-orge3a12c9">
+<p>
+normal installation of package
+<code>$ nix-env -iA nixos.&lt;package&gt;</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9129e4a" class="outline-4">
+<h4 id="org9129e4a">nix-shell</h4>
+<div class="outline-text-4" id="text-org9129e4a">
+<p>
+make a ephemeral shell environtment
+<span class="underline">example</span>:
+</p>
+
+<p>
+<code>[user@linuxpc:~]$ go version</code>
+<code>go: command not found</code>
+</p>
+
+<p>
+<code>[user@linuxpc:~]$ nix-shell -p go</code>
+or
+<code>[user@linuxpc:~]$ nix-shell -p go_1_15</code>
+</p>
+
+<p>
+<code>[nix-shell:~]$ go version</code>
+<code>go version go.1.16.13 linux/amd64</code>
+</p>
+
+<p>
+<code>[nix-shell:~]$ exit</code>
+<code>exit</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org77dcb30" class="outline-3">
+<h3 id="org77dcb30">nix-store</h3>
+<div class="outline-text-3" id="text-org77dcb30">
+<p>
+no /lib &amp; /usr/lib, almost non-existent /bin &amp; /usr/bin -&gt; /nix/store
+</p>
+</div>
+
+<div id="outline-container-org8c0979d" class="outline-4">
+<h4 id="org8c0979d">nix-channels</h4>
+<div class="outline-text-4" id="text-org8c0979d">
+<p>
+define if your distro is traditional "release every 6 months" -&gt; <code>nixos-21.11</code>
+or "git master" (but after it passes CI) -&gt; <code>nixos-unstable</code>
+</p>
+
+<ul class="org-ul">
+<li>you can run a stable system with unstable packages</li>
+<li>the inverse</li>
+<li>just a "rolling-release" or just stable</li>
+</ul>
+
+<p>
+how to change
+</p>
+</div>
+</div>
+
+<div id="outline-container-org08c790a" class="outline-4">
+<h4 id="org08c790a">building from source</h4>
+</div>
+</div>
+
+
+<div id="outline-container-org817d535" class="outline-3">
+<h3 id="org817d535">nix-env (Nix Package Manager)</h3>
+<div class="outline-text-3" id="text-org817d535">
+<p>
+install packages at user level without having to change system state
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org9e8eecf" class="outline-3">
+<h3 id="org9e8eecf">installing packages</h3>
+<div class="outline-text-3" id="text-org9e8eecf">
+</div>
+<div id="outline-container-org762a751" class="outline-4">
+<h4 id="org762a751">Nix Package Manager</h4>
+<div class="outline-text-4" id="text-org762a751">
+<p>
+install
+<code>$ nix-env -iA nixos.firefox</code>
+</p>
+
+<p>
+list (will only show packages installed with nix-env)
+<code>$ nix-env -q</code>
+</p>
+
+<p>
+uninstall
+<code>$ nix-env --uninstall firefox</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3fa5216" class="outline-4">
+<h4 id="org3fa5216">on configuration (/etc/nixos/configuration.nix)</h4>
+<div class="outline-text-4" id="text-org3fa5216">
+<p>
+set up then
+</p>
+
+<p>
+then do
+<code># nixos-rebuild build</code> &lt;- test if there's no problems
+<code># nixos-rebuild switch</code>
+rebuild -&gt; rebuild the system
+switch -&gt; automatically switch to new configuration
+</p>
+
+<p>
+<b>*</b>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf3d92c1" class="outline-3">
+<h3 id="orgf3d92c1">extra</h3>
+</div>
+<div id="outline-container-org941d00e" class="outline-3">
+<h3 id="org941d00e">variables</h3>
+<div class="outline-text-3" id="text-org941d00e">
+<p>
+todo
+</p>
+</div>
+</div>
+<div id="outline-container-orga7e81d1" class="outline-3">
+<h3 id="orga7e81d1">overlays</h3>
+<div class="outline-text-3" id="text-orga7e81d1">
+<p>
+todo
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc85c99c" class="outline-3">
+<h3 id="orgc85c99c">updating and upgrading with Nix-channel</h3>
+<div class="outline-text-3" id="text-orgc85c99c">
+<p>
+update your channel with
+<code>$ nix-channel --update</code>
+</p>
+
+<p>
+add a channel with
+<code>$ nix-channel --add https://nixos.org/channels/nixos-21.11</code>
+</p>
+
+<p>
+remember to rebuild the packages using the &#x2013;upgrade flag
+<code># nixos-rebuild switch --upgrade</code>
+and
+<code>$ nix-env -u '*'</code>
+</p>
+</div>
+
+<div id="outline-container-org6387078" class="outline-4">
+<h4 id="org6387078">set it up on configuration.nix</h4>
+<div class="outline-text-4" id="text-org6387078">
+<div class="org-src-container">
+<pre class="src src-nix">system.autoUpgrade = {
+  enable = true;
+  channel = "https://nixos.org/channels/nixos-unstable";
+};
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org47daa21" class="outline-3">
+<h3 id="org47daa21">Garbage Collection</h3>
+<div class="outline-text-3" id="text-org47daa21">
+</div>
+<div id="outline-container-orgd4a57de" class="outline-4">
+<h4 id="orgd4a57de">command-line</h4>
+<div class="outline-text-4" id="text-orgd4a57de">
+<p>
+the one to use:
+<code># nix-collect-garbage -d</code>
+</p>
+
+<p>
+remove undeclared packaged, dependencies and symlinks:
+<code>$ nix-collect-garbage</code>
+</p>
+
+<p>
+list generations:
+<code>$ nix-env --list-generations</code>
+</p>
+
+<p>
+remove above of older generations:
+<code>$ nix-collect-garbage --delete-old</code>
+older than &#x2026; days:
+<code>$ nix-env --delete-generations 14d</code>
+<code>$ nix-env --delete-generations 10 11</code>
+</p>
+
+<p>
+optimize store
+<code>$ nix-store --gc</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9a58197" class="outline-4">
+<h4 id="org9a58197">configuration.nix</h4>
+<div class="outline-text-4" id="text-org9a58197">
+<div class="org-src-container">
+<pre class="src src-nix">nix = {
+  settings.auto-optimise-store = true;
+  gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d"
+  };
+};
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2044a63" class="outline-3">
+<h3 id="org2044a63">HOME-MANAGER</h3>
+<div class="outline-text-3" id="text-org2044a63">
+<p>
+<a href="https://github.com/nix-community/home-manager">github page</a>
+[[<a href="https://nixos.wiki/wiki/Home_Manager">https://nixos.wiki/wiki/Home_Manager</a>][Home Manager - nixos wiki]
+[[<a href="https://nix-community.github.io/home-manager/index.html">https://nix-community.github.io/home-manager/index.html</a>][manual]
+</p>
+
+<p>
+Like configuration.nix, but for user environment.
+There are plenty more options for packages.
+And a better way to manage dotfiles.
+</p>
+
+<p>
+you can also see
+<code>$ man home-configuration.nix</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org390b5f2" class="outline-3">
+<h3 id="org390b5f2">setup</h3>
+<div class="outline-text-3" id="text-org390b5f2">
+<p>
+add the channel
+<code>$ nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager</code>
+</p>
+
+<p>
+update the channel
+<code># nix-channel --update</code>
+-&gt; log out and log in again
+</p>
+</div>
+</div>
+
+<div id="outline-container-org889bf4d" class="outline-3">
+<h3 id="org889bf4d">changing a nixos from number-version to unstable</h3>
+<div class="outline-text-3" id="text-org889bf4d">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">nix-channel --list</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">nix-channel --add https://nixos.org/channels/nixos-unstable nixos</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">nix-channel --update </span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">nixos-rebuild switch --upgrade</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org847c820" class="outline-3">
+<h3 id="org847c820">MODULE VERSION</h3>
+<div class="outline-text-3" id="text-org847c820">
+<p>
+configure home-manager within an existing nix configuration
+</p>
+
+<p>
+in <code>/etc/nixos/configuration.nix</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nix">let
+in
+{
+  imports = [ &lt;home-manager/nixos&gt; ];
+
+  users.users.&lt;name&gt; = {
+    isNormalUser = true;
+  }
+
+  home-manager.users.&lt;name&gt; = { pkgs, ...}: {
+  # declared packages
+  home.packages = [ pkgs.atool pkgs.httpie pkgs.btop ];
+  # fix for stateVersion bug
+  home.stateVersion = "18.09";
+  };
+}
+</pre>
+</div>
+
+<p>
+now rebuild your system
+<code># nixos-rebuild switch</code>
+</p>
+</div>
+
+<div id="outline-container-org0f2fd84" class="outline-4">
+<h4 id="org0f2fd84">uninstall</h4>
+<div class="outline-text-4" id="text-org0f2fd84">
+<p>
+remove the configuration.nix edits and remove the channel
+<code># nix-channel --remove home-manager</code>
+<code>$ nix-channel --remove home-manager</code>
+</p>
+
+<p>
+be sure to re-log after changing or deleting channels
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge8fb94f" class="outline-3">
+<h3 id="orge8fb94f">STANDALONE VERSION</h3>
+<div class="outline-text-3" id="text-orge8fb94f">
+<p>
+make sure you have the home-manager nix-channel on your user
+<code>$ nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager</code>
+</p>
+
+<p>
+now install it with
+<code>$ nix-shell '&lt;home-manager&gt;' -A install</code>
+</p>
+</div>
+
+<div id="outline-container-orga78f2db" class="outline-4">
+<h4 id="orga78f2db">configuration</h4>
+<div class="outline-text-4" id="text-orga78f2db">
+<p>
+you just have to edit in <code>~/.config/home-manager/home.nix</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">  home.packages = with pkgs; [ btop ];
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7f6bd67" class="outline-4">
+<h4 id="org7f6bd67">usage</h4>
+<div class="outline-text-4" id="text-org7f6bd67">
+<p>
+run it like this
+<code>$ home-manager switch</code>
+</p>
+
+<p>
+now, while using home-manager as standalone, services won't be activated by the system,
+this doesn't occur with home-manager as a module, or packages in <code>configuration.nix</code>,
+these services will be automatically ran by the system.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8e62552" class="outline-3">
+<h3 id="org8e62552">FLAKES</h3>
+<div class="outline-text-3" id="text-org8e62552">
+<p>
+<b>the "upcoming feature" of NixOS</b>
+</p>
+
+<ul class="org-ul">
+<li>specify code dependencies declaratively (will be stored in flake.lock)
+<ul class="org-ul">
+<li>for example: home-manager</li>
+</ul></li>
+<li>rebuilding and updating whole system made easy</li>
+<li>very useful to build own config
+<ul class="org-ul">
+<li>multiple configs in one</li>
+<li>best for github dotfiles</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge1e898f" class="outline-3">
+<h3 id="orge1e898f">set up</h3>
+<div class="outline-text-3" id="text-orge1e898f">
+<p>
+in <code>configuration.nix</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
+    };
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0352468" class="outline-4">
+<h4 id="org0352468">a basic flake configuration</h4>
+<div class="outline-text-4" id="text-org0352468">
+<p>
+make a directory and start your flake there
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">$ cd
+$ mkdir flake &amp;&amp; cd flake
+$ nix flake init
+</pre>
+</div>
+
+<p>
+edit it to look like this
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">{
+  description = "A very basic flake";
+
+  inputs = {
+    nixpgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  };
+
+  outputs = { self, nixpkgs }: {
+  let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    lib = nixpkgs.lib;
+  in {
+    nixosConfigurations = {
+      asynthe = lib.nixosSystem {
+        inherit system;
+        modules = [ ./configuration.nix ];
+      };
+    };
+  };
+}
+</pre>
+</div>
+
+<p>
+remember to copy over <code>configuration.nix</code>
+<code>$ cp /etc/nixos/* .</code>
+</p>
+
+<p>
+build the flake
+<code># nixos-rebuild switch --flake .#&lt;username&gt;</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org32cd498" class="outline-4">
+<h4 id="org32cd498">Home-manager on Flakes</h4>
+<div class="outline-text-4" id="text-org32cd498">
+<p>
+home manager in a flake.nix
+</p>
+
+<p>
+on <code>flake.nix</code> add
+</p>
+<div class="org-src-container">
+<pre class="src src-nix"> inputs = {
+   nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+   home-manager = {
+     url = github:nix-community/home-manager;
+     inputs.nikxpkgs.follows = "nixpkgs";
+   };
+};
+
+outputs = { self, nixpkgs, home-manager }:
+
+...
+
+       modules = [ ./configuration.nix ];
+     };
+    };
+    hmConfig = {
+      asynthe = home-manager.lib.homeManagerConfiguration {
+        inherit system pkgs;
+        username = "asynthe";
+        homeDirectory = "/home/asynthe";
+        configuration = {
+          imports = [
+          ./home.nix
+          ];
+        };
+    };
+  };
+}
+</pre>
+</div>
+
+<p>
+remember to copy your <code>~/.config/nixpkgs/home.nix</code>
+<code>$ cp ~/.config/nixpkgs/home.nix .</code>
+</p>
+
+<p>
+rebuild with
+<code>$ nix build .#hmConfig.asynthe.activationPackage</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcaba718" class="outline-4">
+<h4 id="orgcaba718">Flake on ISO</h4>
+<div class="outline-text-4" id="text-orgcaba718">
+<div class="org-src-container">
+<pre class="src src-bash">$ sudo su
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">nix-env -iA nixos.git</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">git clone &lt;flake repo url&gt; /mnt/&lt;path&gt;</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">nixos-install -flake .#&lt;host&gt;</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">reboot</span>
+/* login */
+$ sudo rm -r /etc/nixos/configuration.nix
+/* move build to desired location */
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4d38b3b" class="outline-3">
+<h3 id="org4d38b3b">personal config</h3>
+</div>
+<div id="outline-container-orge7d00ea" class="outline-3">
+<h3 id="orge7d00ea">resources</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

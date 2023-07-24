@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       f5af88a0-008f-42e3-86e8-cda988bb930f
+:ROAM_ALIASES: EASYOCR
+:END:
+#+title: EasyOCR
+
+-> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]
+
+[[https://github.com/JaidedAI/EasyOCR][github page]]
+
+* package
+* set up
+* usage
+

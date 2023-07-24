@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       84bfb8e8-fd88-4974-84ee-7975bfbeda3e
+:ROAM_ALIASES: WEBASSEMBLY
+:END:
+#+title: WebAssembly
+
+-> [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][STUDY 勉強]]
+
+* RESOURCES
+
+*BOOKS*
+
+*GUIDES*
+
+*YOUTUBE*
+- [[https://youtu.be/cbB3QEwWMlA][Web Assembly (WASM) in 100 Seconds - Fireship]]
+- [[https://www.youtube.com/watch?v=P4LMfkFLRsI][Rust & Wasm - No Boilerplate]]

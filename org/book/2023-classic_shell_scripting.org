@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       dc1a2682-812c-4d70-8df2-eaf82ec833d4
+:END:
+#+title: Classic Shell Scripting
+
+-> [[id:6b748a2c-9b39-4478-97ce-ae94b4aa6223][BOOK 本]]
+
+* Source
+
+Author: Arnold Robbins & Nelson H. F. Beebe
+Title: Classic Shell Scripting
+Year: 2005
+
+* Summary
+** Chapter 1
+
+
+

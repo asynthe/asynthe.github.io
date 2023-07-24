@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cisco Routers</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Cisco Routers</h1>
+
+<div id="outline-container-orgf6ca585" class="outline-2">
+<h2 id="orgf6ca585">VLSM (VARIABLE LENGHT SUBNET MASKING)</h2>
+<div class="outline-text-2" id="text-orgf6ca585">
+<p>
+<code>R1(config)#interface gigabitEthernet 0/1</code>
+<code>R1(config-if)#ip address 192.168.1.0 255.255.255.254</code>
+<code>% Warning: use /31 mask on non point-to-point interface cautiously</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org599dad2" class="outline-2">
+<h2 id="org599dad2">RIP</h2>
+<div class="outline-text-2" id="text-org599dad2">
+<p>
+To be able to do this, we will have to configure each
+</p>
+
+<ol class="org-ol">
+<li>PERTH Router, with it's own network.</li>
+<li>The ISP Router, so that can accept both the networks carried by PERTH and ACT.</li>
+<li>ACT Router, with it's own network.</li>
+</ol>
+
+<p>
+<b>PERTH</b>
+<code>My-Router&gt;en</code>
+<code>My-Router#config t</code>
+</p>
+
+<p>
+<code>My-Router(config)#int se0/0/0</code>
+<code>My-Router(config-if)#ip add 172.172.172.1 255.255.255.252</code>
+<code>My-Router(config-if)#no sh</code>
+<code>My-Router(config-if)#ex</code>
+<code>My-Router(config)#router rip</code>
+<code>My-Router(config-router)#network 192.168.5.0</code>
+<code>My-Router(config-router)#network 172.172.172.0</code>
+<code>My-Router(config-router)#ex</code>
+<code>My-Router(config)#ex</code>
+</p>
+
+<p>
+<code>My-Router#copy running-config startup-config</code>
+<code>My-Router#ex</code>
+</p>
+
+<p>
+<b>ISP</b>
+<code>My-Router&gt;en</code>
+<code>My-Router#config t</code>
+</p>
+
+<p>
+<code>My-Router(config)#int se0/0/0</code>
+<code>My-Router(config-if)#ip add 172.172.172.2 255.255.255.252</code>
+<code>My-Router(config)#int se0/0/1</code>
+<code>My-Router(config-if)#ip add 162.162.162.2 255.255.255.252
+~My-Router(config-if)#no sh</code>
+<code>My-Router(config-if)#ex</code>
+</p>
+
+<p>
+<code>My-Router(config)#router rip</code>
+<code>My-Router(config-router)#network 192.168.5.0</code>
+<code>My-Router(config-router)#network 172.172.172.0</code>
+<code>My-Router(config-router)#ex</code>
+</p>
+
+<p>
+<code>My-Router(config)#ex</code>
+</p>
+
+<p>
+<code>My-Router#</code>
+<code>My-Router#copy running-config startup-config</code>
+</p>
+
+
+<p>
+<b>ACT</b>
+<code>My-Router&gt;en</code>
+<code>My-Router#config t</code>
+</p>
+
+<p>
+<code>My-Router(config)#int se0/0/1</code>
+<code>My-Router(config-if)#ip add 162.162.162.1 255.255.255.252</code>
+<code>My-Router(config-if)#no sh</code>
+<code>My-Router(config-if)#ex</code>
+<code>My-Router(config-if)#ex</code>
+<code>My-Router(config)#router rip</code>
+<code>My-Router(config-router)#network 192.168.5.0</code>
+<code>My-Router(config-router)#network 172.172.172.0</code>
+<code>My-Router(config-router)#ex</code>
+</p>
+
+<p>
+<code>My-Router(config)#ex</code>
+</p>
+
+<p>
+<code>My-Router#</code>
+<code>My-Router#copy running-config startup-config</code>
+</p>
+
+
+<p>
+When this is finished, you can <code>ping</code> PC1/PC2 to PC3/PC4
+</p>
+
+<p>
+also do a <code>tracert</code> from PC1/PC2 to PC3/PC4
+</p>
+
+<p>
+Remember you can check this not only on the CLI, but also on the menu. Use it to troubleshoot.
+</p>
+
+<hr />
+
+<p>
+PDU tools: quick connectivity test
+</p>
+
+<p>
+connect two devices with one of the [Switches]
+use a [Straight Through Copper Cable]
+</p>
+
+<p>
+straight cable from switch port [Ethernet 0/1] to computer [Ethernet Fast]
+straight cable from switch port [Ethernet 0/2] to computer [Ethernet Fast]
+</p>
+
+<p>
+windows CLI
+$ ipconfig
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

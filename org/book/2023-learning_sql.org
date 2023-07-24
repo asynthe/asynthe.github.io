@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       6078fa36-2ad3-4603-87be-93587ad5964d
+:END:
+#+title: Learning SQL
+-> [[id:6b748a2c-9b39-4478-97ce-ae94b4aa6223][BOOK 本]]
+
+* Source
+
+Author: Alan Beaulieu
+Title: Learning SQL
+Year: 2020
+
+* Summary
+
+asd

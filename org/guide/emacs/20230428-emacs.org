@@ -1,0 +1,292 @@
+:PROPERTIES:
+:ID:       ceec713c-7576-418e-908f-8084c45f83d4
+:ROAM_ALIASES: EMACS
+:END:
+#+title: Emacs
+
+Most of my emacs configuration will be inside ~config.org / config.el~ ([[~/.emacs.d/config.org][local file link]], [[web link]]).
+Here i give a main explanation of our beloved *emacs text editor* and will write tutorials about how to do certain things inside emacs.
+
+Ctrl + arrow keys -> move between words
+
+- set up magit
+- set up email mu4e
+- move to straight.el
+- move to vertico
+
+* [[id:a2128876-3f2a-4b3a-bce8-92070c57cb13][EMACS FROM SCRATCH]]
+* RESOURCES
+
+*DOCUMENTATION*
++ [[https://emacsdocs.org/][Emacs Docs]]
+
+themes
+https://emacsthemes.com/
+https://github.com/freesteph/peach-melpa.org
+
+packages
+https://www.emacswiki.org/emacs/buffer-move.el
+https://www.emacswiki.org/emacs/WindowResize
+https://www.emacswiki.org/emacs/DoReMi
+https://github.com/rksm/copilot-emacsd
+
+other
+https://emacsrocks.com/
+
+visual guide emacs
+https://www.reddit.com/r/emacs/comments/jtgm3o/visual_guides_for_hierarchical_content/
+https://www.youtube.com/watch?v=74zOY-vgkyw&list=PLEoMzSkcN8oPH1au7H6B7bBJ4ZO7BXjSZ
+https://blog.lazkani.io/posts/calendar-organization-with-org/
+
+PACKAGES
+https://github.com/minad/org-modern
+https://github.com/minad/vertico
+https://github.com/org-roam/org-roam
+https://github.com/kiwanami/emacs-calfw
+
+* PACKAGE
+
+Currently emacs has different versions of which there may be one specific to your needs or customization.
+
+*VANILLA*
+arch ->
+emacs-gcc-wayland-devel-bin
+gentoo ->
+nixos ->
+
+*PURE GTK*
+
+* DISTRIBUTIONS
+** CHEMACS
+:PROPERTIES:
+:ID:       bae96185-421a-4173-b58d-f9b5acfff3be
+:ROAM_ALIASES: Chemacs
+:END:
+
+[[https://github.com/plexus/chemacs2][github page]]
+
+Manage various versions of emacs at the same time.
+
+*** install and set up
+
+_note_: you can put ~~/.emacs-profiles.el~ in ~$XDG_CONFIG_HOME/chemacs/profile.el~
+and ~~/.emacs-profile~ in ~XDG_CONFIG_HOME/chemacs/profile~.
+
+from github page
+#+begin_src bash
+[ -f ~/.emacs ] && mv ~/.emacs ~/.emacs.bak
+[ -d ~/.emacs.d ] && mv ~/.emacs.d ~/.emacs.default
+git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
+#+end_src
+ 
+- this moves your emacs into ~~/.emacs.default~
+- and clones the directory into ~~/.emacs.d~
+chemacs will only be "the emacs you boot from", 
+this is, don't worry about ~~/.emacs.d~
+
+there are two ways to run a custom emacs or emacs /distribution/
+_from command line_
+you can straight up run a emacs with custom configuration like this
+~$ emacs --with-profile '((user-emacs-directory . "/path/to/config"))'~
+
+_set up on file_ 
+create a ~~/.emacs-profiles.el~ file
+and add it this line
+
+#+begin_src elisp
+(("default" . ((user-emacs-directory . "~/.emacs.default"))))
+#+end_src
+
+-> ~~/.emacs.default~
+will be the directory where emacs will load all the configs (~init.el~, ~config.el~, etc...)
+
+*** setting up another configuration
+
+now, how to create another configuration, such as doom
+we will have to edit ~~/.emacs-profiles.el~ like this
+#+begin_src elisp
+(("default" . ((user-emacs-directory . "~/.emacs.default")))
+ ("spacemacs" . ((user-emacs-directory . "~/spacemacs"))))
+#+end_src
+
+*** Adding Doom Emacs
+
+#+begin_src elisp
+(("default" . ((user-emacs-directory . "~/.emacs.d")))
+ ("doom" . ((user-emacs-directory . "~/doom-emacs")
+           (env . (("DOOMDIR" . "~/doom-config"))))))
+#+end_src
+
+now, run doom emacs like this
+~$ emacs --with-profile doom~
+
+or better yet, set it as the default when running emacs.
+
+** [[https://github.com/syl20bnr/spacemacs][Spacemacs]]
+** [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
+** [[https://github.com/snackon/Witchmacs][Witchmacs]]
+** [[https://github.com/pprobst/yukimacs][yukimaks]]
+** [[https://github.com/karlicoss/cloudmacs][Cloudmacs]]
+* TIPS
+** using the daemon (emacsclient)
+
+emacsclient -c -u
+
+** checking missing parenthesis
+
+Whenever you have a problem with a elisp file, 80% of the time it will be a parenthesis problem.
+You can fix this problems with ~M-x check-parens~
+
+** finding a text font and other details
+
+If you are playing with different sizes of text and fonts but can't get that specific thing working (be it a heading of any level) you find what /face/ you want to change with positioning your cursor on it and doing:
+~C-u M-x what-cursor-position RET~
+it will appear on /"There are text properties here."/
+
+** describe function
+
+~describe-function~ -> describe the function of a package on another buffer
+- you can then click on the package file to see it's built-in functions and
+commands.
+
+** opening a buffer as root
+
+[[https://emacs.stackexchange.com/questions/52/edit-file-with-super-user-rights][Edit file with super-user rights - StackExchange]] 
+
+Open dired (~C-x C-f~) and type
+~/su::/~
+
+At this point Emacs will use the TRAMP package to connect to the root user SSH-like.
+
+It will ask you for the root password, and if you want to save it.
+
+After that you can simply edit as root like before
+~/su::/etc/nixos/configuration.nix~
+
+* KEYBINDS
+** VANILLA EMACS (just in case)
+
+*commands*
+~M-x text-increse~ -> increase font size
+~M-x find-file~ -> look for and open a file
+~M-x load-file~ -> load a file (useful for reloading emacs)
+~eshell~ -> a terminal to do stuff
+
+
+*keybindings*
+~C-x C-f~ -> find-file
+
+~C-x C-s~ -> save-buffer
+~C-x k~ -> kill-buffer
+~ESC~ -> close annoying minibuffers just pressing that
+
+~M-w~ -> copy text
+~C-y~ -> paste text
+~C-w~ -> cut text
+
+~C-/~ or ~C-x u~ or ~C-_~ -> undo
+~C-g C-_~ -> redo (redo its just undo, just do undo again)
+
+*window splits*
+~C-x 2~ -> split window horizontal
+~C-x 3~ -> split window vertically
+window splits stuff
+https://stackoverflow.com/questions/4987760/how-to-change-size-of-split-screen-emacs-windows
+
+** DOOM EMACS
+
+~SPC f p~ -> doom main configs
+~SPC h v~ -> describe a variable
+~SPC f s~ -> save file
+
+* EMACS ON WINDOWS
+:PROPERTIES:
+:ID:       cdac416d-08aa-4037-ba25-c6c5911db1e7
+:END:
+
+[[https://org-roam.discourse.group/t/zero-to-emacs-and-org-roam-a-step-by-step-guide-on-windows-10/400][Zero to Emacs and Org-roam: a step-by-step guide on Windows 10 - Org Roam Discourse]]
+
+** installation
+
+https://gist.github.com/nauhygon/f3b44f51b34e89bc54f8
+
+* EAF (EMACS APPLICATION FRAMEWORK) - NOT TESTED
+
+[[https://github.com/emacs-eaf/emacs-application-framework][github page]]
+[[https://github.com/emacs-eaf/emacs-application-framework/wiki/NixOS][github wiki - NixOS]]
+
+[[https://github.com/emacs-eaf/eaf-browser][eaf browser - github page]]
+[[https://github.com/emacs-eaf/eaf-pdf-viewer][eaf pdf viewer - github page]]
+
+** install
+
+1. Download EAF
+   ~$ git clone --depth=1 -b master https://github.com/emacs-eaf/emacs-application-framework.git ~/.emacs.d/site-lisp/emacs-application-framework/~
+
+2. Install/Update EAF applications and dependencies (see NixOS header if using NixOS)
+   ~$ cd ~/.emacs.d/site-lisp/emacs-application-framework~
+   ~$ chmod +x ./install-eaf.py~
+   ~$ ./install-eaf.py~
+
+   If using Wayland: check the github page
+   If using NixOS: if pacakges are not recognized, you can install with flags
+   ~$ ./install-eaf.py --ignore-sys-deps~
+
+3. Load the EAF core
+   In ~config.el~, add the next lines
+   #+begin_src emacs-lisp
+   (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-application-framework/")
+   (require 'eaf)
+   #+end_src
+   
+   Or, if using ~use-package~, add the next configuration:
+   #+begin_src emacs-lisp
+   (use-package eaf
+     :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
+     :custom
+     ; See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization
+     (eaf-browser-continue-where-left-off t)
+     (eaf-browser-enable-adblocker t)
+     (browse-url-browser-function 'eaf-open-browser)
+     :config
+     (defalias 'browse-web #'eaf-open-browser)
+     (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
+     (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
+     (eaf-bind-key take_photo "p" eaf-camera-keybinding)
+     (eaf-bind-key nil "M-q" eaf-browser-keybinding)) ;; unbind, see more in the Wiki
+   #+end_src
+
+4. Load Apps
+
+   #+begin_src emacs-lisp
+   (require 'eaf-browser)
+   (require 'eaf-pdf-viewer)
+   #+end_src
+
+** install in NixOS
+
+add the next to your ~configuration.nix~
+
+#+begin_src nix
+let
+  python-packages = ps: with ps; [
+    # For Emacs EAF
+    pandas
+    requests
+    pyqt6 sip qtpy epc lxml pyqt6-webengine # for eaf
+    qrcode # eaf-file-browser
+    pysocks # eaf-browser
+    pymupdf # eaf-pdf-viewer
+    pypinyin # eaf-file-manager
+    psutil # eaf-system-monitor
+    retry # eaf-markdown-previewer
+    markdown
+  ];
+
+in {
+  environment.systemPackages = with pkgs; [
+    (pkgs.python3.withPackages python-packages)
+  ];
+}
+#+end_src
+

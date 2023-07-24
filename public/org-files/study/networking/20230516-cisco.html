@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cisco</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Cisco</h1>
+<p>
+<a href="https://boubakr92.wordpress.com/2013/09/16/ccna-cheat-sheet-part-1">CCNA Cheat Sheet Part 1 - Boubakr Tech</a>
+</p>
+
+<div id="outline-container-orge4b5b49" class="outline-2">
+<h2 id="orge4b5b49"><a href="20230515-cisco_switches.html#ID-4a01a963-f70a-4612-a096-188719ed9178">SWITCHES</a></h2>
+</div>
+<div id="outline-container-org4c77013" class="outline-2">
+<h2 id="org4c77013"><a href="20230515-cisco_routers.html#ID-ca81c744-2f76-4e8b-8ee6-68e61d430654">ROUTERS</a></h2>
+</div>
+<div id="outline-container-orga5fc6d1" class="outline-2">
+<h2 id="orga5fc6d1"><a href="20230429-cisco_packet_tracer.html#ID-75f367f9-80d5-4799-abf3-028afb1f412f">PACKET TRACER</a></h2>
+</div>
+<div id="outline-container-org1fd5b02" class="outline-2">
+<h2 id="org1fd5b02">SHORTCUTS</h2>
+<div class="outline-text-2" id="text-org1fd5b02">
+<p>
+<code>Tab</code> -&gt; fills predicted command
+<code>?</code> -&gt; shows available options
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7c96b75" class="outline-2">
+<h2 id="org7c96b75">GENERAL COMMANDS</h2>
+<div class="outline-text-2" id="text-org7c96b75">
+</div>
+<div id="outline-container-orgb199341" class="outline-3">
+<h3 id="orgb199341">configuration</h3>
+<div class="outline-text-3" id="text-orgb199341">
+</div>
+<div id="outline-container-org37297c5" class="outline-4">
+<h4 id="org37297c5">show the current configuration</h4>
+<div class="outline-text-4" id="text-org37297c5">
+<p>
+<code>HOSTNAME#show run</code>
+<code>HOSTNAME#show ip int br</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2743fa6" class="outline-4">
+<h4 id="org2743fa6">saving current configuration</h4>
+<div class="outline-text-4" id="text-org2743fa6">
+<p>
+<b>SAVING</b>
+<code>HOSTNAME(config)#ex
+~HOSTNAME#copy running-config startup-config</code>
+<code>HOSTNAME#ex</code>
+</p>
+
+<p>
+<span class="underline">note</span>: shorter version
+<code>HOSTNAME# copy run start</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org09420c1" class="outline-4">
+<h4 id="org09420c1">TFTP - backup / restore</h4>
+<div class="outline-text-4" id="text-org09420c1">
+<p>
+<b>BACKUP</b>
+<code>Router#copy running-config tftp:</code>
+<code>Adress or name of remote host []? &lt;number&gt;</code>
+<code>Destination filename [router-confg]? &lt;filename&gt;</code>
+</p>
+
+<p>
+<b>RESTORING</b>
+<code>Router#copy tftp: running-config</code>
+<code>Adress or name of remote host []? &lt;number&gt;</code>
+<code>Destination filename [router-confg]? &lt;filename&gt;</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org83abe1b" class="outline-4">
+<h4 id="org83abe1b">erase startup configuration</h4>
+<div class="outline-text-4" id="text-org83abe1b">
+<p>
+<code>HOSTNAME&gt;en</code>
+<code>HOSTNAME#write erase</code>
+<code>HOSTNAME#erase startup-config</code>
+<code>HOSTNAME#reload</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbf1ed2d" class="outline-3">
+<h3 id="orgbf1ed2d">change hostname</h3>
+<div class="outline-text-3" id="text-orgbf1ed2d">
+<p>
+<code>HOSTNAME&gt;en</code>
+<code>HOSTNAME#config t</code>
+<code>HOSTNAME(config)#hostname &lt;hostname&gt;</code>
+</p>
+
+<p>
+<span class="underline">note</span>: remember to save!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3571be3" class="outline-3">
+<h3 id="org3571be3">line VTY</h3>
+</div>
+
+<div id="outline-container-org48b310e" class="outline-3">
+<h3 id="org48b310e">updating the firmware</h3>
+<div class="outline-text-3" id="text-org48b310e">
+<p>
+<a href="https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-software-releases-122-mainline/46741-backup-config.html">Understand how to Backup and Restore Configuration Files - Cisco Docs</a>
+</p>
+
+<p>
+You first have to go into <a href="https://cisco.com">https://cisco.com</a> &gt; Support &gt; Download and grab the ISO image you need
+</p>
+
+<p>
+<b>Verify current version</b>:
+<code>Router&gt;show version</code>
+</p>
+
+<p>
+<b>Check if you have enough space left on the Router memory</b>:
+<code>Router&gt;show flash</code>
+</p>
+
+<p>
+Then we will have to choose the options of how to copy the ISO image to our memory
+</p>
+<ul class="org-ul">
+<li>TFTP</li>
+<li>FTP</li>
+<li>SCP</li>
+<li>USB stick (shows as usbflash)</li>
+</ul>
+
+<p>
+In this case we will use TFTP
+<code>Router#copy tftp flash</code>
+</p>
+
+<p>
+Address or name of remote host []? &lt;TFTP Server IP Address&gt;
+Source filename []? &lt;Firmware filename&gt;
+Destination filename [router]? &lt;Destination filename&gt;
+</p>
+
+<p>
+<b>Confirm the firmware update:</b>
+<code>Router#show flash</code>
+</p>
+
+<p>
+<b>Set the new firmware as the default boot image:</b>
+<code>Router(config)#boot system flash &lt;Destination filename&gt;</code>
+<code>Router(config)#exit</code>
+<code>Router#write memory</code>
+</p>
+
+<p>
+<b>Reload the router to apply the firmware update:</b>
+<code>Router#reload</code>
+Proceed with reload? [confirm]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7e7bff9" class="outline-3">
+<h3 id="org7e7bff9">passwords / password encryption</h3>
+<div class="outline-text-3" id="text-org7e7bff9">
+<p>
+<span class="underline">note</span>: If password is not encrypted, it can be seen with <code>show running-config</code> / <code>show startup-config</code>.
+<span class="underline">note</span>: A <i>Secret</i> encrypts the Main / Privileged <i>Password</i>, in the case of the others (con, aux, vty) we need to activate the <code>service password</code>.
+</p>
+
+<p>
+<b>Console</b>: Used for console access.
+<b>Auxiliary</b>: Used for the auxiliary port (if router/switch has one.)
+<b>VTY</b>: Used for Telnet and SSH access to the router/switch.
+</p>
+
+<p>
+<b>ENABLE PASSWORD</b>
+<code>Router&gt;en</code>
+<code>Router#config t</code>
+<code>Router(config)# enable password &lt;password&gt;</code> # Password
+<code>Router(config)# enable secret &lt;secret&gt;</code> # Secret password
+</p>
+
+<p>
+<b>CONSOLE LINE</b> PASSWORD
+<code>Router(config)#line 0</code>
+<code>Router(config-line)#password &lt;password&gt;</code>
+<code>Router(config-line)#login</code>
+<code>Router(config-line)#ex</code>
+</p>
+
+<p>
+<b>AUXILIARY</b> PASSWORD
+<code>Router(config)#line aux 0</code>
+<code>Router(config-line)#password &lt;password&gt;</code>
+<code>Router(config-line)#ex</code>
+</p>
+
+<p>
+<b>TELNET (VTY)</b> PASSWORD
+<code>Router(config)#line vty 0 4</code>
+<code>Router(config-line)#password</code>
+<code>Router(config-line)#password ICT@Stanley!</code>
+<code>Router(config-line)#login</code>
+<code>Router(config-line)#ex
+~Router(config)#</code>
+</p>
+
+<p>
+<b>PASSWORD ENCRYPTION</b>
+<code>Router(config)#service password-encryption</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org352eee1" class="outline-3">
+<h3 id="org352eee1">banner</h3>
+<div class="outline-text-3" id="text-org352eee1">
+<p>
+<b>Custom message</b> displayed when connecting to a Cisco IOS device
+<span class="underline">Note</span>: don't have a delimeter ($) on the message as cisco ios will interpret it as indicator to end banner message.
+</p>
+
+<p>
+<b>MOTD</b> -&gt; <b>Login</b> -&gt; (<i>user</i> logs in) -&gt; <b>Exec</b>
+</p>
+
+<p>
+<b>MOTD</b>
+<code>Router(config)# banner motd $&lt;message&gt;$</code>
+</p>
+
+<p>
+<b>LOGIN</b>
+<code>Router(config)# banner login ?&lt;message&gt;?</code>
+</p>
+
+<p>
+<b>EXEC</b>
+<code>Router (config)# banner exec #&lt;message&gt;#</code>
+</p>
+
+<p>
+<span class="underline">note</span>: the symbol chosen as starting the message will be the one to also close the message, so be careful not to include it in it.
+<span class="underline">note</span>: omitting the symbol, you can add more lines.
+<b>example</b>: Authorized personnel only.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org14466d7" class="outline-2">
+<h2 id="org14466d7">FIXES</h2>
+<div class="outline-text-2" id="text-org14466d7">
+<p>
+<span class="underline">ERROR FIX</span>: Router prompt instead of customized prompt
+Check if config register is set to default (0x2102)
+<code>Router&gt;en</code>
+<code>Router#config t</code>
+<code>Router(config)#config-register 0x2102</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-2103166a-4a38-4b3a-9d58-525633983d11" class="outline-2">
+<h2 id="ID-2103166a-4a38-4b3a-9d58-525633983d11">Cisco Networking Academy</h2>
+<div class="outline-text-2" id="text-org6baa00a">
+</div>
+
+<div id="outline-container-org1b6b04e" class="outline-3">
+<h3 id="org1b6b04e">ICTNWK542 &amp; ICTNWK543</h3>
+</div>
+<div id="outline-container-orgafe25e8" class="outline-3">
+<h3 id="orgafe25e8">Introduction to Networks</h3>
+</div>
+<div id="outline-container-org5f2de37" class="outline-3">
+<h3 id="org5f2de37">Enterprise Networking, Security and Automation</h3>
+</div>
+<div id="outline-container-org3205ae0" class="outline-3">
+<h3 id="org3205ae0">Switching, Routing, and Wireless Essentials</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

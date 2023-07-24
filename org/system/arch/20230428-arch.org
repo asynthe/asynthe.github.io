@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       e2d675a4-a47c-48b4-af5f-0842aa62618e
+:ROAM_ALIASES: "ARCH アーチ" アーチ
+:END:
+#+title: Arch
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+
+[[https://archlinux.org][main page]]
+[[https://wiki.archlinux.org][arch wiki]]
+[[https://archlinux.org/packages][packages]]
+[[https://aur.archlinux.org][aur]]
+
+* install
+** ZFS
+*** chroot
+chroot tutorial
+*** install
+install tutorial
+** BTRFS
+*** chroot
+*** install
+** XFS
+*** chroot
+*** install

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SSD</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">SSD</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="2023-storage.html#ID-ef5bd774-e428-452d-9e04-1dad211148d3">STORAGE</a>
+</p>
+
+<div id="outline-container-org623c0e2" class="outline-2">
+<h2 id="org623c0e2">ATA Secure Erase with HDPARM</h2>
+<div class="outline-text-2" id="text-org623c0e2">
+<p>
+<a href="https://archive.kernel.org/oldwiki/ata.wiki.kernel.org/index.php/ATA_Secure_Erase.html">https://archive.kernel.org/oldwiki/ata.wiki.kernel.org/index.php/ATA_Secure_Erase.html</a>
+</p>
+
+<p>
+Avoid's wear and tear, but will completely delete everything on the SSD
+</p>
+
+<p>
+"<i>An ATA secure-erase command can only erase the entire disk (not just a partition, not just a file). On SSDs with full-time encryption, it works by generating a new key and overwriting the old one, so nothing in the flash cells can be decrypted correctly anymore. (Also clearing the block mapping data so the whole disk acts as freed). This is ideal if you're going to sell a drive, if it supports instant-erase you avoid any wear and tear on the flash.</i>"
+</p>
+</div>
+
+<div id="outline-container-org2449b5b" class="outline-3">
+<h3 id="org2449b5b">helpful packages</h3>
+<div class="outline-text-3" id="text-org2449b5b">
+<p>
+arch -&gt; <code>.</code>
+gentoo -&gt; <code>sys-apps/nvme-cli</code> and <code>sys-apps/hdparm</code>
+nixos -&gt; <code>nvme-cli</code> and <code>hdparm</code>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org630a9b0" class="outline-3">
+<h3 id="org630a9b0">Kernel I/O scheduler</h3>
+<div class="outline-text-3" id="text-org630a9b0">
+<p>
+see the current I/O scheduler on your system like this
+<code>$ cat /sys/block/nvme0n1/queue/scheduler</code>
+</p>
+
+<p>
+it may have multiple I/O schedulers available, such as
+<code>[none] mq-deadline bfq</code>
+</p>
+
+<p>
+you can change the scheduler with an echo
+<code># echo "none" &gt; /sys/block/nvme0n1/queue/scheduler</code>
+</p>
+
+<p>
+if it doesn't work, make a udev rule.
+in <code>/etc/udev/rules.d/60-ioschedulers.rules</code>
+</p>
+<pre class="example">
+# Set sheduler for NVMe devices
+ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/scheduler}="none
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org956af04" class="outline-2">
+<h2 id="org956af04">TRIMMING</h2>
+<div class="outline-text-2" id="text-org956af04">
+<p>
+<a href="https://wiki.gentoo.org/wiki/SSD">https://wiki.gentoo.org/wiki/SSD</a>
+<a href="https://wiki.archlinux.org/title/Solid_state_drive">https://wiki.archlinux.org/title/Solid_state_drive</a>
+<a href="https://askubuntu.com/questions/1200172/should-i-turn-on-zfs-trim-on-my-pools-or-should-i-trim-on-a-schedule-using-syste">https://askubuntu.com/questions/1200172/should-i-turn-on-zfs-trim-on-my-pools-or-should-i-trim-on-a-schedule-using-syste</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge9bd2ef" class="outline-2">
+<h2 id="orge9bd2ef">MAXIMIZING PERFORMACE</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

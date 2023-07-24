@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org Publish</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Org Publish</h1>
+<p>
+have a file in <code>content/</code> called <code>index.org</code>, which will be converted into <code>index.html</code>, being the landing page of your site.
+</p>
+
+
+<div id="outline-container-orgebc27f7" class="outline-2">
+<h2 id="orgebc27f7">TABLE OF CONTENTS&#xa0;&#xa0;&#xa0;<span class="tag"><span class="toc">toc</span></span></h2>
+<div class="outline-text-2" id="text-orgebc27f7">
+<ul class="org-ul">
+<li>[BROKEN LINK: system-crafters&#x2014;build-your-website-with-org-mode]
+<ul class="org-ul">
+<li>[BROKEN LINK: creating-a-script]</li>
+<li>[BROKEN LINK: setting-up-the-project]</li>
+<li>[BROKEN LINK: previewing-with-simple-httpd]</li>
+<li>[BROKEN LINK: improving-the-html-output]</li>
+<li>[BROKEN LINK: other-settings]</li>
+<li>[BROKEN LINK: improving-the-page-styling]</li>
+<li>[BROKEN LINK: source-blocks]</li>
+<li>[BROKEN LINK: linking-between-files]</li>
+</ul></li>
+<li>[BROKEN LINK: system-crafters&#x2014;automated-org-mode-website-publishing-with-github-or-sourcehut]
+<ul class="org-ul">
+<li>[BROKEN LINK: getting-started]</li>
+<li>[BROKEN LINK: which-one-should-you-choose]</li>
+<li>[BROKEN LINK: quick-repo-setup]</li>
+<li>[BROKEN LINK: github]</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8879873" class="outline-2">
+<h2 id="org8879873">System Crafters - Build Your Website with Org Mode</h2>
+<div class="outline-text-2" id="text-org8879873">
+<p>
+from <a href="https://youtu.be/AfkrzFodoNw">youtube video</a>
+</p>
+</div>
+
+<div id="outline-container-org29538ec" class="outline-3">
+<h3 id="org29538ec">CREATING A SCRIPT</h3>
+<div class="outline-text-3" id="text-org29538ec">
+<p>
+<b>First</b>, let's create a script in Emacs Lisp that will create the HTML files, call it <span class="underline">build-site.el</span>, and inside of it:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Load the publishing system</span>
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ox-publish</span>)
+
+(message <span style="font-style: italic;">"Build complete!"</span>)
+</pre>
+</div>
+
+<p>
+<i>then</i>, as an extra, let's create a <b>shell script</b> that can run our <b>Emacs Lisp script</b>, let's call it <span class="underline">build.sh</span>.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">!/bin/</span><span style="font-weight: bold;">sh</span>
+emacs -Q --script build-site.el
+</pre>
+</div>
+
+<p>
+make it executable
+<code>$ chmod +x build.sh</code>
+</p>
+
+<p>
+run the script
+<code>$ ./build.sh</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org134bf05" class="outline-3">
+<h3 id="org134bf05">SETTING UP THE PROJECT</h3>
+<div class="outline-text-3" id="text-org134bf05">
+<p>
+Now with the script ready, let's set up a publishing configuration for our website, adding the next snippet into <span class="underline">build-site.el</span>.
+</p>
+
+<p>
+An important thing to note here is that we are setting the value for the <b>org-publish-project-alist</b> variable, which means it is not only one project (website) but a list of them.
+</p>
+<ul class="org-ul">
+<li>There is a first-level <b>list</b>, list of all project configurations.</li>
+<li>Second-level <b>list</b>, for project <b>my-org-site</b>.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Define the publishing project</span>
+(<span style="font-weight: bold;">setq</span> org-publish-project-alist
+      (list
+       (list <span style="font-style: italic;">"my-org-site"</span>
+             <span style="font-weight: bold;">:recursive</span> t
+             <span style="font-weight: bold;">:base-directory</span> <span style="font-style: italic;">"./content"</span>
+             <span style="font-weight: bold;">:publishing-directory</span> <span style="font-style: italic;">"./public"</span>
+             <span style="font-weight: bold;">:publishing-function</span> 'org-html-publish-to-html)))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Generate the site output</span>
+(org-publish-all t)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>:base-directory</code> folder of files we want to publish to HTML.</li>
+<li><code>:publishing-directory</code> output folder of published files.</li>
+<li><code>:recursive</code> publish <code>.org</code> files in all subdirectories too.</li>
+<li><code>:publishing-function</code> publish this files as HTML.</li>
+<li><code>org-publish-all</code> function to publish every project configured. <code>org-publish-project-alist</code>, <code>t</code> parameter to regenerate all files.</li>
+</ul>
+
+<p>
+Now create a org note inside the <code>content</code> folder, and publish it with the script !
+<code>$ ./build.sh</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4e0a9dc" class="outline-3">
+<h3 id="org4e0a9dc">PREVIEWING WITH SIMPLE-HTTPD</h3>
+<div class="outline-text-3" id="text-org4e0a9dc">
+<p>
+Host your file as a local website, using the package called <code>simple-httpd</code>.
+</p>
+
+<p>
+Install it using <code>M-x package-install</code> or by putting the snippet in your Emacs configuration.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">use-package</span> simple-httpd
+  <span style="font-weight: bold;">:ensure</span> t)
+</pre>
+</div>
+
+<p>
+Now, you can run <code>M-x httpd-serve-directory</code>
+</p>
+<ul class="org-ul">
+<li>Select path of <code>public/</code> directory</li>
+<li>Open your browser in <code>http://localhost:8080</code></li>
+</ul>
+
+<p>
+If your port is taken, you can set <code>httpd-port</code> to change the default port.
+</p>
+
+<p>
+If you want to see the changes in the website, <span class="underline">remember to run build.sh</span>, then <span class="underline">refresh the page</span>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdc12524" class="outline-3">
+<h3 id="orgdc12524">IMPROVING THE HTML OUTPUT</h3>
+<div class="outline-text-3" id="text-orgdc12524">
+<p>
+Let's disable a few things in the project configuration.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Define the publishing project</span>
+(<span style="font-weight: bold;">setq</span> org-publish-project-alist
+      (list
+       (list <span style="font-style: italic;">"my-org-site"</span>
+             <span style="font-weight: bold;">:recursive</span> t
+             <span style="font-weight: bold;">:base-directory</span> <span style="font-style: italic;">"./content"</span>
+             <span style="font-weight: bold;">:publishing-function</span> 'org-html-publish-to-html
+             <span style="font-weight: bold;">:publishing-directory</span> <span style="font-style: italic;">"./public"</span>
+             <span style="font-weight: bold;">:with-author</span> nil           <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Don't include author name</span>
+             <span style="font-weight: bold;">:with-creator</span> nil          <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Include Emacs and Org versions in footer</span>
+             <span style="font-weight: bold;">:with-toc</span> t                <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Include a table of contents</span>
+             <span style="font-weight: bold;">:section-numbers</span> nil       <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Don't include section numbers</span>
+             <span style="font-weight: bold;">:time-stamp-file</span> nil)))    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Don't include time stamp in file</span>
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Generate the site output</span>
+(org-publish-all t)
+</pre>
+</div>
+
+<p>
+For more options, press describe-variable (<code>C-h v</code>) on the <code>org-publish-project-alist</code> variable to see more options.
+</p>
+
+<p>
+<span class="underline">HTML VALIDATION</span>
+</p>
+
+<p>
+If you want to remove the "<sub>Validate</sub>_" message written on the bottom on the page, you can use the next variable.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> org-html-validation-link nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org41d6720" class="outline-3">
+<h3 id="org41d6720">OTHER SETTINGS</h3>
+<div class="outline-text-3" id="text-org41d6720">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Publish setting key</th>
+<th scope="col" class="org-left">Emacs Lisp variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">:author</td>
+<td class="org-left">user-full-name</td>
+</tr>
+
+<tr>
+<td class="org-left">:email</td>
+<td class="org-left">user-mail-address</td>
+</tr>
+
+<tr>
+<td class="org-left">:creator</td>
+<td class="org-left">org-export-creator-string</td>
+</tr>
+
+<tr>
+<td class="org-left">:exclude-tags</td>
+<td class="org-left">org-export-exclude-tags</td>
+</tr>
+
+<tr>
+<td class="org-left">:headline-levels</td>
+<td class="org-left">org-export-headline-levels</td>
+</tr>
+
+<tr>
+<td class="org-left">:language</td>
+<td class="org-left">org-export-default-language</td>
+</tr>
+
+<tr>
+<td class="org-left">:preserve-breaks</td>
+<td class="org-left">org-export-preserve-breaks</td>
+</tr>
+</tbody>
+</table>
+<p>
+:section-numbers 	org-export-with-section-numbers
+:select-tags 	org-export-select-tags
+:time-stamp-file 	org-export-time-stamp-file
+:with-archived-trees 	org-export-with-archived-trees
+:with-author 	org-export-with-author
+:with-creator 	org-export-with-creator
+:with-date 	org-export-with-date
+:with-drawers 	org-export-with-drawers
+:with-email 	org-export-with-email
+:with-emphasize 	org-export-with-emphasize
+:with-entities 	org-export-with-entities
+:with-fixed-width 	org-export-with-fixed-width
+:with-footnotes 	org-export-with-footnotes
+:with-inlinetasks 	org-export-with-inlinetasks
+:with-latex 	org-export-with-latex
+:with-planning 	org-export-with-planning
+:with-priority 	org-export-with-priority
+:with-properties 	org-export-with-properties
+:with-smart-quotes 	org-export-with-smart-quotes
+:with-special-strings 	org-export-with-special-strings
+:with-statistics-cookies 	org-export-with-statistics-cookies
+:with-sub-superscript 	org-export-with-sub-superscripts
+:with-toc 	org-export-with-toc
+:with-tables 	org-export-with-tables
+:with-tags 	org-export-with-tags
+:with-tasks 	org-export-with-tasks
+:with-timestamps 	org-export-with-timestamps
+:with-title 	org-export-with-title
+:with-todo-keywords 	org-export-with-todo-keywords
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5a4ba70" class="outline-3">
+<h3 id="org5a4ba70">IMPROVING THE PAGE STYLING</h3>
+<div class="outline-text-3" id="text-org5a4ba70">
+<p>
+Let's add the next to our build file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">HTML validation</span>
+(<span style="font-weight: bold;">setq</span> org-html-validation-link nil             <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Don't show validation link</span>
+      org-html-head-include-scripts nil        <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Use a script</span>
+      org-html-head-include-default-style nil  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Use a style</span>
+      org-html-head <span style="font-style: italic;">"&lt;link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" /&gt;"</span>) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">CSS file to load</span>
+</pre>
+</div>
+
+<p>
+The CSS file that will be loaded is a simple css file taken from <a href="https://simplecss.org/">Simple.css</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc96f05b" class="outline-3">
+<h3 id="orgc96f05b">SOURCE BLOCKS</h3>
+<div class="outline-text-3" id="text-orgc96f05b">
+<p>
+Adding code blocks will not work at first, you will get the next error:
+</p>
+
+<p>
+<code>Cannot fontify source block (htmlize.el &gt;= 1.34 required)</code>
+</p>
+
+<p>
+To solve this, we need to install the <code>htmlize</code> package from MELPA.
+We can also add this to the top of <code>build-site.el</code> too.
+</p>
+
+<p>
+<span class="underline">note</span>: we are going to set up the packages folder as <code>./.packages</code>, this is a hidden packages folder inside our blog folder. This is so that those packages are independent of emacs and our configuration and don't get mixed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Set the package installation directory so that packages aren't stored in the</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">~/.emacs.d/elpa path.</span>
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">package</span>)
+(<span style="font-weight: bold;">setq</span> package-user-dir (expand-file-name <span style="font-style: italic;">"./.packages"</span>))
+(<span style="font-weight: bold;">setq</span> package-archives '((<span style="font-style: italic;">"melpa"</span> . <span style="font-style: italic;">"https://melpa.org/packages/"</span>)
+                         (<span style="font-style: italic;">"elpa"</span> . <span style="font-style: italic;">"https://elpa.gnu.org/packages/"</span>)))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Initialize the package system</span>
+(package-initialize)
+(<span style="font-weight: bold;">unless</span> package-archive-contents
+  (package-refresh-contents))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Install dependencies</span>
+(package-install 'htmlize)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org096a855" class="outline-3">
+<h3 id="org096a855">LINKING BETWEEN FILES</h3>
+<div class="outline-text-3" id="text-org096a855">
+<p>
+Use <code>Org-insert-link</code> (C-c C-l)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd0d1185" class="outline-2">
+<h2 id="orgd0d1185">System Crafters - Automated Org Mode Website Publishing with GitHub or SourceHut</h2>
+<div class="outline-text-2" id="text-orgd0d1185">
+<p>
+from <a href="https://youtu.be/za99DwdZEyg">youtube video</a>
+</p>
+</div>
+
+<div id="outline-container-orgfa6058a" class="outline-3">
+<h3 id="orgfa6058a">GETTING STARTED</h3>
+<div class="outline-text-3" id="text-orgfa6058a">
+<p>
+Create an account on one of the next websites:
+</p>
+<ul class="org-ul">
+<li>GitHub</li>
+<li>SourceHut</li>
+</ul>
+
+<p>
+Create an account on GitHub here.
+<a href="https://github.com/join">https://github.com/join</a>
+</p>
+
+<p>
+Create an account on SourceHut here.
+<a href="https://meta.sr.ht/register/step2">https://meta.sr.ht/register/step2</a>
+<span class="underline">note</span>: It started requiring payments for as little as $2 per month
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9006bf0" class="outline-3">
+<h3 id="org9006bf0">WHICH ONE SHOULD YOU CHOOSE</h3>
+<div class="outline-text-3" id="text-org9006bf0">
+<p>
+Both are good:
+</p>
+
+<p>
+<b>GitHub</b> is the well-known mainstream option, doesn't hurt to have an account there.
+</p>
+
+<p>
+<b>SourceHut</b> is more hacker-focused with a totally different philosophy.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1552d1d" class="outline-3">
+<h3 id="org1552d1d">QUICK REPO SETUP</h3>
+<div class="outline-text-3" id="text-org1552d1d">
+<p>
+Brief rundown of how to turn your site files into a Git repo and "commit" the changes:
+</p>
+
+<pre class="example">
+# Copy the example site
+git clone https://github.com/SystemCrafters/org-website-example
+
+# Create a folder for a local repo.
+mkdir org-site
+cd org-site
+cp -R ../org-website-example/* .
+
+# Initialize the Git repository and make your first commit.
+git init
+git add -A
+git commit -m "My first commit!"
+</pre>
+
+<p>
+Now, everytime you make changes to your site, go into the page folder and run the following commands:
+<code>$ git add -A</code>
+<code>$ git commit -m "Updating website files"</code>
+</p>
+
+<p>
+I recommend learning the <a href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository">Git Book</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb022c8f" class="outline-3">
+<h3 id="orgb022c8f">GITHUB</h3>
+<div class="outline-text-3" id="text-orgb022c8f">
+<p>
+To publish with GitHub Pages, you need to create a repository with a specific name:
+</p>
+
+<p>
+yourusername.github.io
+</p>
+
+<p>
+<span class="underline">note</span>: This is the way GitHub has implemented and check the website belongs to your user.
+</p>
+
+<p>
+Go to <a href="https://github.com/new">https://github.com/new</a> and create a <span class="underline">public repository with your username</span>.
+</p>
+
+<p>
+Don't select any of the checkboxes, we will push our repository once the GitHub repo is created.
+</p>
+
+<p>
+Now that a repo is created, copy the link they give you to configure a local repository to push there:
+</p>
+
+<pre class="example">
+# Using HTTPS
+git rmeote add origin https://github.com/yourusername/yourusername.github.io.git
+
+# Using SSH, if you've set up a public key
+git remote add origin git@github.com:yourusername/yourusername.github.io.git
+</pre>
+
+<p>
+<span class="underline">note</span>: Authenticating to GitHub can be tricky if you never done it before, consult documentation.
+</p>
+
+<p>
+<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line">https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>File Sharing</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">File Sharing</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a>
+</p>
+
+<p>
+Reading through the internets, i've come with information that scp is <b>deprecated</b>, prefer to use <a href="20230403-rsync.html#ID-a2ac1ae0-71ad-47e2-878c-e0a0a9f98c03">rsync</a> or <a href="20230519-sftp.html#ID-96cdfae8-78df-4130-a631-1600ac4cdb22">sftp</a>. (<a href="https://lwn.net/Articles/835962">Deprecating scp - LWN.net</a>)
+</p>
+
+<div id="outline-container-org2afa1da" class="outline-2">
+<h2 id="org2afa1da"><a href="20230509-ssh.html#ID-bc2233db-f8fd-4de6-8a9a-bb519804ba85">SSH</a></h2>
+</div>
+<div id="outline-container-org202d19d" class="outline-2">
+<h2 id="org202d19d"><a href="20230519-sftp.html#ID-96cdfae8-78df-4130-a631-1600ac4cdb22">SFTP</a></h2>
+</div>
+<div id="outline-container-orgcd0bb8f" class="outline-2">
+<h2 id="orgcd0bb8f"><a href="20230403-rsync.html#ID-a2ac1ae0-71ad-47e2-878c-e0a0a9f98c03">RSYNC</a></h2>
+</div>
+<div id="outline-container-orgd9818e8" class="outline-2">
+<h2 id="orgd9818e8"><a href="20230519-sshfs.html#ID-e5ea58da-d0a8-42cf-ac4d-72b33e3544d9">SSHFS</a></h2>
+<div class="outline-text-2" id="text-orgd9818e8">
+<hr />
+</div>
+</div>
+
+
+<div id="outline-container-orgf2c7955" class="outline-2">
+<h2 id="orgf2c7955">REVISE</h2>
+<div class="outline-text-2" id="text-orgf2c7955">
+<p>
+<a href="https://phoenixnap.com/kb/iptables-tutorial-linux-firewall">Iptables Tutorial: Ultimate Guide to Linux Firewall - phoenixNAP</a>
+<a href="https://wiki.archlinux.org/title/NetworkManager">NetworkManager - arch wiki</a>
+</p>
+
+<p>
+<a href="https://www.howtogeek.com/devops/how-to-run-a-local-network-dhcp-server-with-dnsmasq">How to Run a Local Network DHCP Server with Dnsmasq - How-To Geek</a>
+</p>
+
+<p>
+Turning a computer into a Wi-Fi access point.
+<a href="https://wiki.archlinux.org/title/software_access_point">Software access point - arch wiki</a>
+</p>
+
+<p>
+WINDOWS TEST
+<a href="https://github.com/winfsp/winfsp">Windows File System Proxy - FUSE for Windows - github page</a>
+<a href="https://github.com/winfsp/sshfs-win">SSHFS For Windows - github page</a>
+</p>
+
+<p>
+<a href="https://discourse.nixos.org/t/how-to-configure-dnsmasq-under-networkmanager/3627">How to configure dnsmasq under NetworkManager - NixOS Discourse</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org11cfd98" class="outline-2">
+<h2 id="org11cfd98">REVISE</h2>
+<div class="outline-text-2" id="text-org11cfd98">
+</div>
+<div id="outline-container-orgba94d55" class="outline-3">
+<h3 id="orgba94d55">EDIT</h3>
+<div class="outline-text-3" id="text-orgba94d55">
+</div>
+<div id="outline-container-org489e248" class="outline-4">
+<h4 id="org489e248">NFS</h4>
+<div class="outline-text-4" id="text-org489e248">
+<p>
+alternative to <a href="20230519-sshfs.html#ID-e5ea58da-d0a8-42cf-ac4d-72b33e3544d9">SSHFS</a>
+</p>
+
+<p>
+Network File Sharing protocol built-in to the Linux Kernel
+Best choice for only Unix-based systems.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8895af2" class="outline-4">
+<h4 id="org8895af2">SSH / SSHFS (abandoned)</h4>
+<div class="outline-text-4" id="text-org8895af2">
+<p>
+SSH: not to transfer, just remote access and management.
+</p>
+
+<p>
+SSHFS: mount the entire filesystem of the remote machine on your host machine
+</p>
+
+<p>
+designate a directory on a remote server, can be a <span class="underline">vm</span> or a <span class="underline">real machine</span> and mount it on your host machine. You can mount your entire remote server root.
+</p>
+
+<p>
+Works well, but it is slow.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7e2abf2" class="outline-4">
+<h4 id="org7e2abf2">Samba</h4>
+<div class="outline-text-4" id="text-org7e2abf2">
+<p>
+<b>GUI</b> by default
+protocol / technology
+works well on windows, for linux to send files to windows or windows/windows
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb99ecb7" class="outline-4">
+<h4 id="orgb99ecb7">Dropbox</h4>
+</div>
+<div id="outline-container-org87b6ab8" class="outline-4">
+<h4 id="org87b6ab8">FileZilla</h4>
+<div class="outline-text-4" id="text-org87b6ab8">
+<p>
+For a easy windows fix, using <b>Teamviewer</b> and the built-in transfer dialog is also good.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge08d5c4" class="outline-3">
+<h3 id="orge08d5c4">PROGRAMMED BACKUPS</h3>
+</div>
+<div id="outline-container-org3532075" class="outline-3">
+<h3 id="org3532075">SYNC THROUGH DEVICES - Syncthing</h3>
+<div class="outline-text-3" id="text-org3532075">
+<p>
+distinguish the use cases of <span class="underline">file transfer</span>, <span class="underline">file/folder synchronization</span> (duplication) and working with <span class="underline">networked folder shares</span>.
+</p>
+
+<p>
+<b>Samba</b> and <b>NFS</b> are about connecting to a remote folder share to work like having it as a <span class="underline">local folder</span>.
+</p>
+
+<p>
+<span class="underline">See</span>: delta backups
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaaf29f2" class="outline-3">
+<h3 id="orgaaf29f2">FILE SHARING - FROM DTs OLD SSH VIDEO</h3>
+<div class="outline-text-3" id="text-orgaaf29f2">
+<p>
+USING SCP
+</p>
+
+<p>
+<i>after connecting through SSH</i>
+from host machine to guest machine (in guest machine)
+<code>&lt;guest&gt;@&lt;guest-hostname&gt;$ scp &lt;host&gt;@&lt;host-ip&gt;:./Xresources /home/&lt;guest-user&gt;/Downloads/</code>
+</p>
+
+<p>
+from guest machine to host machine (in guest machine)
+<code>&lt;guest&gt;@&lt;guest-hostname&gt;$ scp .Xresources &lt;host&gt;@&lt;host-ip&gt;:/home/user/Downloads/</code>
+</p>
+
+<p>
+USING SFTP
+GUI for SFTP -&gt; FileZilla
+</p>
+
+<p>
+<span class="underline">note</span>: you can specify to connect with the SFTP protocol using <code>sftp://&lt;ip&gt;</code>, but FileZilla assumes it's an SFTP connection.
+</p>
+
+<p>
+You will see your two filesystems. Just choose the one you want to transfer to the other computer by <code>right click</code> -&gt; <code>upload</code>.
+And download from that computer with <code>right click</code> -&gt; <code>download</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org3893e36" class="outline-3">
+<h3 id="org3893e36">FileZilla</h3>
+</div>
+<div id="outline-container-org095ec20" class="outline-3">
+<h3 id="org095ec20">SCP</h3>
+</div>
+<div id="outline-container-orgaa6cfa5" class="outline-3">
+<h3 id="orgaa6cfa5">VSFTP</h3>
+<div class="outline-text-3" id="text-orgaa6cfa5">
+<p>
+<a href="https://wiki.archlinux.org/title/Very_Secure_FTP_Daemon">arch wiki</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga223f20" class="outline-3">
+<h3 id="orga223f20">SYNCTHING</h3>
+</div>
+<div id="outline-container-org59aa8da" class="outline-3">
+<h3 id="org59aa8da">SIMPLE SSH FILE COPY</h3>
+<div class="outline-text-3" id="text-org59aa8da">
+</div>
+<div id="outline-container-org2a6e40c" class="outline-4">
+<h4 id="org2a6e40c">rsync</h4>
+<div class="outline-text-4" id="text-org2a6e40c">
+<p>
+Transfer files from one place to another. You need rsync installed on both devices
+</p>
+
+<p>
+<code>$ rsync ~~/rsync matt@192.168.122.102:~/Downloads</code>
+</p>
+
+<p>
+<b>rsync</b> and <b>Dropbox</b> are about duplication of files and folders across multiples machines, with ability to do <span class="underline">delta transfers</span>, reason why they are used as <b>backup</b>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgff80a3a" class="outline-4">
+<h4 id="orgff80a3a">scp</h4>
+<div class="outline-text-4" id="text-orgff80a3a">
+<p>
+<code>$ scp -r matt@192.168.122.102:~/test ~~/</code>
+</p>
+
+<ul class="org-ul">
+<li>syntax similar to rsync</li>
+<li>best for individual files</li>
+<li>simple, not many flags as rsync</li>
+<li>best feature is transfer <b>speed</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge619a8d" class="outline-4">
+<h4 id="orge619a8d">SFTP</h4>
+<div class="outline-text-4" id="text-orge619a8d">
+<p>
+<b>SFTP</b> is an SSH subsystem, and is mean to replace <b>scp</b>.
+A good gui client for <span class="underline">sftp</span> and <span class="underline">scp</span> is <span class="underline">FileZilla</span>: easy transfer of multiple files and directories. Others are <span class="underline">wormhole</span> and <span class="underline">croc</span>
+</p>
+
+<p>
+secure file transfer protocol
+<code>$ sftp 192.168.122.102</code>
+</p>
+
+<ul class="org-ul">
+<li>very simple</li>
+<li>access to the filesystem of the entire computer</li>
+<li>allows access in a <a href="20230509-ssh.html#ID-bc2233db-f8fd-4de6-8a9a-bb519804ba85">SSH</a> manner, but also to send files to-from.</li>
+<li>also allows you to navigate your host machine</li>
+<li>a little more complicated than the others, because of <b>permissions</b>
+(user on main machine doesn't have permissions on remote server)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga4bc4f3" class="outline-3">
+<h3 id="orga4bc4f3">CONTINUOUS SYNCHRONIZATION - SYNCTHING</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+:PROPERTIES:
+:ID:       ca81c744-2f76-4e8b-8ee6-68e61d430654
+:ROAM_ALIASES: ROUTERS "CISCO ROUTERS"
+:END:
+#+title: Cisco Routers
+
+* VLSM (VARIABLE LENGHT SUBNET MASKING)
+
+~R1(config)#interface gigabitEthernet 0/1~
+~R1(config-if)#ip address 192.168.1.0 255.255.255.254~
+~% Warning: use /31 mask on non point-to-point interface cautiously~
+
+* RIP
+
+To be able to do this, we will have to configure each
+
+1. PERTH Router, with it's own network.
+2. The ISP Router, so that can accept both the networks carried by PERTH and ACT.
+3. ACT Router, with it's own network.
+
+*PERTH*
+~My-Router>en~
+~My-Router#config t~
+
+~My-Router(config)#int se0/0/0~
+~My-Router(config-if)#ip add 172.172.172.1 255.255.255.252~
+~My-Router(config-if)#no sh~
+~My-Router(config-if)#ex~
+
+~My-Router(config)#router rip~
+~My-Router(config-router)#network 192.168.5.0~
+~My-Router(config-router)#network 172.172.172.0~
+~My-Router(config-router)#ex~
+~My-Router(config)#ex~
+
+~My-Router#copy running-config startup-config~
+~My-Router#ex~
+
+*ISP*
+~My-Router>en~
+~My-Router#config t~
+
+~My-Router(config)#int se0/0/0~
+~My-Router(config-if)#ip add 172.172.172.2 255.255.255.252~
+~My-Router(config)#int se0/0/1~
+~My-Router(config-if)#ip add 162.162.162.2 255.255.255.252
+~My-Router(config-if)#no sh~
+~My-Router(config-if)#ex~
+
+~My-Router(config)#router rip~
+~My-Router(config-router)#network 192.168.5.0~
+~My-Router(config-router)#network 172.172.172.0~
+~My-Router(config-router)#ex~
+
+~My-Router(config)#ex~
+
+~My-Router#~
+~My-Router#copy running-config startup-config~
+
+
+*ACT*
+~My-Router>en~
+~My-Router#config t~
+
+~My-Router(config)#int se0/0/1~
+~My-Router(config-if)#ip add 162.162.162.1 255.255.255.252~
+~My-Router(config-if)#no sh~
+~My-Router(config-if)#ex~
+~My-Router(config-if)#ex~
+~My-Router(config)#router rip~
+~My-Router(config-router)#network 192.168.5.0~
+~My-Router(config-router)#network 172.172.172.0~
+~My-Router(config-router)#ex~
+
+~My-Router(config)#ex~
+
+~My-Router#~
+~My-Router#copy running-config startup-config~
+
+
+When this is finished, you can ~ping~ PC1/PC2 to PC3/PC4
+
+also do a ~tracert~ from PC1/PC2 to PC3/PC4
+
+Remember you can check this not only on the CLI, but also on the menu. Use it to troubleshoot.
+
+-----
+
+PDU tools: quick connectivity test
+
+connect two devices with one of the [Switches]
+use a [Straight Through Copper Cable]
+
+straight cable from switch port [Ethernet 0/1] to computer [Ethernet Fast]
+straight cable from switch port [Ethernet 0/2] to computer [Ethernet Fast]
+
+windows CLI
+$ ipconfig

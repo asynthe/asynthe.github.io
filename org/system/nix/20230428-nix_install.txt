@@ -1,0 +1,179 @@
+
+
+[[nixos on encrypted zfs - lazkani][https://blog.lazkani.io/posts/nixos-on-encrypted-zfs/]]
+
+meow_NIX_!?#
+NIXroot#?#
+NIXuser_123
+
+* CHROOT
+** if LUKS
+open the luks partition
+~# cryptsetup open --type luks /dev/sda2 crypt~
+
+** if ZFS
+import the pool
+if not detected, then
+~# zpool import -a~
+
+force import
+~# zpool import -f nixpool~
+
+mount the zfs datasets
+main folder
+~# mount -t zfs nixpool/root/nixos /mnt~
+home dir
+~# mount -t zfs nixpool/home /mnt/home~
+
+** chroot
+boot partition
+~# mount /dev/sda1 /mnt/boot~
+
+chroot using nixos-enter tool
+~$ cd /mnt~
+~# nixos-enter~
+
+fixing grub (inside nixos-enter)
+~# NIXOS_INSTALL_BOOTLOADER=1 /nix/var/nix/profiles/system/bin/switch-to-configuration boot~
+
+umount and exit
+
+* INSTALL
+you can download a unstable (rolling release) iso by going to
+NixOS: the Linux distribution -> More ... -> - Old releases are _also available._
+[[link][https://releases.nixos.org/?prefix=nixos]] -> unstable -> last one.
+
+** partitioning
+we will are going to create the partitions as it follows
+- 2GB EFI boot partition
+- 20 GB SWAP (really?) set [[zram]] after that better
+- rest of disk as main partition
+- encrypted with another encrypted swap partitions
+
+*** GUI
+**** Gparted
+- run the iso on your computer
+- run gparted
+  - Device -> Create Partition Table... -> gpt (UEFI) / msdos (MBR)
+
+*** CLI
+**** sgdisk
+#+begin_src
+# sgdisk -n3:1M:+1024M -t3:EF00 /dev/disk/by-id/VENDOR-ID
+# sgdisk -n1:0:0 -t1:BF01 /dev/disk/by-id/VENDOR-ID
+#+end_src
+
+**** Parted
+#+begin_src
+# parted /dev/sda -- mklabel gpt (UEFI)
+# parted /dev/sda -- mkpart primary 512MiB -8GiB
+# parted /dev/sda -- mkpart primary linux-swap -20GiB 100%
+# parted /dev/sda -- mkpart ESP fat32 512MiB
+# parted /dev/sda -- set 3 esp on
+# mkfs.ext4 -L nixos /dev/sda1
+# mkswap -L swap /dev/sda2
+# mkfs.fat -F 32 -n boot /dev/sda3
+#+end_src
+
+**** fdisk
+#+begin_src
+g (gpt)
+n
+1 (partition number)
+2048 (first sector)
++2G (boot size)
+t
+1 (EFI System)
+n
+2
+default (fill up partition)
+default (fill up partition)
+w (write)
+#+end_src
+
+**** gdisk - CLI - ZFS
+-> ~# gdisk /dev/sda~
+#+begin_src
+n
+.
+.
++2G
+ef00
+n
+.
+.
+.
+bf00
+w
+Y
+#+end_src
+
+** Filesystems
+*** formatting boot device 
+format the boot partition first
+~# mkfs.vfat /dev/sda1~
+
+**** luks encryption
+~# cryptsetup luksFormat --hash sha512 --use-random /dev/sda2~
+_extra_: add ~--hash sha512~ and ~--use-random~
+~# cryptsetup open --type luks /dev/sda2 crypt~
+this will mount the encrypted device in ~crypt~
+
+*** ZFS
+**** luks encryption
+create a zpool like this
+~# zpool create -O mountpoint=none nixpool /dev/mapper/crypt~
+
+**** native encryption
+
+
+**** datasets
+~# zfs create -o mountpoint=legacy nixpool/root~
+~# zfs create -o mountpoint=legacy nixpool/root/nixos~
+~# zfs create -o mountpoint=legacy nixpool/home~
+
+mounting
+~# mount -t zfs nixpool/root/nixos /mnt~
+~# mkdir /mnt/{home,boot}~
+mounting home dir
+~# mount -t zfs nixpool/home /mnt/home~
+mounting boot partition
+~# mount /dev/sda1 /mnt/boot~
+
+*** BTRFS
+*** XFS
+
+time to generate our nix configuration from start
+~# nixos-generate-config --root /mnt~
+~# cd /mnt/etc/nixos~
+~# vim configuration.nix~
+
+**** nixos configuration
+generate needed hostId, and write it on a paper
+~# head -c4 /dev/urandom | od -A none -t x4~
+3a864ad3
+also copy and add ~/dev/nvme1n1p2~ uuid with
+~$ ls -l /dev/disk/by-uuid/~
+
+[my configuration.nix]
+
+**** nixos installation
+once everything's done, you can proceed to make *the nixos install* on your drive
+~# cd /mnt~
+~# nixos-install~
+
+**** after install
+run ~passwd~ to change the user password
+
+
+--------------------------------
+* XDDD
+so, remember to change your password
+TTY
+- Ctrl Alt F1 -> log in via root
+- Ctrl Alt F7 -> log in via user
+
+for internet break:
+    nixos-rebuild switch --option substitute false # no downloads
+    nixos-rebuild switch --option binary-caches "" # no downloads
+    wpa_supplicant flags to connect to wifi

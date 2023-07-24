@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       139448f4-2bfb-4a5b-ad44-3a84ee146458
+:END:
+#+title: PuTTY
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:6c2cc908-5784-465d-9979-74811b0a3255][NETWORKING ネットワーキング]]
+
+Windows !!!!
+
+
+https://linuxize.com/post/generate-ssh-keys-on-windows-with-puttygen/

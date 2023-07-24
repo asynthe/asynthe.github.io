@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learning the vi &amp; Vim Editors</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Learning the vi &amp; Vim Editors</h1>
+<p>
+-&gt; <a href="../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../other/main/20230428-study.html#ID-c9156aa2-0d9f-45dd-bf1a-e114e74c13b5">STUDY 勉強</a> -&gt; <a href="../other/main/20230428-books.html#ID-6b748a2c-9b39-4478-97ce-ae94b4aa6223">BOOK 本</a>
+</p>
+
+<div id="outline-container-orgf096ab5" class="outline-2">
+<h2 id="orgf096ab5">Source</h2>
+<div class="outline-text-2" id="text-orgf096ab5">
+<p>
+Author: Arnold Robbins and Elbert Hannah
+Title: Learning the vi &amp; Vim Editors
+Year: 2022
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbd29d7b" class="outline-2">
+<h2 id="orgbd29d7b">Resources</h2>
+<div class="outline-text-2" id="text-orgbd29d7b">
+<p>
+<a href="https://oreil.ly/viVim8">https://oreil.ly/viVim8</a>
+<a href="https://www.github.com/learning-vi/vi-files">https://www.github.com/learning-vi/vi-files</a>
+</p>
+
+<p>
+Heirloom vi
+<a href="https:github.com/n-t-roff/heirloom-ex-vi">https:github.com/n-t-roff/heirloom-ex-vi</a>
+</p>
+
+<p>
+Other
+<a href="http://www.userfriendly.org">http://www.userfriendly.org</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7783f44" class="outline-2">
+<h2 id="org7783f44">PART I - vi and Vim Fundamentals</h2>
+<div class="outline-text-2" id="text-org7783f44">
+</div>
+<div id="outline-container-org373374b" class="outline-3">
+<h3 id="org373374b">Chapter 1, "Introducing vi and Vim"</h3>
+<div class="outline-text-3" id="text-org373374b">
+<p>
+vi has a long tradition as the standard Unix<sub>1</sub> text editor
+</p>
+
+<p>
+"<i>These days, the term “Unix” includes both commercial systems derived from the original Unix code base and Unix work-alikes whose source code is available. Solaris, AIX, and HP-UX are examples of the former, and GNU/Linux and the various BSD-derived systems are examples of the latter. Also included under this umbrella are macOS’s terminal environment, Windows Subsystem for Linux (WSL) on MS-Windows, and Cygwin and other similar environments for Windows. Unless otherwise noted, everything in this book applies across the board to all those systems.</i>"
+</p>
+
+<p>
+Before text editors, there were <i>line editors</i>, such as: ed and ex
+</p>
+
+<p>
+line editors &#x2013;[ CRT terminals ]&#x2013;&gt; screen editors
+screen editors &#x2013;[ GUI ]&#x2013;&gt; graphical text editors
+</p>
+
+<p>
+Graphical text editors based on the X Window System
+<code>gedit</code> on Gnome-based systems
+<code>Notepad++</code> on MS-Windows
+</p>
+
+<p>
+vi has different "clone", the most famous being "Vim".
+</p>
+
+<p>
+vi is short for <i>visual editor</i>, and pronounced "vee-eye".
+</p>
+
+<p>
+Is it not a "what you see is what you get".
+</p>
+
+<hr />
+
+<p>
+<b>COMMAND MODE / NORMAL MODE</b>
+Instead of using special control keys, it uses almost all of the regular keyboard keys to issue commands, you must be in <b>insert mode</b> to type text.
+</p>
+
+<p>
+<b>FORMATTING CODES</b>
+</p>
+<ul class="org-ul">
+<li>indent several paragraphs.</li>
+<li>put a code where the indent begins and ends.</li>
+<li>experiment or change the appearance of printed files.</li>
+</ul>
+
+<p>
+Formatting codes are the <b>verbs</b> of  Markup<sub>1</sub> languages. Such as:
+</p>
+<ul class="org-ul">
+<li>Markdown</li>
+<li>AsciiDoc</li>
+<li>HTML (Hypertext Markup Language)</li>
+
+<li>troff (formatting package)</li>
+<li><i>Tex</i> and <i>LaTeX</i></li>
+</ul>
+
+<p>
+1: <i>From the use of red pencils to "mark up" changes in typesets galleys or proofs.</i>
+</p>
+</div>
+
+<div id="outline-container-orge935fb5" class="outline-4">
+<h4 id="orge935fb5">Text Editing</h4>
+<div class="outline-text-4" id="text-orge935fb5">
+<p>
+<span class="underline">Components of editing</span>
+</p>
+
+<ul class="org-ul">
+<li><i>Inserting</i> text
+A forgotten word, or a new or missing sentence.</li>
+<li><i>Delete</i> text
+A stray character or an entire paragraph.</li>
+<li><i>Changing letters</i> and <i>words</i>
+To correct misspellings or to reflect a change of mind about a term.</li>
+<li><i>Moving text</i>
+From one place to another place in your file.</li>
+<li><p>
+<i>Copy text</i>
+Duplicate it in another part of your file.
+</p>
+
+<hr />
+
+<p>
+<b>Inserting text</b>
+Simply give an "insert" command and type.
+</p>
+
+<p>
+<code>i</code> -&gt; Insert.
+<code>cw</code> -&gt; Change word (Deletes word on cursor then enters insert mode)
+</p></li>
+</ul>
+
+<hr />
+
+<p>
+Commands that "echo" (appear) on the bottom on the screen:
+</p>
+
+<p>
+<code>?</code> / <code>/</code> -&gt; begin search
+<code>:</code> -&gt; begins all ex commands
+</p>
+
+<p>
+<b>Vi</b> is the "visual mode"
+<b>ex</b> is the underlying editor
+</p>
+
+<hr />
+</div>
+</div>
+
+<div id="outline-container-orgba6bc40" class="outline-4">
+<h4 id="orgba6bc40">vi history</h4>
+<div class="outline-text-4" id="text-orgba6bc40">
+<p>
+[COPY FROM TEXT 36/548]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org34120c0" class="outline-4">
+<h4 id="org34120c0">Opening and Closing Files</h4>
+<div class="outline-text-4" id="text-org34120c0">
+<p>
+The editor copies the file to be edited into a buffer<sub>1</sub>, displays the buffer (but you can see only one screenful at a time), and lets you <b>add</b>, <b>delete</b>, and <b>change</b> text.
+</p>
+
+<p>
+When <span class="underline">saving</span> edits, the editor copies the edited buffer into a permanent file, replacing the old file.
+</p>
+
+<p>
+Remember that you are always working a <span class="underline">copy</span> of your file in the buffer, your edits don't affect original file until you save the buffer, that's why saving the edit is called "<i>writing the buffer</i>" or "<i>writing your file.</i>"
+</p>
+
+<ol class="org-ol">
+<li>An area temporarily set aside in memory</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgeb2f6b4" class="outline-4">
+<h4 id="orgeb2f6b4">Opening a File from the Command Line</h4>
+<div class="outline-text-4" id="text-orgeb2f6b4">
+<p>
+The <i>vim</i> command:
+<code>$ vim [filename]</code>
+or
+<code>$ vi [filename]</code>
+</p>
+
+<p>
+the file is optional.
+</p>
+
+<ul class="org-ul">
+<li>if the file is in the same directory, you can directly open vim with the filename.</li>
+<li>if it's on another directory, you will have to specify it from the relative pathname, or with the dots.
+<code>$ vi /home/john/letter</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6035b39" class="outline-4">
+<h4 id="org6035b39">Opening a File from the GUI</h4>
+<div class="outline-text-4" id="text-org6035b39">
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga15b580" class="outline-4">
+<h4 id="orga15b580">Problems Opening Files</h4>
+<div class="outline-text-4" id="text-orga15b580">
+<ul class="org-ul">
+<li><i>terminal: Unknown terminal type</i></li>
+</ul>
+<p>
+set <code>$TERM</code> to <code>vt100</code>, can temporarily help.
+</p>
+
+<ul class="org-ul">
+<li>A <i>[new file]</i> appears when a file already exists.
+Check for correct case in the filename.</li>
+
+<li>You get into <b>ex</b> line-editing mode. (you get a colon prompt)
+You probably typed an interrupt (typically <code>CTRL-C</code>) before <b>vi</b> draws the screen, type <b>vi</b> at the <b>ex</b> prompt (:).</li>
+
+<li>One of following messages appear:
+<ul class="org-ul">
+<li>[Read only]
+Means you cannot save any changes you make.
+<ul class="org-ul">
+<li>May have invoked <b>vi</b> in <b>view mode</b> (with <b>view</b> or <b>vi -R</b>)</li>
+<li>Don't have the write permission for the file.</li>
+</ul></li>
+</ul></li>
+<li>Following messages
+<ul class="org-ul">
+<li>Bad file number</li>
+<li>Block special file</li>
+<li>Character special file</li>
+<li>Directory</li>
+<li>Executable</li>
+<li>Non-ascii file</li>
+<li>file non-ASCII</li>
+</ul></li>
+</ul>
+<p>
+The file is not a <b>regular text file</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf5ebd0c" class="outline-4">
+<h4 id="orgf5ebd0c">Modus Operandi</h4>
+<div class="outline-text-4" id="text-orgf5ebd0c">
+<p>
+two modes
+</p>
+<ul class="org-ul">
+<li><i>command mode</i></li>
+<li><i>insert mode</i></li>
+</ul>
+<p>
+<i>ex command</i> can be a third mode.
+</p>
+
+<p>
+The editor may beep if you exit two times. Use this to confirm you've exited wherever mode you're in. You exit with <code>ESC</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd2ca7a5" class="outline-4">
+<h4 id="orgd2ca7a5">Saving and Quitting a File</h4>
+<div class="outline-text-4" id="text-orgd2ca7a5">
+<p>
+The command to quit and save edits is <code>ZZ</code>.
+</p>
+
+<p>
+the <b>ex</b> commands are also used, these are:
+</p>
+<ul class="org-ul">
+<li><code>:w</code> to save (write) but not quit</li>
+<li><code>:q</code> to quit (if you haven't made any edits)</li>
+<li><code>:wq</code> to both save edit and quit. (<code>:wq</code> is equivalent to <code>ZZ</code>.)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbac80d3" class="outline-4">
+<h4 id="orgbac80d3">Quitting Without Saving Edits</h4>
+<div class="outline-text-4" id="text-orgbac80d3">
+<ul class="org-ul">
+<li><code>:e!</code> will Wipe all edits and reload original file</li>
+<li><code>:q!</code> will Wipe all edits and quit vim.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org504b032" class="outline-4">
+<h4 id="org504b032">Problems Saving Files</h4>
+<div class="outline-text-4" id="text-org504b032">
+<p>
+You get any of the next messages:
+<code>File exists</code>
+<code>File &lt;filename&gt; exists - use w!</code>
+<code>[Existing file]</code>
+<code>File is read only</code>
+</p>
+
+<p>
+Type <code>:w!</code> to overwrite the existing file, or
+type <code>:w &lt;new-filename&gt;</code> to save into a new file
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="outline-container-org93ac5c6" class="outline-2">
+<h2 id="org93ac5c6">PART II - Vim</h2>
+</div>
+<div id="outline-container-org278c213" class="outline-2">
+<h2 id="org278c213">PART III - Vim in the Larger Milieu</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

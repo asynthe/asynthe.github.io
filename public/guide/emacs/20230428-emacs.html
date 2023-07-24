@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Emacs</h1>
+<p>
+Most of my emacs configuration will be inside <code>config.org / config.el</code> (<a href="file:///home/asynthe/.emacs.d/config.html">local file link</a>, [BROKEN LINK: web link]).
+Here i give a main explanation of our beloved <b>emacs text editor</b> and will write tutorials about how to do certain things inside emacs.
+</p>
+
+<div id="outline-container-orgc4bd0ef" class="outline-2">
+<h2 id="orgc4bd0ef">future to-do</h2>
+<div class="outline-text-2" id="text-orgc4bd0ef">
+<ul class="org-ul">
+<li>set up magit</li>
+<li>set up email mu4e</li>
+<li>move to straight.el</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd2cf747" class="outline-2">
+<h2 id="orgd2cf747">resources</h2>
+<div class="outline-text-2" id="text-orgd2cf747">
+<p>
+themes
+<a href="https://emacsthemes.com/">https://emacsthemes.com/</a>
+<a href="https://github.com/freesteph/peach-melpa.org">https://github.com/freesteph/peach-melpa.org</a>
+</p>
+
+<p>
+packages
+<a href="https://www.emacswiki.org/emacs/buffer-move.el">https://www.emacswiki.org/emacs/buffer-move.el</a>
+<a href="https://www.emacswiki.org/emacs/WindowResize">https://www.emacswiki.org/emacs/WindowResize</a>
+<a href="https://www.emacswiki.org/emacs/DoReMi">https://www.emacswiki.org/emacs/DoReMi</a>
+<a href="https://github.com/rksm/copilot-emacsd">https://github.com/rksm/copilot-emacsd</a>
+</p>
+
+<p>
+other
+<a href="https://emacsrocks.com/">https://emacsrocks.com/</a>
+</p>
+
+<p>
+visual guide emacs
+<a href="https://www.reddit.com/r/emacs/comments/jtgm3o/visual_guides_for_hierarchical_content/">https://www.reddit.com/r/emacs/comments/jtgm3o/visual_guides_for_hierarchical_content/</a>
+<a href="https://www.youtube.com/watch?v=74zOY-vgkyw&amp;list=PLEoMzSkcN8oPH1au7H6B7bBJ4ZO7BXjSZ">https://www.youtube.com/watch?v=74zOY-vgkyw&amp;list=PLEoMzSkcN8oPH1au7H6B7bBJ4ZO7BXjSZ</a>
+<a href="https://blog.lazkani.io/posts/calendar-organization-with-org/">https://blog.lazkani.io/posts/calendar-organization-with-org/</a>
+</p>
+
+<p>
+PACKAGES
+<a href="https://github.com/minad/org-modern">https://github.com/minad/org-modern</a>
+<a href="https://github.com/minad/vertico">https://github.com/minad/vertico</a>
+<a href="https://github.com/org-roam/org-roam">https://github.com/org-roam/org-roam</a>
+<a href="https://github.com/kiwanami/emacs-calfw">https://github.com/kiwanami/emacs-calfw</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgea9b5a9" class="outline-2">
+<h2 id="orgea9b5a9">package</h2>
+<div class="outline-text-2" id="text-orgea9b5a9">
+<p>
+Currently emacs has different versions of which there may be one specific to your needs or customization.
+</p>
+
+<p>
+<b>VANILLA</b>
+arch -&gt;
+emacs-gcc-wayland-devel-bin
+gentoo -&gt;
+nixos -&gt;
+</p>
+
+<p>
+<b>PURE GTK</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9566be8" class="outline-2">
+<h2 id="org9566be8">DISTRIBUTIONS</h2>
+<div class="outline-text-2" id="text-org9566be8">
+</div>
+<div id="outline-container-org89ac2e7" class="outline-3">
+<h3 id="org89ac2e7"><a href="https://github.com/syl20bnr/spacemacs">Spacemacs</a></h3>
+</div>
+<div id="outline-container-org4884000" class="outline-3">
+<h3 id="org4884000"><a href="https://github.com/doomemacs/doomemacs">Doom Emacs</a></h3>
+</div>
+<div id="outline-container-orgb1f9e89" class="outline-3">
+<h3 id="orgb1f9e89"><a href="https://github.com/snackon/Witchmacs">Witchmacs</a></h3>
+</div>
+<div id="outline-container-orgd46cb4c" class="outline-3">
+<h3 id="orgd46cb4c"><a href="https://github.com/pprobst/yukimacs">yukimaks</a></h3>
+</div>
+<div id="outline-container-org3b28ba7" class="outline-3">
+<h3 id="org3b28ba7"><a href="https://github.com/karlicoss/cloudmacs">Cloudmacs</a></h3>
+</div>
+</div>
+<div id="outline-container-org9b29ed3" class="outline-2">
+<h2 id="org9b29ed3">EAF (EMACS APPLICATION FRAMEWORK)</h2>
+<div class="outline-text-2" id="text-org9b29ed3">
+<p>
+<a href="https://github.com/emacs-eaf/emacs-application-framework">github page</a>
+<a href="https://github.com/emacs-eaf/emacs-application-framework/wiki/NixOS">github wiki - NixOS</a>
+</p>
+
+<p>
+<a href="https://github.com/emacs-eaf/eaf-browser">eaf browser - github page</a>
+<a href="https://github.com/emacs-eaf/eaf-pdf-viewer">eaf pdf viewer - github page</a>
+</p>
+</div>
+
+<div id="outline-container-org464f657" class="outline-3">
+<h3 id="org464f657">install</h3>
+<div class="outline-text-3" id="text-org464f657">
+<ol class="org-ol">
+<li>Download EAF
+<code>$ git clone --depth=1 -b master https://github.com/emacs-eaf/emacs-application-framework.git ~/.emacs.d/site-lisp/emacs-application-framework/</code></li>
+
+<li><p>
+Install/Update EAF applications and dependencies (see NixOS header if using NixOS)
+<code>$ cd ~/.emacs.d/site-lisp/emacs-application-framework</code>
+<code>$ chmod +x ./install-eaf.py</code>
+<code>$ ./install-eaf.py</code>
+</p>
+
+<p>
+If using Wayland: check the github page
+If using NixOS: if pacakges are not recognized, you can install with flags
+<code>$ ./install-eaf.py --ignore-sys-deps</code>
+</p></li>
+
+<li><p>
+Load the EAF core
+In <code>config.el</code>, add the next lines
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span style="font-style: italic;">"~/.emacs.d/site-lisp/emacs-application-framework/"</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">eaf</span>)
+</pre>
+</div>
+
+<p>
+Or, if using <code>use-package</code>, add the next configuration:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">use-package</span> eaf
+  <span style="font-weight: bold;">:load-path</span> <span style="font-style: italic;">"~/.emacs.d/site-lisp/emacs-application-framework"</span>
+  <span style="font-weight: bold;">:custom</span>
+  <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization</span>
+  (eaf-browser-continue-where-left-off t)
+  (eaf-browser-enable-adblocker t)
+  (browse-url-browser-function 'eaf-open-browser)
+  <span style="font-weight: bold;">:config</span>
+  (<span style="font-weight: bold;">defalias</span> '<span style="font-weight: bold;">browse-web</span> #'eaf-open-browser)
+  (eaf-bind-key scroll_up <span style="font-style: italic;">"C-n"</span> eaf-pdf-viewer-keybinding)
+  (eaf-bind-key scroll_down <span style="font-style: italic;">"C-p"</span> eaf-pdf-viewer-keybinding)
+  (eaf-bind-key take_photo <span style="font-style: italic;">"p"</span> eaf-camera-keybinding)
+  (eaf-bind-key nil <span style="font-style: italic;">"M-q"</span> eaf-browser-keybinding)) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">unbind, see more in the Wiki</span>
+</pre>
+</div></li>
+
+<li><p>
+Load Apps
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">eaf-browser</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">eaf-pdf-viewer</span>)
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orge6c7a66" class="outline-3">
+<h3 id="orge6c7a66">install in NixOS</h3>
+<div class="outline-text-3" id="text-orge6c7a66">
+<p>
+add the next to your <code>configuration.nix</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nix">let
+  python-packages = ps: with ps; [
+    # For Emacs EAF
+    pandas
+    requests
+    pyqt6 sip qtpy epc lxml pyqt6-webengine # for eaf
+    qrcode # eaf-file-browser
+    pysocks # eaf-browser
+    pymupdf # eaf-pdf-viewer
+    pypinyin # eaf-file-manager
+    psutil # eaf-system-monitor
+    retry # eaf-markdown-previewer
+    markdown
+  ];
+
+in {
+  environment.systemPackages = with pkgs; [
+    (pkgs.python3.withPackages python-packages)
+  ];
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0748f68" class="outline-2">
+<h2 id="org0748f68">WEB BROWSER</h2>
+</div>
+<div id="outline-container-org22a7e98" class="outline-2">
+<h2 id="org22a7e98">PACKAGES</h2>
+<div class="outline-text-2" id="text-org22a7e98">
+</div>
+<div id="outline-container-org888c432" class="outline-3">
+<h3 id="org888c432">TABLE OF CONTENTS</h3>
+<div class="outline-text-3" id="text-org888c432">
+<p>
+Generate table of contents by using the <code>toc</code> package, then just add to the beggining of your file.
+<code>* TABLE OF CONTENTS :toc:</code>
+</p>
+
+<p>
+It will be automatically updated while you save your file, so no worries.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga3005c3" class="outline-3">
+<h3 id="orga3005c3">pomodoro</h3>
+<div class="outline-text-3" id="text-orga3005c3">
+<p>
+<code>SPC t t</code> -&gt; pomodoro mode
+</p>
+</div>
+</div>
+<div id="outline-container-org33f021b" class="outline-3">
+<h3 id="org33f021b">super save</h3>
+</div>
+<div id="outline-container-orgab21e00" class="outline-3">
+<h3 id="orgab21e00">neotree</h3>
+<div class="outline-text-3" id="text-orgab21e00">
+<p>
+<code>SPC o p</code> -&gt; open neotree
+</p>
+</div>
+</div>
+<div id="outline-container-orgb7f4f1e" class="outline-3">
+<h3 id="orgb7f4f1e">projectile</h3>
+</div>
+<div id="outline-container-org8005162" class="outline-3">
+<h3 id="org8005162">TIPS</h3>
+<div class="outline-text-3" id="text-org8005162">
+<p>
+whenever a package is not found
+</p>
+
+
+<p>
+-&gt; compress emacs into .tar.xz
+except for configuration
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgeab5fe7" class="outline-3">
+<h3 id="orgeab5fe7">HELPFUL</h3>
+<div class="outline-text-3" id="text-orgeab5fe7">
+</div>
+<div id="outline-container-org1788625" class="outline-4">
+<h4 id="org1788625">finding the text</h4>
+<div class="outline-text-4" id="text-org1788625">
+<p>
+find what <i>face</i> you want to change with positioning your cursor on it and
+<code>C-u M-x what-cursor-position RET</code>
+it will appear on <i>"There are text properties here."</i>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfb60a01" class="outline-2">
+<h2 id="orgfb60a01">KEYBINDS</h2>
+<div class="outline-text-2" id="text-orgfb60a01">
+</div>
+<div id="outline-container-org3d0dfb4" class="outline-3">
+<h3 id="org3d0dfb4">VANILLA EMACS (just in case)</h3>
+<div class="outline-text-3" id="text-org3d0dfb4">
+<p>
+<b>commands</b>
+<code>M-x text-increse</code> -&gt; increase font size
+<code>M-x find-file</code> -&gt; look for and open a file
+<code>M-x load-file</code> -&gt; load a file (useful for reloading emacs)
+<code>eshell</code> -&gt; a terminal to do stuff
+</p>
+
+
+<p>
+<b>keybindings</b>
+<code>C-x C-f</code> -&gt; find-file
+</p>
+
+<p>
+<code>C-x C-s</code> -&gt; save-buffer
+<code>C-x k</code> -&gt; kill-buffer
+<code>ESC</code> -&gt; close annoying minibuffers just pressing that
+</p>
+
+<p>
+<code>M-w</code> -&gt; copy text
+<code>C-y</code> -&gt; paste text
+<code>C-w</code> -&gt; cut text
+</p>
+
+<p>
+<code>C-/</code> or <code>C-x u</code> or <code>C-_</code> -&gt; undo
+<code>C-g C-_</code> -&gt; redo (redo its just undo, just do undo again)
+</p>
+
+<p>
+<b>window splits</b>
+<code>C-x 2</code> -&gt; split window horizontal
+<code>C-x 3</code> -&gt; split window vertically
+window splits stuff
+<a href="https://stackoverflow.com/questions/4987760/how-to-change-size-of-split-screen-emacs-windows">https://stackoverflow.com/questions/4987760/how-to-change-size-of-split-screen-emacs-windows</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5036f95" class="outline-3">
+<h3 id="org5036f95">DOOM EMACS</h3>
+<div class="outline-text-3" id="text-org5036f95">
+<p>
+<code>SPC f p</code> -&gt; doom main configs
+<code>SPC h v</code> -&gt; describe a variable
+<code>SPC f s</code> -&gt; save file
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1c888d7" class="outline-2">
+<h2 id="org1c888d7">USEFUL COMMANDS</h2>
+<div class="outline-text-2" id="text-org1c888d7">
+<p>
+<code>describe-function</code> -&gt; describe the function of a package on another buffer
+</p>
+<ul class="org-ul">
+<li>you can then click on the package file to see it's built-in functions and</li>
+</ul>
+<p>
+commands.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org64bacec" class="outline-2">
+<h2 id="org64bacec">using the daemon (emacsclient)</h2>
+</div>
+<div id="outline-container-orgec56d26" class="outline-2">
+<h2 id="orgec56d26">[BROKEN LINK: bae96185-421a-4173-b58d-f9b5acfff3be]</h2>
+</div>
+<div id="outline-container-orgb5954f3" class="outline-2">
+<h2 id="orgb5954f3">[BROKEN LINK: a2128876-3f2a-4b3a-bce8-92070c57cb13]</h2>
+</div>
+<div id="outline-container-ID-8b4c09c4-172f-4390-b312-74c4500c1db3" class="outline-2">
+<h2 id="ID-8b4c09c4-172f-4390-b312-74c4500c1db3">EMACS ON WINDOWS</h2>
+<div class="outline-text-2" id="text-orgafd14e2">
+<p>
+<a href="https://org-roam.discourse.group/t/zero-to-emacs-and-org-roam-a-step-by-step-guide-on-windows-10/400">Zero to Emacs and Org-roam: a step-by-step guide on Windows 10 - Org Roam Discourse</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       9e78fbd3-ec97-4d34-9559-fd8804809aaa
+:ROAM_ALIASES: PYTHON
+:END:
+#+title: Python
+
+-> [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][STUDY 勉強]]
+
+* Resources
+
+*BOOKS*
++ [[id:c1b1a526-d069-44d7-b115-738d937676d5][Python Crash Course]]
+  
+*GITHUB*
++ [[https://github.com/vinta/awesome-python/][awesome-python]]

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>libvirt</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">libvirt</h1>
+<p>
+-&gt; <a href="../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="../guide/vm/2023-virtual_machines.html#ID-744bfcde-15c4-469d-8962-9912f8ab9940">VIRTUAL MACHINES</a>
+</p>
+
+<p>
+<a href="https://libvirt.org/manpages/virsh.html">virsh manpage - libvirt.org</a>
+</p>
+
+<p>
+<a href="https://www.thegeekstuff.com/2014/10/linux-kvm-create-guest-vm">How to Install Linux KVM and Create Guest VM with Examples - The Geek Stuff</a>
+<a href="https://www.cyberciti.biz/faq/kvmvirtualization-virt-install-openbsd-unix-guest/">KVM virt-install: Install OpenBSD As Guest Operating System - nixCraft</a>
+<a href="https://www.technicalsourcery.net/posts/nixos-in-libvirt">Test-Driving a NixOS VM Using Libvirt - Technical Sourcery</a>
+</p>
+
+<p>
+Tools to manage VMs -&gt; <code>qemu-kvm</code> / <code>libvirt</code>
+</p>
+
+<p>
+<code>libvirt</code> includes: <b>API library</b>, a daemon (<b>libvirtd</b>), and a command line utility (<b>virsh</b>).
+</p>
+<ul class="org-ul">
+<li>You can manage any existing VM running on KVM, Xen, VMWare ESX. etc.
+<a href="https://libvirt.org">libvirt main page</a></li>
+</ul>
+
+<p>
+Other tools are:
+</p>
+<ul class="org-ul">
+<li><a href="../guide/vm/2023-virt_manager.html#ID-30a114c3-b036-4620-9fbb-f9c7c1ecee9b">virt-manager</a></li>
+<li>vm-install = Script based menu to define VM Guest and install its operating system</li>
+<li>virt-viewer = An X viewer client for VM Guests, supports TLS/SSL encryption authenticationi of X509 certificate and SASL authentication.</li>
+</ul>
+
+<p>
+<b>NETWORKING</b>
+</p>
+
+<p>
+By default, VMs will only have network access to other VMs on the same server (and to the host itself). If you want the VMs to have access to your VLAN, then you must create a network bridge on the host as explained here.
+</p>
+
+<p>
+Edit <code>/etc/sysconfig/network-scripts/ifcfg-eth0</code> and add the line <code>BRIDGE=br0</code> (make sure to remove any static IPs).
+</p>
+
+<p>
+Create the file <code>/etc/sysconfig/network-scripts/ifcfg-br0</code> and add the entries as shown below. You can use static or dhcp. I used static IP in this case. 
+</p>
+
+<pre class="example">
+DEVICE="br0"
+BOOTPROTO="static"
+IPADDR="xxx.xxx.xxx.xxx"
+NETMASK="255.255.255.0"
+ONBOOT="yes"
+TYPE="Bridge"
+NM_CONTROLLED="no"
+</pre>
+
+<p>
+If you are running a firewall, (like iptables), create a rule in to allow bridged traffic.
+</p>
+
+<p>
+<b>ENABLE IP FORWARDING</b>
+Enable IP forwarding in <code>/etc/sysctl.conf</code> by adding the following line:
+</p>
+<pre class="example">
+inet.ipv3.ip_forward=1
+</pre>
+<p>
+During the testing phase, if you have SELinux running, disable it by setting SELinux to permissive mode.
+</p>
+
+<p>
+Reboot the system after the above changes are done.
+</p>
+
+<div id="outline-container-orgbd7438e" class="outline-2">
+<h2 id="orgbd7438e">CREATING A VM (VIRT-INSTALL)</h2>
+<div class="outline-text-2" id="text-orgbd7438e">
+</div>
+<div id="outline-container-org9dbcf5f" class="outline-3">
+<h3 id="org9dbcf5f">FLAGS</h3>
+<div class="outline-text-3" id="text-org9dbcf5f">
+<p>
+<b>VM OPTIONS</b>
+<code>--name</code> / <code>-n</code> -&gt; name of virtual machine
+<code>--description</code> -&gt; Some description about your VM.
+<span class="underline">example</span>: Application server, database server, web server, etc.
+</p>
+
+<p>
+<code>--os-type</code> -&gt; DEPRECATED, DO NOT USE
+<code>--os-variant</code> -&gt; Distribution type for the above os-type.
+</p>
+<ul class="org-ul">
+<li>For <b>linux</b>, it can be rhel6, centos6, ubuntu14, suse11, fedora6 , etc.</li>
+<li>For <b>windows</b>, this can be win2k, win2k8, win8, win7</li>
+<li>Check for a distribution with
+<code>$ virt-install --osinfo list</code></li>
+</ul>
+
+<p>
+<code>-c</code> / <code>--cdrom</code> -&gt; The location of the installation image.
+<code>-l</code> / <code>--location</code> -&gt;  Distribution tree installation source.
+</p>
+
+<p>
+<span class="underline">note</span>: it's relative to your <b>current directory</b> unless an <b>absolute path</b> is specified.
+</p>
+
+<p>
+<code>--disk</code> -&gt; location of created VM file
+  path: where the VM image files is stored.
+  size: in GB
+  format: qcow2
+</p>
+
+<p>
+<b>HOST OPTIONS</b>
+<code>--cpu</code> -&gt; x
+<code>--virt-type</code> -&gt; x
+</p>
+
+<p>
+<b>GUEST OPTIONS</b>
+<code>--boot</code> -&gt; uefi
+<code>--vcpu</code> / <code>--maxvcpus</code> -&gt; number of virtual CPU's for guest
+<code>--memory</code> / <code>--maxmemory</code> -&gt; memory in MB
+<code>--ram</code>: Memory for the VM in MB
+</p>
+
+<p>
+<code>--graphics</code> / <code>--nographics</code> -&gt; none, vnc
+</p>
+<ul class="org-ul">
+<li><b>none:</b> This instructs to use a text console on VM serial port instead of graphical VNC window. If you have the xmanager set up, then you can ignore this parameter.</li>
+</ul>
+
+<p>
+<code>--network bridge:br0</code>: This example uses <span class="underline">bridged adapter br0</span>. It is also possible to create your own network on any specific port instead of bridged adapter.
+</p>
+
+<p>
+If you want to use the NAT then use something like below for the network parameter with the virtual network name known as VMnetwork1. All the network configuration files are located under <code>/etc/libvirt/qemu/networks/</code> for the virtual machines. For example: 
+<code>--network network=VMnetwork1</code>
+</p>
+
+<p>
+<b>VIRTUALIZATION OPTIONS</b>
+<code>-v</code>, <code>--hvm</code> -&gt; Fully virtualized guest
+<code>-p</code>, <code>--paravirt</code> -&gt; Paravirtualized guest
+<code>--container</code> -&gt; Containerized guest
+<code>--virt-type</code> -&gt; Hypervisor to use (kvm, qemu, xen, &#x2026;)
+<code>--arch &lt;arch&gt;</code> -&gt; CPU architecture to simulate
+<code>--machine &lt;machine&gt;</code> -&gt; Machine type to emulate
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9d1d970" class="outline-3">
+<h3 id="org9d1d970">EXAMPLE - RHEL</h3>
+<div class="outline-text-3" id="text-org9d1d970">
+<p>
+as <span class="underline">root</span>
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">virt-install <span style="font-style: italic;">\</span>
+-n myRHELVM1 <span style="font-style: italic;">\</span>
+--description <span style="font-style: italic;">"Test VM with RHEL 6"</span> <span style="font-style: italic;">\</span>
+--os-type=Linux <span style="font-style: italic;">\</span>
+--os-variant=rhel6 <span style="font-style: italic;">\</span>
+--ram=2048 <span style="font-style: italic;">\</span>
+--vcpus=2 <span style="font-style: italic;">\</span>
+--disk <span style="font-weight: bold; font-style: italic;">path</span>=/var/lib/libvirt/images/myRHELVM1.img,<span style="font-weight: bold; font-style: italic;">bus</span>=virtio,<span style="font-weight: bold; font-style: italic;">size</span>=10 <span style="font-style: italic;">\</span>
+--graphics none <span style="font-style: italic;">\</span>
+--cdrom /var/rhel-server-6.5-x86_64-dvd.iso <span style="font-style: italic;">\</span>
+--network bridge:br0
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5da4e16" class="outline-3">
+<h3 id="org5da4e16">EXAMPLE - OPENBSD</h3>
+<div class="outline-text-3" id="text-org5da4e16">
+<p>
+as <span class="underline">root</span>:
+</p>
+<pre class="example">
+virt-install \
+--name=openbsd \
+--virt-type=kvm \
+--memory=2048,maxmemory=4096 \
+--vcpus=2,maxvcpus=4 \
+--cpu host \
+--os-variant=openbsd5.8 \
+--cdrom=/var/lib/libvirt/boot/install63.iso \
+--network=bridge=virbr0,model=virtio \
+--graphics=vnc \
+--disk path=/var/lib/libvirt/images/openbsd.qcow2,size=40,bus=virtio,format=qcow2
+</pre>
+
+<p>
+open
+<code># vncviewer</code>
+</p>
+
+<p>
+get port
+<code># virsh dumpxml openbsd-srv | grep vnc</code>
+</p>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orge85d1fa" class="outline-3">
+<h3 id="orge85d1fa">MY EXAMPLE</h3>
+<div class="outline-text-3" id="text-orge85d1fa">
+<p>
+<span class="underline">note</span>: problems when running as root, put file and virtual machine
+put iso in <code>/var/lib/libvirt/isos</code> (create dir)
+put vm in <code>/var/lib/libvirt/images</code> or <code>/tmp</code>
+</p>
+
+<p>
+<span class="underline">note</span>: prefer <code>cdrom</code> to <code>location</code>, unless using <code>NFS</code> or <code>http</code>.
+</p>
+
+<p>
+doas virt-install
+&#x2013;name=openbsd \
+&#x2013;description "Test VM" \
+&#x2013;os-variant=openbsd7.2 \
+&#x2013;location=~/isos/openbsd-install73.img
+&#x2013;ram=4096 \ or &#x2013;memory=2048,maxmemory=4096 \
+&#x2013;cpu=host \
+&#x2013;vcpus=2 \ or vcpus=2,maxvcpus=4
+&#x2013;graphics=none \
+&#x2013;disk path=/var/lib/libvirt/images/openbsd.qcow2,size=30,bus=virtio,format=qcow2
+</p>
+
+<p>
+doas virt-install \
+&#x2013;name=openbsd \
+&#x2013;memory=4096 \
+&#x2013;vcpus=2 \
+&#x2013;disk /var/lib/libvirt/images/openbsd.qcow2,device=disk,bus=virtio,size=30 \
+&#x2013;cdrom=
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd6a39c3" class="outline-2">
+<h2 id="orgd6a39c3">MANAGING THE VM WITH VIRSH</h2>
+<div class="outline-text-2" id="text-orgd6a39c3">
+<p>
+<a href="https://www.cyberciti.biz/faq/howto-linux-delete-a-running-vm-guest-on-kvm">How to delete KVM VM guest using virsh command - nixCraft</a>
+</p>
+
+<p>
+Connect to the vm
+<code># virsh console &lt;vm-name&gt;</code>
+Exit out of the console with <code>Ctrl + ]</code>
+<span class="underline">note</span>:
+</p>
+
+<p>
+Start
+<code># virsh start &lt;vm-name&gt;</code>
+</p>
+
+<p>
+Reboot
+<code># virsh reboot &lt;vm-name&gt;</code>
+</p>
+
+<p>
+Shutdown
+<code># virsh shutdown &lt;vm-name&gt;</code>
+</p>
+
+<p>
+Force stop
+<code># virsh destroy &lt;vm-name&gt;</code>
+</p>
+
+<p>
+Delete the vm
+<code># virsh undefine &lt;vm-name&gt;</code>
+<span class="underline">note</span>: vm file is not deleted by command, nor save images and snapshots.
+<code>--remove-all-storage</code> -&gt; delete the vm file
+<code>--managed-save</code> -&gt; delete managed save images
+<code>--snapshots-metadata</code> -&gt; remove snapshots of vm
+<span class="underline">fix</span>: cannot undefine domain with nvram
+run <code># virsh undefine --nvram &lt;vm-name&gt;</code>
+</p>
+
+<p>
+Display vm cpu and memory usage
+<code># virt-top</code>
+</p>
+
+<p>
+Diplay vm information
+<code># virsh dominfo &lt;vm-name&gt;</code>
+</p>
+
+<p>
+<b>List</b> the virtual machines that are installed on your OS.
+<code># virsh list</code> -&gt; the ones that are running.
+<code># virsh list --all</code> -&gt; all the installed vms.
+</p>
+
+<p>
+To <b>edit</b> a VM settings, the configuration file will be on <code>/etc/libvirt/qemu/&lt;vm&gt;.xml</code>
+However, avoid editing the file manually, use the next command:
+<code># virsh edit &lt;vm-name&gt;</code>
+</p>
+
+<p>
+Get the guest's IP address
+You can do inside the guest with <code>$ ip a</code>, but it can also be done from the host by using the next command:
+<code># virsh net-dhcp-leases &lt;network&gt;</code>
+network -&gt; default, br0
+</p>
+
+<p>
+In case the network is not running, nor you are detecting any devices, <b>start</b> it like this:
+<code># virsh net-start default</code>
+</p>
+
+<p>
+Start vm when <b>host</b> starts
+<code># virsh autostart &lt;vm-name&gt;</code>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

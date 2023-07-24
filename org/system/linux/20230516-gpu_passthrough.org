@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       0a1e6a5c-3703-491d-b60f-43851b55e014
+:ROAM_ALIASES: "GPU PASSTHROUGH"
+:END:
+#+title: GPU Passthrough
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] ->
+
+*ON OPTIMUS LAPTOPS*
+https://github.com/mysteryx93/GPU-Passthrough-with-Optimus-Manager-Guide
+
+*ON SINGLE GPU COMPUTERS*
+https://github.com/martinopiaggi/Single-GPU-Passthrough-for-Dummies
+https://github.com/bryansteiner/gpu-passthrough-tutorial/
+
+*ON NIXOS*
+https://astrid.tech/2022/09/22/0/nixos-gpu-vfio/
+
+* NON-NIXOS
+
+* NIXOS
+
+[[https://nixos.wiki/wiki/PCI_passthrough][PCI passthrough - nixos wiki]]
+- [[https://gist.github.com/techhazard/1be07805081a4d7a51c527e452b87b26][PCI Passthrough - github gist]]
+- [[https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF][PCI passthrough via OVMF - arch wiki]] 

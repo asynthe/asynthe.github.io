@@ -1,0 +1,78 @@
+:PROPERTIES:
+:ID:       56735aa9-4477-4a6b-8251-c65c4f47d2c4
+:ROAM_ALIASES: SYSTEMD
+:END:
+#+title: systemd
+
+-> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+
+* resources
+
+*YOUTUBE*
++ [[https://youtu.be/TJdKXq197Qk][systemd: The Good Parts]]
+  [[https://xeiaso.net/talks/systemd-the-good-parts-2021-05-16][blog post - xeiaso.net]]
+
+*SERVICES / TIMERS*
++ [[https://www.redhat.com/sysadmin/linux-systemctl-manage-services][How to use systemctl to manage Linux services - Red Hat]]
++ [[https://tecadmin.net/run-shell-script-as-systemd-service/][How to Run Shell Script as Systemd in Linux - TecAdmin.net]]
++ [[https://www.cyberciti.biz/faq/systemd-systemctl-list-all-failed-units-services-on-linux/][Systemd systemctl list all failed units/services on Linux - nixCraft]]
+
+* services
+
+[[https://superuser.com/questions/1423672/systemd-service-not-executing-the-script][systemd service not executing the script? - StackExchange]]
+
+Create a service in ~/etc/systemd/system/<name>.service~
+
+Start the service
+~$ systemctl start <service>~
+
+Check the status
+~$ systemctl status <service>~
+
+* units/services checking
+
+[[https://www.cyberciti.biz/faq/systemd-systemctl-list-all-failed-units-services-on-linux/][Systemd systemctl list all failed units/services on Linux - nixCraft]]
+
+~# systemctl list-units --failed~
+or
+~# systemctl list-units --state failed~
+
+* timers
+:PROPERTIES:
+:ID:       931ab427-e80f-453e-8274-ac185e02f626
+:ROAM_ALIASES: "systemd timers"
+:END:
+
+[[https://nixos.wiki/wiki/Systemd/Timers][Systemd/Timers - nixos wiki]]
+[[https://www.freedesktop.org/software/systemd/man/systemd.timer.html][systemd.timer man page - freedesktop.org]]
+
+Check for your service _timer_ with:
+~$ systemctl list-timers~
+
+You can use [[id:532f1c61-926c-475d-9690-573120aedf3e][watch]] to monitor it:
+~$ watch -n 1 systemctl list-timers~
+
++ Remember that the *service unit* _must be the same_ as the *timer unit*.
+
+* journalctl
+
+[[https://linuxhandbook.com/journalctl-command/][Beginner's Guide to Analyzing Logs in Linux With journalctl Command - LINUX HANDBOOK]]
+[[https://www.shellhacks.com/journalctl-tail-service-logs-systemd-journal/][Journalctl: Tail Service Logs - Systemd Journal - ShellHacks]]
+
+Monitor events on your system.
+~# journalctl -f~
+_note_: Using ~tail~ will not work on, we can use one of it's flags.
+
+Monitor a specific service
+~$ doas journalctl -u <service> -f~
+_example_:
+~$ doas journalctl -f -u swww-wallpaper.service~
+
+* tips
+** how to disable sleep/suspend?
+
+[[https://askubuntu.com/questions/473037/how-to-permanently-disable-sleep-suspend][How to permanently disable sleep/suspend - StackExchange]]
+
+** changing the console font
+
+[[https://unix.stackexchange.com/questions/57085/setting-console-font-in-vconsole-conf-does-not-work-systemd][Setting console font is vconsole.conf does not work (systemd) - StackExchange]]

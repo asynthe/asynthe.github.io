@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b
+:ROAM_ALIASES: WINDOWS ウィンドウズ "WINDOWS ウィンドウズ"
+:END:
+#+title: Windows
+
+https://www.reddit.com/r/Windows10/comments/er40u5/what_are_the_must_have_windows_10_apps/
+
+*DEVELOP AND EXPAND*
+- [[id:566d5353-6db7-4500-877f-e383084c224b][Windows Subsystem for Linux]]
+- [[id:8b4c09c4-172f-4390-b312-74c4500c1db3][Emacs on Windows]]
+BACKUPS
+Veeam backup
+https://www.veeam.com/
+
+* Resources
+
+*USEFUL*
++ [[https://github.com/UMSKT/UMSKT][Universal MS Key Toolkit (UMSKT) - github]]
++ [[https://github.com/massgravel/Microsoft-Activation-Scripts][Microsoft-Activation-Scripts - github]]
++ [[https://github.com/Sycnex/Windows10Debloater][Windows10Debloater - github]]
+
+*LEARNING*
++ [[https://github.com/MicrosoftLearning][Microsoft Learning - github]]
++ [[https://github.com/MicrosoftLearning/MD-100T00-Windows10][MD-100T00-Windows10 - github]]
+
+* SSH
+** [[id:aed9b748-d083-43ca-9e09-163823daaffc][SSHFS ON WINDOWS]]
+* PowerShell
+* Active Directory
+* Backup
+* Apps
+** Magpie
+
+WINDOW UPSCALER
+
+[[https://github.com/Blinue/Magpie][github page]]
+
+** MicaForEveryone
+
+[[https://github.com/MicaForEveryone/MicaForEveryone][github page]]
+
+** Wallpaper Engine
+
+From Steam
+
+* Windows Subsystem for Linux
+:PROPERTIES:
+:ID:       566d5353-6db7-4500-877f-e383084c224b
+:ROAM_ALIASES: "WINDOWS SUBSYSTEM FOR LINUX"
+:END:

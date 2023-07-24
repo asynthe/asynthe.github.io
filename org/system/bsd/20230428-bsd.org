@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       5b8d8a26-f3dd-4e50-b144-9eff85eadf96
+:END:
+#+title: BSD
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]]
+
+[[https://www.openbsdhandbook.com][OpenBSD Handbook]]
+[[https://www.over-yonder.net/~fullermd/rants/bsd4linux/01][BSD vs Linux - Over-yonder]]
+
+* DISTRIBUTIONS
+** [[id:f2d33403-13ae-4f93-8f06-d6b699f7252c][FREEBSD]]
+** [[id:df2f653e-62dc-46dc-9600-b19c845edabd][OPENBSD]]
+** GHOSTBSD (?)
+** FIREFLYBSD
+* SHELLS
+** [[id:0b5978bc-53bc-4a9e-ae9d-8c42b1be6ba4][KSH]]
+* FILESYSTEMS
+** [[id:5af34e0a-1fdd-4328-a73b-e1509f3cf901][ZFS]]
+** [[id:bbda50be-e93d-4da3-96fd-65ae6b3027d8][FFS]]
+** HAMMER
+* NAS
+** TrueNAS
+[[https://en.wikipedia.org/wiki/TrueNAS][wikipedia page]]
+** pfSense
+[[https://en.wikipedia.org/wiki/PfSense][wikipedia page]]

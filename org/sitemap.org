@@ -1,0 +1,10 @@
+#+TITLE: Sitemap for project org-site:main
+
+- [[file:guides.org][Guides]]
+- [[file:index.org][MAIN メイン]]
+- system
+  - [[file:system/20230428-linux.org][Linux]]
+  - android
+    - [[file:system/android/20230428-android.org][Android]]
+  - nix
+    - [[file:system/nix/20230428-nixos.org][NixOS]]

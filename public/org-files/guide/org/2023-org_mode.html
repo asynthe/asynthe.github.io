@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org Mode</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Org Mode</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a>
+</p>
+
+<p>
+<a href="https://michaelneuper.com/posts/replace-jupyter-notebook-with-emacs-org-mode/">https://michaelneuper.com/posts/replace-jupyter-notebook-with-emacs-org-mode/</a>
+</p>
+
+
+<p>
+make a line separator by doing 5 dashes -&gt; <code>-----</code>
+it will look like this:
+</p>
+<hr />
+
+<div id="outline-container-orgda51114" class="outline-2">
+<h2 id="orgda51114">usage</h2>
+<div class="outline-text-2" id="text-orgda51114">
+</div>
+<div id="outline-container-org72566d4" class="outline-3">
+<h3 id="org72566d4">lists</h3>
+<div class="outline-text-3" id="text-org72566d4">
+<ol class="org-ol">
+<li>meow</li>
+<li>meow</li>
+<li>m2eow</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgcf7673e" class="outline-3">
+<h3 id="orgcf7673e">adding images</h3>
+<div class="outline-text-3" id="text-orgcf7673e">
+<p>
+have the image in the directory of your note, then set it up as:
+<code>[[path/to/image.png]]</code>
+</p>
+
+<p>
+then run <code>M-x org-display-inline-images</code> to display it,
+you can also set this on <code>config.el</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> org-startup-with-inline-images t)
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Keybinding to show images</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">--- IN PROGRESS --- (as i use something different in emacs)</span>
+</pre>
+</div>
+
+<p>
+now, you can also set image metadata such as:
+</p>
+
+<p>
+<code>#+CAPTION: This is the caption for the next figure link (or table)</code>
+<code>#+NAME: fig:SED-HR4049</code>
+<code>#+ATTR_HTML: :width 300px</code>
+<code>[[./img/jp]]</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org04a94a8" class="outline-3">
+<h3 id="org04a94a8">code blocks</h3>
+<div class="outline-text-3" id="text-org04a94a8">
+<p>
+adding a code block by hand can be tedious, they syntax is this
+</p>
+
+<p>
+<code>#+begin_src &lt;language&gt;</code>
+&lt;code&gt;
+<code>#+end_src</code>
+</p>
+
+<p>
+but of course you don't want to be writing that all the time that's why you can use &#x2026;, this way instead you just tipe
+write <code>&lt;s</code> then press tab to convert it into a code block.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfbde777" class="outline-3">
+<h3 id="orgfbde777">timestamps</h3>
+<div class="outline-text-3" id="text-orgfbde777">
+<p>
+a way to add timestamps to different text or TODOs is using: <code>org-time-stamp</code> (<b>Emacs</b>: , <b>Doom</b>: SPC m d t)
+</p>
+
+<p>
+this will prompt you a calendar in which you can move with <code>SHIFT + ARROW KEYS</code> or the <code>Mouse</code>
+</p>
+
+<ul class="org-ul">
+<li>you can set a time such as <code>11:00</code> or <code>11am</code> in the prompt, it will format it for you.</li>
+</ul>
+
+<p>
+using <code>SHIFT</code> on the <code>&lt;&gt;</code> will change them from:
+</p>
+<ul class="org-ul">
+<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2023-03-04 Sat&gt; </span></span> ACTIVE</li>
+<li><span class="timestamp-wrapper"><span class="timestamp">[2023-03-04 Sat] </span></span> INACTIVE</li>
+</ul>
+
+<p>
+using <code>SHIFT + ARROW KEYS</code> while cursor is on the <i>date</i> will change the <i>date</i>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgad9d629" class="outline-3">
+<h3 id="orgad9d629">checkboxes</h3>
+<div class="outline-text-3" id="text-orgad9d629">
+<p>
+using checkboxes is easy. you do them with the brackets in a list and they commonly have three states:
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> empty</li>
+<li class="trans"><code>[-]</code> in progress</li>
+<li class="on"><code>[X]</code> done</li>
+</ul>
+
+<p>
+use <code>C-c C-c</code> (emacs way) or <code>SPC m x</code> (doom way) to tick them.
+</p>
+
+<p>
+checkboxes can have a <i>number</i> or <i>percentages</i> if it has c
+a listed item with a checkbox can have children, and have a completed <i>number</i> or a completed <i>percentage</i>
+</p>
+
+<ul class="org-ul">
+<li class="trans"><code>[-]</code> go to the gym
+<ul class="org-ul">
+<li class="on"><code>[X]</code> do 25 pull-ups</li>
+<li class="off"><code>[&#xa0;]</code> do 50 push-ups</li>
+</ul></li>
+
+<li><code>[50%]</code> go to the gym
+<ul class="org-ul">
+<li class="on"><code>[X]</code> do 25 pull-ups</li>
+<li class="off"><code>[&#xa0;]</code> do 50 push-ups</li>
+</ul></li>
+</ul>
+
+<p>
+a parent can be added the number of done checkboxes or the percentage.
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgbbc59d7"></a><span class="todo TODO">TODO</span> go to supermarket <code>[1/3]</code><br />
+<div class="outline-text-6" id="text-orgbbc59d7">
+<ul class="org-ul">
+<li class="on"><code>[X]</code> buy milk</li>
+<li class="off"><code>[&#xa0;]</code> buy a banana</li>
+<li class="off"><code>[&#xa0;]</code> pet a cat</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org3bca27f"></a><span class="todo TODO">TODO</span> go to the supermarket <code>[33%]</code><br />
+<div class="outline-text-6" id="text-org3bca27f">
+<ul class="org-ul">
+<li class="on"><code>[X]</code> buy milk</li>
+<li class="off"><code>[&#xa0;]</code> buy a banana</li>
+<li class="off"><code>[&#xa0;]</code> pet a cat</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org0f77ff2" class="outline-3">
+<h3 id="org0f77ff2">tables</h3>
+<div class="outline-text-3" id="text-org0f77ff2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">name</th>
+<th scope="col" class="org-left">variable1</th>
+<th scope="col" class="org-left">variable2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">one</td>
+<td class="org-left">x</td>
+<td class="org-left">y</td>
+</tr>
+
+<tr>
+<td class="org-left">two</td>
+<td class="org-left">h</td>
+<td class="org-left">n</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org9734d55" class="outline-3">
+<h3 id="org9734d55">todos</h3>
+</div>
+<div id="outline-container-ID-39a19b80-c502-42fa-a281-2f19f583958b" class="outline-3">
+<h3 id="ID-39a19b80-c502-42fa-a281-2f19f583958b">priorities</h3>
+<div class="outline-text-3" id="text-org6a356e3">
+<p>
+there are to ways to set priorities on TODOs
+</p>
+<ul class="org-ul">
+<li>using the keybinding <code>SPC m p p</code></li>
+<li>using <code>SHIFT + ARROW KEYS</code></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8630ecf" class="outline-2">
+<h2 id="org8630ecf">Org file properties</h2>
+<div class="outline-text-2" id="text-org8630ecf">
+<p>
+<a href="https://orgmode.org/manual/Properties-and-Columns.html">Properties and Columns - Org Manual</a>
+</p>
+
+<p>
+One of the most basic properties for a org file is it's title, which is made on top of the file like this:
+</p>
+
+<p>
+<code>#+title:</code> or <code>#+TITLE:</code> &lt;- note's title
+<code>#+author:</code> or <code>#+AUTHOR:</code> &lt;- note's author
+</p>
+
+<p>
+<code>#+attr_html</code> or <code>#+ATTR_HTML</code> &lt;- HTML's attributes
+</p>
+</div>
+</div>
+
+<div id="outline-container-ID-e47b0111-c11f-4b3b-b0f9-28fe59da1b8e" class="outline-2">
+<h2 id="ID-e47b0111-c11f-4b3b-b0f9-28fe59da1b8e">LITERATE CONFIGS</h2>
+<div class="outline-text-2" id="text-org7659622">
+<p>
+<a href="https://wmealing.github.io/emacs-org-babel-analysis.html">https://wmealing.github.io/emacs-org-babel-analysis.html</a>
+</p>
+
+<p>
+<a href="https://leanpub.com/lit-config/read">Literate configuration - Leanpub</a>
+<a href="https://en.wikipedia.org/wiki/Literate_programming">Literate Programming - wikipedia page</a>
+</p>
+
+<ol class="org-ol">
+<li>Create <code>README.org</code>, so you can use it in Github.
+Inside of it, write the org metadata.
+<span class="underline">example</span>:
+<code>#+title: Xmonad configuration
+   ~#+property:</code></li>
+
+<li>Copy/paste and turn your config into a literate config</li>
+<li><p>
+When done, change
+</p>
+
+<p>
+<code>#+property: header-args :tangle xmonad.hs</code>
+</p>
+
+<p>
+<code>#+property: header-args</code> -&gt; Apply to every single source code block, globally.
+<code>:tangle</code> -&gt; write it to <b>this</b> file 
+</p></li>
+
+<li>Refresh the file
+Put your cursor on <code>#+property:</code> and do a <code>C-c C-c</code> so it does a local refresh. (should appear on your modeline)</li>
+
+<li>Time to create the file
+Do a <code>M-x org-babel-tangle</code> or <code>C-c C-v t</code></li>
+
+<li>Now just push your <code>README.org</code> to Github or Gitlab!</li>
+</ol>
+
+<p>
+<span class="underline">note</span>: check also for org-auto-tangle, which can help when writing literate configs.
+</p>
+</div>
+
+<div id="outline-container-orgf7bf043" class="outline-3">
+<h3 id="orgf7bf043">NOWEB</h3>
+<div class="outline-text-3" id="text-orgf7bf043">
+<p>
+<a href="https://www.cs.tufts.edu/~nr/noweb/">https://www.cs.tufts.edu/~nr/noweb/</a>
+<a href="https://github.com/nrnrnr/noweb">https://github.com/nrnrnr/noweb</a>
+<a href="https://en.wikipedia.org/wiki/Noweb">https://en.wikipedia.org/wiki/Noweb</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org188ad2e" class="outline-2">
+<h2 id="org188ad2e">LATEX EXPORT</h2>
+</div>
+
+
+
+<div id="outline-container-ID-03841d5a-5aac-40cf-8fd4-0717ed94dca1" class="outline-2">
+<h2 id="ID-03841d5a-5aac-40cf-8fd4-0717ed94dca1">Org Agenda</h2>
+<div class="outline-text-2" id="text-org7cbdd1c">
+</div>
+<div id="outline-container-org25da9b6" class="outline-3">
+<h3 id="org25da9b6">usage</h3>
+<div class="outline-text-3" id="text-org25da9b6">
+<p>
+open org-agenda
+<code>M-x org-agenda</code>
+<b>Emacs</b>: &#x2026;
+<b>Doom</b>: <code>SPC o A</code>
+</p>
+
+<p>
+use org-schedule
+<code>M-x org-schedule</code>
+<b>Emacs</b>: <code>C-c C-s</code>
+<b>Doom</b>: <code>SPC m d s</code>
+</p>
+
+<p>
+mark heading as todo
+<b>Doom</b>: <code>SPC m t t</code>
+</p>
+
+<p>
+if you want to see more days than the normal 10 days shown at Org Agenda, you can press a number + org agenda keybind:
+<span class="underline">example</span>: 21 days
+<code>21 SPC o A</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf47bfff" class="outline-3">
+<h3 id="orgf47bfff">Setting it up</h3>
+<div class="outline-text-3" id="text-orgf47bfff">
+<p>
+is it a tool that helps you to group in a single page all TODOs that are attached to notes with certain tags.
+</p>
+
+<p>
+open your <code>org-agenda</code> with SPC o A
+</p>
+
+<p>
+set up your org agenda main file with: (in <code>~/.doom.d/config.el</code>)
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(after! org
+  (<span style="font-weight: bold;">setq</span> org-agenda-files
+        '(<span style="font-style: italic;">"~/main/sync/docs/org/agenda.org"</span>)))
+</pre>
+</div>
+
+<p>
+now, add TODOs and headings on your agenda file, but keep in mind that this one will not appear on <code>org-agenda</code> until they have [BROKEN LINK: 05ed4a55-ee90-4500-b146-ae1d9fe79c3e]
+</p>
+
+<p>
+you can also add <a href="#ID-39a19b80-c502-42fa-a281-2f19f583958b">Priorities</a> on your TODOs, and they will appear on <code>org-agenda</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb38615c" class="outline-3">
+<h3 id="orgb38615c">Making a custom view-mode</h3>
+</div>
+<div id="outline-container-org2eba492" class="outline-3">
+<h3 id="org2eba492">Changing some characters</h3>
+<div class="outline-text-3" id="text-org2eba492">
+<p>
+now, in our new view-mode of org-agenda (SPC o A v)
+we will see that the separator character for the different tasks priorities will be <code>=</code>, which does not look pretty
+</p>
+
+<p>
+we can change this with
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">setq</span> org-agenda-block-separator 61)
+</pre>
+</div>
+
+<p>
+you can set up a character but it's better to put it's code.
+We can find it using <code>describe-char</code> (SPC h ') while the cursor is on the symbol, <code>codepoint</code> will tell what codes we can use.
+</p>
+
+<p>
+in this case i will use the simple dash, which code is <code>45</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">setq</span> org-agenda-block-separator = 45)
+</pre>
+</div>
+
+<p>
+now, restart your doom emacs config (SPC h r r)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-ID-f95867f8-1eb4-46be-98f3-5a7b35f4f2ce" class="outline-2">
+<h2 id="ID-f95867f8-1eb4-46be-98f3-5a7b35f4f2ce">Org Publish</h2>
+<div class="outline-text-2" id="text-orgf1769ef">
+<p>
+have a file in <code>content/</code> called <code>index.org</code>, which will be converted into <code>index.html</code>, being the landing page of your site.
+</p>
+</div>
+
+<div id="outline-container-org65f490e" class="outline-3">
+<h3 id="org65f490e">System Crafters - Build Your Website with Org Mode</h3>
+<div class="outline-text-3" id="text-org65f490e">
+<p>
+from <a href="https://youtu.be/AfkrzFodoNw">youtube video</a>
+</p>
+</div>
+
+<div id="outline-container-org561bdde" class="outline-4">
+<h4 id="org561bdde">CREATING A SCRIPT</h4>
+<div class="outline-text-4" id="text-org561bdde">
+<p>
+<b>First</b>, let's create a script in Emacs Lisp that will create the HTML files, call it <span class="underline">build-site.el</span>, and inside of it:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Load the publishing system</span>
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ox-publish</span>)
+
+(message <span style="font-style: italic;">"Build complete!"</span>)
+</pre>
+</div>
+
+<p>
+<i>then</i>, as an extra, let's create a <b>shell script</b> that can run our <b>Emacs Lisp script</b>, let's call it <span class="underline">build.sh</span>.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">!/bin/</span><span style="font-weight: bold;">sh</span>
+emacs -Q --script build-site.el
+</pre>
+</div>
+
+<p>
+make it executable
+<code>$ chmod +x build.sh</code>
+</p>
+
+<p>
+run the script
+<code>$ ./build.sh</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgff9fe61" class="outline-4">
+<h4 id="orgff9fe61">SETTING UP THE PROJECT</h4>
+<div class="outline-text-4" id="text-orgff9fe61">
+<p>
+Now with the script ready, let's set up a publishing configuration for our website, adding the next snippet into <span class="underline">build-site.el</span>.
+</p>
+
+<p>
+An important thing to note here is that we are setting the value for the <b>org-publish-project-alist</b> variable, which means it is not only one project (website) but a list of them.
+</p>
+<ul class="org-ul">
+<li>There is a first-level <b>list</b>, list of all project configurations.</li>
+<li>Second-level <b>list</b>, for project <b>my-org-site</b>.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Define the publishing project</span>
+(<span style="font-weight: bold;">setq</span> org-publish-project-alist
+      (list
+       (list <span style="font-style: italic;">"my-org-site"</span>
+             <span style="font-weight: bold;">:recursive</span> t
+             <span style="font-weight: bold;">:base-directory</span> <span style="font-style: italic;">"./content"</span>
+             <span style="font-weight: bold;">:publishing-directory</span> <span style="font-style: italic;">"./public"</span>
+             <span style="font-weight: bold;">:publishing-function</span> 'org-html-publish-to-html)))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Generate the site output</span>
+(org-publish-all t)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>:base-directory</code> folder of files we want to publish to HTML.</li>
+<li><code>:publishing-directory</code> output folder of published files.</li>
+<li><code>:recursive</code> publish <code>.org</code> files in all subdirectories too.</li>
+<li><code>:publishing-function</code> publish this files as HTML.</li>
+<li><code>org-publish-all</code> function to publish every project configured. <code>org-publish-project-alist</code>, <code>t</code> parameter to regenerate all files.</li>
+</ul>
+
+<p>
+Now create a org note inside the <code>content</code> folder, and publish it with the script !
+<code>$ ./build.sh</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7715ed1" class="outline-4">
+<h4 id="org7715ed1">PREVIEWING WITH SIMPLE-HTTPD</h4>
+<div class="outline-text-4" id="text-org7715ed1">
+<p>
+Host your file as a local website, using the package called <code>simple-httpd</code>.
+</p>
+
+<p>
+Install it using <code>M-x package-install</code> or by putting the snippet in your Emacs configuration.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">use-package</span> simple-httpd
+  <span style="font-weight: bold;">:ensure</span> t)
+</pre>
+</div>
+
+<p>
+Now, you can run <code>M-x httpd-serve-directory</code>
+</p>
+<ul class="org-ul">
+<li>Select path of <code>public/</code> directory</li>
+<li>Open your browser in <code>http://localhost:8080</code></li>
+</ul>
+
+<p>
+If your port is taken, you can set <code>httpd-port</code> to change the default port.
+</p>
+
+<p>
+If you want to see the changes in the website, <span class="underline">remember to run build.sh</span>, then <span class="underline">refresh the page</span>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org25be7e7" class="outline-4">
+<h4 id="org25be7e7">IMPROVING THE HTML OUTPUT</h4>
+<div class="outline-text-4" id="text-org25be7e7">
+<p>
+Let's disable a few things in the project configuration.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Define the publishing project</span>
+(<span style="font-weight: bold;">setq</span> org-publish-project-alist
+      (list
+       (list <span style="font-style: italic;">"my-org-site"</span>
+             <span style="font-weight: bold;">:recursive</span> t
+             <span style="font-weight: bold;">:base-directory</span> <span style="font-style: italic;">"./content"</span>
+             <span style="font-weight: bold;">:publishing-function</span> 'org-html-publish-to-html
+             <span style="font-weight: bold;">:publishing-directory</span> <span style="font-style: italic;">"./public"</span>
+             <span style="font-weight: bold;">:with-author</span> nil           <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Don't include author name</span>
+             <span style="font-weight: bold;">:with-creator</span> nil          <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Include Emacs and Org versions in footer</span>
+             <span style="font-weight: bold;">:with-toc</span> t                <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Include a table of contents</span>
+             <span style="font-weight: bold;">:section-numbers</span> nil       <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Don't include section numbers</span>
+             <span style="font-weight: bold;">:time-stamp-file</span> nil)))    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Don't include time stamp in file</span>
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Generate the site output</span>
+(org-publish-all t)
+</pre>
+</div>
+
+<p>
+For more options, press describe-variable (<code>C-h v</code>) on the <code>org-publish-project-alist</code> variable to see more options.
+</p>
+
+<p>
+<span class="underline">HTML VALIDATION</span>
+</p>
+
+<p>
+If you want to remove the "<sub>Validate</sub>_" message written on the bottom on the page, you can use the next variable.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> org-html-validation-link nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org07c8e98" class="outline-4">
+<h4 id="org07c8e98">OTHER SETTINGS</h4>
+<div class="outline-text-4" id="text-org07c8e98">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Publish setting key</th>
+<th scope="col" class="org-left">Emacs Lisp variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">:author</td>
+<td class="org-left">user-full-name</td>
+</tr>
+
+<tr>
+<td class="org-left">:email</td>
+<td class="org-left">user-mail-address</td>
+</tr>
+
+<tr>
+<td class="org-left">:creator</td>
+<td class="org-left">org-export-creator-string</td>
+</tr>
+
+<tr>
+<td class="org-left">:exclude-tags</td>
+<td class="org-left">org-export-exclude-tags</td>
+</tr>
+
+<tr>
+<td class="org-left">:headline-levels</td>
+<td class="org-left">org-export-headline-levels</td>
+</tr>
+
+<tr>
+<td class="org-left">:language</td>
+<td class="org-left">org-export-default-language</td>
+</tr>
+
+<tr>
+<td class="org-left">:preserve-breaks</td>
+<td class="org-left">org-export-preserve-breaks</td>
+</tr>
+</tbody>
+</table>
+<p>
+:section-numbers 	org-export-with-section-numbers
+:select-tags 	org-export-select-tags
+:time-stamp-file 	org-export-time-stamp-file
+:with-archived-trees 	org-export-with-archived-trees
+:with-author 	org-export-with-author
+:with-creator 	org-export-with-creator
+:with-date 	org-export-with-date
+:with-drawers 	org-export-with-drawers
+:with-email 	org-export-with-email
+:with-emphasize 	org-export-with-emphasize
+:with-entities 	org-export-with-entities
+:with-fixed-width 	org-export-with-fixed-width
+:with-footnotes 	org-export-with-footnotes
+:with-inlinetasks 	org-export-with-inlinetasks
+:with-latex 	org-export-with-latex
+:with-planning 	org-export-with-planning
+:with-priority 	org-export-with-priority
+:with-properties 	org-export-with-properties
+:with-smart-quotes 	org-export-with-smart-quotes
+:with-special-strings 	org-export-with-special-strings
+:with-statistics-cookies 	org-export-with-statistics-cookies
+:with-sub-superscript 	org-export-with-sub-superscripts
+:with-toc 	org-export-with-toc
+:with-tables 	org-export-with-tables
+:with-tags 	org-export-with-tags
+:with-tasks 	org-export-with-tasks
+:with-timestamps 	org-export-with-timestamps
+:with-title 	org-export-with-title
+:with-todo-keywords 	org-export-with-todo-keywords
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd2b02d2" class="outline-4">
+<h4 id="orgd2b02d2">IMPROVING THE PAGE STYLING</h4>
+<div class="outline-text-4" id="text-orgd2b02d2">
+<p>
+Let's add the next to our build file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">HTML validation</span>
+(<span style="font-weight: bold;">setq</span> org-html-validation-link nil             <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Don't show validation link</span>
+      org-html-head-include-scripts nil        <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Use a script</span>
+      org-html-head-include-default-style nil  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Use a style</span>
+      org-html-head <span style="font-style: italic;">"&lt;link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" /&gt;"</span>) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">CSS file to load</span>
+</pre>
+</div>
+
+<p>
+The CSS file that will be loaded is a simple css file taken from <a href="https://simplecss.org/">Simple.css</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8733c37" class="outline-4">
+<h4 id="org8733c37">SOURCE BLOCKS</h4>
+<div class="outline-text-4" id="text-org8733c37">
+<p>
+Adding code blocks will not work at first, you will get the next error:
+</p>
+
+<p>
+<code>Cannot fontify source block (htmlize.el &gt;= 1.34 required)</code>
+</p>
+
+<p>
+To solve this, we need to install the <code>htmlize</code> package from MELPA.
+We can also add this to the top of <code>build-site.el</code> too.
+</p>
+
+<p>
+<span class="underline">note</span>: we are going to set up the packages folder as <code>./.packages</code>, this is a hidden packages folder inside our blog folder. This is so that those packages are independent of emacs and our configuration and don't get mixed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Set the package installation directory so that packages aren't stored in the</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">~/.emacs.d/elpa path.</span>
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">package</span>)
+(<span style="font-weight: bold;">setq</span> package-user-dir (expand-file-name <span style="font-style: italic;">"./.packages"</span>))
+(<span style="font-weight: bold;">setq</span> package-archives '((<span style="font-style: italic;">"melpa"</span> . <span style="font-style: italic;">"https://melpa.org/packages/"</span>)
+                         (<span style="font-style: italic;">"elpa"</span> . <span style="font-style: italic;">"https://elpa.gnu.org/packages/"</span>)))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Initialize the package system</span>
+(package-initialize)
+(<span style="font-weight: bold;">unless</span> package-archive-contents
+  (package-refresh-contents))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Install dependencies</span>
+(package-install 'htmlize)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org533eed8" class="outline-4">
+<h4 id="org533eed8">LINKING BETWEEN FILES</h4>
+<div class="outline-text-4" id="text-org533eed8">
+<p>
+Use <code>Org-insert-link</code> (C-c C-l)
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-ID-34775f1e-2943-4556-b9c1-f80ea60f1372" class="outline-2">
+<h2 id="ID-34775f1e-2943-4556-b9c1-f80ea60f1372">Org Drill</h2>
+<div class="outline-text-2" id="text-org4ca4f8a">
+<p>
+<a href="https://gitlab.com/phillord/org-drill/">gitlab page</a>
+</p>
+
+<p>
+<a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill.el - flashcards and spaced repetition for org-mode - worg</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1a12d09" class="outline-2">
+<h2 id="org1a12d09">EXTRA</h2>
+<div class="outline-text-2" id="text-org1a12d09">
+</div>
+<div id="outline-container-org38fe723" class="outline-3">
+<h3 id="org38fe723">Vertical Bar (&vert;) in a table</h3>
+<div class="outline-text-3" id="text-org38fe723">
+<p>
+to type a "vertical bar" in a org-mode table you have to type.
+<code>\ vert</code> (remove the space)
+</p>
+
+<p>
+It needs <code>org-toggle-pretty-entities</code> to be enabled. (<code>C-c C-x l</code>)
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

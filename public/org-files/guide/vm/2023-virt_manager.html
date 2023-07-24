@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>virt-manager</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">virt-manager</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="2023-virtual_machines.html#ID-744bfcde-15c4-469d-8962-9912f8ab9940">VIRTUAL MACHINES</a>
+</p>
+
+<div id="outline-container-orgd384c03" class="outline-2">
+<h2 id="orgd384c03">package</h2>
+<div class="outline-text-2" id="text-orgd384c03">
+<p>
+arch -&gt;
+gentoo -&gt;
+nixos -&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6eeb4d2" class="outline-2">
+<h2 id="org6eeb4d2">setup</h2>
+<div class="outline-text-2" id="text-org6eeb4d2">
+</div>
+<div id="outline-container-org05f1dfc" class="outline-3">
+<h3 id="org05f1dfc">Arch / Gentoo</h3>
+</div>
+<div id="outline-container-org79b413d" class="outline-3">
+<h3 id="org79b413d">NixOS</h3>
+<div class="outline-text-3" id="text-org79b413d">
+<p>
+in <code>configuration.nix</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">virtualisation.libvirtd.enable = true;
+programs.dconf.enable = true;
+environment.systemPackages = with pkgs; [ virt-manager libguestfs ];
+# Run KVM Hypervisors inside your KVM Hypervisors
+boot.extraModprobeConfig = "options kvm_intel nested=1";
+</pre>
+</div>
+
+<p>
+remember to add your user to the <code>libvirtd</code> group
+</p>
+<div class="org-src-container">
+<pre class="src src-nix">{
+  users.users.&lt;username&gt;.extraGroups = [ "libvirtd" ];
+}
+</pre>
+</div>
+
+<p>
+To enable <span class="underline">UEFI</span> with <span class="underline">OVMF</span> add this to <code>$XDG_CONFIG_HOME/libvirt/qemu.conf</code>: (this should be <code>~/.config/libvirt/qemu.conf</code>)
+</p>
+<div class="org-src-container">
+<pre class="src src-text"># Adapted from /var/lib/libvirt/qemu.conf
+# Note that AAVMF and OVMF are for Aarch64 and x86 respectively
+nvram = [ "/run/libvirt/nix-ovmf/AAVMF_CODE.fd:/run/libvirt/nix-ovmf/AAVMF_VARS.fd", "/run/libvirt/nix-ovmf/OVMF_CODE.fd:/run/libvirt/nix-ovmf/OVMF_VARS.fd" ]
+</pre>
+</div>
+
+<p>
+now, add the hypervisor to virt-manager
+</p>
+
+<ul class="org-ul">
+<li>File (in the menu bar) -&gt; Add connection</li>
+<li>HyperVisor = QEMU/KVM</li>
+<li>Autoconnect = checkmark</li>
+<li>Connect</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org10f2dfc" class="outline-2">
+<h2 id="org10f2dfc">usage</h2>
+<div class="outline-text-2" id="text-org10f2dfc">
+</div>
+<div id="outline-container-org1eecb56" class="outline-3">
+<h3 id="org1eecb56">find the ip adress</h3>
+<div class="outline-text-3" id="text-org1eecb56">
+<p>
+with <b>virsh</b>
+get network list
+<code># virsh net-list</code>
+<code># virsh net-info default</code>
+~# virsh
+</p>
+
+<hr />
+<p>
+<b>NAT</b>
+</p>
+
+<p>
+edit <code>/etc/nsswitch.conf</code>
+</p>
+
+
+<p>
+list your running vms
+<code># virsh list --all</code>
+</p>
+
+<p>
+if it's running, you will have 
+<code># virsh reboot &lt;vm-name&gt;</code>
+</p>
+
+<hr />
+<p>
+classic way
+</p>
+
+<p>
+on your VM, install
+</p>
+
+<p>
+arch -&gt; <code># pacman -Syu</code>
+gentoo -&gt; <code># emerge --sync &amp;&amp; emerge -auvDN @world</code>
+ubuntu -&gt; <code># apt-get update &amp;&amp; apt-get upgrade -y</code> 
+</p>
+
+<ol class="org-ol">
+<li>update all your packages</li>
+<li>install <code>ssh</code> and <code>net-tools</code></li>
+</ol>
+
+<p>
+arch -&gt;
+gentoo -&gt;
+ubuntu -&gt; <code># apt install ssh net-tools</code>
+</p>
+
+<ol class="org-ol">
+<li><p>
+get the ip
+</p>
+
+<p>
+<code>$ ipconfig</code>
+-&gt; 
+</p></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgfdc3097" class="outline-3">
+<h3 id="orgfdc3097">how to have windows 10/11 vms</h3>
+<div class="outline-text-3" id="text-orgfdc3097">
+<p>
+<a href="https://getlabsdone.com/how-to-install-windows-11-on-kvm">Windows 11 on KVM - How to Install Step by Step? - Get Labs Done</a>
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-org6618964" class="outline-3">
+<h3 id="org6618964">fix: "network 'default' is not active"</h3>
+<div class="outline-text-3" id="text-org6618964">
+<p>
+run the next command, and confirm that the default network is active:
+<code># virsh net-list --all</code>
+</p>
+
+<p>
+then <b>start</b> the <b>default network</b>:
+<code># virsh net-start default</code>
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org62a34cd" class="outline-2">
+<h2 id="org62a34cd">virsh</h2>
+<div class="outline-text-2" id="text-org62a34cd">
+<p>
+<a href="https://adamtheautomator.com/virsh">How to Use Virsh and Manage Linux KVM - Adam The Automator</a>
+</p>
+
+<p>
+KVM -&gt; "Kernel-based Virtual Machine"
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

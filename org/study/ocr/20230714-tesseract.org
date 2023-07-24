@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       1bc2dccd-5992-4805-95b3-0d1728590da9
+:ROAM_ALIASES: TESSERACT "TESSERACT OCR"
+:END:
+#+title: Tesseract
+
+-> [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]
+
+[[https://github.com/tesseract-ocr/tesseract][github page]]
+[[https://tesseract-ocr.github.io/tessdoc/][Tesseract User Manual - tesseract-oct.github.io]]
+
+* package
+
+arch ->
+gentoo ->
+nixos -> ~tesseract~
+
+* usage
+from [[https://tesseract-ocr.github.io/tessdoc/][Tesseract User Manual - tesseract-oct.github.io]]
+
+Tesseract is a command-line program, so first open a terminal or command prompt. The command is used like this:
+~$ tesseract imagename outputbase [-l lang] [-psm pagesegmode] [configfile...]~
+
+* set up
+* QT Box Editor
+
+Tool for adjusting tesseract-ocr box files.
+
+[[https://github.com/zdenop/qt-box-editor][github page]]
+[[https://zdenop.github.io/qt-box-editor/][github.io]]
+

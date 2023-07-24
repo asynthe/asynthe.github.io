@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>kitty</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">kitty</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a> / <a href="../../other/main/20230428-bsd.html#ID-5b8d8a26-f3dd-4e50-b144-9eff85eadf96">BSD</a> / <a href="../../system/windows/20230428-windows.html#ID-0b378ebf-dc0b-4fca-825d-1ed7cfcebf1b">WINDOWS ウィンドウズ</a> -&gt; <a href="../../other/main/20230428-sysapps.html#ID-9be91f09-e446-4d22-931e-c05792d8f582">SYSAPPS アプリ</a>
+</p>
+
+<p>
+<a href="https://github.com/kovidgoyal/kitty">github page</a>
+<a href="https://wiki.gentoo.org/wiki/Kitty">gentoo wiki</a>
+<a href="https://wiki.archlinux.org/title/Kitty">arch wiki</a>
+</p>
+
+<div id="outline-container-org5e1e180" class="outline-2">
+<h2 id="org5e1e180">package</h2>
+<div class="outline-text-2" id="text-org5e1e180">
+<p>
+arch -&gt; <code>...</code>
+gentoo -&gt; <code>...</code>
+nixos -&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5cc6c78" class="outline-2">
+<h2 id="org5cc6c78">usage</h2>
+<div class="outline-text-2" id="text-org5cc6c78">
+<p>
+the kitty terminal has a lot of functions such as
+</p>
+
+<p>
+open the configuration file with
+<code>CTRL SHIFT F2</code>
+</p>
+
+<p>
+restart the configuration with
+<code>CTRL SHIFT F5</code>
+</p>
+</div>
+
+<div id="outline-container-org492866d" class="outline-3">
+<h3 id="org492866d">tabs</h3>
+<div class="outline-text-3" id="text-org492866d">
+<p>
+<code>CTRL SHIFT t</code> -&gt; opens a new tab
+<code>CTRL SHIFT &lt;arrow-keys&gt;</code> -&gt; change between tabs
+<code>CTRL SHIFT kill</code> -&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org06abcad" class="outline-3">
+<h3 id="org06abcad">windows</h3>
+</div>
+</div>
+
+<div id="outline-container-org0e184fd" class="outline-2">
+<h2 id="org0e184fd">kittens</h2>
+<div class="outline-text-2" id="text-org0e184fd">
+</div>
+<div id="outline-container-org2923d77" class="outline-3">
+<h3 id="org2923d77">icat (images)</h3>
+<div class="outline-text-3" id="text-org2923d77">
+<p>
+<a href="https://sw.kovidgoyal.net/kitty/kittens/icat">doc page</a>
+</p>
+
+<p>
+See images in your terminal with:
+<code>$ kitty +kitten icat &lt;image&gt;.jpeg</code>
+or
+<code>$ kitten icat &lt;image&gt;.jpeg</code>
+</p>
+
+<p>
+you can make an alias
+<code>alias icat="kitty +kitten icat"</code>
+</p>
+
+<p>
+<span class="underline">note</span>: Install <a href="../../guide/20230507-imagemagick.html#ID-ec43876b-e38d-414f-88c6-2d21fd598678">ImageMagick</a> for more image formats than the supported PNG/JPG/GIF/BMP/TIFF/WEBP
+<span class="underline">note</span>: It works in <a href="../../guide/file_sharing/20230509-ssh.html#ID-bc2233db-f8fd-4de6-8a9a-bb519804ba85">SSH</a>.
+</p>
+
+<p>
+<b>FLAGS</b>
+<code>--align &lt;ALIGN&gt;</code> -&gt; Horizontal alignment of the image, values are: <code>center</code>, <code>left</code>, <code>right</code>.
+</p>
+
+<p>
+<code>--place</code> -&gt;
+<code>--detect-support</code> -&gt;
+<code>--print-window-size</code> -&gt;
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org39d3640" class="outline-2">
+<h2 id="org39d3640">keymaps</h2>
+<div class="outline-text-2" id="text-org39d3640">
+<p>
+<b>SCROLLING THE TERMINAL W KEYBOARD</b>
+<code>Ctrl + Shift + Arrow Keys</code> -&gt; scroll little by little
+</p>
+
+<p>
+<code>Ctrl + Shift + Page Up</code> -&gt; scroll a page up
+<code>Ctrl + Shift + Page Down</code> -&gt; scroll a page down
+</p>
+
+<p>
+<code>Ctrl + Shift + Start</code> -&gt; move to beginning of terminal session
+<code>Ctrl + Shift + End</code> -&gt; move to end of terminal session (current)
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

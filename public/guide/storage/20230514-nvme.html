@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NVMe</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">NVMe</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="2023-storage.html#ID-ef5bd774-e428-452d-9e04-1dad211148d3">STORAGE</a>
+</p>
+
+<p>
+<a href="https://wiki.gentoo.org/wiki/NVMe">gentoo wiki</a>
+<a href="https://wiki.archlinux.org/title/Solid_state_drive/NVMe">arch wiki</a>
+</p>
+
+<p>
+<a href="https://www.ibm.com/docs/en/linux-on-systems?topic=devices-secure-data-deletion-nvme-drive">Secure data deletion for NVMe drive - IBM</a>
+</p>
+
+<div id="outline-container-orgbf7e6e5" class="outline-2">
+<h2 id="orgbf7e6e5">nvme-cli</h2>
+<div class="outline-text-2" id="text-orgbf7e6e5">
+<p>
+<a href="https://github.com/linux-nvme/nvme-cli">github page</a>
+</p>
+
+<p>
+see your nvme connected devices with
+<code># nvme list</code>
+</p>
+
+<p>
+see more information about a specific nvme
+<code># nvme id-ctrl -H /dev/&lt;disk&gt;</code>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org7db8685" class="outline-2">
+<h2 id="org7db8685">usage</h2>
+<div class="outline-text-2" id="text-org7db8685">
+<p>
+<b>LIST ALL NVMe SSDs</b>
+<code># nvme list</code>
+</p>
+
+<p>
+list devices and features in human-friendly way
+<code># nvme id-ctrl -H /dev/&lt;device&gt;</code>
+<span class="underline">example</span>: <code># nvme id-ctrl -H /dev/nvme0n1</code>
+</p>
+
+
+<p>
+[[][github page] ]
+[[][official webpage] ]
+[[][gentoo wiki] ]
+[[][arch wiki] ]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org67320b9" class="outline-2">
+<h2 id="org67320b9">package</h2>
+<div class="outline-text-2" id="text-org67320b9">
+<p>
+arch -&gt; <code>nvme-cli</code> or <code>nvme-cli-git</code> (aur)
+gentoo -&gt; &#x2026;
+nixos -&gt; 
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Z shell</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Z shell</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a>
+</p>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Z_shell">wikipedia page</a>
+</p>
+
+<div id="outline-container-org1d27e30" class="outline-2">
+<h2 id="org1d27e30">package</h2>
+<div class="outline-text-2" id="text-org1d27e30">
+<p>
+arch -&gt; <code>...</code>
+gentoo -&gt; <code>...</code>
+nixos -&gt;  
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd79a0c9" class="outline-2">
+<h2 id="orgd79a0c9">usage</h2>
+</div>
+
+<div id="outline-container-org7b3f149" class="outline-2">
+<h2 id="org7b3f149">configuration</h2>
+<div class="outline-text-2" id="text-org7b3f149">
+</div>
+<div id="outline-container-org8dc0425" class="outline-3">
+<h3 id="org8dc0425">~/.config/zsh as config directory</h3>
+<div class="outline-text-3" id="text-org8dc0425">
+<p>
+we will have to put the next on <code>~/.zshenv</code>, this will be the only file on our home folder.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold;">export</span> <span style="font-weight: bold; font-style: italic;">ZDOTDIR</span> = ~/.config/zsh
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org849a19b" class="outline-2">
+<h2 id="org849a19b">plugins</h2>
+<div class="outline-text-2" id="text-org849a19b">
+</div>
+<div id="outline-container-orgda71a60" class="outline-3">
+<h3 id="orgda71a60">Starship</h3>
+<div class="outline-text-3" id="text-orgda71a60">
+<p>
+<a href="https://starship.rs/">main page</a>
+<a href="https://github.com/starship/starship">github page</a>
+</p>
+</div>
+
+<div id="outline-container-orgfbae0ce" class="outline-4">
+<h4 id="orgfbae0ce">package</h4>
+<div class="outline-text-4" id="text-orgfbae0ce">
+<p>
+arch -&gt; <code>starship</code>
+gentoo -&gt; <code>app-shells/starship</code>
+nixos -&gt; <code>starship</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6b254d0" class="outline-4">
+<h4 id="org6b254d0">install</h4>
+<div class="outline-text-4" id="text-org6b254d0">
+<p>
+after getting the package, add the next to your <code>~/.bashrc</code> or <code>~/.zshrc</code>
+</p>
+
+<p>
+<code>~/.bashrc</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold;">eval</span> <span style="font-style: italic;">"$(starship init bash)"</span>
+</pre>
+</div>
+
+<p>
+<code>~/.zshrc</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-zsh">eval "$(starship init zsh)"
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org983f16c" class="outline-4">
+<h4 id="org983f16c">config</h4>
+<div class="outline-text-4" id="text-org983f16c">
+<p>
+all configuration is done in <code>~/.config/starship.toml</code>
+or any other directory setting up env variable
+<code>export STARSHIP_CONFIG=~/.config/starship/starship.toml</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf97cb76" class="outline-3">
+<h3 id="orgf97cb76">plugin managers</h3>
+<div class="outline-text-3" id="text-orgf97cb76">
+<ul class="org-ul">
+<li><a href="https://github.com/zsh-users/antigen">Antigen</a></li>
+<li><a href="https://github.com/zdharma-continuum/zinit">zinit</a></li>
+<li><a href="https://github.com/zplug/zplug">zplug</a></li>
+<li><a href="https://github.com/tarjoilija/zgen">zgen</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5dbd897" class="outline-3">
+<h3 id="org5dbd897">Framework</h3>
+<div class="outline-text-3" id="text-org5dbd897">
+<ul class="org-ul">
+<li><a href="https://github.com/ohmyzsh/ohmyzsh">Oh My Zsh</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org58b6203" class="outline-3">
+<h3 id="org58b6203">zsh-vi-mode</h3>
+<div class="outline-text-3" id="text-org58b6203">
+<p>
+<a href="https://github.com/jeffreytse/zsh-vi-mode">github page</a>
+</p>
+
+<p>
+clone the repo
+<code>$ git clone https://github.com/jeffreytse/zsh-vi-mode.git ~/.config/zsh/plugins/zsh-vi-mode</code>
+</p>
+
+<p>
+source it in your <code>.zshrc</code> (or <code>.bashrc</code>)
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold;">source</span> $<span style="font-weight: bold; font-style: italic;">ZDOTDIR</span>/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org97ea14b" class="outline-3">
+<h3 id="org97ea14b">zsh-autocomplete</h3>
+<div class="outline-text-3" id="text-org97ea14b">
+<p>
+<a href="https://github.com/marlonrichert/zsh-autocomplete">github page</a>
+</p>
+
+<p>
+clone the repo
+<code>$ git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZDOTDIR/plugins/zsh-autocomplete</code>
+</p>
+
+<p>
+source it in your <code>.zshrc</code> (or <code>.bashrc</code>)
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold;">source</span> $<span style="font-weight: bold; font-style: italic;">ZDOTDIR</span>/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org86f8aa6" class="outline-3">
+<h3 id="org86f8aa6">zsh-autosuggestions</h3>
+<div class="outline-text-3" id="text-org86f8aa6">
+<p>
+<a href="https://github.com/zsh-users/zsh-autosuggestions">github page</a>
+</p>
+
+<p>
+arch -&gt; <code>zsh-autosuggestions</code> or <code>zsh-autosuggestions-git</code> (aur)
+gentoo -&gt;
+nixos -&gt; 
+</p>
+
+<p>
+clone the repo
+<code>$ git clone https://github.com/zsh-users/zsh-autosuggestions ~$ZDOTDIR/plugins/zsh-autosuggestions</code>
+</p>
+
+<p>
+source it in your <code>.zshrc</code> (or <code>.bashrc</code>)
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold;">source</span> $<span style="font-weight: bold; font-style: italic;">ZDOTDIR</span>/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfd25ada" class="outline-3">
+<h3 id="orgfd25ada">zsh-syntax-highlighting</h3>
+<div class="outline-text-3" id="text-orgfd25ada">
+<p>
+<a href="https://github.com/zsh-users/zsh-syntax-highlighting">github page</a>
+</p>
+
+<p>
+arch -&gt; <code>zsh-syntax-highlighting</code> or <code>zsh-syntax-highlighting</code> (aur)
+gentoo -&gt; <code>app-shells/zsh-syntax-highlighting</code>
+nixos -&gt; 
+</p>
+
+<p>
+clone the repo
+<code>$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZDOTDIR/plugins/zsh-syntax-highlighting</code>
+</p>
+
+<p>
+source it in your <code>.zshrc</code> (or <code>.bashrc</code>), at the end of the file (recommended).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold;">source</span> $<span style="font-weight: bold; font-style: italic;">ZDOTDIR</span>/plugins/zsh-autocomplete/zsh-syntax-highlighting.zsh
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

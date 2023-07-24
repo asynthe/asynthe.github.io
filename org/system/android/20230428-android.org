@@ -1,0 +1,202 @@
+:PROPERTIES:
+:ID:       7e52c960-b6f9-4c1d-8b4d-aba03fa899fc
+:ROAM_ALIASES: ANDROID アンドロイド "ANDROID アンドロイド"
+:END:
+#+title: Android
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]]
+
+* RESOURCES
+
+*MATERIAL*
+[[https://nixos.wiki/wiki/Android][Android - nixoswiki]]
+
+*TUTORIALS*
+
+* EDITING ORG FILES IN ANDROID
+* ANDROID STREAM ON YOUR COMPUTER
+* APP - PC
+** adb
+:PROPERTIES:
+:ID:       29c377f9-89d0-4460-a757-0acc0f9a0226
+:ROAM_ALIASES: ADB
+:END:
+
+Android Debug Bridge
+
+*** package
+
+arch ->
+gentoo ->
+
+*NIXOS*
+enable like this:
+#+begin_src nix
+{
+  programs.adb.enable = true;
+  users.users.<user>.extraGroups = ["adbusers"];
+}
+#+end_src
+
+*** setup
+
+1. Start the server:
+   ~$ adb start-server~
+
+2. Now, _enable_ Developer Mode on your phone:
+   - Settings
+   - About Phone
+   - Software information
+   - Build
+
+   You can _disable_ Developer Mode as follows:
+   - Settings
+   - System & Updates
+   - Developer Options
+   - Top blue slider, from On -> Off
+
+3. Enable USB Debugging:
+   - Settings
+   - System & Updates
+   - Developer Options
+   - DEBUGGING Section -> enable USB debugging
+
+4. Connect your PC and Android Phone with a USB cable
+   and Allow the connection.
+
+5. Connect through ADB
+   ~$ adb devices~
+   ~$ adb shell~
+
+_note_: Stack commands on your computer like this:
+~$ adb shell pwd; ls /~
+
+*** conecting through wifi
+
+_note_: Do it after setting a connection with a regular USB cable.
+
+1. We will have to open a TCP port first.
+   Choose a number from 1000-19999, and open the port.
+   ~$ adb tcpip 2233~
+   
+2. In your phone, go to
+   - Settings
+   - About phone
+   - Status
+
+   Note the IP address under 'IP address'.
+   Use the IPv4, only numbers, no letters.
+
+3. On the terminal, connect to the IP address
+   ~$ adb connect 10.0.0.191:2233~
+
+   To change to a USB Connection disconnect from all the devices:
+   ~$ adb disconnect~
+
+_fix: connection refused_
+
+I couldn't connect at first, but i just keep playing with.
+
+- Making sure the USB Debugging option was on after disconnected.
+- Changing the port ~$ adb tcpip <number>~ while the phone is connected.
+- Testing the IP and the port, to make sure you're on the same network.
+  ~$ ping 192.168.1.4~ -> see if the IP is online.
+  ~$ telnet 192.168.1.4 5555~ -> see if this port is online.
+
+Repeat the steps mentioned, unconnect the usb after adding the connection.
+And check if ~$ adb shell~ works.
+
+** scrcpy
+:PROPERTIES:
+:ID:       62b1b1f3-682a-46b2-bfeb-d9ce65de5a48
+:ROAM_ALIASES: SCRCPY
+:END:
+
+Display and control your Android device.
+
+[[https://github.com/Genymobile/scrcpy][github page]]
+
+*RESOURCES*
+[[https://linuxconfig.org/how-to-mirror-your-android-mobile-screen-to-linux][How to Mirror Your Android Mobile Screen to Linux - LinuxConfig.org]]
+
+*** package
+
+arch ->
+gentoo ->
+nixos -> ~scrcpy~
+
+*** usage
+
+Once you have a good adb connection, start it with:
+~$ scrcpy~
+
+Start with off screen:
+~$ scrcpy -S~
+
+*** flags
+
+~-n~ / ~--no-control~ -> Read-only
+~-S~ / ~--turn-screen-off~ -> Turn screen off
+~-w~ / ~--stay-awake~ -> Prevent device from sleeping (only USB connection)
+~-t~ / ~--show-touches~ -> Show physical touches (on device)
+
+~-K~ / ~--hid-keyboard~ -> Physical keyboard simulation (only USB connection)
+~-M~ / ~--hid-mouse~ -> Physical mouse simulation (only USB connection)
+~--otg~ -> Act as if directly plugged into phone, via OTG cable (only USB connection)
+
+*** keybinds
+
+Click -> press
+Right Click -> back button
+Middle Click -> home button
+
+~Ctrl + Mouse move~ -> Zoom in / out
+
+** Magisk
+
+https://github.com/topjohnwu/Magisk
+
+* F-DROID
+
+I will try to install most of these apps will be available through F-Droid
+
+** APPS
+** Installing F-Droid
+** Youtube Vanced
+
+[[https://revanced.net][Youtube Revanced]]
+
+** Organic Maps
+
+Youtube Vanced + Other
+https://revanced.io/
+https://revanced.app/
+
+** nix-on-droid
+
+[[https://github.com/t184256/nix-on-droid][github page]]
+
+* XMPP CLIENT - blabber.im
+
+https://blabber.im/
+
+* Termux
+** set up
+- access android folders with termux-setup-storage
+
+** apps
+*** yt-dlp
+  
+Then finally
+change directory into `Downloads`, copy and paste the youtube link as you normally do on android (alias cd && yt-dlp <link>)
+wallpaper change cronjob (systemd job)
+
+* GUIDES
+** INSTALLING LINUX ON ANDROID NON-ROOT 
+*** INSTALLING F-DROID
+*** SETTING UP TERMUX
+** SCREENSHARING ANDROID ON LINUX
+
+[[https://linuxconfig.org/how-to-mirror-your-android-mobile-screen-to-linux][How to Mirror Your Android Mobile Screen to Linux - Linuxconfig]]
+
+Set up [[id:29c377f9-89d0-4460-a757-0acc0f9a0226][adb]] then use [[id:62b1b1f3-682a-46b2-bfeb-d9ce65de5a48][scrcpy]].

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sftp</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">sftp</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="20230508-file_sharing.html#ID-d1093c5b-1817-4713-93d6-83fdf6377ee7">FILE SHARING</a>
+</p>
+
+<p>
+<a href="https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server">How To Use SFTP to Securely Transfer Files with a Remote Server - DigitalOcean</a>
+</p>
+
+<p>
+<a href="https://www.hostinger.com/tutorials/how-to-use-sftp-to-safely-transfer-files/">How to Connect Using SFTP? - Hostinger Tutorials</a>
+<a href="https://www.hostinger.com/tutorials/how-to-use-sftp-to-safely-transfer-files">How to Use SFTP (SSH File Transfer Protocol) - Hostinger Tutorials</a>
+</p>
+
+<p>
+<a href="https://linuxize.com/post/how-to-use-linux-sftp-command-to-transfer-files">How to Use SFTP Command to Transfer Files - Linuxize</a>
+<a href="https://phoenixnap.com/kb/sftp-commands">How to Use SFTP Commands and Options - phoenixNAP</a>
+<a href="https://hevodata.com/learn/file-transfer-using-sftp">File Transfer using SFTP: 5 Easy Steps - Hevo</a>
+</p>
+
+<div id="outline-container-org3871dc9" class="outline-2">
+<h2 id="org3871dc9">package</h2>
+</div>
+<div id="outline-container-org522bec1" class="outline-2">
+<h2 id="org522bec1">usage</h2>
+<div class="outline-text-2" id="text-org522bec1">
+<p>
+connecting
+<code>$ stfp &lt;server-user&gt;@&lt;server-ip&gt;</code>
+</p>
+
+<p>
+if the remote SSH server is not listening on SFTP's <code>default port 22</code> (you can change it)
+<code>$ sftp &lt;custom-port&gt; &lt;remote-user&gt;@&lt;ip-or-hostname&gt;</code>
+</p>
+
+<p>
+connecting with a specified private key
+<code>$ sftp -i &lt;private-key&gt; &lt;server-user&gt;@&lt;server-ip&gt;</code>
+<span class="underline">note</span>: some sftp versions won't accept <code>-i</code>, if that happens you can use the alternative.
+<code>$ sftp -o IdentityFile=&lt;private-key-filename&gt; &lt;server-user&gt;@&lt;server-ip&gt;</code>
+</p>
+
+<p>
+SFTP COMMANDS
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command</th>
+<th scope="col" class="org-left">definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">bye</td>
+<td class="org-left">Quit sftp.</td>
+</tr>
+
+<tr>
+<td class="org-left">version</td>
+<td class="org-left">Show SFTP version.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>!</code></td>
+<td class="org-left">Local shell, type <code>exit</code> to go back to sftp.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>!command</code></td>
+<td class="org-left">Execute 'command' in local shell.</td>
+</tr>
+
+<tr>
+<td class="org-left">? / help</td>
+<td class="org-left">Help</td>
+</tr>
+
+<tr>
+<td class="org-left">put</td>
+<td class="org-left">Put / Send a file to the remote machine.</td>
+</tr>
+
+<tr>
+<td class="org-left">reput</td>
+<td class="org-left">Resume a failed / interrupted put.</td>
+</tr>
+
+<tr>
+<td class="org-left">get</td>
+<td class="org-left">Get a file from the remote machine.</td>
+</tr>
+
+<tr>
+<td class="org-left">reget</td>
+<td class="org-left">Resume a failed / interrupted get.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+LOCAL / REMOTE COMMANDS
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">remote (server)</th>
+<th scope="col" class="org-left">local</th>
+<th scope="col" class="org-left">definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">bye</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Quit sftp</td>
+</tr>
+
+<tr>
+<td class="org-left">cd &lt;path&gt;</td>
+<td class="org-left">lcd &lt;path&gt;</td>
+<td class="org-left">Change remote directory to &lt;path&gt;.</td>
+</tr>
+
+<tr>
+<td class="org-left">ls &lt;path&gt;</td>
+<td class="org-left">lls</td>
+<td class="org-left">List files on &lt;path&gt;.</td>
+</tr>
+
+<tr>
+<td class="org-left">pwd</td>
+<td class="org-left">lpwd</td>
+<td class="org-left">Print working directory.</td>
+</tr>
+
+<tr>
+<td class="org-left">df</td>
+<td class="org-left">ldf</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">rm</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">mkdir</td>
+<td class="org-left">lmkdir</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">rmdir</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">chmod</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">chown</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">chgrp</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgbb9a4d9" class="outline-2">
+<h2 id="orgbb9a4d9">MOVING BETWEEN THE SYSTEMS</h2>
+<div class="outline-text-2" id="text-orgbb9a4d9">
+<p>
+We are going to be managing two filesystems while using sftp.
+</p>
+<ul class="org-ul">
+<li>The Local directory (your computer).</li>
+<li>The Remote directory.</li>
+</ul>
+
+<p>
+So the way sftp does to manage both systems is to have two versions for the commands, <span class="underline">example</span>:
+</p>
+<ul class="org-ul">
+<li><code>cd</code>: will move around the <span class="underline">remote machine</span> directories.</li>
+<li><code>lcd</code>: will move around the <span class="underline">local machine</span> directories.</li>
+</ul>
+
+<p>
+<b>Give it a try!</b>
+Check you are moving between the two filesystems with:
+</p>
+<ul class="org-ul">
+<li><code>ls</code>: for the <span class="underline">remote machine</span>.</li>
+<li><code>lls</code>: for the <span class="underline">local machine</span>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org48a8ddd" class="outline-2">
+<h2 id="org48a8ddd">COPYING A FILE</h2>
+<div class="outline-text-2" id="text-org48a8ddd">
+</div>
+<div id="outline-container-org81d2fd8" class="outline-3">
+<h3 id="org81d2fd8">PUT - LOCAL TO REMOTE</h3>
+<div class="outline-text-3" id="text-org81d2fd8">
+<ul class="org-ul">
+<li>Change to local directory with the files</li>
+<li>Change to remote directory where you want to send</li>
+</ul>
+
+<p>
+Copy a <b>file</b> like this:
+<code>sftp&gt; put &lt;filename&gt;</code>
+<code>sftp&gt; put &lt;file1&gt; &lt;file2&gt;</code>
+Copy a <b>directory</b>:
+<code>sftp&gt; put -r &lt;directory&gt;</code>
+Copy <b>all</b>, files and directories:
+<code>sftp&gt; put -r *</code>
+</p>
+
+<p>
+Now, if a file transfer <b>fails</b> or is <b>interrupted</b>, resume it with <code>reput</code>
+<code>sftp&gt; reput &lt;filename&gt;</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgea84ccd" class="outline-3">
+<h3 id="orgea84ccd">GET - REMOTE TO LOCAL</h3>
+<div class="outline-text-3" id="text-orgea84ccd">
+<ul class="org-ul">
+<li>Change to local directory with the files</li>
+<li>Change to remote directory where you want to send</li>
+</ul>
+
+<p>
+<b>Get</b> a file from the <span class="underline">remote machine</span> like this:
+<code>sftp&gt; get &lt;filename&gt;</code>
+<code>sftp&gt; get &lt;file1&gt; &lt;file2&gt; ...</code>
+</p>
+
+<p>
+Get a <b>directory</b>:
+<code>sftp&gt; put -r &lt;directory&gt;</code>
+</p>
+
+<p>
+Get <b>all</b>, files and directories:
+<code>sftp&gt; get -r *</code>
+</p>
+
+<p>
+Now, if a file transfer <b>fails</b> or is <b>interrupted</b>, resume it with <code>reget</code>
+<code>sftp&gt; reget &lt;filename&gt;</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb426ab8" class="outline-2">
+<h2 id="orgb426ab8">CHANGING THE SFTP PORT</h2>
+<div class="outline-text-2" id="text-orgb426ab8">
+<p>
+<a href="https://linuxize.com/post/sftp-port">How to Change the SFTP Port - Linuxize</a>
+</p>
+
+<p>
+&#x2014; IN PROGRESS &#x2014;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4454b53" class="outline-2">
+<h2 id="org4454b53">SETTING UP A CHROOT JAIL</h2>
+<div class="outline-text-2" id="text-org4454b53">
+<p>
+<a href="https://linuxize.com/post/how-to-set-up-sftp-chroot-jail">How to Set Up SFTP Chroot Jail - Linuxize</a>
+</p>
+
+<p>
+&#x2014; IN PROGRESS &#x2014;
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

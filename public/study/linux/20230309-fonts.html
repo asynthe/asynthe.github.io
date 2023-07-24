@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fonts</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Fonts</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a>
+</p>
+
+<p>
+<a href="https://linuxconfig.org/how-to-install-and-manage-fonts-on-linux">How to install and manage fonts on Linux - linuxconfig</a>
+<a href="https://nixos.wiki/wiki/Fonts">Fonts - NixOS wiki</a>
+</p>
+
+<p>
+Nerd Fonts
+<a href="../../app/extra/20230311-fontawesome.html#ID-c5bab2eb-1abe-49a4-be10-6e9616195b12">fontawesome</a>
+</p>
+
+<div id="outline-container-orgfb81b58" class="outline-2">
+<h2 id="orgfb81b58">How to set up Fonts</h2>
+<div class="outline-text-2" id="text-orgfb81b58">
+<p>
+<b>on a user level</b>
+copy and paste font into one of the next directories:
+<code>~/.fonts</code> or <code>~/.local/share/fonts</code>
+</p>
+
+<p>
+<b>on a system level</b>
+copy and paste into following directory:
+<code>/usr/share/fonts</code>
+</p>
+
+<p>
+now, make the new fonts cache with
+<code>$ fc-cache</code> (all fonts directories) or
+<code>$ fc-cache -vf /usr/share/fonts</code> (specific directory)
+<code>-v</code> -&gt; verbose
+<code>-f</code> -&gt; force
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc630ee2" class="outline-2">
+<h2 id="orgc630ee2">fonts</h2>
+<div class="outline-text-2" id="text-orgc630ee2">
+</div>
+<div id="outline-container-org098cbe5" class="outline-3">
+<h3 id="org098cbe5">Square</h3>
+</div>
+<div id="outline-container-org82c0e8f" class="outline-3">
+<h3 id="org82c0e8f"><a href="https://edwardtufte.github.io/et-book/">ET Book</a></h3>
+</div>
+
+<div id="outline-container-orge3da3f4" class="outline-3">
+<h3 id="orge3da3f4">JAPANESE 日本語</h3>
+<div class="outline-text-3" id="text-orge3da3f4">
+</div>
+<div id="outline-container-orgd6d3a4a" class="outline-4">
+<h4 id="orgd6d3a4a">MINCHO (SERIF)</h4>
+</div>
+<div id="outline-container-orgafb66a3" class="outline-4">
+<h4 id="orgafb66a3">GOTHIC (SANS-SERIF)</h4>
+<div class="outline-text-4" id="text-orgafb66a3">
+</div>
+<ul class="org-ul">
+<li><a id="org9f93f76"></a>Ricty<br />
+<div class="outline-text-5" id="text-org9f93f76">
+<p>
+<a href="https://rictyfonts.github.io/">link</a>
+arch -&gt;
+gentoo -&gt;
+</p>
+</div>
+</li>
+<li><a id="orgf000c9c"></a>monafont<br />
+<div class="outline-text-5" id="text-orgf000c9c">
+<p>
+<a href="https://monafont.sourceforge.net/">link</a>
+arch -&gt; <code>123</code>
+gentoo -&gt; <code>media-fonts/monafont</code>
+</p>
+</div>
+</li>
+<li><a id="org467634b"></a>Sazanami<br />
+<div class="outline-text-5" id="text-org467634b">
+<p>
+arch -&gt;123
+gentoo -&gt; <code>media-fonts/sazanami</code>
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7dc4fb7" class="outline-2">
+<h2 id="org7dc4fb7">FAVOURITE</h2>
+<div class="outline-text-2" id="text-org7dc4fb7">
+<p>
+Eurostile - FIND
+Gona 1975
+Fontworks - New Rodin
+Morisawa - Shingo / UD Shingo NT
+</p>
+
+<p>
+THIS MGS2 FONT I FORGOT
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6e487bc" class="outline-2">
+<h2 id="org6e487bc">TEMP FIX</h2>
+<div class="outline-text-2" id="text-org6e487bc">
+<p>
+UNICODE FONT
+<a href="https://github.com/illnyang/univga-ttf">https://github.com/illnyang/univga-ttf</a>
+<a href="https://www.inp.nsk.su/~bolkhov/files/fonts/univga/index.html">https://www.inp.nsk.su/~bolkhov/files/fonts/univga/index.html</a>
+The Ultimate Oldschool PC Font Pack
+<a href="https://int10h.org./oldschool-pc-fonts/">https://int10h.org./oldschool-pc-fonts/</a>
+Amiga Fonts
+<a href="https://github.com/rewtnull/amigafonts">https://github.com/rewtnull/amigafonts</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

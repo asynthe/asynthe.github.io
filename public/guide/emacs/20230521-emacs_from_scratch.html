@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs from Scratch</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Emacs from Scratch</h1>
+<p>
+<i>useful when setting up emacs</i>
+</p>
+
+<ul class="org-ul">
+<li>start install by installing emacs</li>
+<li>install chemacs</li>
+<li>after getting emacs &#x2013;with-profile default, begin literate config</li>
+<li>install super save</li>
+</ul>
+
+<div id="outline-container-orgbb19ec6" class="outline-2">
+<h2 id="orgbb19ec6">installation</h2>
+<div class="outline-text-2" id="text-orgbb19ec6">
+<p>
+<code>Ctrl-x Ctrl-f</code> -&gt; find-file
+then edit <code>~/.emacs.d/init.el</code>
+</p>
+
+<p>
+to zoom in use the command with <code>M-X</code>
+it should be <code>text-scale-increase</code>
+</p>
+
+<p>
+paste into the file
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(org-babel-load-file
+ (expand-file-name
+  <span style="font-style: italic;">"config.org"</span>
+  user-emacs-directory))
+</pre>
+</div>
+<p>
+<span class="underline">note</span>: be careful with writing <i>elisp</i> instead of <i>emacs-lisp</i> as this will not work.
+</p>
+
+<p>
+now on the same directory, create <code>~/.emacs.d/config.org</code> document
+(remember find-file)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7a3744a" class="outline-2">
+<h2 id="org7a3744a">initial <code>config.org</code></h2>
+<div class="outline-text-2" id="text-org7a3744a">
+<p>
+Now save with <code>C-x C-s</code>, close and open again Emacs
+<span class="underline">note</span>: you can also do <code>M-x load-file</code> command, then write <code>~/.emacs.d/init.el</code>
+</p>
+</div>
+</div>
+
+
+
+
+
+
+<div id="outline-container-orgb5933a0" class="outline-2">
+<h2 id="orgb5933a0">overview of the set up</h2>
+<div class="outline-text-2" id="text-orgb5933a0">
+<p>
+versions to run with [chemacs]
+<code>~/.emacs.d</code> -&gt; chemacs
+<code>~/.emacs</code> main emacs with literate config
+<code>~/.doomemacs</code> -&gt; doom emacs
+</p>
+</div>
+</div>
+
+<div id="outline-container-org267cc74" class="outline-2">
+<h2 id="org267cc74">tutorial</h2>
+<div class="outline-text-2" id="text-org267cc74">
+</div>
+<div id="outline-container-org2181445" class="outline-3">
+<h3 id="org2181445">chemacs</h3>
+<div class="outline-text-3" id="text-org2181445">
+<p>
+first, let's install chemacs
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org381f82f" class="outline-3">
+<h3 id="org381f82f">doom</h3>
+<div class="outline-text-3" id="text-org381f82f">
+<p>
+now let's install doom
+</p>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org0afa020" class="outline-3">
+<h3 id="org0afa020">cron job / systemd job to backup configs (GIT?)</h3>
+<div class="outline-text-3" id="text-org0afa020">
+<p>
+<a href="https://crontab.guru/">crontab guru</a>
+</p>
+
+<p>
+let's set up a [cron] job to a folder we want to save
+<code>$ crontab -e</code> (if user)
+<code># crontab -e -u &lt;user&gt;</code> (if root, to specify user)
+</p>
+
+<p>
+i will set up rsync to run every 15 minutes for both emacs and doom
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">15 * * * * rsync 
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org0f6926b" class="outline-2">
+<h2 id="org0f6926b">using emacs daemon</h2>
+<div class="outline-text-2" id="text-org0f6926b">
+<p>
+-&gt; try to always use the emacs daemon, as it will be faster and always available.
+</p>
+
+<p>
+run it with
+<code>$ emacs --daemon &amp;</code>
+(will run the emacs profile in <code>~/.config/chemacs/profile</code>)
+</p>
+
+<p>
+in case of running with a certain profile
+<code>$ emacs --with-profile doom --daemon &amp;</code>
+</p>
+
+<p>
+now to open emacs instances, use
+<code>$ emacsclient -c -s &lt;profile&gt; -a emacs</code>
+for doom (if doom profile)
+<code>$ emacsclient -c -s doom -a emacs</code>
+</p>
+
+<p>
+<span class="underline">note</span>: add this in your twm configuration or .Xprofile
+<span class="underline">2nd note</span>: change the desktop file of emacs
+to run the emacsclient command (<code>$ emacsclient -c -s emacs -a emacs</code>)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org65d2ceb" class="outline-2">
+<h2 id="org65d2ceb">overview of the set up</h2>
+<div class="outline-text-2" id="text-org65d2ceb">
+<p>
+versions to run with [chemacs]
+<code>~/.emacs.d</code> -&gt; chemacs
+<code>~/.emacs</code> main emacs with literate config
+<code>~/.doomemacs</code> -&gt; doom emacs
+</p>
+</div>
+</div>
+
+<div id="outline-container-org73d4772" class="outline-2">
+<h2 id="org73d4772">tutorial</h2>
+<div class="outline-text-2" id="text-org73d4772">
+</div>
+<div id="outline-container-org9851552" class="outline-3">
+<h3 id="org9851552">chemacs</h3>
+<div class="outline-text-3" id="text-org9851552">
+<p>
+first, let's install chemacs
+</p>
+</div>
+</div>
+
+<div id="outline-container-org213e929" class="outline-3">
+<h3 id="org213e929">doom</h3>
+<div class="outline-text-3" id="text-org213e929">
+<p>
+now let's install doom
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga776f0e" class="outline-3">
+<h3 id="orga776f0e">cron job / systemd job</h3>
+<div class="outline-text-3" id="text-orga776f0e">
+<p>
+<a href="https://crontab.guru/">crontab guru</a>
+</p>
+
+<p>
+let's set up a [cron] job to a folder we want to save
+<code>$ crontab -e</code> (if user)
+<code># crontab -e -u &lt;user&gt;</code> (if root, to specify user)
+</p>
+
+<p>
+i will set up rsync to run every 15 minutes for both emacs and doom
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">15 * * * * rsync 
+</pre>
+</div>
+
+
+<p>
+-&gt; main -&gt; guides -&gt; emacs
+</p>
+
+<p>
+in this file i will teach you how to set up emacs from scratch
+</p>
+
+
+<p>
+*
+**
+</p>
+</div>
+</div>
+<div id="outline-container-orgd91b690" class="outline-3">
+<h3 id="orgd91b690">COMMAND LOG BUFFER</h3>
+<div class="outline-text-3" id="text-orgd91b690">
+<p>
+global-command-log-mode
+clm/toggle-command-log-buffer
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3cdcbd2" class="outline-3">
+<h3 id="org3cdcbd2">COUNSEL</h3>
+<div class="outline-text-3" id="text-org3cdcbd2">
+<p>
+in Counsel-m-X hit ALT o and it will show you stuff
+</p>
+
+<p>
+counsel-load-theme
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

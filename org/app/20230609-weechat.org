@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       4c2c23d2-3f25-4cb4-b857-4d1cdf28a295
+:ROAM_ALIASES: WEECHAT weechat
+:END:
+#+title: WeeChat
+
+-> [[id:9be91f09-e446-4d22-931e-c05792d8f582][SYSAPPS アプリ]]
+
+[[][github page] ]
+[[https://weechat.org][main page]]
+[[][gentoo wiki] ]
+[[][arch wiki] ]
+
+[[https://xeiaso.net/blog/irc-stuff-nixos-2021-05-29][How to Set Up WeeChat on NixOS - Xe Iaso]]
+
+* package
+
+arch -> ...
+gentoo -> ...
+nixos -> ...
+
+* usage
+
+PLUGINS
+go.py
+listbuffer.py
+autojoin.py
+autosort.py
+
+

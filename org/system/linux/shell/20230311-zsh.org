@@ -1,0 +1,123 @@
+:PROPERTIES:
+:ID:       2cd50d56-b3fa-4e6b-a005-d0769ae58995
+:ROAM_ALIASES: zsh ZSH
+:END:
+#+title: Z shell
+
+-> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+
+[[https://en.wikipedia.org/wiki/Z_shell][wikipedia page]]
+[[https://smarttech101.com/zsh-highlighting-autosuggestion-themes-binding-alias-fzf][zsh: highlighting, autosuggestion, themes, binding, alias, fzf - SmartTech101]]
+
+* package
+
+arch -> ~...~
+gentoo -> ~...~
+nixos ->  
+
+* usage
+
+* configuration
+** ~/.config/zsh as config directory
+
+we will have to put the next on ~~/.zshenv~, this will be the only file on our home folder.
+
+#+begin_src bash
+export ZDOTDIR = ~/.config/zsh
+#+end_src
+
+* plugins
+** Starship
+
+[[https://starship.rs/][main page]]
+[[https://github.com/starship/starship][github page]]
+
+*** package
+
+arch -> ~starship~
+gentoo -> ~app-shells/starship~
+nixos -> ~starship~
+
+*** install
+
+after getting the package, add the next to your ~~/.bashrc~ or ~~/.zshrc~
+
+~~/.bashrc~
+#+begin_src bash
+eval "$(starship init bash)"
+#+end_src
+
+~~/.zshrc~
+#+begin_src zsh
+eval "$(starship init zsh)"
+#+end_src
+
+*** config
+
+all configuration is done in ~~/.config/starship.toml~
+or any other directory setting up env variable
+~export STARSHIP_CONFIG=~/.config/starship/starship.toml~
+
+** plugin managers
+
+- [[https://github.com/zsh-users/antigen][Antigen]]
+- [[https://github.com/zdharma-continuum/zinit][zinit]]
+- [[https://github.com/zplug/zplug][zplug]]
+- [[https://github.com/tarjoilija/zgen][zgen]]
+
+** Framework
+
+- [[https://github.com/ohmyzsh/ohmyzsh][Oh My Zsh]]
+
+** zsh-vi-mode
+[[https://github.com/jeffreytse/zsh-vi-mode][github page]]
+
+clone the repo
+~$ git clone https://github.com/jeffreytse/zsh-vi-mode.git ~/.config/zsh/plugins/zsh-vi-mode~
+
+source it in your ~.zshrc~ (or ~.bashrc~)
+#+begin_src bash
+source $ZDOTDIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+#+end_src
+
+** zsh-autocomplete
+[[https://github.com/marlonrichert/zsh-autocomplete][github page]]
+
+clone the repo
+~$ git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZDOTDIR/plugins/zsh-autocomplete~
+
+source it in your ~.zshrc~ (or ~.bashrc~)
+#+begin_src bash
+source $ZDOTDIR/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#+end_src
+
+** zsh-autosuggestions
+[[https://github.com/zsh-users/zsh-autosuggestions][github page]]
+
+arch -> ~zsh-autosuggestions~ or ~zsh-autosuggestions-git~ (aur)
+gentoo ->
+nixos -> 
+
+clone the repo
+~$ git clone https://github.com/zsh-users/zsh-autosuggestions ~$ZDOTDIR/plugins/zsh-autosuggestions~
+
+source it in your ~.zshrc~ (or ~.bashrc~)
+#+begin_src bash
+source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#+end_src
+
+** zsh-syntax-highlighting
+[[https://github.com/zsh-users/zsh-syntax-highlighting][github page]]
+
+arch -> ~zsh-syntax-highlighting~ or ~zsh-syntax-highlighting~ (aur)
+gentoo -> ~app-shells/zsh-syntax-highlighting~
+nixos -> 
+
+clone the repo
+~$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZDOTDIR/plugins/zsh-syntax-highlighting~
+
+source it in your ~.zshrc~ (or ~.bashrc~), at the end of the file (recommended).
+
+#+begin_src bash
+source $ZDOTDIR/plugins/zsh-autocomplete/zsh-syntax-highlighting.zsh
+#+end_src

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cisco Switches</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Cisco Switches</h1>
+<p>
+<a href="https://www.youtube.com/watch?v=N_gBudULCu0">https://www.youtube.com/watch?v=N_gBudULCu0</a>
+Rapid Spanning Tree Protocol (IEEE802.1W)
+</p>
+
+<div id="outline-container-orgd6a6020" class="outline-2">
+<h2 id="orgd6a6020">VLAN</h2>
+<div class="outline-text-2" id="text-orgd6a6020">
+<p>
+<a href="https://youtu.be/A9lMH0ye1HU">VLANs Explained | Cisco CCNA 200-301 - youtube video</a>
+</p>
+</div>
+
+<div id="outline-container-orgc7e9aaf" class="outline-3">
+<h3 id="orgc7e9aaf">trunk</h3>
+<div class="outline-text-3" id="text-orgc7e9aaf">
+<p>
+<a href="https://youtu.be/Nlyx5lFQR34">VLAN Trunking Protocol (VTP) Explained | Version 1 &amp; 2 - youtube video</a>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6d1c2b4" class="outline-2">
+<h2 id="org6d1c2b4">SWITCH PORT SECURITY</h2>
+<div class="outline-text-2" id="text-org6d1c2b4">
+<p>
+HOSTNAME(config)# int g1/0/24
+HOSTNAME(config-if)# switchport mode access
+HOSTNAME(config-if)# switchport port-security
+HOSTNAME(config-if)# switchport port-security mac-address sticky
+HOSTNAME(config-if)# switchport port-security maximum 1
+HOSTNAME(config-if)# switchport port-security violation shutdown
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1729497" class="outline-2">
+<h2 id="org1729497">UPDATING THE IOS VERSION</h2>
+<div class="outline-text-2" id="text-org1729497">
+<p>
+<a href="https://networkproguide.com/upgrade-cisco-ios-switch-step-by-step/">Upgrade Cisco IOS Switch Step-by-Step - NetworkProGuide</a>
+</p>
+
+<ol class="org-ol">
+<li>show current version of switch IOS version</li>
+</ol>
+<p>
+HOSTNAME#show switch
+</p>
+
+<ol class="org-ol">
+<li>download Latest cisco IOS image</li>
+
+<li>Delete old IOS image if short on space</li>
+</ol>
+<p>
+HOSTNAME# delete /f /r flash1:&lt;SWITCH&gt;.bin
+</p>
+
+<p>
+<code>/f</code> → force
+<code>/r</code> → recursive
+</p>
+
+<p>
+Check that contents of flash are clear
+&lt;PC&gt;#dir flash1:
+&lt;PC&gt;#dir flash2:
+</p>
+
+<ol class="org-ol">
+<li>Upload the New IOS to Flash</li>
+</ol>
+<p>
+&lt;PC&gt;# copy tftp flash1
+&gt;Address or name of remote host? 192.168.1.10 (SWITCH IP)
+&gt;source filename? c2960x-universalk9-mz.152-4.E6.bin
+&gt;Destination filename? c2960x-universalk9-mz.152-4.E6.bin
+Verify that image is copied by checking flash again
+&lt;PC&gt;#dir flash1:
+</p>
+
+<p>
+Verify MD5 checksum for integrity
+&lt;PC&gt;# verify /md5 flash1:c2960x-universalk9-mz.152-4.E6.bin
+</p>
+
+<ol class="org-ol">
+<li>Update Booth Path List</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

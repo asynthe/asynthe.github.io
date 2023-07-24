@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gentoo</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Gentoo</h1>
+<p>
+-&gt; <a href="../../main.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../study/linux/20230428-linux.html#ID-b0d37831-1dcd-47be-ba0b-3bd8a7df063e">LINUX リナックス</a>
+</p>
+
+<p>
+<a href="https://www.gentoo.org">main page</a>
+<a href="https://wiki.gentoo.org/wiki/Main_page">gentoo wiki</a>
+<a href="https://packages.gentoo.org">packages</a>
+<a href="http://gpo.zugaina.org">portage overlays</a>
+</p>
+
+<p>
+<b>EXTRA</b>
+<a href="https://github.com/fatalhalt/gentoox">https://github.com/fatalhalt/gentoox</a>
+<a href="https://github.com/szorfein/Gentoo-ZFS">https://github.com/szorfein/Gentoo-ZFS</a>
+<a href="https://pinkhat.zsh.li/es">https://pinkhat.zsh.li/es</a> # PRINCESS GENTOO
+</p>
+
+<p>
+<b>TMP</b>
+all the ebuild stuff is in
+<code>/var/db/pkg</code>
+the repositories ebuild is on
+<code>/var/db/repos</code>
+</p>
+
+<p>
+Most of this optimizations will be oriented towards <a href="20230428-gentoo.html#ID-98f94da7-e51a-46f5-99c1-02a478624f8c">GENTOO ジェンツー</a>, to get as much faster compile times and binaries as possible.
+</p>
+
+<div id="outline-container-orgde2fdbb" class="outline-2">
+<h2 id="orgde2fdbb"><a href="20230428-distcc.html#ID-be96ec4b-dcd7-41b1-9a54-b05f8938a033">distcc</a></h2>
+</div>
+<div id="outline-container-orgd4b2827" class="outline-2">
+<h2 id="orgd4b2827">SYSTEM</h2>
+<div class="outline-text-2" id="text-orgd4b2827">
+</div>
+<div id="outline-container-org85094ed" class="outline-3">
+<h3 id="org85094ed">OPTIMIZING <a href="../../study/linux/20230306-kernel.html#ID-0f3491ae-96b7-4be4-8053-0f8b78df5bef">KERNEL カーネル</a></h3>
+</div>
+<div id="outline-container-org5d6fa39" class="outline-3">
+<h3 id="org5d6fa39">sh -&gt; <a href="../../study/linux/20230311-dash.html#ID-c3b942d1-3420-477a-8a39-9590498aa5dd">dash</a></h3>
+</div>
+<div id="outline-container-orgcb064d0" class="outline-3">
+<h3 id="orgcb064d0">hardened + no multilib gentoo profile</h3>
+<div class="outline-text-3" id="text-orgcb064d0">
+<p>
+-&gt; try to avoid 32bit libraries such as WINE and Steam, you can install those by using something like <a href="../../app/system/20230227-flatpak.html#ID-9b6ccaa4-a3e5-4ee3-867c-c7c1d7254d11">Flatpak</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org871ea27" class="outline-3">
+<h3 id="org871ea27">O3, lto and Graphite</h3>
+</div>
+<div id="outline-container-org4bc773d" class="outline-3">
+<h3 id="org4bc773d">gcc to Clang</h3>
+</div>
+<div id="outline-container-orga6a8c68" class="outline-3">
+<h3 id="orga6a8c68">~amd64 for experimental packages</h3>
+</div>
+<div id="outline-container-orgd89da13" class="outline-3">
+<h3 id="orgd89da13"><a href="20230311-ccache.html#ID-2bf472e6-2b54-419b-a8a5-3f015d8ba4e4">ccache</a> / <a href="20230307-sccache.html#ID-004e489d-4cd4-45ef-b6d6-4e2238f61255">sccache</a></h3>
+</div>
+<div id="outline-container-orgc6f97df" class="outline-3">
+<h3 id="orgc6f97df"><a href="20230428-distcc.html#ID-be96ec4b-dcd7-41b1-9a54-b05f8938a033">distcc</a> &lt;- multiple machine compilation</h3>
+</div>
+<div id="outline-container-org13b2fd3" class="outline-3">
+<h3 id="org13b2fd3"><a href="../../guide/filesystems/20230505-tmpfs.html#ID-52716fb0-0d60-4557-b0bf-1a9a6b886ca5">Portage TMPDIR on tmpfs</a></h3>
+</div>
+<div id="outline-container-org97f3870" class="outline-3">
+<h3 id="org97f3870">Changing emerge &#x2013;sync from rsync to git</h3>
+</div>
+<div id="outline-container-orga06371c" class="outline-3">
+<h3 id="orga06371c">fixing time on Windows and Gentoo</h3>
+<div class="outline-text-3" id="text-orga06371c">
+<p>
+FIXING TIME ON GENTOO + WINDOWS
+<a href="https://wiki.gentoo.org/wiki/System_time">https://wiki.gentoo.org/wiki/System_time</a>
+<a href="https://forums.gentoo.org/viewtopic-t-1066976-start-0.html">https://forums.gentoo.org/viewtopic-t-1066976-start-0.html</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9f78aab" class="outline-2">
+<h2 id="org9f78aab">MUSL and GLIBC</h2>
+<div class="outline-text-2" id="text-org9f78aab">
+<p>
+<a href="https://www.etalabs.net/compare_libcs.html">https://www.etalabs.net/compare_libcs.html</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org130755b" class="outline-2">
+<h2 id="org130755b">KERNEL</h2>
+</div>
+<div id="outline-container-orgbe08f41" class="outline-2">
+<h2 id="orgbe08f41">Kernel Stripping</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

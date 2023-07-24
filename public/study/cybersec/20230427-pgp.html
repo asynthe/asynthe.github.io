@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PGP</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">PGP</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; [BROKEN LINK: c9156aa2-0d9f-45dd-bf1a-e114e74c13b5] -&gt; <a href="20230427-cybersecurity.html#ID-a941c479-da94-455a-8838-c407043d2c26">CYBERSEC サイバーセキュリティ</a>
+</p>
+
+<p>
+<a href="https://wiki.archlinux.org/title/GnuPG">arch wiki</a>
+<a href="https://wiki.gentoo.org/wiki/GnuPG">gentoo wiki</a>
+</p>
+
+<p>
+<a href="https://www.redhat.com/sysadmin/getting-started-gpg">Getting started with GPG (GnuPG) - Red Hat</a>
+<a href="https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages">How To Use GPG to Encrypt and Sign Messages - DigitalOcean</a>
+</p>
+
+<p>
+<a href="https://gock.net/blog/2020/gpg-cheat-sheet">GPG Cheat Sheet - Gock.net</a>
+<a href="https://www.howtogeek.com/427982/how-to-encrypt-and-decrypt-files-with-gpg-on-linux/">How to Encrypt and Decrypt Files With GPG on Linux - How-To Geek</a>
+</p>
+
+<p>
+<b>TALK</b>
+<a href="../1_talks/20230504-a_pretty_good_introduction_to_pretty_good_privacy.html#ID-04b4d33d-9403-4682-bb9d-caee0765d2c6">A Pretty Good Introduction to Pretty Good Privacy</a>
+</p>
+
+<p>
+<a href="https://youtu.be/fP0x-YFSh-E">https://youtu.be/fP0x-YFSh-E</a>
+<a href="https://youtu.be/ZSa-d_9O5DA">https://youtu.be/ZSa-d_9O5DA</a>
+<a href="https://youtu.be/lAblt1Qt_ng">https://youtu.be/lAblt1Qt_ng</a>
+<a href="https://youtu.be/hffCq7zB8ZA">https://youtu.be/hffCq7zB8ZA</a>
+<a href="https://www.youtube.com/watch?v=1vVIpIvboSg">https://www.youtube.com/watch?v=1vVIpIvboSg</a>
+<a href="https://www.youtube.com/watch?v=V9-LrXiwGEQ">https://www.youtube.com/watch?v=V9-LrXiwGEQ</a>
+</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=CEADq-B8KtI">https://www.youtube.com/watch?v=CEADq-B8KtI</a>
+<a href="https://www.youtube.com/watch?v=Lq-yKJFHJpk">https://www.youtube.com/watch?v=Lq-yKJFHJpk</a>
+</p>
+
+<div id="outline-container-org51dfba8" class="outline-2">
+<h2 id="org51dfba8">WHAT IS GPG?</h2>
+<div class="outline-text-2" id="text-org51dfba8">
+</div>
+<div id="outline-container-org5cb3963" class="outline-3">
+<h3 id="org5cb3963">PGP, OpenPGP &amp; GnuPG</h3>
+<div class="outline-text-3" id="text-org5cb3963">
+<p>
+GPG, or GNU Privacy Guard, is a public key cryptography implementation. This allows for the secure transmission of information between parties and can be used to verify that the origin of a message is genuine.
+</p>
+
+<p>
+_ <span class="underline">PGP</span>: Originally developed by Phil Simmons on mid 90's (check), free as in beer, not as in Stallman.
+</p>
+<ul class="org-ul">
+<li><span class="underline">OpenPGP</span>: Standart, <b>RFC4880</b> (defines how a OpenPGP compliant app should work)</li>
+<li><span class="underline">GnuPG</span>, "<sub>GNU</sub> Privacy Guard_": Free as in beer, and also free in Stallman.</li>
+</ul>
+<p>
+GPG is the GNU implementation of PGP "Pretty Good Privacy".
+</p>
+
+<p>
+The default linux package uses GnuPG 2.0 by default, in a installed binary called <code>gpg</code>.
+But you may check just in case with <code>$ ls -l (which gpg gpg2 gpg1)</code>
+</p>
+
+<p>
+The first time you run any <code>gpg</code> command, some files will be created on your home directory.
+</p>
+<pre class="example">
+gpg: directory '/home/user/.gnupg' created
+gpg: keybox '/home/user/.gnupg/pubring.kbx' created
+gpg: /home/user/.gnupg/trustdb.gpg: trustdb created
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org185dd77" class="outline-3">
+<h3 id="org185dd77">WHAT IS PUBLIC KEY ENCRYPTION</h3>
+<div class="outline-text-3" id="text-org185dd77">
+<p>
+A problem that many users face is how to communicate securely and validate the identity of the party they are talking to. Many schemes that attempt to answer this question require, at least at some point, the transfer of a password or other identifying credentials, over an insecure medium.
+Ensure That Only the Intended Party Can Read
+</p>
+
+<p>
+To get around this issue, GPG relies on a security concept known as public key encryption. The idea is that you can split the encrypting and decrypting stages of the transmission into two separate pieces. That way, you can freely distribute the encrypting portion, as long as you secure the decrypting portion.
+</p>
+
+<p>
+This would allow for a one-way message transfer that can be created and encrypted by anyone, but only be decrypted by the designated user (the one with the private decrypting key). If both of the parties create public/private key pairs and give each other their public encrypting keys, they can both encrypt messages to each other.
+</p>
+
+<p>
+So in this scenario, each party has their own private key and the other user’s public key.
+Validate the Identity of the Sender
+</p>
+
+<p>
+Another benefit of this system is that the sender of a message can “sign” the message with their private key. The public key that the receiver has can be used to verify that the signature is actually being sent by the indicated user.
+</p>
+
+<p>
+from <a href="https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages">How To Use GPG to Encrypt and Sign Messages - Digital Ocean</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc4241f3" class="outline-2">
+<h2 id="orgc4241f3">PACKAGE</h2>
+<div class="outline-text-2" id="text-orgc4241f3">
+<p>
+arch -&gt; <code>gnupg</code>
+gentoo -&gt; <code>app-crypt/gnupg</code>
+nixos -&gt; <code>gnupg</code>
+</p>
+</div>
+
+<div id="outline-container-orgdc27fc4" class="outline-3">
+<h3 id="orgdc27fc4">FLAVOR</h3>
+<div class="outline-text-3" id="text-orgdc27fc4">
+<p>
+PINENTRY is the GnuPG's interface to passphrase input.
+It's the one that appears when we have to enter the password / passphrase.
+</p>
+
+<p>
+pinentry
+</p>
+
+<p>
+GUI
+pinentry-qt
+pinentry-gtk2
+pinentry-emacs
+pinentry-gnome
+</p>
+
+<p>
+CLI
+curses
+</p>
+
+<p>
+arch -&gt; 
+gentoo -&gt; <code>app-crypt/pinentry</code>
+nixos -&gt; <code>pinentry</code>
+<span class="underline">note</span>: gentoo: choose with <code># eselect pinentry list</code>
+</p>
+
+<p>
+<b>GPG-TUI</b>
+nixos -&gt; <code>gpg-tui</code>
+</p>
+
+
+
+<p>
+<b>bpb</b>
+<a href="https://github.com/withoutboats/bpb">github page</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org844bedc" class="outline-2">
+<h2 id="org844bedc">FLAGS</h2>
+<div class="outline-text-2" id="text-org844bedc">
+<p>
+<code>--import</code>
+<code>-o</code> / <code>--output</code> -&gt;
+<code>--fingerprint</code> -&gt;
+</p>
+
+<p>
+SYMMETRIC FILE ENCRYPTION / DECRYPTION
+<code>-c</code> / <code>--symmetric</code> -&gt; encrypt a file.
+<code>-d</code> / <code>--decrypt</code> -&gt; decrypt a file.
+<code>--no-symkey-cache</code> -&gt; skip cached passwords.
+</p>
+
+<p>
+PUBLIC KEY ENCRYPTION
+<code>-e</code> / <code>--encrypt</code> -&gt; encrypt a file.
+<code>-r</code> / <code>--recipient</code> -&gt; recipient the file.
+<code>-v</code> / <code>--verify</code> -&gt; verify a signature.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga5cf8b1" class="outline-2">
+<h2 id="orga5cf8b1">SYMMETRIC ENCRYPTION</h2>
+<div class="outline-text-2" id="text-orga5cf8b1">
+</div>
+<div id="outline-container-orga1c2c91" class="outline-3">
+<h3 id="orga1c2c91">ENCRYPT / DECRYPT A FILE</h3>
+<div class="outline-text-3" id="text-orga1c2c91">
+<p>
+Just having it installed it's enough to encrypt or decrypt a file with a shared secret.
+</p>
+
+<p>
+This is called <span class="underline">symmetric</span> encryption
+</p>
+
+<p>
+<b>ENCRYPT</b>
+You can encrypt a file using symmetric encryption like this:
+<code>$ gpg -c &lt;filename&gt;</code> or <code>$ gpg --symmetric &lt;filename&gt;</code>
+<span class="underline">note</span>: Use <code>-o</code> or <code>--output</code> to specify a specific output filename.
+</p>
+
+<p>
+A file with the same filename, and a <code>.gpg</code> extension will be created.
+</p>
+
+<p>
+<b>DECRYPT</b>
+Use the decrypt option
+<code>$ gpg -d &lt;filename&gt;.gpg</code> or <code>$ gpg --decrypt &lt;filename&gt;.gpg</code>
+<span class="underline">note</span>: GPG will try to use the cached passwords to decrypt, you can use <code>--no-symkey-cache</code> to skip the cache.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge79dca2" class="outline-2">
+<h2 id="orge79dca2">KEY BASED / ASYMMETRIC ENCRYPTION</h2>
+<div class="outline-text-2" id="text-orge79dca2">
+</div>
+<div id="outline-container-org7298239" class="outline-3">
+<h3 id="org7298239">CREATING A OWN KEY</h3>
+<div class="outline-text-3" id="text-org7298239">
+<p>
+Generating a key pair:
+<code>$ gpg --gen-key</code>
+</p>
+
+<p>
+Publishing a key into the network:
+<code>$ gpg --send-key &lt;pub-key&gt;</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5d74458" class="outline-3">
+<h3 id="org5d74458">IMPORTING A PUBLIC KEY - EXPLANATION</h3>
+<div class="outline-text-3" id="text-org5d74458">
+<p>
+<b>SHORT EXPLANATION</b>
+One of the problems with symmetric encryption it's sending secrets over the internet, it can be insecure or not scale well.
+</p>
+
+<p>
+Files are encrypted with a <span class="underline">public key</span> and it can <span class="underline">only be opened</span> with the <span class="underline">private key</span> the message is directed to.
+</p>
+
+<p>
+But how do you get a <span class="underline">public key</span> from someone?
+</p>
+
+<p>
+You have to import it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4835227" class="outline-3">
+<h3 id="org4835227">IMPORTING A PUBLIC KEY</h3>
+<div class="outline-text-3" id="text-org4835227">
+<p>
+If the key is provided in a <b>email</b> or a <b>website</b>, download the file and import it like this:
+<code>$ gpg --import &lt;filename&gt;</code>
+</p>
+
+<p>
+Check the fingerprint, compare it to the one on the website to see if you have the correct key.
+<code>$ gpg --fingerprint</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf0e0465" class="outline-3">
+<h3 id="orgf0e0465">SIGNING A KEY</h3>
+<div class="outline-text-3" id="text-orgf0e0465">
+<p>
+Search on the network with:
+<code>$ gpg --search &lt;email&gt;</code>
+</p>
+
+<p>
+Choose the key and edit it with this command:
+<code>$ gpg --edit-key --ask-cert-level &lt;email or pubkey&gt;</code>
+<code>--ask-cert-level</code> -&gt; ask certainty level
+</p>
+
+<p>
+<b>Now</b>, you will be in <span class="underline">gpg command editor</span> (<code>gpg&gt;</code>)
+</p>
+
+<p>
+<code>fgr</code> -&gt; see the key's fingerprint
+(use it to confirm it's the correct key)
+</p>
+
+<p>
+Sign the key:
+<code>gpg&gt; sign</code>
+</p>
+
+<p>
+Save the signed key:
+<code>gpg&gt; save</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org51a381b" class="outline-3">
+<h3 id="org51a381b">ENCRYPT A FILE WITH A PUBLIC KEY</h3>
+<div class="outline-text-3" id="text-org51a381b">
+<p>
+Encrypt a file with a public key like this:
+<span class="underline">note</span>: You will have to specify a user ID or email with <code>-r</code> or <code>--recipient</code>, if not specified, it will ask you anyway.
+<code>$ gpg -e -r &lt;name@email&gt;.com &lt;file&gt;</code>
+</p>
+
+<p>
+You will be shown the key ID and fingerprint to confirm, unless you've already signed the key.
+</p>
+
+<p>
+The output will be a file with a <code>.gpg</code> extension.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf175090" class="outline-3">
+<h3 id="orgf175090">CHECKING A FILE SIGNATURE</h3>
+<div class="outline-text-3" id="text-orgf175090">
+<p>
+To check the <b>authenticity</b> of a file, some websites like Fedora provides a CHECKSUM files to verify downloads and it signs those files with the Fedora GPG key.
+</p>
+
+<p>
+Import the GPG key, then check the signature like this:
+<span class="underline">note</span>: use the <code>-v</code> or <code>--verify</code> option.
+<code>$ gpg -v &lt;file&gt;</code>
+</p>
+
+<p>
+Some files may indicate a "<b>Good signature</b>", but will still prompt you to verify the fingerprint. 
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

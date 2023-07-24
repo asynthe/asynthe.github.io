@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       a68166d2-f858-45ee-9dc2-9d23f3a52ec8
+:END:
+#+title: CISSP
+
+-> [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][STUDY 勉強]]
+
+* DISCORD COMP
+
+-----
+_Roger notes_:
+
+Start with the [Adam's] notes, take it seriously.
+It's *hard*, not _technically hard_, but you need to know all the stuff.
+
+- classroom-1 pinned notes
+  find the latest set of Adam's CISSP bootcamp notes, D 1-8 (Domains)
+- Mike Chappel's study guide.
+- The CBK book
+
+If you're a good reader, CBK book and Adam's notes are all you need.
+_Don't read_ the NIST or ISO docs, there's *specific sections only*.
+Adam states which in the notes.
+
+The NIST docs are in Adams Zips, they're all free, easier to google than to find on the site.
+
+If any of *Larry Gleenblatt's* courses come up, I'd recommend listening to him.
+He has some old courses around the web you might be able to find, or you can buy a current. (I listened to them walking at night around the uni)
+
+Adams stuff is at [[itprotv.com]], Larry is at [[itnetworkdefence.com]]
+You can buy if you need a video, but _start with the books_.
+
+Adam has two courses on itprotv, bootcamp and full
+_note_: discount codes should be floating around in the channels
+
+-----
+
+* COURSES
+
+FRSECURE - [[id:770b186a-94db-4032-bcd2-3ba5e3574e36][CISSP TRAINING PROGRAM]]
+
+* RESOURCES
+
+/study/
+[[https://prabhnair.in/prabhnaircoffee/][CISSP COFFEE SHOTS - Prabh Nair]]
+https://www.studynotesandtheory.com/
+[[https://thorteaches.com/wp-content/uploads/2018/11/The-memory-palace-Prashant-Mohan.pdf][The Memory Palace - Prashant Mohan]]
+
+/what's missing/
+[[https://docs.google.com/spreadsheets/d/1O1MvuuV27qTCODdYfZVEA8ulhOyj7ILBcv9YW6-A4uk/edit#gid=0][CISSP Books Comparison]]
+https://cissprep.net/topics-missing-from-official-isc2-cissp-cbk-reference-6th-edition-arthur-deane-aaron-kraus/

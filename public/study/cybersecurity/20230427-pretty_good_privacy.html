@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PGP</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">PGP</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-study.html#ID-c9156aa2-0d9f-45dd-bf1a-e114e74c13b5">STUDY 勉強</a> -&gt; <a href="20230427-cybersecurity.html#ID-a941c479-da94-455a-8838-c407043d2c26">CYBERSEC サイバーセキュリティ</a>
+-&gt; <a href="../1_talks/20230504-a_pretty_good_introduction_to_pretty_good_privacy.html#ID-04b4d33d-9403-4682-bb9d-caee0765d2c6">A Pretty Good Introduction to Pretty Good Privacy</a> 
+</p>
+
+<p>
+"<i>GnuPG "GNU PrivacyGuard"</i>"
+</p>
+
+<p>
+<a href="https://wiki.archlinux.org/title/GnuPG">arch wiki</a>
+<a href="https://wiki.gentoo.org/wiki/GnuPG">gentoo wiki</a>
+</p>
+
+
+<p>
+GPG is the GNU implementation of PGP "Pretty Good Privacy"
+</p>
+
+<p>
+<a href="https://www.howtogeek.com/427982/how-to-encrypt-and-decrypt-files-with-gpg-on-linux/">How to Encrypt and Decrypt Files With GPG on Linux - How-To Geek</a>
+</p>
+
+<p>
+<a href="https://youtu.be/fP0x-YFSh-E">https://youtu.be/fP0x-YFSh-E</a>
+<a href="https://youtu.be/ZSa-d_9O5DA">https://youtu.be/ZSa-d_9O5DA</a>
+<a href="https://youtu.be/lAblt1Qt_ng">https://youtu.be/lAblt1Qt_ng</a>
+<a href="https://youtu.be/hffCq7zB8ZA">https://youtu.be/hffCq7zB8ZA</a>
+<a href="https://www.youtube.com/watch?v=1vVIpIvboSg">https://www.youtube.com/watch?v=1vVIpIvboSg</a>
+<a href="https://www.youtube.com/watch?v=V9-LrXiwGEQ">https://www.youtube.com/watch?v=V9-LrXiwGEQ</a>
+</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=CEADq-B8KtI">https://www.youtube.com/watch?v=CEADq-B8KtI</a>
+<a href="https://www.youtube.com/watch?v=Lq-yKJFHJpk">https://www.youtube.com/watch?v=Lq-yKJFHJpk</a>
+</p>
+
+<div id="outline-container-org6b3e255" class="outline-2">
+<h2 id="org6b3e255">package</h2>
+<div class="outline-text-2" id="text-org6b3e255">
+<p>
+arch -&gt; <code>gnupg</code>
+gentoo -&gt; <code>app-crypt/gnupg</code>
+nixos -&gt; <code>gnupg</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1e8e908" class="outline-2">
+<h2 id="org1e8e908">extra-packages</h2>
+<div class="outline-text-2" id="text-org1e8e908">
+<p>
+<b>PINENTRY</b>
+</p>
+
+<p>
+arch -&gt; 
+gentoo -&gt; <code>app-crypt/pinentry</code>
+nixos -&gt; <code>pinentry</code>
+</p>
+
+<p>
+<span class="underline">note</span>: gentoo: choose with <code># eselect pinentry list</code>
+</p>
+
+<p>
+<b>GPG-TUI</b>
+</p>
+
+<p>
+nixos -&gt; <code>gpg-tui</code>
+</p>
+
+
+<p>
+<b>bpb</b>
+<a href="https://github.com/withoutboats/bpb">github page</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org31be8d5" class="outline-2">
+<h2 id="org31be8d5">usage</h2>
+<div class="outline-text-2" id="text-org31be8d5">
+<p>
+Generating a key pair:
+<code>$ gpg --gen-key</code>
+</p>
+
+<p>
+Publishing a key into the network:
+<code>$ gpg --send-key &lt;pub-key&gt;</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6991920" class="outline-2">
+<h2 id="org6991920">signing a key</h2>
+<div class="outline-text-2" id="text-org6991920">
+<p>
+Search on the network with:
+<code>$ gpg --search &lt;email&gt;</code>
+</p>
+
+<p>
+Choose the key and edit it with this command:
+<code>$ gpg --edit-key --ask-cert-level &lt;email or pubkey&gt;</code>
+<code>--ask-cert-level</code> -&gt; ask certainty level
+</p>
+
+<p>
+<b>Now</b>, you will be in <span class="underline">gpg command editor</span> (<code>gpg&gt;</code>)
+</p>
+
+<p>
+<code>fgr</code> -&gt; see the key's fingerprint
+(use it to confirm it's the correct key)
+</p>
+
+<p>
+Sign the key:
+<code>gpg&gt; sign</code>
+</p>
+
+<p>
+Save the signed key:
+<code>gpg&gt; save</code>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>

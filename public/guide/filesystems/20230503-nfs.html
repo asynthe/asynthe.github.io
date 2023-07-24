@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>nfs</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">nfs</h1>
+<p>
+-&gt; <a href="../../index.html#ID-050e9166-394b-40bb-8135-a45ab4419153">MAIN メイン</a> -&gt; <a href="../../other/main/20230428-guides.html#ID-a1f856a6-a6bf-4412-b9b3-52db03710620">GUIDES ガイド</a> -&gt; <a href="20230428-filesystems.html#ID-18e2483e-8a47-40d7-9a80-a79a3ca254fb">FILESYSTEMS</a>
+</p>
+
+<p>
+<a href="https://wiki.gentoo.org/wiki/Nfs-utils">nfs-utils - gentoo wiki</a>
+<a href="https://wiki.archlinux.org/title/NFS">arch wiki</a>
+</p>
+
+<p>
+<span class="underline">see also</span>: [Avahi]
+</p>
+
+<p>
+Network File System
+</p>
+
+<ul class="org-ul">
+<li><span class="underline">NFS is not encrypted</span>:</li>
+</ul>
+<p>
+Use [Kerberos] or [Mullvad] (VPN) if sharing sensitive data.
+</p>
+<ul class="org-ul">
+<li><span class="underline">NFS does not have user authentication by default</span>:</li>
+</ul>
+<p>
+client access is restricted by IP/hostname.
+</p>
+<ul class="org-ul">
+<li><span class="underline">User and/or user group IDs should be the same on both client and server</span>
+<ul class="org-ul">
+<li>Enable NFSv4 idmapping</li>
+<li>Overrule UID/GID by using anonuid/anongid + <code>all_squash</code> in <code>/etc/exports</code>.</li>
+</ul></li>
+<li><span class="underline">POSIX ACLs are not supported</span>.</li>
+</ul>
+
+
+<p>
+<a href="../../study/linux/20230409-busybox.html#ID-c62f66ca-6d31-4408-8d87-c8a9d4eb4511">BusyBox</a> mount command doesn't support NFSv4
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.0.50 (<a href="https://orgmode.org">Org</a> mode 9.6.6)</p>
+</div>
+</body>
+</html>
