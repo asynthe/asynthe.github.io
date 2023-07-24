@@ -358,6 +358,12 @@ jobs:
           folder: public
 #+end_src
 
+Once that you've set it up, add the changes and files, commit and push.
+
+You will then see a dot in the github page of your repository.
+
+1
+
 * Create An Org Mode Blog (Static Site Blog)
 
 [[https://www.inmotionhosting.com/support/edu/emacs/org-mode-blog/][Create An Org Mode Blog (Static Site Blog) - inmotion hosting]]
