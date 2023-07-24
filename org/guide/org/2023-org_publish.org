@@ -22,6 +22,8 @@ have a file in ~content/~ called ~index.org~, which will be converted into ~inde
   - [[#which-one-should-you-choose][WHICH ONE SHOULD YOU CHOOSE]]
   - [[#quick-repo-setup][QUICK REPO SETUP]]
   - [[#github][GITHUB]]
+  - [[#sourcehut][SOURCEHUT]]
+  - [[#creating-a-build-configuration][CREATING A BUILD CONFIGURATION]]
 - [[#create-an-org-mode-blog-static-site-blog][Create An Org Mode Blog (Static Site Blog)]]
 
 * System Crafters - Build Your Website with Org Mode
@@ -221,7 +223,7 @@ _note_: we are going to set up the packages folder as ~./.packages~, this is a h
 Use ~Org-insert-link~ (C-c C-l)
 
 * System Crafters - Automated Org Mode Website Publishing with GitHub or SourceHut 
-from [[https://youtu.be/za99DwdZEyg][youtube video]]
+from [[https://youtu.be/za99DwdZEyg][youtube video]],[[https://systemcrafters.net/publishing-websites-with-org-mode/automated-site-publishing/][ webpage]]
 
 ** GETTING STARTED
 
@@ -295,6 +297,84 @@ _note_: Authenticating to GitHub can be tricky if you never done it before, cons
 
 https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line
 
+** SOURCEHUT
+
+Create a new repository in
+~$ https://git.sr.ht/create~
+
+Set up your SSH key first, it is only way to authenticate to SourceHut
+
+Then do:
+~$ git remote add origin git@git.sr.ht:~yourusername/my-org-site~
+~$ git push -u origin main~
+
+You can push to both github and sourcehut if you make a new branch for sourcehut
+~$ git remote add srht git@git.sr.ht:~yourusername/my-org-site~
+~$ git push -u srht main~
+
+** CREATING A BUILD CONFIGURATION
+
+This will _automatically publish_ your website every time you *push a commit* to it's repository.
+
+It is possible by using a /continuous integration/ service like Github Actions or SourceHut Builds.
+
+*** GitHub Actions
+
+Create the ~.github/workflows/publish.yml~ file
+
+It will
++ Configure the build to trigger on commits to *main* branch (?)
++ Set's up Ubuntu VM to run the build
++ Check's out the repo code
++ Install emacs-nox
++ Runs build.sh script
++ Uses custom action to publish site to gh-pages branch
+
+#+begin_src yml
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v1
+
+      - name: Install Emacs
+        run: sudo apt install emacs-nox --yes
+
+      - name: Build the site
+        run: ./build.sh
+
+      - name: Publish generated content to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: public
+#+end_src
+
 * Create An Org Mode Blog (Static Site Blog)
 
 [[https://www.inmotionhosting.com/support/edu/emacs/org-mode-blog/][Create An Org Mode Blog (Static Site Blog) - inmotion hosting]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
