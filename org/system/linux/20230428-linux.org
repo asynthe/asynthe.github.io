@@ -7,7 +7,7 @@
 -> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]]
 
 * TABLE OF CONTENTS :toc:
-- [[#resources][Resources]]
+- [[#resources][RESOURCES]]
 - [[#distros][DISTROS]]
   - [[#android-アンドロイド][ANDROID アンドロイド]]
   - [[#gentoo-ジェンツー][GENTOO ジェンツー]]
@@ -48,7 +48,7 @@
   - [[#file-systems][File Systems]]
   - [[#next-steps][Next Steps]]
 
-* Resources
+* RESOURCES
 
 [[https://www.gnu.org/gnu/thegnuproject.html][The GNU Project by Richard Stallman - GNU.org]]
 
@@ -62,6 +62,9 @@ NEWS
 + [[https://www.stackscale.com/blog/most-powerful-supercomputers-linux/][The 500 most powerful supercomputers use Linux - Stackscale]]
 
 https://www.reddit.com/r/linux/comments/dm7w0/what_would_you_consider_to_be_essential_linux_apps/
+
+*GITHUB REPO*
++ [[https://github.com/D3Ext/aesthetic-wallpapers][aesthetic-wallpapers - D3Ext]]
 
 * DISTROS
 ** [[id:7e52c960-b6f9-4c1d-8b4d-aba03fa899fc][ANDROID アンドロイド]]

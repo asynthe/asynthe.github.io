@@ -85,6 +85,14 @@ It uses a ~.envrc~ file in the current and parent directories.
 ** MESH NETWORKS
 *** [[id:8ea0b243-496e-4e7c-98eb-13ade994d593][Tailscale]]
 *** [[id:baef0b33-e2d8-419d-a1a5-0f3500248386][ZeroTier]]
+* EMAIL PROVIDER
+
+[[https://youtu.be/RNAScCDdUE8][Complete Guide to Choosing an Alternative Email Provider - Undefined]] (youtube video)
+
+Biggest email providers don't offer *IMAP*, this means you _can't_ use your account with a *client application* like /Thunderbird/, /Apple Mail/, /Canary/...
+
+[SEE EMAIL PROVIDERS IMAGE IN FOLDER]
+
 * APPLICATION GUIDES
 
 + Command-line hex viewer with hexyl
@@ -96,6 +104,14 @@ It uses a ~.envrc~ file in the current and parent directories.
 + *Note taking* with [[id:f906a0bc-4369-4a72-a36d-25e6d1a66c42][Obsidian]]
 + Setting linux default apps with the [[id:f3350b33-d745-4230-8a77-6a0267064639][xdg-mime]] specification
 + Password management with [[id:4f81a52e-4000-4b93-9abc-e30d7920759c][pass]]
++ pcmanfm
+  - thumbnail apps
+  - enable thumbnails
+
+    Edit -> Preferences
+    Do not generate thumbnails for files exceeding this size:
+
+    I change it to 16384 (16MB)
 
 ** MANAGING FILES
 
@@ -134,6 +150,17 @@ It uses a ~.envrc~ file in the current and parent directories.
 ** OCR
 *** [[id:1bc2dccd-5992-4805-95b3-0d1728590da9][Tesseract]]
 *** [[id:f5af88a0-008f-42e3-86e8-cda988bb930f][EasyOCR]]
+** PDFs
+
+*MERGING PDFS
+[[https://www.fosslinux.com/49661/merge-pdf-files-on-linux.htm][How to merge PDF files on Linux - FOSS Linux]]
+
+*** pdftk
+*** LibreOffice Draw
+
+Open both PDF's in LibreOffice Draw then drag and drop from the sidebar, make sure to export into a *PDF* later, as LibreOffice has it's own filetype.
+
+*** ImageMagick
 ** WINDOW MANAGERS
 *** [[id:f607aef7-2442-4b29-adf4-a9c7868d54d0][Hyprland]]
 *** [[id:3071a725-018e-42d3-8865-c915f402103c][Yabai]] (MacOS)

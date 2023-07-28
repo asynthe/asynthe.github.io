@@ -317,6 +317,13 @@ Create a revocation key like this
 Check that it's has been revoked
 ~$ gpg --list-keys~
 
+*** CHANGING THE PASSPHRASE
+
+It is very simple to change the password, use the next command
+~$ gpg --passwd name@email.com~
+
+It will ask you for your current password, then the new one twice.
+
 *** PUBLIC KEY EXPORTING
 
 Sign your git commits.
@@ -328,13 +335,6 @@ Get the public key in the terminal, copy and paste
 --output -> Output into a file
 
 ~$ gpg --export --armor --output userexample.gpg.pub user@example.com~
-
-*** CHANGING THE PASSPHRASE
-
-It is very simple to change the password, use the next command
-~$ gpg --passwd name@email.com~
-
-It will ask you for your current password, then the new one twice.
 
 *** PUBLIC KEY IMPORTING
 
@@ -662,7 +662,6 @@ Verify the ID and fingerprint is correct:
 ~$ gpg --fingerprint <key ID>~
 Verbally confirm the fingerprint with it's owner then proceed to sign
 ~$ gpg --sign-key <key ID>~
-
 
 
 

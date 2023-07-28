@@ -61,10 +61,69 @@ See more builtin functions in the [[https://nixos.org/manual/nix/stable/language
 
 ** Functions: Introduction
 
+Writing a function that consumes 3 ~Strings~ and combines them to one.
 
+For this we use the ~+~ operator.
 
+#+begin_src nix
+nix-repl> let
+            f = "f";
+            o = "o";
+            func = a: b: c: a+b+c;
+          in
+          {
+            foo = func f o "o";
+          }
+{ foo = "foo"; }
+#+end_src
 
+** Functions with 'attribute sets'
 
+Writing a function that consumes 3 ~Strings~ and combines them to one.
+
+We use a ~attribute set~ to define the ~function's~ input arguments.
+
+_example_: ~{a=f;b=o;}~
+
+#+begin_src nix
+nix-repl> let
+            f = "f";
+            o = "o";
+            func = {a, b, c}: a+b+c;
+          in
+          {
+            foo = func {a=f; b=o; c=o;};
+          }
+{ foo = "foo"; }
+#+end_src
+
+** Functions: your part...
+
+if ~x < y~ then x else y
+- 5 is bigger than 3, so it's
+- Therefore the min is 3
+
+#+begin_src nix
+nix-repl> let
+            min = x: y: if x < y then x else y;
+            max = x: y: if x > y then x else y;
+          in
+          {  
+            ex0 = min 5 3;
+            ex1 = max 9 4;
+          }
+{ ex0 = 3; ex1 = 9; }
+#+end_src
+
+There's also a implementation, this is ~lib.min~ and ~lib.max~
+
+#+begin_src nix
+nix-repl> with import <nixpkgs> { };
+          {                           
+            ex0 = stdenv.lib.min 5 3; 
+            ex1 = stdenv.lib.max 9 4; 
+          } 
+#+end_src
 
 
 

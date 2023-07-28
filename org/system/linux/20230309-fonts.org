@@ -4,7 +4,7 @@
 :END:
 #+title: Fonts
 
--> [[id:050e9166-394b-40bb-8135-a45ab4419153][MAIN メイン]] -> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
+-> [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
 
 [[https://linuxconfig.org/how-to-install-and-manage-fonts-on-linux][How to install and manage fonts on Linux - linuxconfig]]
 [[https://nixos.wiki/wiki/Fonts][Fonts - NixOS wiki]]
@@ -23,9 +23,18 @@ Amiga Fonts
 https://github.com/rewtnull/amigafonts
 
 * FONTS
-** Square
-** [[https://edwardtufte.github.io/et-book/][ET Book]]
-* JAPANESE FONTS
+
+*PROGRAMMING*
++ [[https://berkeleygraphics.com/typefaces/berkeley-mono/][Berkeley Mono]]
++ [[https://commitmono.com/][Commit Mono]]
++ [[https://fsd.it/tag/pragmatapro/][Pragmata Pro]]
+
+*OTHER*
++ [[https://strlen.com/square/][Square]]
++ [[https://edwardtufte.github.io/et-book/][ET Book]]
+
+* CJK (Chinese, Japanese, Korean)
+** JAPANESE
 
 FOT-Matiise ProN
 

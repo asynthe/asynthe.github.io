@@ -22,6 +22,12 @@ NTP (Network Time Protocol)
 
 [[https://youtu.be/z2b0Lr0eGmw][SHODAN Introducción - Behackerpro]] (youtube video)
 
+* PROCMON (WINDOWS)
+
++ [[https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite][Sysinternals Suite - Microsoft]]
+
++ [[https://youtu.be/dykc9YC9Z6U][How to tell if your PC is Hacked? Process Forensics - The PC Security Channel]] (youtube video)
+
 * MATERIAL
 
 [[https://blog.sanctum.geek.nz/series/gnu-linux-crypto/][GNU/Linux Crypto: Introduction - Arabesque]]
@@ -154,3 +160,25 @@ https://en.m.wikipedia.org/wiki/NSAKEY
 + [[https://whois.domaintools.com/][Whois Lookup]]
 
 
+* DNS
+
++ [[https://youtu.be/2oe0_v5M8cE][Secure your DNS Queries with Encrypted DNS - Mental Outlaw]] (youtube video)
+
+  Your ISP doesn't include *Encrypted DNS Servers* or *Qname minimization*.
+
+  Instead
+
+* TALKS
+** How to Get Away With Hacking by Liam Follin
+
+-> [[https://youtu.be/FDxAQxjQCag][youtube video]]
+
+
++ Over The Wire
++ Black Hat Python
++ TryHackMe
++ Portswigger
+
+Do you need to learn to code?
+Not necesarry, but to be a *great* one, you do need to learn.
+Burp Suite, Metasploit will get to their limits.

@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       2d69262a-3df3-4892-b202-a3a8d164c6f4
+:ROAM_ALIASES: "HACK THE BOX ACADEMY" "HTB Academy" "HTB ACADEMY"
+:END:
+#+title: Hack The Box Academy
+
+-> [[id:c9156aa2-0d9f-45dd-bf1a-e114e74c13b5][STUDY 勉強]]
+
+* INTRODUCTION TO BASH SCRIPTING
+** Bourne Again Shell
+** Conditional Execution
+** Arguments, Variables, and Arrays
+** Comparison Operators
+** Arithmetic
+** Input and Output Control
+** Flow Control - Loops
+** Flow Control - Branches
+** Functions
+** Debugging

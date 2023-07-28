@@ -27,7 +27,7 @@ have a file in ~content/~ called ~index.org~, which will be converted into ~inde
 - [[#create-an-org-mode-blog-static-site-blog][Create An Org Mode Blog (Static Site Blog)]]
 
 * System Crafters - Build Your Website with Org Mode
-from [[https://youtu.be/AfkrzFodoNw][youtube video]]
+from [[https://youtu.be/AfkrzFodoNw][youtube video]], [[https://systemcrafters.net/publishing-websites-with-org-mode/building-the-site/][webpage]]
 
 ** CREATING A SCRIPT
 

@@ -8,16 +8,17 @@
 
 TAKE MATERIAL FROM MARKDOWN FILE !
 
-[[][github page] ]
-[[][official webpage] ]
-[[][gentoo wiki] ]
-[[][arch wiki] ]
+* RESOURCES
 
-[[https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository][2.1 Git Basics - Getting a Git Repository - git]]
+*WEBSITE*
++ [[https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository][2.1 Git Basics - Getting a Git Repository - git]]
 
-MATERIAL
-https://www.youtube.com/watch?v=HVsySz-h9r4
-https://www.youtube.com/watch?v=RGOj5yH7evk
+*BOOK*
++ [[id:9924321d-81fd-4a3e-be5e-5fe750bdc96e][Pro Git]] 
+
+*YOUTUBE VIDEO*
++ https://www.youtube.com/watch?v=HVsySz-h9r4
++ https://www.youtube.com/watch?v=RGOj5yH7evk
 
 * package
 
@@ -328,4 +329,7 @@ $ git push origin master
 
 
 ** Adding GPG key for signing git commits
+* .gitignore
+
+
 

@@ -11,6 +11,7 @@
 [[][gentoo wiki] ]
 [[][arch wiki] ]
 
+* RESOURCES
 * package
 
 arch -> ...
@@ -42,7 +43,16 @@ In case of wanting to start the configuration again, just delete it.
 
 ** dark mode
 
-CHECK QT ADWAITA-DARK FOR NIXOS
+[[https://itsfoss.com/libreoffice-dark-mode/][How to Go Full Dark Mode With LibreOffice - IT'S FOSS]]
+[[https://www.debugpoint.com/how-to-enable-dark-mode-libreoffice/][How to Enable 'Dark Mode' in LibreOffice - debugpoint.com]]
+
+While GNOME has a setting you can enable for dark mode, in the case of Window Managers like Hyprland or Xmonad, you will have to use a GTK theme.
+
+Once you get it running, LibreOffice should automatically pick up the theme, except it wont apply it completely. You will have to do some tweaks in configuration.
+
++ choosing a good icon theme
+
+_tip_: for *LibreOffice Calc* change the _Grid Lines_
 
 * CALC
 ** KEYBINDINGS

@@ -14,6 +14,7 @@ Ctrl + arrow keys -> move between words
 - move to straight.el
 - move to vertico
 
+* [[id:bbc3be36-e17d-485d-b9ed-72059caee985][EMACS PRESENTATION]] (10-10-2023)
 * [[id:a2128876-3f2a-4b3a-bce8-92070c57cb13][EMACS FROM SCRATCH]]
 * RESOURCES
 

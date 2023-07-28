@@ -183,12 +183,12 @@ There are the next possible values for initial visibility:
 * LITERATE CONFIGS
 :PROPERTIES:
 :ID:       e47b0111-c11f-4b3b-b0f9-28fe59da1b8e
+:ROAM_ALIASES: "Literate Configuration"
 :END:
 
-https://wmealing.github.io/emacs-org-babel-analysis.html
-
-[[https://leanpub.com/lit-config/read][Literate configuration - Leanpub]]
-[[https://en.wikipedia.org/wiki/Literate_programming][Literate Programming - wikipedia page]]
++ [[https://wmealing.github.io/emacs-org-babel-analysis.html][Emacs and Org-babel for flaw analysis. - wmealing.github.io]]
++ [[https://leanpub.com/lit-config/read][Literate configuration - Leanpub]]
++ [[https://en.wikipedia.org/wiki/Literate_programming][Literate Programming - wikipedia page]]
 
 1. Create ~README.org~, so you can use it in Github.
    Inside of it, write the org metadata.

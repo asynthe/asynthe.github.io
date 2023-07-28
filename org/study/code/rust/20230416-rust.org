@@ -101,3 +101,26 @@ https://or.computer.surgery/charles/nix-rust-quickstart
 
 [[https://stackoverflow.com/questions/70936003/how-do-you-display-a-character-with-ncurses-in-rust][How do you display a character with ncurses in Rust? - Stack Overflow]]
 [[https://docs.rs/ncurses/latest/ncurses/][ncurses crate]]
+
+* RUST CRATES FOR WEB SERVER
+
++ [[https://youtu.be/pocWrUj68tU][My Recommended Rust Web Stack - No Boilerplate]]
+
+THE STACK
+
+web.py
+
+- Color-eyre
+- iRust
+- Bacon
+- Tracing
+- SQLx
+- Poem-openapi
+
+* RUSTLS
+
+https://github.com/rustls/rustls
+
+* PINGORA
+
+[[https://github.com/cloudflare/pingora][github page]]
