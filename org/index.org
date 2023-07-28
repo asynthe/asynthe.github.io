@@ -18,7 +18,7 @@ mindhackers.org
 8459 4942 E12A 1239 ... [GPG KEY INFO]
 
 * MAIN マイン
-** [[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]
+[[id:a1f856a6-a6bf-4412-b9b3-52db03710620][GUIDES ガイド]]
 * SYSTEM システム
 ** [[id:b0d37831-1dcd-47be-ba0b-3bd8a7df063e][LINUX リナックス]]
 ** MACOS マックオーエス
