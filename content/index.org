@@ -1,0 +1,47 @@
+#+title: Technical Notes
+#+author: Ben
+#+options: toc:nil
+
+** Links
+
++ [[./networking/networking.org][Networking]]
++ [[./ad/ad.org][Active Directory]]
++ [[./hacking/hacking.org][Hacking]] (Pentesting)
+
+*Certifications*
+Networking
++ [[./certs/networkplus.org][Network+]]
++ [[./certs/ccna.org][CCNA]]
+
+Pentesting
++ [[./certs/ejpt.org][eJPT]]
++ [[./certs/oscp.org][OSCP]]
+
+---
++ [[./drilling/drilling.org][Drilling]]
++ [[./jp/jp.org][Japanese (日本語)]]
+
+* Materials
+
+https://orgmode.org/worg/org-web.html
+https://olmon.gitlab.io/org-themes/
+
+* Exporting into HTML
+
+Simple html export:
+~M-x org-export-dispatch~
+
+* Tutorials
+** DistroTube
+
+Give it a title and description with the plus and hashtag.
+~#+description: gives metadata for the file
+
+Options
+~#+options: num:nil toc:nil
+
+** System Crafters
+* Notes
+
+##+options: toc:nil num:nil timestamp:nil
+##+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup

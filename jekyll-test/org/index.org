@@ -1,0 +1,15 @@
+#+title: Index
+#+options: toc:nil
+#+begin_export html
+---
+layout: home
+title: My Page Title
+excerpt: Meows meow of the meow
+---
+Start of this awesome page...
+
+Meows meow meow !
+nyaaa
+テスト。。。
+！
+#+end_export
