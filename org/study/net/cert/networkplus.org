@@ -1,0 +1,16 @@
+#+title: Network+
+#+options: num:nil author:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+* Resources
+* Info
+
+*Best Resources*:
+- *Book*: /All-in-One CompTIA Network+/
+  + Take notes of all that is reffered to in the test.
+  + Monday to Friday one hour study (8:30 - 12:00)
+- *Course*: /Udemy CompTIA Network+ (N10-008) by Jason Dion/ (CRITICAL)
+  + Everytime you get score under 90 try again.
+- *Youtube Videos*: [[https://youtube.com/playlist?list=PLG49S3nxzAnlCJiCrOYuRYb6cne864a7G&si=x-KFb9XRqGCcD3Lp][Professor Messer Network+ Training]]
+- *Youtube Videos*: [[https://youtube.com/playlist?list=PLjOaIaJsY_GM91trVgixrYDxgZXWoy5aN&si=2NOGO-c4hnsJNip2][Network+ Study by Vincent Humble]]
+
