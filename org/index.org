@@ -6,7 +6,7 @@
 
 This is my blog and website built with [[https://orgmode.org/][org-mode]]. I will try to put the notes that I have found the *most useful* from my notes stash so I can access them whenever I need.
 
-#+ATTR_HTML: :width 500px
+#+ATTR_HTML: :width 400px
 #+caption: にゃ。。
 [[./img/main_cat.jpg]]
 

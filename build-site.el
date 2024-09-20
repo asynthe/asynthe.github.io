@@ -32,7 +32,7 @@
         ("org-notes"
          :recursive t
          :base-directory "./org"
-         :publishing-directory "./html"
+         :publishing-directory "./public"
          :publishing-function org-html-publish-to-html
          
 	 ;; Project settings
@@ -45,7 +45,7 @@
         ("org-static"
          :recursive t
          :base-directory "./org"
-         :publishing-directory "./html"
+         :publishing-directory "./public"
          :publishing-function org-publish-attachment
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf")
         ("org" :components ("org-notes" "org-static"))))
