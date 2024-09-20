@@ -2,6 +2,8 @@
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
+#+attr_html: :width 500px
+#+caption: OwO
 [[file:./img/hacker_inside.jpg]]
 
 -> Hacking Notes
