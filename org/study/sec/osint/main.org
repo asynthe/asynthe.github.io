@@ -1,1 +1,12 @@
 #+title: Open Source Intelligence (OSINT)
+#+options: num:nil author:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+* Resources
+
+- [[https://www.osintdojo.com/resources/][OSINT Dojo]]
+- [[https://start.me/p/rx6Qj8/nixintel-s-osint-resource-list][Nixintel's OSINT Resource List - start.me]]
+
+* Tools
+** Tool1
+** Tool2

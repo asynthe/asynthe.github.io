@@ -1,5 +1,8 @@
-#+title: Active Directory Pentesting
+#+title: Active Directory
+#+options: num:nil author:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
-LLMNR
-SMB Relaying
-IPv6 Attacks
+* Attacks
+** LLMNR
+** SMB Relaying
+** IPv6 Attacks

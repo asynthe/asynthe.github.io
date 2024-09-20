@@ -11,7 +11,7 @@ This is my blog built with [[https://orgmode.org/][org-mode]]. I will try to put
 [[./img/main_cat.jpg]]
 
 
-*Currently doing...*
+** Currently doing...
 
 *Books and Courses*
 - *Course コース*: TCM Practical Ethical Hacking - The Complete Course
@@ -19,9 +19,9 @@ This is my blog built with [[https://orgmode.org/][org-mode]]. I will try to put
 - *Book 本*: ...
 
 *Games, Anime and Series*
-- *Game ゲーム*: Like a Dragon: Infinite Wealth
+- *Anime アニメ*: Mushoku Tensei (無職転生)
 - *Game ゲーム*: Ghost of Tsushima
-- *Anime アニメ*: Mushoku Tensei
+- *Game ゲーム*: Like a Dragon: Infinite Wealth (龍が如く8)
 - *Series シーリズ*: The Boys
 
 ** Links
