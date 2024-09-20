@@ -7,6 +7,8 @@
 
 This is my blog and website built with /org-mode/. I will try to put the notes that I have found the *most useful* from my notes stash so I can access them whenever I need.
 
+[[file:./img/main_cat.jpg]]
+
 ** Current
 
 *Courses コース*
