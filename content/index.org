@@ -1,8 +1,7 @@
 #+title: Technical Notes
 #+author: Ben
-#+options: toc:nil
-
-AAAAA
+#+options: toc:nil num:nil author:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
 * Links
 
