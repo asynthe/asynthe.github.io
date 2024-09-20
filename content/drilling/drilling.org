@@ -7,6 +7,11 @@ In the oil and gas industry, a drill bit is a tool designed to produce a general
 #+ATTR_HTML: :width 300px
 [[file:./img/pqdrillbit.jpg]]
 
+CODE BLOCK
+#+begin_src bash
+ln -sf ~/meows/
+#+end_src
+
 * Notes
 
 *RC Drilling*: 124-130mm with protuding metal buttons or pins.
