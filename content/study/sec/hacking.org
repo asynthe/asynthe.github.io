@@ -1,6 +1,0 @@
-#+title: Hacking
-
-[[file:./img/hacker_inside.jpg]]
-
--> Hacking Notes
--> Active Directory

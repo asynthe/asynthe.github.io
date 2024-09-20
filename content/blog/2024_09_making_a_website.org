@@ -1,1 +1,9 @@
 #+title: Making a website in org
+
+[ IN PROGRESS ]
+
+Note: [[https://stackoverflow.com/questions/76023778/action-failed-with-the-process-usr-bin-git-failed-with-exit-code-128][Action failed with "The process '/usr/bin/git' failed with exit code 128 - StackOverflow]]
+
+Settings > Action > General > Workflow Permissions
++ [x] Read and Write
++ [x] Allow Github Actions to create and approve pull requests

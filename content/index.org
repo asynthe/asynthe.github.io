@@ -7,32 +7,32 @@
 
 This is my blog and website built with /org-mode/. I will try to put the notes that I have found the *most useful* from my notes stash so I can access them whenever I need.
 
-*** Links
+** Current
+
+*Courses KO-SU*
++ TCM: Ethical Hacking
++ HTB: X and X2
+
+** Links
 
 *What I'm studying*:
 
 *Cybersecurity サイバーセキュリティ*
-> [[./study/sec/hacking.org][Hacking]]
-> [[./study/sec/ad/ad.org][Active Directory]]
+> [[./study/sec/main.org][Main]]
 
-Networking NETOWOKINGU
-> [IN PROGRESS]
+*Networking ネットワーキング*
+> [[./study/net/main.org][Main]]
 
-*[[./jp/jp.org][Japanese 日本語]]*
+*Japanese 日本語*
+> [[./jp/jp.org][Main]]
+
 
 Drilling(?)
 + [[./drilling/drilling.org][Drilling]]
 
-Certs SATIFICATION
-Networking NETOWOKINGU
+*Certification 証明書*
 > [[./certs/networkplus.org][Network+]]
 > [[./certs/ccna.org][CCNA]]
 Pentesting
 > [[./certs/ejpt.org][eJPT]]
 > [[./certs/oscp.org][OSCP]]
-
-*** Progress
-
-*Courses KO-SU*
-> TCM: Ethical Hacking
-> HTB: X and X2
