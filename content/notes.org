@@ -1,0 +1,28 @@
+#+title: Notes
+#+options: toc:nil author:nil num:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+* Materials
+
+https://orgmode.org/worg/org-web.html
+https://olmon.gitlab.io/org-themes/
+
+* Exporting into HTML
+
+Simple html export:
+~M-x org-export-dispatch~
+
+* Tutorials
+** DistroTube
+
+Give it a title and description with the plus and hashtag.
+~#+description: gives metadata for the file
+
+Options
+~#+options: num:nil toc:nil
+
+** System Crafters
+* Notes
+
+##+options: toc:nil num:nil timestamp:nil
+##+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
