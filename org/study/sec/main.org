@@ -8,6 +8,7 @@
 ** Links
 
 - [[./ad/main.org][Active Directory]]
+- [[./boxes/main.org][Boxes]]
 - [[./osint/main.org][Open Source Intelligence (OSINT)]]
 
 ** Certification 証明書

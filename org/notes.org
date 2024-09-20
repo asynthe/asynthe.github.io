@@ -2,27 +2,26 @@
 #+options: toc:nil author:nil num:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
-* Materials
+* Quick
 
-https://orgmode.org/worg/org-web.html
-https://olmon.gitlab.io/org-themes/
+- How can I add this to my org roam folder, in order to have a quick access to the files, but only the ones i want to upload to.
 
-* Exporting into HTML
+- Files will usually have this template:
+  #+begin_src text
+  ##+options: toc:nil num:nil timestamp:nil
+  ##+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+  #+end_src
 
-Simple html export:
-~M-x org-export-dispatch~
+- Simple html export: ~M-x org-export-dispatch~
 
-* Tutorials
-** DistroTube
+*Useful Links*
+- https://orgmode.org/worg/org-web.html
+- https://olmon.gitlab.io/org-themes/
+
+* DistroTube
 
 Give it a title and description with the plus and hashtag.
 ~#+description: gives metadata for the file
 
 Options
 ~#+options: num:nil toc:nil
-
-** System Crafters
-* Notes
-
-##+options: toc:nil num:nil timestamp:nil
-##+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
