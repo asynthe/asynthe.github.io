@@ -1,18 +1,20 @@
 #+title: Technical Notes
-#+author: Ben
-#+options: toc:nil num:nil author:nil timestamp:nil date:nil
+#+author: ようこそ！
+#+options: toc:nil num:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
 * Links
 
-+ [[./networking/networking.org][Networking]]
-+ [[./ad/ad.org][Active Directory]]
-+ [[./hacking/hacking.org][Hacking]] (Pentesting)
+*What I'm studying*:
+
+*Cybersecurity サイバーセキュリティ*
+> [[./study/sec/hacking.org][Hacking]]
+> [[./study/sec/ad/ad.org][Active Directory]]
 
 *Certifications*
 Networking
 + [[./certs/networkplus.org][Network+]]
-+ [[./certs/ccna.org][CCNA]]
++ [[./certs/ccna.org][CCNA]
 
 Pentesting
 + [[./certs/ejpt.org][eJPT]]
