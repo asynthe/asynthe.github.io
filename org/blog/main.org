@@ -1,7 +1,8 @@
 #+title: Blog Posts
 
 * 2024
-+ Starting a Website in org
+
+- [[./202409_making_a_website_in_org_mode.org][Making a website in org-mode]]
 
 * 2025
 + placeholder text
