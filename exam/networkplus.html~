@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Network+</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Network+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org5a75b68">Resources</a></li>
+<li><a href="#org03c563a">Info</a></li>
+<li><a href="#org328718b">Lorem Ipsum</a>
+<ul>
+<li><a href="#orged46cea">Lorem Ipsum</a>
+<ul>
+<li><a href="#org71729b5">Lorem Ipsum</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgac937fe">Lorem Ipsum 2</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5a75b68" class="outline-2">
+<h2 id="org5a75b68">Resources</h2>
+</div>
+<div id="outline-container-org03c563a" class="outline-2">
+<h2 id="org03c563a">Info</h2>
+<div class="outline-text-2" id="text-org03c563a">
+<p>
+<b>Best Resources</b>:
+</p>
+<ul class="org-ul">
+<li><b>Book</b>: <i>All-in-One CompTIA Network+</i>
+<ul class="org-ul">
+<li>Take notes of all that is reffered to in the test.</li>
+<li>Monday to Friday one hour study (8:30 - 12:00)</li>
+</ul></li>
+<li><b>Course</b>: <i>Udemy CompTIA Network+ (N10-008) by Jason Dion</i> (CRITICAL)
+<ul class="org-ul">
+<li>Everytime you get score under 90 try again.</li>
+</ul></li>
+<li><b>Youtube Videos</b>: <a href="https://youtube.com/playlist?list=PLG49S3nxzAnlCJiCrOYuRYb6cne864a7G&amp;si=x-KFb9XRqGCcD3Lp">Professor Messer Network+ Training</a></li>
+<li><b>Youtube Videos</b>: <a href="https://youtube.com/playlist?list=PLjOaIaJsY_GM91trVgixrYDxgZXWoy5aN&amp;si=2NOGO-c4hnsJNip2">Network+ Study by Vincent Humble</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org328718b" class="outline-2">
+<h2 id="org328718b">Lorem Ipsum</h2>
+<div class="outline-text-2" id="text-org328718b">
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ornare ligula. Donec in lorem magna. Ut varius lectus ut posuere finibus. Sed dapibus, arcu sed volutpat viverra, sem est rutrum purus, at gravida nisl ex at mi. Donec et turpis et purus gravida blandit. Fusce porta nisi in leo egestas, et mollis diam porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+</p>
+
+<p>
+Phasellus vel mauris suscipit, aliquam erat sit amet, vestibulum purus. Maecenas faucibus urna a lacinia commodo. Vestibulum aliquet enim vitae risus ornare, id pretium justo suscipit. Vivamus aliquet placerat erat id feugiat. Nulla at eros nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras egestas luctus magna, in scelerisque ex laoreet a. Donec nec dolor vel dolor condimentum gravida. 
+</p>
+</div>
+
+<div id="outline-container-orged46cea" class="outline-3">
+<h3 id="orged46cea">Lorem Ipsum</h3>
+<div class="outline-text-3" id="text-orged46cea">
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ornare ligula. Donec in lorem magna. Ut varius lectus ut posuere finibus. Sed dapibus, arcu sed volutpat viverra, sem est rutrum purus, at gravida nisl ex at mi. Donec et turpis et purus gravida blandit. Fusce porta nisi in leo egestas, et mollis diam porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+</p>
+</div>
+
+<div id="outline-container-org71729b5" class="outline-4">
+<h4 id="org71729b5">Lorem Ipsum</h4>
+<div class="outline-text-4" id="text-org71729b5">
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ornare ligula. Donec in lorem magna. Ut varius lectus ut posuere finibus. Sed dapibus, arcu sed volutpat viverra, sem est rutrum purus, at gravida nisl ex at mi. Donec et turpis et purus gravida blandit. Fusce porta nisi in leo egestas, et mollis diam porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgac937fe" class="outline-2">
+<h2 id="orgac937fe">Lorem Ipsum 2</h2>
+<div class="outline-text-2" id="text-orgac937fe">
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ornare ligula. Donec in lorem magna. Ut varius lectus ut posuere finibus. Sed dapibus, arcu sed volutpat viverra, sem est rutrum purus, at gravida nisl ex at mi. Donec et turpis et purus gravida blandit. Fusce porta nisi in leo egestas, et mollis diam porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+</p>
+
+<p>
+Phasellus vel mauris suscipit, aliquam erat sit amet, vestibulum purus. Maecenas faucibus urna a lacinia commodo. Vestibulum aliquet enim vitae risus ornare, id pretium justo suscipit. Vivamus aliquet placerat erat id feugiat. Nulla at eros nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras egestas luctus magna, in scelerisque ex laoreet a. Donec nec dolor vel dolor condimentum gravida.
+</p>
+
+<p>
+Etiam luctus leo non eros varius lacinia. Phasellus nunc turpis, porttitor id malesuada eget, accumsan eget nunc. Sed tellus est, placerat ut lobortis eu, cursus eget augue. Etiam sed lacus ac est lacinia pharetra. Quisque neque magna, ultrices maximus efficitur vitae, semper sit amet nibh. Sed ultrices felis ac egestas pellentesque. Nam magna ipsum, tempor quis dapibus quis, porttitor non erat. Donec id lacinia dolor, nec condimentum purus. Vestibulum tincidunt magna enim, at commodo lectus scelerisque at. In convallis blandit ultricies. 
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+</div>
+</body>
+</html>
