@@ -28,19 +28,27 @@
 
 ;; Define the publishing project
 (setq org-publish-project-alist
-      (list
-       (list "org-site:main"
-             :recursive t
-             :base-directory "./content"
-             :publishing-function 'org-html-publish-to-html
-             :publishing-directory "./public"
-
-	         ;; Project settings
-             :with-author nil           ;; Don't include author name
-             :with-creator t            ;; Include Emacs and Org versions in footer
-             :with-toc t                ;; Include a table of contents
-             :section-numbers nil       ;; Don't include section numbers
-             :time-stamp-file nil)))    ;; Don't include time stamp in file
+      '(
+        ("org-notes"
+         :recursive t
+         :base-directory "./org"
+         :publishing-directory "./html"
+         :publishing-function org-html-publish-to-html
+         
+	 ;; Project settings
+         :with-author nil           ;; Don't include author name
+         :with-creator t            ;; Include Emacs and Org versions in footer
+         :with-toc t                ;; Include a table of contents
+         :section-numbers nil       ;; Don't include section numbers
+         :time-stamp-file nil)      ;; Don't include time stamp in expand-file-name
+	
+        ("org-static"
+         :recursive t
+         :base-directory "./org"
+         :publishing-directory "./html"
+         :publishing-function org-publish-attachment
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf")
+        ("org" :components ("org-notes" "org-static"))))
 
 ;; Generate the site output
 (org-publish-all t)

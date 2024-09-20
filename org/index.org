@@ -1,5 +1,4 @@
 #+title: meow's Index
-#+author: ようこそ！
 #+options: toc:nil num:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
@@ -7,7 +6,9 @@
 
 This is my blog and website built with [[https://orgmode.org/][org-mode]]. I will try to put the notes that I have found the *most useful* from my notes stash so I can access them whenever I need.
 
-[[file:./img/main_cat.png]]
+#+ATTR_HTML: :width 500px
+#+caption: にゃ。。
+[[./img/main_cat.jpg]]
 
 ** Current
 
@@ -29,9 +30,9 @@ This is my blog and website built with [[https://orgmode.org/][org-mode]]. I wil
 > [[./jp/jp.org][Main]]
 
 *Certification 証明書*
-Networking
-+ [[./certs/networkplus.org][Network+]]
-+ [[./certs/ccna.org][CCNA]]
-Pentesting
-+ [[./certs/ejpt.org][eJPT]]
-+ [[./certs/oscp.org][OSCP]]
++ Networking
+  + [[./certs/networkplus.org][Network+]]
+  + [[./certs/ccna.org][CCNA]]
++ Pentesting
+  + [[./certs/ejpt.org][eJPT]]
+  + [[./certs/oscp.org][OSCP]]
