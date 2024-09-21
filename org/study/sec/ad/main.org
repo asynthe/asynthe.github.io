@@ -2,11 +2,8 @@
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
-[[./img/ad_logo.jpg]]
-
+#+ATTR_HTML: :width 600px
 [[./img/ad_logo_2.png]]
-
-[[./img/ad_logo_3.png]]
 
 Most of the examples will be based on TCM's /[[https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course][Practical Ethical Hacking]]/.
 
