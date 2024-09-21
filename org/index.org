@@ -10,14 +10,6 @@ This is my blog built with [[https://orgmode.org/][org-mode]]. I will try to put
 #+caption: にゃ。。
 [[./img/main_cat.jpg]]
 
-
-*Setup システム*
-Laptop: MSI Raider GE68 HX
-RAM: 32GB
-CPU: i9-13980HX
-GPU: 4090 16GB
-OS: NixOS x86_64
-
 ** Currently doing...
 
 *Books and Courses*
@@ -30,6 +22,18 @@ OS: NixOS x86_64
 - *Game ゲーム*: Ghost of Tsushima
 - *Game ゲーム*: Like a Dragon: Infinite Wealth (龍が如く8)
 - *Series シーリズ*: The Boys
+
+** About Me
+
+|---------------+--------------------|
+| *System システム* |                    |
+|---------------+--------------------|
+| Laptop        | MSI Raider GE68 HX |
+| RAM           | 32GB               |
+| CPU           | i9-13980HX         |
+| GPU           | 4090 16GB          |
+| OS            | NixOS x86_64        |
+|---------------+--------------------|
 
 ** Links
 
