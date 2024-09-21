@@ -2,6 +2,10 @@
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
+#+ATTR_HTML: :width 400px
+#+caption: Your worst (configuration) nightmare.
+[[./img/ad_logo.jpg]]
+
 Most of the examples will be based on TCM's /[[https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course][Practical Ethical Hacking]]/.
 
 * Tools
@@ -24,7 +28,9 @@ Most of the examples will be based on TCM's /[[https://academy.tcm-sec.com/p/pra
 * Domain Enumeration
 ** Bloodhound
 
-Update bloodhound.
++ [[https://github.com/BloodHoundAD/BloodHound][github page]]
+
+Install or update bloodhound.
 #+begin_src bash
 $ sudo pip install bloodhound
 #+end_src
