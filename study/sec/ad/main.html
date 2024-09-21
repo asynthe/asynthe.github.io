@@ -21,55 +21,59 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5aacf70">Methodologies</a></li>
-<li><a href="#org52e6a94">Attacks</a>
+<li><a href="#org285f3f9">Methodologies</a></li>
+<li><a href="#org7b4f26e">Attacks</a>
 <ul>
-<li><a href="#org5c37b4a">LLMNR</a></li>
-<li><a href="#orgbc31bf0">SMB Relaying</a></li>
-<li><a href="#orgf3ff4d1">IPv6 Attacks</a></li>
+<li><a href="#org92fd289">LLMNR</a></li>
+<li><a href="#org1ee9798">SMB Relaying</a></li>
+<li><a href="#orga81de75">IPv6 Attacks</a></li>
 </ul>
 </li>
-<li><a href="#org0d62593">Domain Enumeration</a>
+<li><a href="#orgc9e49b1">Domain Enumeration</a>
 <ul>
-<li><a href="#org55f7175">Bloodhound</a></li>
-<li><a href="#orgd116185">Plumhound</a></li>
-<li><a href="#orga333d54">Domain Enumeration with PingCastle</a></li>
+<li><a href="#orge68ac4f">Bloodhound</a></li>
+<li><a href="#org5f74a56">Plumhound</a></li>
+<li><a href="#orgb6c58b0">PingCastle</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5aacf70" class="outline-2">
-<h2 id="org5aacf70">Methodologies</h2>
-<div class="outline-text-2" id="text-org5aacf70">
+<div id="outline-container-org285f3f9" class="outline-2">
+<h2 id="org285f3f9">Methodologies</h2>
+<div class="outline-text-2" id="text-org285f3f9">
 <p>
 &#x2026;
 </p>
 </div>
 </div>
 
-<div id="outline-container-org52e6a94" class="outline-2">
-<h2 id="org52e6a94">Attacks</h2>
-<div class="outline-text-2" id="text-org52e6a94">
+<div id="outline-container-org7b4f26e" class="outline-2">
+<h2 id="org7b4f26e">Attacks</h2>
+<div class="outline-text-2" id="text-org7b4f26e">
 </div>
-<div id="outline-container-org5c37b4a" class="outline-3">
-<h3 id="org5c37b4a">LLMNR</h3>
+<div id="outline-container-org92fd289" class="outline-3">
+<h3 id="org92fd289">LLMNR</h3>
 </div>
-<div id="outline-container-orgbc31bf0" class="outline-3">
-<h3 id="orgbc31bf0">SMB Relaying</h3>
+<div id="outline-container-org1ee9798" class="outline-3">
+<h3 id="org1ee9798">SMB Relaying</h3>
 </div>
-<div id="outline-container-orgf3ff4d1" class="outline-3">
-<h3 id="orgf3ff4d1">IPv6 Attacks</h3>
+<div id="outline-container-orga81de75" class="outline-3">
+<h3 id="orga81de75">IPv6 Attacks</h3>
 </div>
 </div>
-<div id="outline-container-org0d62593" class="outline-2">
-<h2 id="org0d62593">Domain Enumeration</h2>
-<div class="outline-text-2" id="text-org0d62593">
+<div id="outline-container-orgc9e49b1" class="outline-2">
+<h2 id="orgc9e49b1">Domain Enumeration</h2>
+<div class="outline-text-2" id="text-orgc9e49b1">
+<p>
+Most of the examples will be based on TCM's <i>Practical Ethical Hacking</i>.
+</p>
 </div>
-<div id="outline-container-org55f7175" class="outline-3">
-<h3 id="org55f7175">Bloodhound</h3>
-<div class="outline-text-3" id="text-org55f7175">
+
+<div id="outline-container-orge68ac4f" class="outline-3">
+<h3 id="orge68ac4f">Bloodhound</h3>
+<div class="outline-text-3" id="text-orge68ac4f">
 <p>
 Update bloodhound.
 </p>
@@ -78,7 +82,7 @@ Update bloodhound.
 </pre>
 </div>
 <p>
-(python2.8 deprecated so -&gt; <code>pip3</code>?)
+<span class="underline">note</span>: python2.8 deprecated in kali so -&gt; <code>pip3</code>?
 </p>
 
 <p>
@@ -95,17 +99,22 @@ Running for the first time, log in with the credentials <code>neo4j:neo4j</code>
 
 <p>
 After logging in, run bloodhound. The username and password will be the neo4j credentials.
-<code>$ sudo bloodhound</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ sudo bloodhound
+</pre>
+</div>
 
 <p>
-Time to pull down the data with an <i>injestor</i>.
-Make a folder and cd into it.
-<code>$ mkdir bloodhound; cd bloodhound</code>
+Time to <b>pull down the data</b> with an <i>injestor</i>. Let's make a folder and cd into it.
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ mkdir bloodhound; <span style="font-weight: bold;">cd</span> bloodhound
+</pre>
+</div>
 
 <p>
-<i>bloodhound-python</i>
+Running <b>bloodhound-python</b>.
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">$ sudo bloodhound-python -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt; -ns &lt;DC-IP&gt; -c all
@@ -153,8 +162,11 @@ Make a folder and cd into it.
 
 <p>
 Let's run it.
-<code>$ sudo bloodhound-python -d MARVEL.local -u fcastle -p Password1 -ns 172.16.68.128 -c all</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ sudo bloodhound-python -d MARVEL.local -u fcastle -p Password1 -ns 172.16.68.128 -c all
+</pre>
+</div>
 
 <p>
 Back to <b>Bloodhound</b>, click on the right side vertical bar <code>Upload Data</code> and then select all the files that we generated before.
@@ -162,9 +174,9 @@ Back to <b>Bloodhound</b>, click on the right side vertical bar <code>Upload Dat
 </div>
 </div>
 
-<div id="outline-container-orgd116185" class="outline-3">
-<h3 id="orgd116185">Plumhound</h3>
-<div class="outline-text-3" id="text-orgd116185">
+<div id="outline-container-org5f74a56" class="outline-3">
+<h3 id="org5f74a56">Plumhound</h3>
+<div class="outline-text-3" id="text-org5f74a56">
 <ul class="org-ul">
 <li><a href="https://github.com/PlumHound/PlumHound">github page</a></li>
 </ul>
@@ -174,20 +186,25 @@ Used mostly by Blue and Purple teams, it can still have a use by Red teams.
 </p>
 
 <p>
-<span class="underline">note</span>: You need to have <a href="#org55f7175">Bloodhound</a> up and running, check requirements.
+<span class="underline">note</span>: You need to have <a href="#orge68ac4f">Bloodhound</a> up and running, check requirements.
 </p>
-
 
 <p>
 Install PlumHound.
-<code>$ git clone https://github/PlumHound/PlumHound</code>
-<code>$ sudo pip3 install -r requirements.txt</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ git clone https://github/PlumHound/PlumHound
+$ sudo pip3 install -r requirements.txt
+</pre>
+</div>
 
 <p>
 Using PlumHound, quick query of the domain.
-<code>$ sudo python3 PlumHound.py --easy -p &lt;PASSWORD&gt;</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ sudo python3 PlumHound.py --easy -p &lt;PASSWORD&gt;
+</pre>
+</div>
 
 <p>
 <b>Flags</b>
@@ -215,23 +232,29 @@ Using PlumHound, quick query of the domain.
 
 <p>
 Let's run it again with a task.
-<code>$ sudo python3 PlumHound.py -x tasks/default.tasks -p neo4j123</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ sudo python3 PlumHound.py -x tasks/default.tasks -p neo4j123
+</pre>
+</div>
 
 <p>
 Let's check the reports.
-<code>$ cd reports; firefox index.html</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ cd reports; firefox index.html
+</pre>
+</div>
 
 <p>
-Done!
+<b>Done!</b>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga333d54" class="outline-3">
-<h3 id="orga333d54">Domain Enumeration with PingCastle</h3>
-<div class="outline-text-3" id="text-orga333d54">
+<div id="outline-container-orgb6c58b0" class="outline-3">
+<h3 id="orgb6c58b0">PingCastle</h3>
+<div class="outline-text-3" id="text-orgb6c58b0">
 <ul class="org-ul">
 <li><a href="https://github.com/netwrix/pingcastle">github page</a></li>
 </ul>
