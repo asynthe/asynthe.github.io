@@ -2,7 +2,50 @@
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
+* Methodologies
+
+...
+
 * Attacks
 ** LLMNR
 ** SMB Relaying
 ** IPv6 Attacks
+* Domain Enumeration
+** Bloodhound
+
+Update bloodhound.
+~$ sudo pip install bloodhound~ (python2.8 deprecated so -> ~pip3~?)
+
+Run neo4j.
+~$ sudo neo4j console~
+
+Running for the first time, log in with the credentials ~neo4j:neo4j~. It will then ask you to reset the password.
+
+After logging in, run bloodhound. The username and password will be the neo4j credentials.
+~$ sudo bloodhound~
+
+Time to pull down the data with an /injestor/.
+Make a folder and cd into it.
+~$ mkdir bloodhound; cd bloodhound~
+
+/bloodhound-python/
+~# bloodhound-python -d <DOMAIN> -u <USER> -p <PASSWORD> -ns <DC-IP> -c all~
+
+~-d~ -> Domain
+~-u~ -> User
+~-p~ -> Password
+~-ns~ -> Nameserver which is Domain Controller IP
+~-c~ -> Collect
+
+Let's run it.
+~$ sudo bloodhound-python -d MARVEL.local -u fcastle -p Password1 -ns 172.16.68.128 -c all~
+
+Back to *Bloodhound*, click on the right side vertical bar ~Upload Data~ and then select all the files that we generated before.
+
+** Plumhound
+
+> [[https://github.com/PlumHound/PlumHound][github page]]
+
+Used mostly by Blue and Purple teams, it can still have a use by Red teams.
+
+_note_: You need to have [[*Bloodhound][Bloodhound]] up and running, check requirements.

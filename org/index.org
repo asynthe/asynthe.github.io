@@ -27,15 +27,15 @@ Be sure to also check my [[./blog/main.org][blog posts]].
 ** Currently doing...
 
 *Books and Courses*
-- *Course コース*: TCM Practical Ethical Hacking - The Complete Course
-- *Course コース*: Probably one of the HTB modules
-- *Book 本*: ...
+- *Course コース*: [70%] TCM Practical Ethical Hacking - The Complete Course
+- *Course コース*: [0%] Probably one of the HTB modules
+- *Book 本*: [0%] ...
 
 *Games, Anime and Series*
-- *Anime アニメ*: Mushoku Tensei (無職転生)
 - *Game ゲーム*: Ghost of Tsushima
 - *Game ゲーム*: Like a Dragon: Infinite Wealth (龍が如く8)
 - *Series シーリズ*: The Boys
+- *Anime アニメ*: Mushoku Tensei (無職転生)
 
 ** Links
 
