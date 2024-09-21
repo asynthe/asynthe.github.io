@@ -11,13 +11,16 @@
 ** SMB Relaying
 ** IPv6 Attacks
 * Domain Enumeration
+
+Most of the examples will be based on TCM's /Practical Ethical Hacking/.
+
 ** Bloodhound
 
 Update bloodhound.
 #+begin_src bash
 $ sudo pip install bloodhound
 #+end_src
-(python2.8 deprecated so -> ~pip3~?)
+_note_: python2.8 deprecated in kali so -> ~pip3~?
 
 Run neo4j.
 #+begin_src bash
@@ -27,13 +30,16 @@ $ sudo neo4j console
 Running for the first time, log in with the credentials ~neo4j:neo4j~. It will then ask you to reset the password.
 
 After logging in, run bloodhound. The username and password will be the neo4j credentials.
-~$ sudo bloodhound~
+#+begin_src bash
+$ sudo bloodhound
+#+end_src
 
-Time to pull down the data with an /injestor/.
-Make a folder and cd into it.
-~$ mkdir bloodhound; cd bloodhound~
+Time to *pull down the data* with an /injestor/. Let's make a folder and cd into it.
+#+begin_src bash
+$ mkdir bloodhound; cd bloodhound
+#+end_src
 
-/bloodhound-python/
+Running *bloodhound-python*.
 #+begin_src bash
 $ sudo bloodhound-python -d <DOMAIN> -u <USER> -p <PASSWORD> -ns <DC-IP> -c all
 #+end_src
@@ -48,7 +54,9 @@ $ sudo bloodhound-python -d <DOMAIN> -u <USER> -p <PASSWORD> -ns <DC-IP> -c all
 |-----+------------------------------------------|
 
 Let's run it.
-~$ sudo bloodhound-python -d MARVEL.local -u fcastle -p Password1 -ns 172.16.68.128 -c all~
+#+begin_src bash
+$ sudo bloodhound-python -d MARVEL.local -u fcastle -p Password1 -ns 172.16.68.128 -c all
+#+end_src
 
 Back to *Bloodhound*, click on the right side vertical bar ~Upload Data~ and then select all the files that we generated before.
 
@@ -60,13 +68,16 @@ Used mostly by Blue and Purple teams, it can still have a use by Red teams.
 
 _note_: You need to have [[*Bloodhound][Bloodhound]] up and running, check requirements.
 
-
 Install PlumHound.
-~$ git clone https://github/PlumHound/PlumHound~
-~$ sudo pip3 install -r requirements.txt~
+#+begin_src bash
+$ git clone https://github/PlumHound/PlumHound
+$ sudo pip3 install -r requirements.txt
+#+end_src
 
 Using PlumHound, quick query of the domain.
-~$ sudo python3 PlumHound.py --easy -p <PASSWORD>~
+#+begin_src bash
+$ sudo python3 PlumHound.py --easy -p <PASSWORD>
+#+end_src
 
 *Flags*
 |--------+--------------------|
@@ -75,14 +86,18 @@ Using PlumHound, quick query of the domain.
 |--------+--------------------|
 
 Let's run it again with a task.
-~$ sudo python3 PlumHound.py -x tasks/default.tasks -p neo4j123~
+#+begin_src bash
+$ sudo python3 PlumHound.py -x tasks/default.tasks -p neo4j123
+#+end_src
 
 Let's check the reports.
-~$ cd reports; firefox index.html~
+#+begin_src bash
+$ cd reports; firefox index.html
+#+end_src
 
-Done!
+*Done!*
 
-** Domain Enumeration with PingCastle
+** PingCastle
 
 + [[https://github.com/netwrix/pingcastle][github page]]
 
