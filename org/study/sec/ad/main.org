@@ -31,11 +31,14 @@ Make a folder and cd into it.
 /bloodhound-python/
 ~# bloodhound-python -d <DOMAIN> -u <USER> -p <PASSWORD> -ns <DC-IP> -c all~
 
-~-d~ -> Domain
-~-u~ -> User
-~-p~ -> Password
-~-ns~ -> Nameserver which is Domain Controller IP
-~-c~ -> Collect
+*Flags*
+|-----+------------------------------------------|
+| ~-d~  | Domain                                   |
+| ~-u~  | User                                     |
+| ~-p~  | Password                                 |
+| ~-ns~ | Nameserver which is Domain Controller IP |
+| ~-c~  | Collect                                  |
+|-----+------------------------------------------|
 
 Let's run it.
 ~$ sudo bloodhound-python -d MARVEL.local -u fcastle -p Password1 -ns 172.16.68.128 -c all~
