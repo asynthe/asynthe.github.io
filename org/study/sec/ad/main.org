@@ -2,16 +2,10 @@
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
-#+attr_html: :width 500px
-#+caption: Your worst (configuration) nightmare.
 [[./img/ad_logo.jpg]]
 
-#+attr_html: :width 500px
-#+caption: Your worst (configuration) nightmare.
 [[./img/ad_logo_2.png]]
 
-#+attr_html: :width 400px
-#+caption: Your worst (configuration) nightmare.
 [[./img/ad_logo_3.png]]
 
 Most of the examples will be based on TCM's /[[https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course][Practical Ethical Hacking]]/.
