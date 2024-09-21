@@ -14,10 +14,15 @@
 ** Bloodhound
 
 Update bloodhound.
-~$ sudo pip install bloodhound~ (python2.8 deprecated so -> ~pip3~?)
+#+begin_src bash
+$ sudo pip install bloodhound
+#+end_src
+(python2.8 deprecated so -> ~pip3~?)
 
 Run neo4j.
-~$ sudo neo4j console~
+#+begin_src bash
+$ sudo neo4j console
+#+end_src
 
 Running for the first time, log in with the credentials ~neo4j:neo4j~. It will then ask you to reset the password.
 
@@ -29,7 +34,9 @@ Make a folder and cd into it.
 ~$ mkdir bloodhound; cd bloodhound~
 
 /bloodhound-python/
-~# bloodhound-python -d <DOMAIN> -u <USER> -p <PASSWORD> -ns <DC-IP> -c all~
+#+begin_src bash
+$ sudo bloodhound-python -d <DOMAIN> -u <USER> -p <PASSWORD> -ns <DC-IP> -c all
+#+end_src
 
 *Flags*
 |-----+------------------------------------------|
@@ -47,8 +54,44 @@ Back to *Bloodhound*, click on the right side vertical bar ~Upload Data~ and the
 
 ** Plumhound
 
-> [[https://github.com/PlumHound/PlumHound][github page]]
++ [[https://github.com/PlumHound/PlumHound][github page]]
 
 Used mostly by Blue and Purple teams, it can still have a use by Red teams.
 
 _note_: You need to have [[*Bloodhound][Bloodhound]] up and running, check requirements.
+
+
+Install PlumHound.
+~$ git clone https://github/PlumHound/PlumHound~
+~$ sudo pip3 install -r requirements.txt~
+
+Using PlumHound, quick query of the domain.
+~$ sudo python3 PlumHound.py --easy -p <PASSWORD>~
+
+*Flags*
+|--------+--------------------|
+| ~--easy~ | Test               |
+| ~-p~     | Password for neo4j |
+|--------+--------------------|
+
+Let's run it again with a task.
+~$ sudo python3 PlumHound.py -x tasks/default.tasks -p neo4j123~
+
+Let's check the reports.
+~$ cd reports; firefox index.html~
+
+Done!
+
+** Domain Enumeration with PingCastle
+
++ [[https://github.com/netwrix/pingcastle][github page]]
+
+It's a very good tool to analyze the security of a Active Directory domain.
+
+_note_: PingCastle has to be used from a computer *joined* to the Active Directory environment you wish to assess.
+
+Having a propietary license, the usage on owned and managed networks is free but in case of a external pentest, *a license is required*.
+
+Download from https://www.pingcastle.com/download/ and run ~PingCastle.exe~ as admin.
+
+Running ~1-healthcheck~ will take around 4-5 minutes and output a html file.
