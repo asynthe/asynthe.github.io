@@ -4,7 +4,7 @@
 
 #+attr_html: :width 700px
 #+caption: Your worst (configuration) nightmare.
-[[./img/ad_logo.jpg]]
+[[file:./img/ad_logo.jpg]]
 
 Most of the examples will be based on TCM's /[[https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course][Practical Ethical Hacking]]/.
 
