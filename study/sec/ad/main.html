@@ -21,63 +21,73 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6de0c95">Methodologies</a></li>
-<li><a href="#org126e16b">Attacks</a>
+<li><a href="#org5aacf70">Methodologies</a></li>
+<li><a href="#org52e6a94">Attacks</a>
 <ul>
-<li><a href="#orgc559fa1">LLMNR</a></li>
-<li><a href="#orgec39395">SMB Relaying</a></li>
-<li><a href="#org8e74d60">IPv6 Attacks</a></li>
+<li><a href="#org5c37b4a">LLMNR</a></li>
+<li><a href="#orgbc31bf0">SMB Relaying</a></li>
+<li><a href="#orgf3ff4d1">IPv6 Attacks</a></li>
 </ul>
 </li>
-<li><a href="#org9452c2f">Domain Enumeration</a>
+<li><a href="#org0d62593">Domain Enumeration</a>
 <ul>
-<li><a href="#orgcd4f04a">Bloodhound</a></li>
-<li><a href="#org1a205c9">Plumhound</a></li>
+<li><a href="#org55f7175">Bloodhound</a></li>
+<li><a href="#orgd116185">Plumhound</a></li>
+<li><a href="#orga333d54">Domain Enumeration with PingCastle</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6de0c95" class="outline-2">
-<h2 id="org6de0c95">Methodologies</h2>
-<div class="outline-text-2" id="text-org6de0c95">
+<div id="outline-container-org5aacf70" class="outline-2">
+<h2 id="org5aacf70">Methodologies</h2>
+<div class="outline-text-2" id="text-org5aacf70">
 <p>
 &#x2026;
 </p>
 </div>
 </div>
 
-<div id="outline-container-org126e16b" class="outline-2">
-<h2 id="org126e16b">Attacks</h2>
-<div class="outline-text-2" id="text-org126e16b">
+<div id="outline-container-org52e6a94" class="outline-2">
+<h2 id="org52e6a94">Attacks</h2>
+<div class="outline-text-2" id="text-org52e6a94">
 </div>
-<div id="outline-container-orgc559fa1" class="outline-3">
-<h3 id="orgc559fa1">LLMNR</h3>
+<div id="outline-container-org5c37b4a" class="outline-3">
+<h3 id="org5c37b4a">LLMNR</h3>
 </div>
-<div id="outline-container-orgec39395" class="outline-3">
-<h3 id="orgec39395">SMB Relaying</h3>
+<div id="outline-container-orgbc31bf0" class="outline-3">
+<h3 id="orgbc31bf0">SMB Relaying</h3>
 </div>
-<div id="outline-container-org8e74d60" class="outline-3">
-<h3 id="org8e74d60">IPv6 Attacks</h3>
+<div id="outline-container-orgf3ff4d1" class="outline-3">
+<h3 id="orgf3ff4d1">IPv6 Attacks</h3>
 </div>
 </div>
-<div id="outline-container-org9452c2f" class="outline-2">
-<h2 id="org9452c2f">Domain Enumeration</h2>
-<div class="outline-text-2" id="text-org9452c2f">
+<div id="outline-container-org0d62593" class="outline-2">
+<h2 id="org0d62593">Domain Enumeration</h2>
+<div class="outline-text-2" id="text-org0d62593">
 </div>
-<div id="outline-container-orgcd4f04a" class="outline-3">
-<h3 id="orgcd4f04a">Bloodhound</h3>
-<div class="outline-text-3" id="text-orgcd4f04a">
+<div id="outline-container-org55f7175" class="outline-3">
+<h3 id="org55f7175">Bloodhound</h3>
+<div class="outline-text-3" id="text-org55f7175">
 <p>
 Update bloodhound.
-<code>$ sudo pip install bloodhound</code> (python2.8 deprecated so -&gt; <code>pip3</code>?)
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">$ sudo pip install bloodhound
+</pre>
+</div>
+<p>
+(python2.8 deprecated so -&gt; <code>pip3</code>?)
 </p>
 
 <p>
 Run neo4j.
-<code>$ sudo neo4j console</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ sudo neo4j console
+</pre>
+</div>
 
 <p>
 Running for the first time, log in with the credentials <code>neo4j:neo4j</code>. It will then ask you to reset the password.
@@ -96,8 +106,11 @@ Make a folder and cd into it.
 
 <p>
 <i>bloodhound-python</i>
-<code># bloodhound-python -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt; -ns &lt;DC-IP&gt; -c all</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ sudo bloodhound-python -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt; -ns &lt;DC-IP&gt; -c all
+</pre>
+</div>
 
 <p>
 <b>Flags</b>
@@ -149,19 +162,98 @@ Back to <b>Bloodhound</b>, click on the right side vertical bar <code>Upload Dat
 </div>
 </div>
 
-<div id="outline-container-org1a205c9" class="outline-3">
-<h3 id="org1a205c9">Plumhound</h3>
-<div class="outline-text-3" id="text-org1a205c9">
-<p>
-&gt; <a href="https://github.com/PlumHound/PlumHound">github page</a>
-</p>
+<div id="outline-container-orgd116185" class="outline-3">
+<h3 id="orgd116185">Plumhound</h3>
+<div class="outline-text-3" id="text-orgd116185">
+<ul class="org-ul">
+<li><a href="https://github.com/PlumHound/PlumHound">github page</a></li>
+</ul>
 
 <p>
 Used mostly by Blue and Purple teams, it can still have a use by Red teams.
 </p>
 
 <p>
-<span class="underline">note</span>: You need to have <a href="#orgcd4f04a">Bloodhound</a> up and running, check requirements.
+<span class="underline">note</span>: You need to have <a href="#org55f7175">Bloodhound</a> up and running, check requirements.
+</p>
+
+
+<p>
+Install PlumHound.
+<code>$ git clone https://github/PlumHound/PlumHound</code>
+<code>$ sudo pip3 install -r requirements.txt</code>
+</p>
+
+<p>
+Using PlumHound, quick query of the domain.
+<code>$ sudo python3 PlumHound.py --easy -p &lt;PASSWORD&gt;</code>
+</p>
+
+<p>
+<b>Flags</b>
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>--easy</code></td>
+<td class="org-left">Test</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-p</code></td>
+<td class="org-left">Password for neo4j</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Let's run it again with a task.
+<code>$ sudo python3 PlumHound.py -x tasks/default.tasks -p neo4j123</code>
+</p>
+
+<p>
+Let's check the reports.
+<code>$ cd reports; firefox index.html</code>
+</p>
+
+<p>
+Done!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga333d54" class="outline-3">
+<h3 id="orga333d54">Domain Enumeration with PingCastle</h3>
+<div class="outline-text-3" id="text-orga333d54">
+<ul class="org-ul">
+<li><a href="https://github.com/netwrix/pingcastle">github page</a></li>
+</ul>
+
+<p>
+It's a very good tool to analyze the security of a Active Directory domain.
+</p>
+
+<p>
+<span class="underline">note</span>: PingCastle has to be used from a computer <b>joined</b> to the Active Directory environment you wish to assess.
+</p>
+
+<p>
+Having a propietary license, the usage on owned and managed networks is free but in case of a external pentest, <b>a license is required</b>.
+</p>
+
+<p>
+Download from <a href="https://www.pingcastle.com/download/">https://www.pingcastle.com/download/</a> and run <code>PingCastle.exe</code> as admin.
+</p>
+
+<p>
+Running <code>1-healthcheck</code> will take around 4-5 minutes and output a html file.
 </p>
 </div>
 </div>
