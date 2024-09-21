@@ -6,17 +6,17 @@
 
 This is my blog built with [[https://orgmode.org/][org-mode]]. I will try to put the notes that I have found the *most useful* from my notes stash so I can access them whenever I need.
 
+#+ATTR_HTML: :width 400px
+#+caption: にゃ。。
+[[./img/main_cat.jpg]]
+
+
 *Setup システム*
 Laptop: MSI Raider GE68 HX
 RAM: 32GB
 CPU: i9-13980HX
 GPU: 4090 16GB
 OS: NixOS x86_64
-
-#+ATTR_HTML: :width 400px
-#+caption: にゃ。。
-[[./img/main_cat.jpg]]
-
 
 ** Currently doing...
 
