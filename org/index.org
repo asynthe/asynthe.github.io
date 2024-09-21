@@ -4,7 +4,9 @@
 
 * ようこそ！
 
-This is my blog built with [[https://orgmode.org/][org-mode]]. I will try to put the notes that I have found the *most useful* from my notes stash so I can access them whenever I need. Be sure to check my [[./blog/main.org][blogs]].
+This is my blog built with [[https://orgmode.org/][org-mode]]. I will try to put the notes that I have found the *most useful* from my notes stash so I can access them whenever I need.
+
+Be sure to also check my [[./blog/main.org][blog posts]].
 
 #+ATTR_HTML: :width 400px
 #+caption: にゃ。。
