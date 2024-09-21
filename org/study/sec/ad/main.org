@@ -2,7 +2,7 @@
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
-Most of the examples will be based on TCM's /Practical Ethical Hacking/.
+Most of the examples will be based on TCM's /[[https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course][Practical Ethical Hacking]]/.
 
 * Tools
 
