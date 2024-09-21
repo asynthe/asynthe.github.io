@@ -2,7 +2,7 @@
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
-#+ATTR_HTML: :width 400px
+#+attr_html: :width 700px
 #+caption: Your worst (configuration) nightmare.
 [[./img/ad_logo.jpg]]
 
