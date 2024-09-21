@@ -2,18 +2,26 @@
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
-* Methodologies
+Most of the examples will be based on TCM's /Practical Ethical Hacking/.
+
+* Tools
 
 ...
 
 * Attacks
 ** LLMNR
+
+...
+
 ** SMB Relaying
+
+...
+
 ** IPv6 Attacks
+
+...
+
 * Domain Enumeration
-
-Most of the examples will be based on TCM's /Practical Ethical Hacking/.
-
 ** Bloodhound
 
 Update bloodhound.
