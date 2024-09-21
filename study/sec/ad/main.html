@@ -21,29 +21,118 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9450908">Attacks</a>
+<li><a href="#org7c44e24">Methodologies</a></li>
+<li><a href="#org6d55e10">Attacks</a>
 <ul>
-<li><a href="#orge4f9de6">LLMNR</a></li>
-<li><a href="#orga701e5f">SMB Relaying</a></li>
-<li><a href="#org59fe541">IPv6 Attacks</a></li>
+<li><a href="#org347271d">LLMNR</a></li>
+<li><a href="#org2bc35b5">SMB Relaying</a></li>
+<li><a href="#orgdeb7cc9">IPv6 Attacks</a></li>
+</ul>
+</li>
+<li><a href="#orgb0509d2">Domain Enumeration</a>
+<ul>
+<li><a href="#org7b44d9c">Bloodhound</a></li>
+<li><a href="#org9fbdadf">Plumhound</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9450908" class="outline-2">
-<h2 id="org9450908">Attacks</h2>
-<div class="outline-text-2" id="text-org9450908">
+<div id="outline-container-org7c44e24" class="outline-2">
+<h2 id="org7c44e24">Methodologies</h2>
+<div class="outline-text-2" id="text-org7c44e24">
+<p>
+&#x2026;
+</p>
 </div>
-<div id="outline-container-orge4f9de6" class="outline-3">
-<h3 id="orge4f9de6">LLMNR</h3>
 </div>
-<div id="outline-container-orga701e5f" class="outline-3">
-<h3 id="orga701e5f">SMB Relaying</h3>
+
+<div id="outline-container-org6d55e10" class="outline-2">
+<h2 id="org6d55e10">Attacks</h2>
+<div class="outline-text-2" id="text-org6d55e10">
 </div>
-<div id="outline-container-org59fe541" class="outline-3">
-<h3 id="org59fe541">IPv6 Attacks</h3>
+<div id="outline-container-org347271d" class="outline-3">
+<h3 id="org347271d">LLMNR</h3>
+</div>
+<div id="outline-container-org2bc35b5" class="outline-3">
+<h3 id="org2bc35b5">SMB Relaying</h3>
+</div>
+<div id="outline-container-orgdeb7cc9" class="outline-3">
+<h3 id="orgdeb7cc9">IPv6 Attacks</h3>
+</div>
+</div>
+<div id="outline-container-orgb0509d2" class="outline-2">
+<h2 id="orgb0509d2">Domain Enumeration</h2>
+<div class="outline-text-2" id="text-orgb0509d2">
+</div>
+<div id="outline-container-org7b44d9c" class="outline-3">
+<h3 id="org7b44d9c">Bloodhound</h3>
+<div class="outline-text-3" id="text-org7b44d9c">
+<p>
+Update bloodhound.
+<code>$ sudo pip install bloodhound</code> (python2.8 deprecated so -&gt; <code>pip3</code>?)
+</p>
+
+<p>
+Run neo4j.
+<code>$ sudo neo4j console</code>
+</p>
+
+<p>
+Running for the first time, log in with the credentials <code>neo4j:neo4j</code>. It will then ask you to reset the password.
+</p>
+
+<p>
+After logging in, run bloodhound. The username and password will be the neo4j credentials.
+<code>$ sudo bloodhound</code>
+</p>
+
+<p>
+Time to pull down the data with an <i>injestor</i>.
+Make a folder and cd into it.
+<code>$ mkdir bloodhound; cd bloodhound</code>
+</p>
+
+<p>
+<i>bloodhound-python</i>
+<code># bloodhound-python -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt; -ns &lt;DC-IP&gt; -c all</code>
+</p>
+
+<p>
+<code>-d</code> -&gt; Domain
+<code>-u</code> -&gt; User
+<code>-p</code> -&gt; Password
+<code>-ns</code> -&gt; Nameserver which is Domain Controller IP
+<code>-c</code> -&gt; Collect
+</p>
+
+<p>
+Let's run it.
+<code>$ sudo bloodhound-python -d MARVEL.local -u fcastle -p Password1 -ns 172.16.68.128 -c all</code>
+</p>
+
+<p>
+Back to <b>Bloodhound</b>, click on the right side vertical bar <code>Upload Data</code> and then select all the files that we generated before.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9fbdadf" class="outline-3">
+<h3 id="org9fbdadf">Plumhound</h3>
+<div class="outline-text-3" id="text-org9fbdadf">
+<p>
+&gt; <a href="https://github.com/PlumHound/PlumHound">github page</a>
+</p>
+
+<p>
+Used mostly by Blue and Purple teams, it can still have a use by Red teams.
+</p>
+
+<p>
+<span class="underline">note</span>: You need to have <a href="#org7b44d9c">Bloodhound</a> up and running, check requirements.
+</p>
+</div>
 </div>
 </div>
 </div>
