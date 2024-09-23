@@ -1,0 +1,197 @@
+:PROPERTIES:
+:ID:       c45bd3b9-ee4b-4c32-b7f4-8d8bbc1ca065
+:END:
+#+title: Ansible
+#+options: num:nil author:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+> [[https://github.com/ansible-community/awesome-ansible][Awesome Ansible - github page]]
+> [[https://docs.ansible.com/ansible/latest/getting_started/index.html][Getting started with Ansible - docs.ansible.com]]
+
+* Usage
+* From Docs
+
+Ansible automates the management of remote systems and controls their desired state. A basic Ansible environment has three main components:
+
+- _Control node_: A system on which Ansible is installed. You run Ansible commands such as ~ansible~ or ~ansible-inventory~ on a control node.
+- _Managed node_: A remote system, or host, that Ansible controls.
+- _Inventory_: A list of managed nodes that are logically organized. You create an inventory on the control node to describe host deployments to Ansible.
+
+* Automating
+
+After installing ansible, create an inventory adding the IP addresses of one or more remote systems to ~/etc/ansible/hosts~.
+
+example, ~/etc/ansible/hosts~
+#+begin_src text
+[myvirtualmachines]
+192.0.2.50
+192.0.2.51
+192.0.2.52
+#+end_src
+
+3. Verify the hosts in the inventory
+~$ ansible all --list-hosts~
+
+#+begin_src text
+2
+#+end_src
+
+4. 
+
+* Ansible tutorial - GitHub
+
+Ansible is a *configuration management software* that let's you control and configure nodes from another machine. It uses [[id:367C05A9-1225-459E-AAC9-21EA62ACBF9C][SSH]] infrastructure instead of PKI like /Chef/, /Puppet/ to be set up.
+
+It emphasizes push mode, configuration is pushed from a master machine, which is only _a machine where you can SSH to nodes from_)
+
+All that's necessary is for nodes to be accesible, the master doesn't need to be 'publicly' accessible.
+
+* WSL stuff to automate
+
+Downlading
+
+- Installing
+  - sudo apt install -y emacs zathura
+    - rm -r ~~/.emacs.d~
+    - git clone https://github.com/asynthe/emacs.git
+    - mv emacs ~/.config~
+      
+- Fonts
+  - iosevka
+  - iosevka term
+  - jetbrains mono nerd font
+- Unzip and copy to ~~/.local/share/fonts~
+- Run the comand ~fc-cache -fv~ to manually rebuild the font cache
+
+* Ansible on Windows
+:PROPERTIES:
+:ID:       beea8537-8294-47b3-8596-300842f1ed7b
+:END:
+
+> [[https://docs.ansible.com/ansible/latest/os_guide/windows_winrm.html][Windows Remote Management - docs.ansible.com]]
+
+- Ansible on Windows?
+  - Seems not possible, unless there's a SSH connection to a Linux machine.
+  - This host can manage Windows and auto install packages through the *chocolatey* package manager.
+
+...
+
+> [[https://stackoverflow.com/questions/58345011/setup-windows-10-workstation-using-ansible-installed-on-wsl][Setup windows 10 workstation using Ansible installed on WSL - StackOverflow]]
+
+> [[https://medium.com/@selvamraju007/automating-microsoft-windows-servers-using-ansible-6792cb89d588][Automating Microsoft Windows servers using Ansible - Medium]]
+
+> [[https://www.linuxtechi.com/manage-windows-host-using-ansible/][How to Manage Remote Windows Host using Ansible - LinuxTechi]]
+
+Test
+> [[https://github.com/vecin2/ws_playbook][vecin2/ws_playbook - github]]
+
+** Tutorial
+
+~$ sudo dnf install python3-virtualenv
+~$ virtualenv env
+~$ source env/bin/activate
+
+Install Ansible
+~$ pip install ansible~
+
+Check version
+~$ ansible --version~
+
+Test
+~$ ansible localhost -m ping~
+
+Define the windows host in ~/etc/ansible/hosts~
+#+begin_src text
+[winhost]
+<windows-ip-here>
+
+[winhost:vars]
+ansible_user=<your-win-user>
+ansible_password=<your-win-user-pass>
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+#+end_src
+_note_: The username and password point to the user on the Windows host system.
+
+To communicate with Windows hosts, you will need to install Winrm. (in Linux system)
+~$ pip install pywinrm~
+
+** Through WSL
+
+In this case WSL needs a different connection.
+
+You can run a playbook for WSL or for Windows host but _not against both_, as they need a different connection.
+
+To do both you can either set hash-behaviour, or set two different host names for localhost under WSL ~/etc/hosts~.
+
+Setting up two different hostnames for localhost (in WSL)
+#+begin_src text
+127.0.0.1    wsl.local
+127.0.0.1    windows.local
+#+end_src
+
+Now, in ~/etc/ansible/hosts~
+#+begin_src text
+[wsl]
+wsl.local 
+
+[wsl:vars]
+ansible_connection=local
+
+[windows]
+windows.local 
+[windows:vars]
+ansible_port=5985
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_user=<<ansible_user>>
+ansible_password=<<ansible_password>>
+#+end_src
+
+/ws_playbook - github/
+Help setting wsl environment within a Windows 10 machine.
+https://github.com/vecin2/ws_playbook
+
+* Ansible on Termux
+
+Get Ansible working on an Android phone using a Terminal Emulator like Termux
+> [[https://gist.github.com/kuttor/5540b0b7ee18ea62283068b03813693e][ansible-termix.sh - github gist]]
+
+* Active Directory on Ansible
+
+* Tutorials
+** Ansible Full Course - SimpliLearn
+
+Push a configuration to various nodes from a host.
+Remember that:
+
+#+BEGIN_SRC text
+host
+  ├── node1
+  ├── node2
+  └── nod1e3
+#+END_SRC
+
+Installing on Ubuntu.
+
+** How to manage machines 
+
+-> /etc/ansible
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

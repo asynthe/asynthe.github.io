@@ -27,7 +27,8 @@ Be sure to also check my [[./blog/main.org][blog posts]].
 ** Currently doing...
 
 *Books and Courses*
-- *Course コース*: [70%] TCM Practical Ethical Hacking - The Complete Course
+- *Course コース*: [70%] TCM /Practical Ethical Hacking - The Complete Course/
+- *Course コース*: [70%] TCM /SOC Operations (SOC) 101/
 - *Course コース*: [0%] Probably one of the HTB modules
 - *Book 本*: [0%] ...
 
@@ -44,6 +45,9 @@ Be sure to also check my [[./blog/main.org][blog posts]].
 
 *Cybersecurity サイバーセキュリティ*
 > [[./study/sec/main.org][Main]]
+
+*DevOps デブオプス*
+> [[./study/devops/main.org][Main]]
 
 *Networking ネットワーキング*
 > [[./study/net/main.org][Main]]

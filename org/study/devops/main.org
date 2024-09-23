@@ -1,0 +1,182 @@
+#+title: DevOps
+#+options: num:nil author:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+* Links
+
+Containerization
+- [[./docker/docker.org][Docker]] (and Podman)
+- [[./kubernetes/kubernetes.org][Kubernetes]]
+
+Configuration as Code
+- [[./ansible/ansible.org][Ansible]]
+- [[../nix/main.org][Nix]]
+
+Infrastructure as Code
+- [[./terraform/terraform.org][Terraform]]
+- [[./pulumi/pulumi.org][Pulumi]]
+
+* From here below, older note
+
+dockerhub
+AWS Cloud Practitioner Course
+OSI, Protocol, Gateway, DNS
+
+* Pulumi
+:PROPERTIES:
+:ID:       6afafeab-79f8-4583-acd3-388d2d5b6897
+:END:
+
+** Usage
+*** Creating a project
+
+Create a new project
+~$ pulumi new~
+
+Manage and view state
+~$ pulumi stack~
+
+Set the default destination org
+~$ pulumi org set-default NAME~
+
+View backend, current stack, pending operations, and versions
+~$ pulumi about~
+
+* Links
+** [[id:c0605b8f-8883-49ce-8242-506c25bfe2ee][Docker]]
+** [[id:379F85BD-9E2A-4DB5-AAEB-389C32C40E98][Podman]]
+** [[id:91bdb5c4-bc00-421d-ae5b-7db7df5e2f31][Kubernetes]]
+** [[id:c45bd3b9-ee4b-4c32-b7f4-8d8bbc1ca065][Ansible]]
+* Resources
+
++ [[https://github.com/wmariuss/awesome-devops][Awesome DevSecOps - wmariuss / github page]]
++ [[https://github.com/TaptuIT/awesome-devsecops][Awesome DevSecOps - TaptuIT / github page]]
+
+*Books*
++ DevOps for the Desperate
+
+*Posts*  
++ [[https://github.com/devsecops/awesome-devsecops][Awesome DevSecOps - github]]
+
+*Reddit Posts*
++ [[https://www.reddit.com/r/devops/comments/yjdscp/getting_into_devops/]['Getting into DevOps' - r/devops reddit post]]
+
+** Youtube Video
+*** How To Become A DevOps Engineer in 2023? | Skills To Learn
+
+[[https://www.youtube.com/watch?v=IiuWlqabx9M][How To Become A DevOps Engineer in 2023? | Skills To Learn - Travis Media]
+
+Developers (Devs)
+Server Guys (Ops)
+
++ My app is not working on the servers, even though _it is_ working on my computer.
+
+1. Version Control (Git)
+2. Linux
+3. Coding (Python)
+4. Agile Development (SCRUM)
+5. Operations
+6. Docker / Kubernetes
+7. Infrastructure as Code (Terraform)
+8. Ansible
+9. Jenkins
+10. Monitoring (ELK Stack)
+
+Just get cloud certified
+- Certified Solutions Architect Associate
+- Associate Sysops Operations (Hard)
+
+Try to develop the automation mindset.
+cloudformation (?)
+
+* Containers
+
++ [[https://youtu.be/J0NuOlA2xDc][Never install locally, there's a better way - Coderized]] (youtube video)
+
+* DevSecOps
+:PROPERTIES:
+:ID:       70ca010c-72d1-4880-a483-a5b2223b7c03
+:END:
+
+all by Gene Kim are prolly good reads.
+- The Phoenix Project
+- Unicorn Project
+- DevSecOps Handbook
+
+- Marc Hornbeck’s Engineering DevOps
+
+** Resources
+** RBAC
+:PROPERTIES:
+:ID:       EBAC484C-E1EB-4E9E-A55A-133D83BDE3C0
+:END:
+
+* Docker vs. Podman
+
++ [[https://youtu.be/Xx588nbshlM][Podman vs. Docker - IBM Technology (youtube video)]]
+
+OCI: Open Container Initiative
+
+* Kubernetes vs. OpenShift
+* Notes
+
+Three important things
+1. Infrastructure
+
+If you want to create an app, you need a _server_ and _database_.
+Server is infrastructure.
+
+Insfrastructure is the underlying system and harware responsible for software deliver
+
+2. Automation
+
+Refers to the tools and script to make work faster and easier.
+
+3. Monitoring
+
+Keeping track of how the application is working, if there are any bugs.
+
+----
+
+1. Linux
+2. Networking
+
+   - DNS records
+   - TCP/IP Protocol and Port
+   - Gateways and Routing
+   - Subnetting / CIDR Range
+
+3. Virtualization and OS
+4. Programming & Git
+
+   - Python
+     + Datatypes in Python
+     + Create a Function
+     + Buda, Django, Flask
+     
+5. Cloud
+
+   - AWS
+     + AWS Certified: Cloud Practitioner Foundational
+     + Official AWS Cloud Practitioner Course
+   - Azure
+   - GCP
+
+6. Infrastructure as Code
+
+   - Knowledge of YAML/JSON
+   - Terraform
+     + Terraform Associate Certification
+   - Ansible: Configuration as Code
+
+7. CI/CD
+
+   - Create a Project, that automatically builds and test code every time is changed.
+     + Jenkins
+     + GitLab
+     + CircusCI
+
+8. Containerization
+
+   - Docker
+   - Kubernetes
