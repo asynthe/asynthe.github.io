@@ -1,6 +1,3 @@
-:PROPERTIES:
-:ID:       c45bd3b9-ee4b-4c32-b7f4-8d8bbc1ca065
-:END:
 #+title: Ansible
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup

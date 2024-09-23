@@ -1,6 +1,3 @@
-:PROPERTIES:
-:ID: 6b660401-e70d-43f3-a96e-9687eb1a6cf5
-:END:
 #+title: Terraform
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
