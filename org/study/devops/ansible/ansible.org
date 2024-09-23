@@ -61,9 +61,6 @@ Downlading
 - Run the comand ~fc-cache -fv~ to manually rebuild the font cache
 
 * Ansible on Windows
-:PROPERTIES:
-:ID:       beea8537-8294-47b3-8596-300842f1ed7b
-:END:
 
 > [[https://docs.ansible.com/ansible/latest/os_guide/windows_winrm.html][Windows Remote Management - docs.ansible.com]]
 

@@ -79,9 +79,6 @@ Terraform to manage
 * Usage
 * Other
 ** OpenTofu
-:PROPERTIES:
-:ID:       4ad798b9-b593-4326-adcb-b7c165b86a6d
-:END:
 
 + [[https://github.com/opentofu/opentofu][OpenTofu - github page]]
 + [[https://opentofu.org/docs/intro/core-workflow][The Core OpenTofu Workflow - OpenTofu]]
@@ -89,8 +86,5 @@ Terraform to manage
 Download the binary from releases, then add the binary to your PATH.
 
 ** terranix
-:PROPERTIES:
-:ID:       72f64061-a082-4826-9a54-00084a068577
-:END:
 
 + [[https://terranix.org/][Main page - terranix.org]]

@@ -213,10 +213,6 @@ iptables on Docker
 ...
 
 * Docker Compose
-:PROPERTIES:
-:ID:       5cf351a5-3ffa-4580-bb9c-3f330ce63231
-:ROAM_ALIASES: Docker-Compose
-:END:
 
 Will read the ~docker-compose.yml~ inside the folder.
 
@@ -227,9 +223,6 @@ Tear down the compose.
 ~# docker compose down~
 
 * Podman
-:PROPERTIES:
-:ID:       379F85BD-9E2A-4DB5-AAEB-389C32C40E98
-:END:
 
 + [[https://podman.io/][main page]]
 

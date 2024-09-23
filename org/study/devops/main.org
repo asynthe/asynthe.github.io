@@ -23,10 +23,6 @@ AWS Cloud Practitioner Course
 OSI, Protocol, Gateway, DNS
 
 * Pulumi
-:PROPERTIES:
-:ID:       6afafeab-79f8-4583-acd3-388d2d5b6897
-:END:
-
 ** Usage
 *** Creating a project
 
@@ -42,11 +38,6 @@ Set the default destination org
 View backend, current stack, pending operations, and versions
 ~$ pulumi about~
 
-* Links
-** [[id:c0605b8f-8883-49ce-8242-506c25bfe2ee][Docker]]
-** [[id:379F85BD-9E2A-4DB5-AAEB-389C32C40E98][Podman]]
-** [[id:91bdb5c4-bc00-421d-ae5b-7db7df5e2f31][Kubernetes]]
-** [[id:c45bd3b9-ee4b-4c32-b7f4-8d8bbc1ca065][Ansible]]
 * Resources
 
 + [[https://github.com/wmariuss/awesome-devops][Awesome DevSecOps - wmariuss / github page]]
@@ -94,9 +85,6 @@ cloudformation (?)
 + [[https://youtu.be/J0NuOlA2xDc][Never install locally, there's a better way - Coderized]] (youtube video)
 
 * DevSecOps
-:PROPERTIES:
-:ID:       70ca010c-72d1-4880-a483-a5b2223b7c03
-:END:
 
 all by Gene Kim are prolly good reads.
 - The Phoenix Project
@@ -107,10 +95,6 @@ all by Gene Kim are prolly good reads.
 
 ** Resources
 ** RBAC
-:PROPERTIES:
-:ID:       EBAC484C-E1EB-4E9E-A55A-133D83BDE3C0
-:END:
-
 * Docker vs. Podman
 
 + [[https://youtu.be/Xx588nbshlM][Podman vs. Docker - IBM Technology (youtube video)]]

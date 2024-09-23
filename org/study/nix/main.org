@@ -3,8 +3,5 @@
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
 * Nix Containers
-:PROPERTIES:
-:ID:       6bef51f8-86de-4bc0-b439-aabde144d54f
-:END:
 
 + [[https://blog.beardhatcode.be/2020/12/Declarative-Nixos-Containers.html][Declarative NixOS containers - Beard Hat Code]]
