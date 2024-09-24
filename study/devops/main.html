@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DevOps</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">DevOps</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgdb23324">Links</a></li>
+<li><a href="#orga4b7628">From here below, older note</a></li>
+<li><a href="#org1d2af0b">Pulumi</a>
+<ul>
+<li><a href="#org2eadc33">Usage</a>
+<ul>
+<li><a href="#org211b0d6">Creating a project</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb25db2d">Resources</a>
+<ul>
+<li><a href="#org44f3593">Youtube Video</a>
+<ul>
+<li><a href="#org0524188">How To Become A DevOps Engineer in 2023? | Skills To Learn</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf17e314">Containers</a></li>
+<li><a href="#org61677b1">DevSecOps</a>
+<ul>
+<li><a href="#orgd789b2c">Resources</a></li>
+<li><a href="#org22ff9ff">RBAC</a></li>
+</ul>
+</li>
+<li><a href="#org7c2dfd8">Docker vs. Podman</a></li>
+<li><a href="#orgfdf818e">Kubernetes vs. OpenShift</a></li>
+<li><a href="#org2497922">Notes</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdb23324" class="outline-2">
+<h2 id="orgdb23324">Links</h2>
+<div class="outline-text-2" id="text-orgdb23324">
+<p>
+Containerization
+</p>
+<ul class="org-ul">
+<li><a href="./docker/docker.html">Docker</a> (and Podman)</li>
+<li><a href="./kubernetes/kubernetes.html">Kubernetes</a></li>
+</ul>
+
+<p>
+Configuration as Code
+</p>
+<ul class="org-ul">
+<li><a href="./ansible/ansible.html">Ansible</a></li>
+<li><a href="../nix/main.html">Nix</a></li>
+</ul>
+
+<p>
+Infrastructure as Code
+</p>
+<ul class="org-ul">
+<li><a href="./terraform/terraform.html">Terraform</a></li>
+<li><a href="./pulumi/pulumi.html">Pulumi</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga4b7628" class="outline-2">
+<h2 id="orga4b7628">From here below, older note</h2>
+<div class="outline-text-2" id="text-orga4b7628">
+<p>
+dockerhub
+AWS Cloud Practitioner Course
+OSI, Protocol, Gateway, DNS
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1d2af0b" class="outline-2">
+<h2 id="org1d2af0b">Pulumi</h2>
+<div class="outline-text-2" id="text-org1d2af0b">
+</div>
+<div id="outline-container-org2eadc33" class="outline-3">
+<h3 id="org2eadc33">Usage</h3>
+<div class="outline-text-3" id="text-org2eadc33">
+</div>
+<div id="outline-container-org211b0d6" class="outline-4">
+<h4 id="org211b0d6">Creating a project</h4>
+<div class="outline-text-4" id="text-org211b0d6">
+<p>
+Create a new project
+<code>$ pulumi new</code>
+</p>
+
+<p>
+Manage and view state
+<code>$ pulumi stack</code>
+</p>
+
+<p>
+Set the default destination org
+<code>$ pulumi org set-default NAME</code>
+</p>
+
+<p>
+View backend, current stack, pending operations, and versions
+<code>$ pulumi about</code>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb25db2d" class="outline-2">
+<h2 id="orgb25db2d">Resources</h2>
+<div class="outline-text-2" id="text-orgb25db2d">
+<ul class="org-ul">
+<li><a href="https://github.com/wmariuss/awesome-devops">Awesome DevSecOps - wmariuss / github page</a></li>
+<li><a href="https://github.com/TaptuIT/awesome-devsecops">Awesome DevSecOps - TaptuIT / github page</a></li>
+</ul>
+
+<p>
+<b>Books</b>
+</p>
+<ul class="org-ul">
+<li>DevOps for the Desperate</li>
+</ul>
+
+<p>
+<b>Posts</b>  
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/devsecops/awesome-devsecops">Awesome DevSecOps - github</a></li>
+</ul>
+
+<p>
+<b>Reddit Posts</b>
+</p>
+<ul class="org-ul">
+<li><a href="https://www.reddit.com/r/devops/comments/yjdscp/getting_into_devops/">'Getting into DevOps' - r/devops reddit post</a></li>
+</ul>
+</div>
+
+<div id="outline-container-org44f3593" class="outline-3">
+<h3 id="org44f3593">Youtube Video</h3>
+<div class="outline-text-3" id="text-org44f3593">
+</div>
+<div id="outline-container-org0524188" class="outline-4">
+<h4 id="org0524188">How To Become A DevOps Engineer in 2023? | Skills To Learn</h4>
+<div class="outline-text-4" id="text-org0524188">
+<p>
+[[<a href="https://www.youtube.com/watch?v=IiuWlqabx9M">https://www.youtube.com/watch?v=IiuWlqabx9M</a>][How To Become A DevOps Engineer in 2023? | Skills To Learn - Travis Media]
+</p>
+
+<p>
+Developers (Devs)
+Server Guys (Ops)
+</p>
+
+<ul class="org-ul">
+<li>My app is not working on the servers, even though <span class="underline">it is</span> working on my computer.</li>
+
+<li>Version Control (Git)</li>
+<li>Linux</li>
+<li>Coding (Python)</li>
+<li>Agile Development (SCRUM)</li>
+<li>Operations</li>
+<li>Docker / Kubernetes</li>
+<li>Infrastructure as Code (Terraform)</li>
+<li>Ansible</li>
+<li>Jenkins</li>
+<li>Monitoring (ELK Stack)</li>
+</ul>
+
+<p>
+Just get cloud certified
+</p>
+<ul class="org-ul">
+<li>Certified Solutions Architect Associate</li>
+<li>Associate Sysops Operations (Hard)</li>
+</ul>
+
+<p>
+Try to develop the automation mindset.
+cloudformation (?)
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf17e314" class="outline-2">
+<h2 id="orgf17e314">Containers</h2>
+<div class="outline-text-2" id="text-orgf17e314">
+<ul class="org-ul">
+<li><a href="https://youtu.be/J0NuOlA2xDc">Never install locally, there's a better way - Coderized</a> (youtube video)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org61677b1" class="outline-2">
+<h2 id="org61677b1">DevSecOps</h2>
+<div class="outline-text-2" id="text-org61677b1">
+<p>
+all by Gene Kim are prolly good reads.
+</p>
+<ul class="org-ul">
+<li>The Phoenix Project</li>
+<li>Unicorn Project</li>
+<li>DevSecOps Handbook</li>
+
+<li>Marc Hornbeck’s Engineering DevOps</li>
+</ul>
+</div>
+
+<div id="outline-container-orgd789b2c" class="outline-3">
+<h3 id="orgd789b2c">Resources</h3>
+</div>
+<div id="outline-container-org22ff9ff" class="outline-3">
+<h3 id="org22ff9ff">RBAC</h3>
+</div>
+</div>
+<div id="outline-container-org7c2dfd8" class="outline-2">
+<h2 id="org7c2dfd8">Docker vs. Podman</h2>
+<div class="outline-text-2" id="text-org7c2dfd8">
+<ul class="org-ul">
+<li><a href="https://youtu.be/Xx588nbshlM">Podman vs. Docker - IBM Technology (youtube video)</a></li>
+</ul>
+
+<p>
+OCI: Open Container Initiative
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfdf818e" class="outline-2">
+<h2 id="orgfdf818e">Kubernetes vs. OpenShift</h2>
+</div>
+<div id="outline-container-org2497922" class="outline-2">
+<h2 id="org2497922">Notes</h2>
+<div class="outline-text-2" id="text-org2497922">
+<p>
+Three important things
+</p>
+<ol class="org-ol">
+<li>Infrastructure</li>
+</ol>
+
+<p>
+If you want to create an app, you need a <span class="underline">server</span> and <span class="underline">database</span>.
+Server is infrastructure.
+</p>
+
+<p>
+Insfrastructure is the underlying system and harware responsible for software deliver
+</p>
+
+<ol class="org-ol">
+<li>Automation</li>
+</ol>
+
+<p>
+Refers to the tools and script to make work faster and easier.
+</p>
+
+<ol class="org-ol">
+<li>Monitoring</li>
+</ol>
+
+<p>
+Keeping track of how the application is working, if there are any bugs.
+</p>
+
+<p>
+-&#x2014;
+</p>
+
+<ol class="org-ol">
+<li>Linux</li>
+<li>Networking
+
+<ul class="org-ul">
+<li>DNS records</li>
+<li>TCP/IP Protocol and Port</li>
+<li>Gateways and Routing</li>
+<li>Subnetting / CIDR Range</li>
+</ul></li>
+
+<li>Virtualization and OS</li>
+<li>Programming &amp; Git
+
+<ul class="org-ul">
+<li>Python
+<ul class="org-ul">
+<li>Datatypes in Python</li>
+<li>Create a Function</li>
+<li>Buda, Django, Flask</li>
+</ul></li>
+</ul></li>
+
+<li>Cloud
+
+<ul class="org-ul">
+<li>AWS
+<ul class="org-ul">
+<li>AWS Certified: Cloud Practitioner Foundational</li>
+<li>Official AWS Cloud Practitioner Course</li>
+</ul></li>
+<li>Azure</li>
+<li>GCP</li>
+</ul></li>
+
+<li>Infrastructure as Code
+
+<ul class="org-ul">
+<li>Knowledge of YAML/JSON</li>
+<li>Terraform
+<ul class="org-ul">
+<li>Terraform Associate Certification</li>
+</ul></li>
+<li>Ansible: Configuration as Code</li>
+</ul></li>
+
+<li>CI/CD
+
+<ul class="org-ul">
+<li>Create a Project, that automatically builds and test code every time is changed.
+<ul class="org-ul">
+<li>Jenkins</li>
+<li>GitLab</li>
+<li>CircusCI</li>
+</ul></li>
+</ul></li>
+
+<li>Containerization
+
+<ul class="org-ul">
+<li>Docker</li>
+<li>Kubernetes</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+</div>
+</body>
+</html>

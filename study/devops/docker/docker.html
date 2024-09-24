@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Docker</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Docker</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1c4e84a">Resources</a>
+<ul>
+<li><a href="#org585192b">Docker Tutorial for Beginners - Ben Awad</a></li>
+</ul>
+</li>
+<li><a href="#orgdd467ff">Usage</a></li>
+<li><a href="#org5e103d2">Commands</a>
+<ul>
+<li><a href="#org40528fa">port</a></li>
+<li><a href="#org126bf18">build</a></li>
+<li><a href="#orgbfdee71">exec</a></li>
+<li><a href="#org2100689">images</a></li>
+<li><a href="#org6c443b2">ps</a></li>
+<li><a href="#org2fb779f">rm</a></li>
+<li><a href="#org4c4f890">rmi</a></li>
+<li><a href="#orga6a078a">run</a></li>
+<li><a href="#org2748499">stop</a></li>
+<li><a href="#org0c3f9a9">logs</a></li>
+<li><a href="#org5acdce1">volume</a></li>
+</ul>
+</li>
+<li><a href="#org4e3ffe8">Tips</a>
+<ul>
+<li><a href="#org0f6a06f">Stopping the Docker daemon</a></li>
+<li><a href="#orgb4f9d02">iptables rules on Docker</a></li>
+<li><a href="#org36d5510">Nix</a></li>
+</ul>
+</li>
+<li><a href="#org579fbc9">Docker Compose</a></li>
+<li><a href="#org4be11b8">Podman</a></li>
+</ul>
+</div>
+</div>
+<p>
+Written in Go.
+</p>
+
+<div id="outline-container-org1c4e84a" class="outline-2">
+<h2 id="org1c4e84a">Resources</h2>
+<div class="outline-text-2" id="text-org1c4e84a">
+<p>
+<a href="https://nixos.wiki/wiki/Docker">https://nixos.wiki/wiki/Docker</a>
+</p>
+
+<p>
+<b>Book</b>
+&gt; Docker: Up &amp; Running
+</p>
+</div>
+
+<div id="outline-container-org585192b" class="outline-3">
+<h3 id="org585192b">Docker Tutorial for Beginners - Ben Awad</h3>
+<div class="outline-text-3" id="text-org585192b">
+<p>
+&gt; <a href="https://youtu.be/0N3n56KsC28">Docker Tutorial for Beginners - Ben Awad</a> (youtube video)
+</p>
+
+<p>
+Create a file called <code>dockerfile</code>
+We are going to build a image, this will be called a <b>container</b>
+</p>
+
+<ul class="org-ul">
+<li><a href="https://hub.docker.com">dockerhub</a></li>
+</ul>
+
+<p>
+FROM &lt;name of image&gt;:&lt;version&gt; (check on dockerhub)
+COPY &lt;source of files&gt; &lt;where to store the container&gt;
+RUN &lt;command that installs dependencies, ex: npm install&gt;
+</p>
+
+<p>
+<b>DOCKERFILE</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-dockerfile">FROM node:latest
+
+COPY . .
+
+RUN npm install
+
+CMD node src/index.js
+</pre>
+</div>
+
+<p>
+Creating the container.
+<code>$ docker build -t &lt;name&gt;/&lt;container-name&gt;:&lt;version&gt;</code>
+<span class="underline">example</span>: <code>$ docker build -t benawad/node-example:1 .</code>
+</p>
+
+<p>
+<span class="underline">note</span>: Whenever chaning the code you will have to rebuild the image, rebuild it with same command as before, but specify a new version
+<span class="underline">example</span>: <code>$ docker build -t benawad/node-example:2 .</code>
+</p>
+
+<p>
+Running the image
+<code>$ docker run -p &lt;port to open&gt;:&lt;port specified on app&gt; &lt;name&gt;/&lt;container -name&gt;:&lt;version&gt;</code>
+<span class="underline">example</span>: <code>$ docker run -p 8001:3001 benawad/node-example:1</code>
+<span class="underline">note</span>: It will lock your terminal, specify <code>-d</code> flag to detach into background.
+</p>
+
+<p>
+See all the running containers and their ID's
+<code>$ docker container ls</code>
+</p>
+
+<p>
+Stop a container
+<code>$ docker container stop &lt;container-id&gt;</code>
+</p>
+
+<p>
+To check logs, add a console output to your code, and do the next
+<code>$ docker container logs &lt;container-id&gt;</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdd467ff" class="outline-2">
+<h2 id="orgdd467ff">Usage</h2>
+<div class="outline-text-2" id="text-orgdd467ff">
+<p>
+&gt; <a href="https://hub.docker.com">dockerhub</a>
+</p>
+
+<p>
+When it's running -&gt; <b>container</b>
+When it's being built / before running -&gt; <b>image</b>
+</p>
+
+<p>
+Build this image.
+<code># docker build . -t my_first_image</code>
+</p>
+
+<p>
+Check the images on your system.
+<code># docker images</code>
+</p>
+
+<p>
+Get the image for debian latest.
+<code># docker pull debian:latest</code>
+</p>
+
+<p>
+<code># docker run -dit --name myContainer &lt;image name&gt;</code>
+</p>
+
+<p>
+<code>-d</code> -&gt; Run on background independently.
+<code>-i</code> -&gt; Interactive.
+<code>-t</code> -&gt; Terminal.
+</p>
+
+<p>
+<code>--name</code> -&gt; my Container
+<code>&lt;image name&gt;</code>
+</p>
+
+<p>
+See running containers.
+<code># docker ps</code>
+</p>
+
+<p>
+Connect to container.
+<code># docker exec -it myContainer bash</code>
+</p>
+
+<p>
+You will change now to the terminal in the container.
+-&gt; <code>root@&lt;container id&gt;</code>
+</p>
+
+<p>
+&#x2014;
+Ubuntu
+</p>
+
+<p>
+Installing packages on this container.
+<code>:/# apt update</code>
+<code>:/# apt install iputils-ping</code>
+<code>:/# ping &lt;host ip&gt;</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5e103d2" class="outline-2">
+<h2 id="org5e103d2">Commands</h2>
+<div class="outline-text-2" id="text-org5e103d2">
+</div>
+<div id="outline-container-org40528fa" class="outline-3">
+<h3 id="org40528fa">port</h3>
+</div>
+<div id="outline-container-org126bf18" class="outline-3">
+<h3 id="org126bf18">build</h3>
+<div class="outline-text-3" id="text-org126bf18">
+<p>
+Build an image from a Dockerfile.
+<code># docker build -t . &lt;name&gt;:&lt;tag&gt; &lt;dir/of/dockerfile&gt;</code>
+<span class="underline">example</span>: <code># docker build -t my_first_image:v2 .</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbfdee71" class="outline-3">
+<h3 id="orgbfdee71">exec</h3>
+<div class="outline-text-3" id="text-orgbfdee71">
+<p>
+Execute a command in a running container.
+<code># docker exec &lt;container name/ID&gt;</code>
+<span class="underline">example</span>: <code># docker exec -it myContainer bash</code>
+</p>
+
+<p>
+Flags
+<code>-i</code> / <code>--interactive</code> -&gt; Keep STDIN open.
+<code>-t</code> / <code>--tty</code> -&gt; Allocate a pseudo-TTY.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2100689" class="outline-3">
+<h3 id="org2100689">images</h3>
+<div class="outline-text-3" id="text-org2100689">
+<p>
+List the images built from Dockerfiles.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6c443b2" class="outline-3">
+<h3 id="org6c443b2">ps</h3>
+<div class="outline-text-3" id="text-org6c443b2">
+<p>
+Show currently running containers.
+<code># docker ps</code>
+</p>
+
+<p>
+<code>-a</code> / <code>--all</code> -&gt; List all containers on the host.
+<code>-q</code> / <code>--quiet</code> -&gt; Only show container ID's.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2fb779f" class="outline-3">
+<h3 id="org2fb779f">rm</h3>
+<div class="outline-text-3" id="text-org2fb779f">
+<p>
+Remove a container.
+<code># docker rm &lt;container/name/or/id&gt;</code>
+<span class="underline">note</span>: It won't work for running containers, you will have to stop them. Or run the <code>--force</code> flag.
+</p>
+
+<p>
+Remove containers even running ones.
+<code># docker rm &lt;container/name/or/id&gt; --force</code>
+</p>
+
+<p>
+Remove all containers.
+<code># docker rm $(docker ps -a -q)</code>
+<span class="underline">note</span>: If root is needed then <code>$ sudo docker rm $(sudo docker ps -a -q)</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4c4f890" class="outline-3">
+<h3 id="org4c4f890">rmi</h3>
+<div class="outline-text-3" id="text-org4c4f890">
+<p>
+Check the images on the system.
+<code># docker images</code>
+</p>
+
+<p>
+Delete an image.
+<code># docker rmi &lt;image name&gt;</code>
+</p>
+
+<p>
+Delete all images.
+<code># docker rmi $(docker images -q)</code>
+<span class="underline">note</span>: If root is needed then <code>$ sudo docker rmi $(sudo docker images -q)</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga6a078a" class="outline-3">
+<h3 id="orga6a078a">run</h3>
+<div class="outline-text-3" id="text-orga6a078a">
+<p>
+Create and run a container from an image.
+<code># docker run [options] &lt;name of image&gt;</code>
+<span class="underline">example</span>: <code># docker run -dit myContainer myimage</code>
+</p>
+
+<p>
+Create and run a container with a folder mounted to the <b>/var/www/html</b> folder and attached to port 80.
+<code># docker run -dit -p 80:80 -v /home/user/webfiles:/var/www/html --name myWebServer webserver</code>
+<span class="underline">note</span>: Adding a <code>:ro</code> at the end of the mount will make the files be read-only.
+</p>
+
+<p>
+Flags
+<code>-d</code> / <code>--detach</code> -&gt; Run container in background.
+<code>-i</code> / <code>--interactive</code> -&gt; Keep STDIN open.
+<code>-t</code> / <code>--tty</code> -&gt; Allocate a pseudo-TTY.
+<code>-p</code> / <code>--publish</code> <code>&lt;number&gt;</code> -&gt; Publish a container port to the host.
+<code>-v</code> / <code>--volume &lt;path&gt;</code> -&gt; Mount a volume or folder to the container.
+<code>--name &lt;string&gt;</code> -&gt; Give a name to the container.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2748499" class="outline-3">
+<h3 id="org2748499">stop</h3>
+<div class="outline-text-3" id="text-org2748499">
+<p>
+Stops a running container.
+<code># docker stop &lt;container/name/or/id&gt;</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0c3f9a9" class="outline-3">
+<h3 id="org0c3f9a9">logs</h3>
+<div class="outline-text-3" id="text-org0c3f9a9">
+<p>
+Get logs of a specific container.
+<code># docker logs &lt;container/name/or/id&gt;</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5acdce1" class="outline-3">
+<h3 id="org5acdce1">volume</h3>
+<div class="outline-text-3" id="text-org5acdce1">
+<p>
+<code># docker volume ls -q</code>
+<code># docker volume rm $(docker volume ls -q)</code>
+-&gt; <code>$ sudo docker volume rm $(sudo docker volume ls -q)</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e3ffe8" class="outline-2">
+<h2 id="org4e3ffe8">Tips</h2>
+<div class="outline-text-2" id="text-org4e3ffe8">
+</div>
+<div id="outline-container-org0f6a06f" class="outline-3">
+<h3 id="org0f6a06f">Stopping the Docker daemon</h3>
+<div class="outline-text-3" id="text-org0f6a06f">
+<p>
+&gt; <a href="https://stackoverflow.com/questions/42365336/how-to-stop-docker-under-linux">How to stop docker under Linux - StackOverflow</a>
+</p>
+
+<p>
+Stop the docker container with.
+<code># systemctl stop docker</code>
+</p>
+
+<p>
+Stop the socket too if required.
+<code># systemctl stop docker.socket</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb4f9d02" class="outline-3">
+<h3 id="orgb4f9d02">iptables rules on Docker</h3>
+<div class="outline-text-3" id="text-orgb4f9d02">
+<p>
+iptables on Docker
+</p>
+
+<p>
+<code># docker run -dit -p 80:80 --cap-add=NET_ADMIN --name myContainer my_image</code>
+<code># docker exec -it myContainer bash</code>
+<code># apt install iptables -y</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org36d5510" class="outline-3">
+<h3 id="org36d5510">Nix</h3>
+<div class="outline-text-3" id="text-org36d5510">
+<p>
+&gt; <a href="https://thewagner.net/blog/2021/02/25/building-container-images-with-nix/">Building container images with Nix</a>
+</p>
+
+<p>
+&#x2026;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org579fbc9" class="outline-2">
+<h2 id="org579fbc9">Docker Compose</h2>
+<div class="outline-text-2" id="text-org579fbc9">
+<p>
+Will read the <code>docker-compose.yml</code> inside the folder.
+</p>
+
+<p>
+Build the images and run the container(s).
+<code># docker compose up -d</code>
+</p>
+
+<p>
+Tear down the compose.
+<code># docker compose down</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4be11b8" class="outline-2">
+<h2 id="org4be11b8">Podman</h2>
+<div class="outline-text-2" id="text-org4be11b8">
+<ul class="org-ul">
+<li><a href="https://podman.io/">main page</a></li>
+</ul>
+
+<p>
+While most of the commands can be run as user, there will be sometimes where you will need to execute as <b>root</b>.
+</p>
+
+<p>
+<span class="underline">example</span>: Run the <code>nginx</code> container and expose port 80
+<code>$ podman run -p 80:80 -d nginx</code>
+This will fail as all ports below &lt;=1024 are privileged ports, so we need to be root user to expose them.
+</p>
+
+<p>
+Let's change the port to another one
+<code>$ podman run -p 8080:80 -d nginx</code>
+</p>
+
+<p>
+Check with
+<code>$ podman ps</code>
+</p>
+
+<p>
+And also
+<code>$ ps aux | grep nginx</code>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+</div>
+</body>
+</html>
