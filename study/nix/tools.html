@@ -21,34 +21,34 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgea76fae">disko</a>
+<li><a href="#orga620348">disko</a>
 <ul>
-<li><a href="#org3628b9a">Notes</a></li>
-<li><a href="#orgf6f763f">Usage</a></li>
-<li><a href="#org099a15a">Systems</a></li>
-<li><a href="#org68ed6c5"><span class="underline">example</span>: Simple ext4</a></li>
+<li><a href="#org721426e">Notes</a></li>
+<li><a href="#orgeb61cd8">Usage</a></li>
+<li><a href="#orgbea2071">Systems</a></li>
+<li><a href="#org54df52f"><span class="underline">example</span>: Simple ext4</a></li>
 </ul>
 </li>
-<li><a href="#orge266d24">nixos-generators</a>
+<li><a href="#orgedda3f0">nixos-generators</a>
 <ul>
-<li><a href="#org204fa0f">Creating an Image</a></li>
-<li><a href="#org0f25162">Building an Image</a></li>
+<li><a href="#orgde55bd7">Creating an Image</a></li>
+<li><a href="#orgb6f60f7">Building an Image</a></li>
 </ul>
 </li>
-<li><a href="#orgec65ce4">nixos-anywhere</a>
+<li><a href="#orgc0a459c">nixos-anywhere</a>
 <ul>
-<li><a href="#orge0c9aff">Setup</a></li>
-<li><a href="#org87bbf45">Tips</a></li>
-<li><a href="#orgbd55936">Description</a></li>
+<li><a href="#orgf274efc">Setup</a></li>
+<li><a href="#org01c6a3d">Tips</a></li>
+<li><a href="#orgfe1666d">Description</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgea76fae" class="outline-2">
-<h2 id="orgea76fae">disko</h2>
-<div class="outline-text-2" id="text-orgea76fae">
+<div id="outline-container-orga620348" class="outline-2">
+<h2 id="orga620348">disko</h2>
+<div class="outline-text-2" id="text-orga620348">
 <p>
 Used to configure a disk layout.
 </p>
@@ -57,9 +57,9 @@ Used to configure a disk layout.
 </ul>
 </div>
 
-<div id="outline-container-org3628b9a" class="outline-3">
-<h3 id="org3628b9a">Notes</h3>
-<div class="outline-text-3" id="text-org3628b9a">
+<div id="outline-container-org721426e" class="outline-3">
+<h3 id="org721426e">Notes</h3>
+<div class="outline-text-3" id="text-org721426e">
 <ul class="org-ul">
 <li>Input -&gt; NixOS module.</li>
 <li>Output -&gt; 2 scripts (format + mount) and NixOS configuration to mount disks.</li>
@@ -112,9 +112,9 @@ Challenges with disko
 </div>
 </div>
 
-<div id="outline-container-orgf6f763f" class="outline-3">
-<h3 id="orgf6f763f">Usage</h3>
-<div class="outline-text-3" id="text-orgf6f763f">
+<div id="outline-container-orgeb61cd8" class="outline-3">
+<h3 id="orgeb61cd8">Usage</h3>
+<div class="outline-text-3" id="text-orgeb61cd8">
 <ul class="org-ul">
 <li><a href="https://github.com/nix-community/disko/blob/master/docs/quickstart.md">Quickstart Guide - disko github page</a></li>
 
@@ -192,9 +192,9 @@ Finish editing <code>configuration.nix</code> and install your system.
 </div>
 </div>
 
-<div id="outline-container-org099a15a" class="outline-3">
-<h3 id="org099a15a">Systems</h3>
-<div class="outline-text-3" id="text-org099a15a">
+<div id="outline-container-orgbea2071" class="outline-3">
+<h3 id="orgbea2071">Systems</h3>
+<div class="outline-text-3" id="text-orgbea2071">
 <p>
 <span class="underline">example</span>: <b>Partition table</b>
 </p>
@@ -237,9 +237,9 @@ Finish editing <code>configuration.nix</code> and install your system.
 </div>
 </div>
 
-<div id="outline-container-org68ed6c5" class="outline-3">
-<h3 id="org68ed6c5"><span class="underline">example</span>: Simple ext4</h3>
-<div class="outline-text-3" id="text-org68ed6c5">
+<div id="outline-container-org54df52f" class="outline-3">
+<h3 id="org54df52f"><span class="underline">example</span>: Simple ext4</h3>
+<div class="outline-text-3" id="text-org54df52f">
 <p>
 Save it to <code>/tmp/ext4-simple.nix</code> and run it like this.
 </p>
@@ -288,9 +288,9 @@ No flake nix:
 </div>
 </div>
 
-<div id="outline-container-orge266d24" class="outline-2">
-<h2 id="orge266d24">nixos-generators</h2>
-<div class="outline-text-2" id="text-orge266d24">
+<div id="outline-container-orgedda3f0" class="outline-2">
+<h2 id="orgedda3f0">nixos-generators</h2>
+<div class="outline-text-2" id="text-orgedda3f0">
 <ul class="org-ul">
 <li><a href="https://github.com/nix-community/nixos-generators">github page</a></li>
 </ul>
@@ -308,18 +308,18 @@ Just put your stuff into the configuration.nix and then call one of the image bu
 </p>
 </div>
 
-<div id="outline-container-org204fa0f" class="outline-3">
-<h3 id="org204fa0f">Creating an Image</h3>
-<div class="outline-text-3" id="text-org204fa0f">
+<div id="outline-container-orgde55bd7" class="outline-3">
+<h3 id="orgde55bd7">Creating an Image</h3>
+<div class="outline-text-3" id="text-orgde55bd7">
 <p>
 When creating an <b>install-iso</b>, remember it won't follow disko but instead just make it regular size.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0f25162" class="outline-3">
-<h3 id="org0f25162">Building an Image</h3>
-<div class="outline-text-3" id="text-org0f25162">
+<div id="outline-container-orgb6f60f7" class="outline-3">
+<h3 id="orgb6f60f7">Building an Image</h3>
+<div class="outline-text-3" id="text-orgb6f60f7">
 <p>
 Building an image should just be
 </p>
@@ -339,9 +339,9 @@ Building an image should just be
 </div>
 </div>
 
-<div id="outline-container-orgec65ce4" class="outline-2">
-<h2 id="orgec65ce4">nixos-anywhere</h2>
-<div class="outline-text-2" id="text-orgec65ce4">
+<div id="outline-container-orgc0a459c" class="outline-2">
+<h2 id="orgc0a459c">nixos-anywhere</h2>
+<div class="outline-text-2" id="text-orgc0a459c">
 <p>
 Installs NixOS configuration with disko over SSH in a single command.
 <a href="https://github.com/nix-community/nixos-anywhere">https://github.com/nix-community/nixos-anywhere</a>
@@ -361,9 +361,9 @@ Helpful for when a cloud provider doesn't provide with a nixos image.
 </p>
 </div>
 
-<div id="outline-container-orge0c9aff" class="outline-3">
-<h3 id="orge0c9aff">Setup</h3>
-<div class="outline-text-3" id="text-orge0c9aff">
+<div id="outline-container-orgf274efc" class="outline-3">
+<h3 id="orgf274efc">Setup</h3>
+<div class="outline-text-3" id="text-orgf274efc">
 <p>
 <span class="underline">note</span>: <b>kexec</b> requires at least <i>1.5GB</i> of ram.
 </p>
@@ -497,9 +497,9 @@ Remember this is on the <b>host</b>.
 </div>
 </div>
 
-<div id="outline-container-org87bbf45" class="outline-3">
-<h3 id="org87bbf45">Tips</h3>
-<div class="outline-text-3" id="text-org87bbf45">
+<div id="outline-container-org01c6a3d" class="outline-3">
+<h3 id="org01c6a3d">Tips</h3>
+<div class="outline-text-3" id="text-org01c6a3d">
 <p>
 Each time you change the machine configuration, update the remote machine.
 </p>
@@ -523,9 +523,9 @@ Each time you change the machine configuration, update the remote machine.
 </div>
 </div>
 
-<div id="outline-container-orgbd55936" class="outline-3">
-<h3 id="orgbd55936">Description</h3>
-<div class="outline-text-3" id="text-orgbd55936">
+<div id="outline-container-orgfe1666d" class="outline-3">
+<h3 id="orgfe1666d">Description</h3>
+<div class="outline-text-3" id="text-orgfe1666d">
 <p>
 Input
 </p>
