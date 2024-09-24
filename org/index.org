@@ -58,10 +58,3 @@ Be sure to also check my [[./blog/main.org][blog posts]].
 
 *Japanese 日本語*
 > [[./jp/jp.org][Main]]
-
-* Blog
-* Cybersecurity
-* DevOps
-* Japanese
-* Networking
-* Nix
