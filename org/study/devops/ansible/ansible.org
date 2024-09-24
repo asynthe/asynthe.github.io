@@ -37,7 +37,7 @@ example, ~/etc/ansible/hosts~
 
 * Ansible tutorial - GitHub
 
-Ansible is a *configuration management software* that let's you control and configure nodes from another machine. It uses [[id:367C05A9-1225-459E-AAC9-21EA62ACBF9C][SSH]] infrastructure instead of PKI like /Chef/, /Puppet/ to be set up.
+Ansible is a *configuration management software* that let's you control and configure nodes from another machine. It uses SSH infrastructure instead of PKI like /Chef/, /Puppet/ to be set up.
 
 It emphasizes push mode, configuration is pushed from a master machine, which is only _a machine where you can SSH to nodes from_)
 

@@ -2,6 +2,12 @@
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
-* Nix Containers
+Notes for the nix language.
 
-+ [[https://blog.beardhatcode.be/2020/12/Declarative-Nixos-Containers.html][Declarative NixOS containers - Beard Hat Code]]
+Configurations to check.
+https://github.com/tiredofit/nixos-config
+https://github.com/foo-dogsquared/nixos-config
+
+* Links
+
+- [[./tools.org][Nix Tools]]

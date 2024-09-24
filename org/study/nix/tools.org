@@ -1,0 +1,298 @@
+#+title: Nix Tools
+#+options: num:nil author:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+* flake-utils
+* disko
+
+Used to configure a disk layout.
+https://github.com/nix-community/disko
+
+** Notes
+
++ Input -> NixOS module.
++ Output -> 2 scripts (format + mount) and NixOS configuration to mount disks.
+
+*Why not systemd-repart?*
+- only single disk
+- no zfs
+- no lvm
+Repart has cool features though:
+- disk image creation without VM
+- Autoresize on boot
+- Can populate files
+
+Other disko features
+- ZFS with multiple devices
+- Raids with mdadm/lvm
+- Luks encryption
+- Bcachefs
+- disk image creating
+- checkout /example in the disko repo
+Challenges with disko
+- Options documentation:
+  - Disko options are recursive i.e. gpt -> luks -> gpt -> luks ...
+  - How to generate documentation for this?
+
+- Incremental updates:
+  - Currently works only by complete wipe first
+  - Would need state checks first
+
+** Usage
+
++ [[https://github.com/nix-community/disko/blob/master/docs/quickstart.md][Quickstart Guide - disko github page]]
+
+1. Get the NixOS iso file from the [[https://nixos.org/download.html#nixos-iso][download page]] and prepare your booting device.
+   
+2. Once booted, check for the name of the drive with ~lsblk~.
+
+   It can be one of the next list.
+   - vda
+   - sda
+   - nvme0n1
+
+3. Copy the disk configuration from the [[https://github.com/nix-community/disko/tree/master/example][examples]] and install.
+
+   example: simple EFI and EXT4 root.
+   ~$ cd /tmp~
+   ~$ curl https://github.com/nix-community/disko/blob/master/example/simple-efi.nix -o /tmp/disko-config.nix~
+
+   Install
+   ~$ sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/disko-config.nix~
+
+   After the install, check that partitions have been added with ~lsblk~.
+
+4. Complete the NixOS installation.
+
+   You will need to include the partitioning an formatting configurations that you copied into ~/tmp/disko-config.nix~ in your NixOS configuration.
+
+   Generate the configuration like this.
+   ~$ sudo nixos-generate-config --no-filesystems --root /mnt~
+
+   Move the disko configuration to ~/etc/nixos~.
+   ~$ sudo mv /tmp/disko-config.nix /mnt/etc/nixos~
+
+   Add the *import* to ~configuration.nix~
+
+   #+begin_src nix
+   imports = [
+     ./hardware-configuration.nix
+     "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
+     ./disko-config.nix
+   ];
+   #+end_src
+
+   Finish editing ~configuration.nix~ and install your system.
+   ~$ sudo nixos-install~
+   ~$ reboot~
+
+** Systems
+
+_example_: *Partition table*
+#+begin_src nix
+disko.devices = {
+  disk = {
+    main = {
+      device = "/dev/sda";
+      content = {
+        type = "gpt"; # You can use legacy, not recommended.
+      };
+    };
+  };
+}
+#+end_src
+
+_example_: *Partition*
+#+begin_src nix
+disko.devices.disk.main.content.partitions = {
+  ESP = {
+    type = "EF00";
+    size = "2G";
+    content = {
+      type = "filesystem";
+      format = "vfat";
+      mountpoint = "/boot";
+    }
+  };
+  root.size = "100%"
+  root.content = {
+    type = "filesystem";
+    format = "ext4";
+  }
+};
+#+end_src
+
+** _example_: Simple ext4
+
+Save it to ~/tmp/ext4-simple.nix~ and run it like this.
+
+No flake nix:
+~# nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/ext4-simple.nix~
+
+#+begin_src nix
+{
+ disko.devices = {
+  disk = {
+   my-disk = {
+    device = "/dev/vda";
+    type = "disk";
+    content = {
+     type = "gpt";
+     partitions = {
+      ESP = {
+       type = "EF00";
+       size = "500M";
+       content = {
+        type = "filesystem";
+        format = "vfat";
+        mountpoint = "/boot";
+       };
+      };
+      root = {
+       size = "100%";
+       content = {
+        type = "filesystem";
+        format = "ext4";
+        mountpoint = "/";
+       };
+      };
+     };
+    };
+   };
+  };
+ };
+}
+#+end_src
+
+* nixos-generators
+
+> [[https://github.com/nix-community/nixos-generators][github page]]
+
+one config, multiple formats
+
+The nixos-generators project allows to take the same NixOS configuration, and generate outputs for different target formats.
+
+Just put your stuff into the configuration.nix and then call one of the image builders.
+
+** Creating an Image
+
+When creating an *install-iso*, remember it won't follow disko but instead just make it regular size.
+
+** Building an Image
+
+Building an image should just be
+~$ nix build .#<image-name>~
+
+_example_: ~$ nix build '.#blueteam-image'~
+
+_note_: A lot of the systems require a system with kvm installed.
+
+* nixos-anywhere
+
+Installs NixOS configuration with disko over SSH in a single command.
+https://github.com/nix-community/nixos-anywhere
+
+1. *disko* is used to configure a disk layout.
+2. *nixos-anywhere* install your NixOS configuration with disko over ssh in a single command.
+
+*nixos-anywhere* let's you change any linux image / distribution into a NixOS install.
+
+Helpful for when a cloud provider doesn't provide with a nixos image.
+
+** Setup
+
+_note_: *kexec* requires at least /1.5GB/ of ram.
+
+1. Linux Pre-requisites
+
+   Try to update with the classic.
+   ~# apt update && apt upgrade -y~
+
+   *Ubuntu*
+   Install *curl*.
+   ~# apt install curl~
+
+   *Linux Mint*
+   *ssh-client* is installed, but *ssh-server* is not.
+   ~# apt-get install openssh-server~
+   ~# systemctl enable ssh~
+
+2. Running the /kexec/ image
+   ~$ sudo curl -L https://github.com/nix-community/nixos-images/releases/download/nixos-unstable/nixos-kexec-installer-noninteractive-x86_64-linux.tar.gz | sudo tar -xzf- -C /root && sudo /root/kexec/run~
+
+3. You will now be initialized into a nixos image
+
+   Proceed to generate the recommended system hardware configuration and modules as normal.
+   ~# nixos-generate-config --no-filesystems --root /mnt~
+
+4. Cloning the repo
+
+   For /kexec/.
+   Add the nixos channel.
+   ~# nix-channel --add https://nixos.org/channels/nixos-unstable nixos~
+   ~# nix-channel --update~
+
+   For /regular image/ and /kexec/
+   Get git and neovim.
+   ~$ nix-shell -p git neovim~
+
+   Here clone your own flake repo.
+
+5. Running nixos-anywhere
+
+   Configure passwords for nixos and root.
+   ~# passwd~
+   ~# passwd nixos~
+   ~# ip -c a~
+
+   Test the configuration. (not tried)
+   ~$ nix run --experimental-features 'nix-command flakes' github:nix-community/nixos-anywhere -- --flake <path to configuration>#<configuration name> --vm-test~
+
+   Running nixos-anywhere.
+   Remember this is on the host.
+   ~$ nix run github:nix-community/nixos-anywhere -- --flake <path to configuration>#<configuration name> root@<ip address>`~
+
+   _example_: ~$ nix run github:nix-community/nixos-anywhere -- --flake /home/mydir/test#hetzner-cloud root@37.27.18.135~
+
+   _after_: just in case.
+   ~$ ssh-copy-id -i <path/to/ssh/key> <root/or/user>@<ip>~
+
+** Tips
+
+Each time you change the machine configuration, update the remote machine.
+~$ nixos-rebuild switch --flake '.#machine1' --target-host root@<ip>~
+
+_note_: *IMPORTANT*
+-> Remember the machine has your user ssh key (not root) that's why sudo is not used. 
+
+-> If you are using ssh key on another directory and want to use the ~-i path/to/key~ flag, pass it to the nix daemon like this.
+~$ export NIX_SSHOPTS='-i /path/to/key'~
+   
+** Description
+
+Input
+- NixOS configuration with a disko config
+- SSH destination
+Output
+- Installed NixOS on target
+
+How does nixos-anywhere work?
+1. Identifies target
+2. Runs kexec, if no nixos installer is detected
+3. Runs disko
+4. Runs nixos-install
+5. Reboot
+
+Secrets support
+- nixos-anywhere supports upload secrets to the final system (i.e. bootstraping agenix/sops-nix) and for disk encryption.
+
+Future work
+- PXE boot.
+- Automatically generating hardware configuration.
+
+Usage with flakes
+~$ nix run github:numtide/nixos-anywhere -- --flake '.#mysystem' root@yourhost~
+
+Other cool features
+Run the interacive nixos-vm test (test locally with an own created vm)
+~$ nix run github:numtide/nixos-anywhere -- -f '.#mysystem' --vm-test~
