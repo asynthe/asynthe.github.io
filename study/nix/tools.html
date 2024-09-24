@@ -21,47 +21,45 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga9250a3">flake-utils</a></li>
-<li><a href="#org4d58ebf">disko</a>
+<li><a href="#orgea76fae">disko</a>
 <ul>
-<li><a href="#org5813782">Notes</a></li>
-<li><a href="#org8d7710e">Usage</a></li>
-<li><a href="#org69f75f0">Systems</a></li>
-<li><a href="#org1c5214e"><span class="underline">example</span>: Simple ext4</a></li>
+<li><a href="#org3628b9a">Notes</a></li>
+<li><a href="#orgf6f763f">Usage</a></li>
+<li><a href="#org099a15a">Systems</a></li>
+<li><a href="#org68ed6c5"><span class="underline">example</span>: Simple ext4</a></li>
 </ul>
 </li>
-<li><a href="#org929c491">nixos-generators</a>
+<li><a href="#orge266d24">nixos-generators</a>
 <ul>
-<li><a href="#orgb7aedc4">Creating an Image</a></li>
-<li><a href="#org18d520e">Building an Image</a></li>
+<li><a href="#org204fa0f">Creating an Image</a></li>
+<li><a href="#org0f25162">Building an Image</a></li>
 </ul>
 </li>
-<li><a href="#org0ea8f09">nixos-anywhere</a>
+<li><a href="#orgec65ce4">nixos-anywhere</a>
 <ul>
-<li><a href="#org3b7b3e2">Setup</a></li>
-<li><a href="#org186b0ed">Tips</a></li>
-<li><a href="#org1b113f2">Description</a></li>
+<li><a href="#orge0c9aff">Setup</a></li>
+<li><a href="#org87bbf45">Tips</a></li>
+<li><a href="#orgbd55936">Description</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga9250a3" class="outline-2">
-<h2 id="orga9250a3">flake-utils</h2>
-</div>
-<div id="outline-container-org4d58ebf" class="outline-2">
-<h2 id="org4d58ebf">disko</h2>
-<div class="outline-text-2" id="text-org4d58ebf">
+<div id="outline-container-orgea76fae" class="outline-2">
+<h2 id="orgea76fae">disko</h2>
+<div class="outline-text-2" id="text-orgea76fae">
 <p>
 Used to configure a disk layout.
-<a href="https://github.com/nix-community/disko">https://github.com/nix-community/disko</a>
 </p>
+<ul class="org-ul">
+<li><a href="https://github.com/nix-community/disko">github page</a></li>
+</ul>
 </div>
 
-<div id="outline-container-org5813782" class="outline-3">
-<h3 id="org5813782">Notes</h3>
-<div class="outline-text-3" id="text-org5813782">
+<div id="outline-container-org3628b9a" class="outline-3">
+<h3 id="org3628b9a">Notes</h3>
+<div class="outline-text-3" id="text-org3628b9a">
 <ul class="org-ul">
 <li>Input -&gt; NixOS module.</li>
 <li>Output -&gt; 2 scripts (format + mount) and NixOS configuration to mount disks.</li>
@@ -114,9 +112,9 @@ Challenges with disko
 </div>
 </div>
 
-<div id="outline-container-org8d7710e" class="outline-3">
-<h3 id="org8d7710e">Usage</h3>
-<div class="outline-text-3" id="text-org8d7710e">
+<div id="outline-container-orgf6f763f" class="outline-3">
+<h3 id="orgf6f763f">Usage</h3>
+<div class="outline-text-3" id="text-orgf6f763f">
 <ul class="org-ul">
 <li><a href="https://github.com/nix-community/disko/blob/master/docs/quickstart.md">Quickstart Guide - disko github page</a></li>
 
@@ -194,9 +192,9 @@ Finish editing <code>configuration.nix</code> and install your system.
 </div>
 </div>
 
-<div id="outline-container-org69f75f0" class="outline-3">
-<h3 id="org69f75f0">Systems</h3>
-<div class="outline-text-3" id="text-org69f75f0">
+<div id="outline-container-org099a15a" class="outline-3">
+<h3 id="org099a15a">Systems</h3>
+<div class="outline-text-3" id="text-org099a15a">
 <p>
 <span class="underline">example</span>: <b>Partition table</b>
 </p>
@@ -239,9 +237,9 @@ Finish editing <code>configuration.nix</code> and install your system.
 </div>
 </div>
 
-<div id="outline-container-org1c5214e" class="outline-3">
-<h3 id="org1c5214e"><span class="underline">example</span>: Simple ext4</h3>
-<div class="outline-text-3" id="text-org1c5214e">
+<div id="outline-container-org68ed6c5" class="outline-3">
+<h3 id="org68ed6c5"><span class="underline">example</span>: Simple ext4</h3>
+<div class="outline-text-3" id="text-org68ed6c5">
 <p>
 Save it to <code>/tmp/ext4-simple.nix</code> and run it like this.
 </p>
@@ -290,12 +288,12 @@ No flake nix:
 </div>
 </div>
 
-<div id="outline-container-org929c491" class="outline-2">
-<h2 id="org929c491">nixos-generators</h2>
-<div class="outline-text-2" id="text-org929c491">
-<p>
-&gt; <a href="https://github.com/nix-community/nixos-generators">github page</a>
-</p>
+<div id="outline-container-orge266d24" class="outline-2">
+<h2 id="orge266d24">nixos-generators</h2>
+<div class="outline-text-2" id="text-orge266d24">
+<ul class="org-ul">
+<li><a href="https://github.com/nix-community/nixos-generators">github page</a></li>
+</ul>
 
 <p>
 one config, multiple formats
@@ -310,22 +308,25 @@ Just put your stuff into the configuration.nix and then call one of the image bu
 </p>
 </div>
 
-<div id="outline-container-orgb7aedc4" class="outline-3">
-<h3 id="orgb7aedc4">Creating an Image</h3>
-<div class="outline-text-3" id="text-orgb7aedc4">
+<div id="outline-container-org204fa0f" class="outline-3">
+<h3 id="org204fa0f">Creating an Image</h3>
+<div class="outline-text-3" id="text-org204fa0f">
 <p>
 When creating an <b>install-iso</b>, remember it won't follow disko but instead just make it regular size.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org18d520e" class="outline-3">
-<h3 id="org18d520e">Building an Image</h3>
-<div class="outline-text-3" id="text-org18d520e">
+<div id="outline-container-org0f25162" class="outline-3">
+<h3 id="org0f25162">Building an Image</h3>
+<div class="outline-text-3" id="text-org0f25162">
 <p>
 Building an image should just be
-<code>$ nix build .#&lt;image-name&gt;</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ nix build .#&lt;image-name&gt;
+</pre>
+</div>
 
 <p>
 <span class="underline">example</span>: <code>$ nix build '.#blueteam-image'</code>
@@ -338,9 +339,9 @@ Building an image should just be
 </div>
 </div>
 
-<div id="outline-container-org0ea8f09" class="outline-2">
-<h2 id="org0ea8f09">nixos-anywhere</h2>
-<div class="outline-text-2" id="text-org0ea8f09">
+<div id="outline-container-orgec65ce4" class="outline-2">
+<h2 id="orgec65ce4">nixos-anywhere</h2>
+<div class="outline-text-2" id="text-orgec65ce4">
 <p>
 Installs NixOS configuration with disko over SSH in a single command.
 <a href="https://github.com/nix-community/nixos-anywhere">https://github.com/nix-community/nixos-anywhere</a>
@@ -360,9 +361,9 @@ Helpful for when a cloud provider doesn't provide with a nixos image.
 </p>
 </div>
 
-<div id="outline-container-org3b7b3e2" class="outline-3">
-<h3 id="org3b7b3e2">Setup</h3>
-<div class="outline-text-3" id="text-org3b7b3e2">
+<div id="outline-container-orge0c9aff" class="outline-3">
+<h3 id="orge0c9aff">Setup</h3>
+<div class="outline-text-3" id="text-orge0c9aff">
 <p>
 <span class="underline">note</span>: <b>kexec</b> requires at least <i>1.5GB</i> of ram.
 </p>
@@ -374,24 +375,38 @@ Linux Pre-requisites
 
 <p>
 Try to update with the classic.
-<code># apt update &amp;&amp; apt upgrade -y</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">apt update &amp;&amp; apt upgrade -y</span>
+</pre>
+</div>
 
 <p>
 <b>Ubuntu</b>
 Install <b>curl</b>.
-<code># apt install curl</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">apt install curl</span>
+</pre>
+</div>
 
 <p>
 <b>Linux Mint</b>
 <b>ssh-client</b> is installed, but <b>ssh-server</b> is not.
-<code># apt-get install openssh-server</code>
-<code># systemctl enable ssh</code>
-</p></li>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">apt-get install openssh-server</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">systemctl enable ssh</span>
+</pre>
+</div></li>
 
-<li>Running the <i>kexec</i> image
-<code>$ sudo curl -L https://github.com/nix-community/nixos-images/releases/download/nixos-unstable/nixos-kexec-installer-noninteractive-x86_64-linux.tar.gz | sudo tar -xzf- -C /root &amp;&amp; sudo /root/kexec/run</code></li>
+<li><p>
+Running the <i>kexec</i> image
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">$ sudo curl -L https://github.com/nix-community/nixos-images/releases/download/nixos-unstable/nixos-kexec-installer-noninteractive-x86_64-linux.tar.gz | sudo tar -xzf- -C /root &amp;&amp; sudo /root/kexec/run
+</pre>
+</div></li>
 
 <li><p>
 You will now be initialized into a nixos image
@@ -399,8 +414,11 @@ You will now be initialized into a nixos image
 
 <p>
 Proceed to generate the recommended system hardware configuration and modules as normal.
-<code># nixos-generate-config --no-filesystems --root /mnt</code>
-</p></li>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">nixos-generate-config --no-filesystems --root /mnt</span>
+</pre>
+</div></li>
 
 <li><p>
 Cloning the repo
@@ -409,15 +427,21 @@ Cloning the repo
 <p>
 For <i>kexec</i>.
 Add the nixos channel.
-<code># nix-channel --add https://nixos.org/channels/nixos-unstable nixos</code>
-<code># nix-channel --update</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">nix-channel --add https://nixos.org/channels/nixos-unstable nixos</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">nix-channel --update</span>
+</pre>
+</div>
 
 <p>
 For <i>regular image</i> and <i>kexec</i>
 Get git and neovim.
-<code>$ nix-shell -p git neovim</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ nix-shell -p git neovim
+</pre>
+</div>
 
 <p>
 Here clone your own flake repo.
@@ -429,41 +453,60 @@ Running nixos-anywhere
 
 <p>
 Configure passwords for nixos and root.
-<code># passwd</code>
-<code># passwd nixos</code>
-<code># ip -c a</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">passwd</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">passwd nixos</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">ip -c a</span>
+</pre>
+</div>
 
 <p>
 Test the configuration. (not tried)
-<code>$ nix run --experimental-features 'nix-command flakes' github:nix-community/nixos-anywhere -- --flake &lt;path to configuration&gt;#&lt;configuration name&gt; --vm-test</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ nix run --experimental-features <span style="font-style: italic;">'nix-command flakes'</span> github:nix-community/nixos-anywhere -- --flake &lt;path to configuration&gt;<span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">&lt;configuration name&gt; --vm-test</span>
+</pre>
+</div>
 
 <p>
-Running nixos-anywhere.
-Remember this is on the host.
-<code>$ nix run github:nix-community/nixos-anywhere -- --flake &lt;path to configuration&gt;#&lt;configuration name&gt; root@&lt;ip address&gt;`</code>
+Running <i>nixos-anywhere</i>.
+Remember this is on the <b>host</b>.
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ nix run github:nix-community/nixos-anywhere -- --flake &lt;path to configuration&gt;<span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">&lt;configuration name&gt; root@&lt;ip address&gt;`</span>
+</pre>
+</div>
 
 <p>
-<span class="underline">example</span>: <code>$ nix run github:nix-community/nixos-anywhere -- --flake /home/mydir/test#hetzner-cloud root@37.27.18.135</code>
+<span class="underline">example</span>:
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ nix run github:nix-community/nixos-anywhere -- --flake /home/mydir/test#hetzner-cloud root@37.27.18.135
+</pre>
+</div>
 
 <p>
 <span class="underline">after</span>: just in case.
-<code>$ ssh-copy-id -i &lt;path/to/ssh/key&gt; &lt;root/or/user&gt;@&lt;ip&gt;</code>
-</p></li>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">$ ssh-copy-id -i &lt;path/to/ssh/key&gt; &lt;root/or/user&gt;@&lt;ip&gt;
+</pre>
+</div></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-org186b0ed" class="outline-3">
-<h3 id="org186b0ed">Tips</h3>
-<div class="outline-text-3" id="text-org186b0ed">
+<div id="outline-container-org87bbf45" class="outline-3">
+<h3 id="org87bbf45">Tips</h3>
+<div class="outline-text-3" id="text-org87bbf45">
 <p>
 Each time you change the machine configuration, update the remote machine.
-<code>$ nixos-rebuild switch --flake '.#machine1' --target-host root@&lt;ip&gt;</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ nixos-rebuild switch --flake <span style="font-style: italic;">'.#machine1'</span> --target-host root@&lt;ip&gt;
+</pre>
+</div>
 
 <p>
 <span class="underline">note</span>: <b>IMPORTANT</b>
@@ -472,14 +515,17 @@ Each time you change the machine configuration, update the remote machine.
 
 <p>
 -&gt; If you are using ssh key on another directory and want to use the <code>-i path/to/key</code> flag, pass it to the nix daemon like this.
-<code>$ export NIX_SSHOPTS='-i /path/to/key'</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ export <span style="font-weight: bold; font-style: italic;">NIX_SSHOPTS</span>=<span style="font-style: italic;">'-i /path/to/key'</span>
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org1b113f2" class="outline-3">
-<h3 id="org1b113f2">Description</h3>
-<div class="outline-text-3" id="text-org1b113f2">
+<div id="outline-container-orgbd55936" class="outline-3">
+<h3 id="orgbd55936">Description</h3>
+<div class="outline-text-3" id="text-orgbd55936">
 <p>
 Input
 </p>
@@ -522,14 +568,20 @@ Future work
 
 <p>
 Usage with flakes
-<code>$ nix run github:numtide/nixos-anywhere -- --flake '.#mysystem' root@yourhost</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ nix run github:numtide/nixos-anywhere -- --flake <span style="font-style: italic;">'.#mysystem'</span> root@yourhost
+</pre>
+</div>
 
 <p>
 Other cool features
 Run the interacive nixos-vm test (test locally with an own created vm)
-<code>$ nix run github:numtide/nixos-anywhere -- -f '.#mysystem' --vm-test</code>
 </p>
+<div class="org-src-container">
+<pre class="src src-bash">$ nix run github:numtide/nixos-anywhere -- -f <span style="font-style: italic;">'.#mysystem'</span> --vm-test
+</pre>
+</div>
 </div>
 </div>
 </div>

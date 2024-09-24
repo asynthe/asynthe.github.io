@@ -21,36 +21,36 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1c4e84a">Resources</a>
+<li><a href="#org922afc9">Resources</a>
 <ul>
-<li><a href="#org585192b">Docker Tutorial for Beginners - Ben Awad</a></li>
+<li><a href="#org1c16f21">Docker Tutorial for Beginners - Ben Awad</a></li>
 </ul>
 </li>
-<li><a href="#orgdd467ff">Usage</a></li>
-<li><a href="#org5e103d2">Commands</a>
+<li><a href="#orgb4e62db">Usage</a></li>
+<li><a href="#org08a59ef">Commands</a>
 <ul>
-<li><a href="#org40528fa">port</a></li>
-<li><a href="#org126bf18">build</a></li>
-<li><a href="#orgbfdee71">exec</a></li>
-<li><a href="#org2100689">images</a></li>
-<li><a href="#org6c443b2">ps</a></li>
-<li><a href="#org2fb779f">rm</a></li>
-<li><a href="#org4c4f890">rmi</a></li>
-<li><a href="#orga6a078a">run</a></li>
-<li><a href="#org2748499">stop</a></li>
-<li><a href="#org0c3f9a9">logs</a></li>
-<li><a href="#org5acdce1">volume</a></li>
+<li><a href="#org779a7e0">port</a></li>
+<li><a href="#org9e7fd88">build</a></li>
+<li><a href="#org82b4bce">exec</a></li>
+<li><a href="#orgdab2176">images</a></li>
+<li><a href="#orgbce2cbb">ps</a></li>
+<li><a href="#org8230ffe">rm</a></li>
+<li><a href="#org36354b2">rmi</a></li>
+<li><a href="#org12652e9">run</a></li>
+<li><a href="#org30ddff5">stop</a></li>
+<li><a href="#org593c86f">logs</a></li>
+<li><a href="#org684bd2c">volume</a></li>
 </ul>
 </li>
-<li><a href="#org4e3ffe8">Tips</a>
+<li><a href="#org4fa4bf3">Tips</a>
 <ul>
-<li><a href="#org0f6a06f">Stopping the Docker daemon</a></li>
-<li><a href="#orgb4f9d02">iptables rules on Docker</a></li>
-<li><a href="#org36d5510">Nix</a></li>
+<li><a href="#org3c4e03f">Stopping the Docker daemon</a></li>
+<li><a href="#org75d7b37">iptables rules on Docker</a></li>
+<li><a href="#org8fb9f91">Nix</a></li>
 </ul>
 </li>
-<li><a href="#org579fbc9">Docker Compose</a></li>
-<li><a href="#org4be11b8">Podman</a></li>
+<li><a href="#orgc0ec5c0">Docker Compose</a></li>
+<li><a href="#orga0ebc9b">Podman</a></li>
 </ul>
 </div>
 </div>
@@ -58,9 +58,9 @@
 Written in Go.
 </p>
 
-<div id="outline-container-org1c4e84a" class="outline-2">
-<h2 id="org1c4e84a">Resources</h2>
-<div class="outline-text-2" id="text-org1c4e84a">
+<div id="outline-container-org922afc9" class="outline-2">
+<h2 id="org922afc9">Resources</h2>
+<div class="outline-text-2" id="text-org922afc9">
 <p>
 <a href="https://nixos.wiki/wiki/Docker">https://nixos.wiki/wiki/Docker</a>
 </p>
@@ -71,9 +71,9 @@ Written in Go.
 </p>
 </div>
 
-<div id="outline-container-org585192b" class="outline-3">
-<h3 id="org585192b">Docker Tutorial for Beginners - Ben Awad</h3>
-<div class="outline-text-3" id="text-org585192b">
+<div id="outline-container-org1c16f21" class="outline-3">
+<h3 id="org1c16f21">Docker Tutorial for Beginners - Ben Awad</h3>
+<div class="outline-text-3" id="text-org1c16f21">
 <p>
 &gt; <a href="https://youtu.be/0N3n56KsC28">Docker Tutorial for Beginners - Ben Awad</a> (youtube video)
 </p>
@@ -143,9 +143,9 @@ To check logs, add a console output to your code, and do the next
 </div>
 </div>
 
-<div id="outline-container-orgdd467ff" class="outline-2">
-<h2 id="orgdd467ff">Usage</h2>
-<div class="outline-text-2" id="text-orgdd467ff">
+<div id="outline-container-orgb4e62db" class="outline-2">
+<h2 id="orgb4e62db">Usage</h2>
+<div class="outline-text-2" id="text-orgb4e62db">
 <p>
 &gt; <a href="https://hub.docker.com">dockerhub</a>
 </p>
@@ -214,16 +214,16 @@ Installing packages on this container.
 </div>
 </div>
 
-<div id="outline-container-org5e103d2" class="outline-2">
-<h2 id="org5e103d2">Commands</h2>
-<div class="outline-text-2" id="text-org5e103d2">
+<div id="outline-container-org08a59ef" class="outline-2">
+<h2 id="org08a59ef">Commands</h2>
+<div class="outline-text-2" id="text-org08a59ef">
 </div>
-<div id="outline-container-org40528fa" class="outline-3">
-<h3 id="org40528fa">port</h3>
+<div id="outline-container-org779a7e0" class="outline-3">
+<h3 id="org779a7e0">port</h3>
 </div>
-<div id="outline-container-org126bf18" class="outline-3">
-<h3 id="org126bf18">build</h3>
-<div class="outline-text-3" id="text-org126bf18">
+<div id="outline-container-org9e7fd88" class="outline-3">
+<h3 id="org9e7fd88">build</h3>
+<div class="outline-text-3" id="text-org9e7fd88">
 <p>
 Build an image from a Dockerfile.
 <code># docker build -t . &lt;name&gt;:&lt;tag&gt; &lt;dir/of/dockerfile&gt;</code>
@@ -232,9 +232,9 @@ Build an image from a Dockerfile.
 </div>
 </div>
 
-<div id="outline-container-orgbfdee71" class="outline-3">
-<h3 id="orgbfdee71">exec</h3>
-<div class="outline-text-3" id="text-orgbfdee71">
+<div id="outline-container-org82b4bce" class="outline-3">
+<h3 id="org82b4bce">exec</h3>
+<div class="outline-text-3" id="text-org82b4bce">
 <p>
 Execute a command in a running container.
 <code># docker exec &lt;container name/ID&gt;</code>
@@ -249,18 +249,18 @@ Flags
 </div>
 </div>
 
-<div id="outline-container-org2100689" class="outline-3">
-<h3 id="org2100689">images</h3>
-<div class="outline-text-3" id="text-org2100689">
+<div id="outline-container-orgdab2176" class="outline-3">
+<h3 id="orgdab2176">images</h3>
+<div class="outline-text-3" id="text-orgdab2176">
 <p>
 List the images built from Dockerfiles.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6c443b2" class="outline-3">
-<h3 id="org6c443b2">ps</h3>
-<div class="outline-text-3" id="text-org6c443b2">
+<div id="outline-container-orgbce2cbb" class="outline-3">
+<h3 id="orgbce2cbb">ps</h3>
+<div class="outline-text-3" id="text-orgbce2cbb">
 <p>
 Show currently running containers.
 <code># docker ps</code>
@@ -273,9 +273,9 @@ Show currently running containers.
 </div>
 </div>
 
-<div id="outline-container-org2fb779f" class="outline-3">
-<h3 id="org2fb779f">rm</h3>
-<div class="outline-text-3" id="text-org2fb779f">
+<div id="outline-container-org8230ffe" class="outline-3">
+<h3 id="org8230ffe">rm</h3>
+<div class="outline-text-3" id="text-org8230ffe">
 <p>
 Remove a container.
 <code># docker rm &lt;container/name/or/id&gt;</code>
@@ -295,9 +295,9 @@ Remove all containers.
 </div>
 </div>
 
-<div id="outline-container-org4c4f890" class="outline-3">
-<h3 id="org4c4f890">rmi</h3>
-<div class="outline-text-3" id="text-org4c4f890">
+<div id="outline-container-org36354b2" class="outline-3">
+<h3 id="org36354b2">rmi</h3>
+<div class="outline-text-3" id="text-org36354b2">
 <p>
 Check the images on the system.
 <code># docker images</code>
@@ -316,9 +316,9 @@ Delete all images.
 </div>
 </div>
 
-<div id="outline-container-orga6a078a" class="outline-3">
-<h3 id="orga6a078a">run</h3>
-<div class="outline-text-3" id="text-orga6a078a">
+<div id="outline-container-org12652e9" class="outline-3">
+<h3 id="org12652e9">run</h3>
+<div class="outline-text-3" id="text-org12652e9">
 <p>
 Create and run a container from an image.
 <code># docker run [options] &lt;name of image&gt;</code>
@@ -343,9 +343,9 @@ Flags
 </div>
 </div>
 
-<div id="outline-container-org2748499" class="outline-3">
-<h3 id="org2748499">stop</h3>
-<div class="outline-text-3" id="text-org2748499">
+<div id="outline-container-org30ddff5" class="outline-3">
+<h3 id="org30ddff5">stop</h3>
+<div class="outline-text-3" id="text-org30ddff5">
 <p>
 Stops a running container.
 <code># docker stop &lt;container/name/or/id&gt;</code>
@@ -353,9 +353,9 @@ Stops a running container.
 </div>
 </div>
 
-<div id="outline-container-org0c3f9a9" class="outline-3">
-<h3 id="org0c3f9a9">logs</h3>
-<div class="outline-text-3" id="text-org0c3f9a9">
+<div id="outline-container-org593c86f" class="outline-3">
+<h3 id="org593c86f">logs</h3>
+<div class="outline-text-3" id="text-org593c86f">
 <p>
 Get logs of a specific container.
 <code># docker logs &lt;container/name/or/id&gt;</code>
@@ -363,9 +363,9 @@ Get logs of a specific container.
 </div>
 </div>
 
-<div id="outline-container-org5acdce1" class="outline-3">
-<h3 id="org5acdce1">volume</h3>
-<div class="outline-text-3" id="text-org5acdce1">
+<div id="outline-container-org684bd2c" class="outline-3">
+<h3 id="org684bd2c">volume</h3>
+<div class="outline-text-3" id="text-org684bd2c">
 <p>
 <code># docker volume ls -q</code>
 <code># docker volume rm $(docker volume ls -q)</code>
@@ -375,13 +375,13 @@ Get logs of a specific container.
 </div>
 </div>
 
-<div id="outline-container-org4e3ffe8" class="outline-2">
-<h2 id="org4e3ffe8">Tips</h2>
-<div class="outline-text-2" id="text-org4e3ffe8">
+<div id="outline-container-org4fa4bf3" class="outline-2">
+<h2 id="org4fa4bf3">Tips</h2>
+<div class="outline-text-2" id="text-org4fa4bf3">
 </div>
-<div id="outline-container-org0f6a06f" class="outline-3">
-<h3 id="org0f6a06f">Stopping the Docker daemon</h3>
-<div class="outline-text-3" id="text-org0f6a06f">
+<div id="outline-container-org3c4e03f" class="outline-3">
+<h3 id="org3c4e03f">Stopping the Docker daemon</h3>
+<div class="outline-text-3" id="text-org3c4e03f">
 <p>
 &gt; <a href="https://stackoverflow.com/questions/42365336/how-to-stop-docker-under-linux">How to stop docker under Linux - StackOverflow</a>
 </p>
@@ -398,9 +398,9 @@ Stop the socket too if required.
 </div>
 </div>
 
-<div id="outline-container-orgb4f9d02" class="outline-3">
-<h3 id="orgb4f9d02">iptables rules on Docker</h3>
-<div class="outline-text-3" id="text-orgb4f9d02">
+<div id="outline-container-org75d7b37" class="outline-3">
+<h3 id="org75d7b37">iptables rules on Docker</h3>
+<div class="outline-text-3" id="text-org75d7b37">
 <p>
 iptables on Docker
 </p>
@@ -413,9 +413,9 @@ iptables on Docker
 </div>
 </div>
 
-<div id="outline-container-org36d5510" class="outline-3">
-<h3 id="org36d5510">Nix</h3>
-<div class="outline-text-3" id="text-org36d5510">
+<div id="outline-container-org8fb9f91" class="outline-3">
+<h3 id="org8fb9f91">Nix</h3>
+<div class="outline-text-3" id="text-org8fb9f91">
 <p>
 &gt; <a href="https://thewagner.net/blog/2021/02/25/building-container-images-with-nix/">Building container images with Nix</a>
 </p>
@@ -427,9 +427,9 @@ iptables on Docker
 </div>
 </div>
 
-<div id="outline-container-org579fbc9" class="outline-2">
-<h2 id="org579fbc9">Docker Compose</h2>
-<div class="outline-text-2" id="text-org579fbc9">
+<div id="outline-container-orgc0ec5c0" class="outline-2">
+<h2 id="orgc0ec5c0">Docker Compose</h2>
+<div class="outline-text-2" id="text-orgc0ec5c0">
 <p>
 Will read the <code>docker-compose.yml</code> inside the folder.
 </p>
@@ -446,9 +446,9 @@ Tear down the compose.
 </div>
 </div>
 
-<div id="outline-container-org4be11b8" class="outline-2">
-<h2 id="org4be11b8">Podman</h2>
-<div class="outline-text-2" id="text-org4be11b8">
+<div id="outline-container-orga0ebc9b" class="outline-2">
+<h2 id="orga0ebc9b">Podman</h2>
+<div class="outline-text-2" id="text-orga0ebc9b">
 <ul class="org-ul">
 <li><a href="https://podman.io/">main page</a></li>
 </ul>
