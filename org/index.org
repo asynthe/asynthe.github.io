@@ -1,5 +1,6 @@
 #+title: meow's Index
 #+options: toc:nil num:nil timestamp:nil date:nil
+#+startup: showeverything
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
 * ようこそ！
@@ -52,5 +53,15 @@ Be sure to also check my [[./blog/main.org][blog posts]].
 *Networking ネットワーキング*
 > [[./study/net/main.org][Main]]
 
+*Nix*
+> [[./study/nix/main.org][Main]]
+
 *Japanese 日本語*
 > [[./jp/jp.org][Main]]
+
+* Blog
+* Cybersecurity
+* DevOps
+* Japanese
+* Networking
+* Nix

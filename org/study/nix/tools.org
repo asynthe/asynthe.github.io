@@ -2,11 +2,10 @@
 #+options: num:nil author:nil timestamp:nil date:nil
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
-* flake-utils
 * disko
 
 Used to configure a disk layout.
-https://github.com/nix-community/disko
++ [[https://github.com/nix-community/disko][github page]]
 
 ** Notes
 
@@ -166,7 +165,7 @@ No flake nix:
 
 * nixos-generators
 
-> [[https://github.com/nix-community/nixos-generators][github page]]
++ [[https://github.com/nix-community/nixos-generators][github page]]
 
 one config, multiple formats
 
@@ -181,7 +180,9 @@ When creating an *install-iso*, remember it won't follow disko but instead just 
 ** Building an Image
 
 Building an image should just be
-~$ nix build .#<image-name>~
+#+begin_src bash
+$ nix build .#<image-name>
+#+end_src
 
 _example_: ~$ nix build '.#blueteam-image'~
 
@@ -206,67 +207,96 @@ _note_: *kexec* requires at least /1.5GB/ of ram.
 1. Linux Pre-requisites
 
    Try to update with the classic.
-   ~# apt update && apt upgrade -y~
+   #+begin_src bash
+   # apt update && apt upgrade -y
+   #+end_src
 
    *Ubuntu*
    Install *curl*.
-   ~# apt install curl~
+   #+begin_src bash
+   # apt install curl
+   #+end_src
 
    *Linux Mint*
    *ssh-client* is installed, but *ssh-server* is not.
-   ~# apt-get install openssh-server~
-   ~# systemctl enable ssh~
+   #+begin_src bash
+   # apt-get install openssh-server
+   # systemctl enable ssh
+   #+end_src
 
 2. Running the /kexec/ image
-   ~$ sudo curl -L https://github.com/nix-community/nixos-images/releases/download/nixos-unstable/nixos-kexec-installer-noninteractive-x86_64-linux.tar.gz | sudo tar -xzf- -C /root && sudo /root/kexec/run~
+   #+begin_src bash
+   $ sudo curl -L https://github.com/nix-community/nixos-images/releases/download/nixos-unstable/nixos-kexec-installer-noninteractive-x86_64-linux.tar.gz | sudo tar -xzf- -C /root && sudo /root/kexec/run
+   #+end_src
 
 3. You will now be initialized into a nixos image
 
    Proceed to generate the recommended system hardware configuration and modules as normal.
-   ~# nixos-generate-config --no-filesystems --root /mnt~
+   #+begin_src bash
+   # nixos-generate-config --no-filesystems --root /mnt
+   #+end_src
 
 4. Cloning the repo
 
    For /kexec/.
    Add the nixos channel.
-   ~# nix-channel --add https://nixos.org/channels/nixos-unstable nixos~
-   ~# nix-channel --update~
+   #+begin_src bash
+   # nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+   # nix-channel --update
+   #+end_src
 
    For /regular image/ and /kexec/
    Get git and neovim.
-   ~$ nix-shell -p git neovim~
+   #+begin_src bash
+   $ nix-shell -p git neovim
+   #+end_src
 
    Here clone your own flake repo.
 
 5. Running nixos-anywhere
 
    Configure passwords for nixos and root.
-   ~# passwd~
-   ~# passwd nixos~
-   ~# ip -c a~
+   #+begin_src bash
+   # passwd
+   # passwd nixos
+   # ip -c a
+   #+end_src
 
    Test the configuration. (not tried)
-   ~$ nix run --experimental-features 'nix-command flakes' github:nix-community/nixos-anywhere -- --flake <path to configuration>#<configuration name> --vm-test~
+   #+begin_src bash
+   $ nix run --experimental-features 'nix-command flakes' github:nix-community/nixos-anywhere -- --flake <path to configuration>#<configuration name> --vm-test
+   #+end_src
 
-   Running nixos-anywhere.
-   Remember this is on the host.
-   ~$ nix run github:nix-community/nixos-anywhere -- --flake <path to configuration>#<configuration name> root@<ip address>`~
+   Running /nixos-anywhere/.
+   Remember this is on the *host*.
+   #+begin_src bash
+   $ nix run github:nix-community/nixos-anywhere -- --flake <path to configuration>#<configuration name> root@<ip address>`
+   #+end_src
 
-   _example_: ~$ nix run github:nix-community/nixos-anywhere -- --flake /home/mydir/test#hetzner-cloud root@37.27.18.135~
+   _example_:
+   #+begin_src bash
+   $ nix run github:nix-community/nixos-anywhere -- --flake /home/mydir/test#hetzner-cloud root@37.27.18.135
+   #+end_src
 
    _after_: just in case.
-   ~$ ssh-copy-id -i <path/to/ssh/key> <root/or/user>@<ip>~
+   #+begin_src bash
+   $ ssh-copy-id -i <path/to/ssh/key> <root/or/user>@<ip>
+   #+end_src
 
 ** Tips
 
 Each time you change the machine configuration, update the remote machine.
-~$ nixos-rebuild switch --flake '.#machine1' --target-host root@<ip>~
+#+begin_src bash
+$ nixos-rebuild switch --flake '.#machine1' --target-host root@<ip>
+#+end_src
 
 _note_: *IMPORTANT*
 -> Remember the machine has your user ssh key (not root) that's why sudo is not used. 
 
 -> If you are using ssh key on another directory and want to use the ~-i path/to/key~ flag, pass it to the nix daemon like this.
-~$ export NIX_SSHOPTS='-i /path/to/key'~
+#+begin_src bash
+$ export NIX_SSHOPTS='-i /path/to/key'
+#+end_src
    
 ** Description
 
@@ -291,8 +321,12 @@ Future work
 - Automatically generating hardware configuration.
 
 Usage with flakes
-~$ nix run github:numtide/nixos-anywhere -- --flake '.#mysystem' root@yourhost~
+#+begin_src bash
+$ nix run github:numtide/nixos-anywhere -- --flake '.#mysystem' root@yourhost
+#+end_src
 
 Other cool features
 Run the interacive nixos-vm test (test locally with an own created vm)
-~$ nix run github:numtide/nixos-anywhere -- -f '.#mysystem' --vm-test~
+#+begin_src bash
+$ nix run github:numtide/nixos-anywhere -- -f '.#mysystem' --vm-test
+#+end_src
