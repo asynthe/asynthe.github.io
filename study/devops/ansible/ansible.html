@@ -21,23 +21,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc049517">Usage</a></li>
-<li><a href="#orgf81cffa">From Docs</a></li>
-<li><a href="#orgd911828">Automating</a></li>
-<li><a href="#orgc809f3b">Ansible tutorial - GitHub</a></li>
-<li><a href="#org5e9d7dd">WSL stuff to automate</a></li>
-<li><a href="#org347af1b">Ansible on Windows</a>
+<li><a href="#orgbae0ef8">Usage</a></li>
+<li><a href="#org97a713e">From Docs</a></li>
+<li><a href="#org5cb80fd">Automating</a></li>
+<li><a href="#org3fdf600">Ansible tutorial - GitHub</a></li>
+<li><a href="#org02baae1">WSL stuff to automate</a></li>
+<li><a href="#org797dec3">Ansible on Windows</a>
 <ul>
-<li><a href="#orgfae0304">Tutorial</a></li>
-<li><a href="#org78976aa">Through WSL</a></li>
+<li><a href="#org887a366">Tutorial</a></li>
+<li><a href="#org0b43c44">Through WSL</a></li>
 </ul>
 </li>
-<li><a href="#orgbe717c8">Ansible on Termux</a></li>
-<li><a href="#org51243a6">Active Directory on Ansible</a></li>
-<li><a href="#orgf3ed1f6">Tutorials</a>
+<li><a href="#orge9d53a4">Ansible on Termux</a></li>
+<li><a href="#org3697c82">Active Directory on Ansible</a></li>
+<li><a href="#orgd4763ae">Tutorials</a>
 <ul>
-<li><a href="#org47458dc">Ansible Full Course - SimpliLearn</a></li>
-<li><a href="#orgbf76e1d">How to manage machines</a></li>
+<li><a href="#org97f1888">Ansible Full Course - SimpliLearn</a></li>
+<li><a href="#org2a38f76">How to manage machines</a></li>
 </ul>
 </li>
 </ul>
@@ -48,12 +48,12 @@
 &gt; <a href="https://docs.ansible.com/ansible/latest/getting_started/index.html">Getting started with Ansible - docs.ansible.com</a>
 </p>
 
-<div id="outline-container-orgc049517" class="outline-2">
-<h2 id="orgc049517">Usage</h2>
+<div id="outline-container-orgbae0ef8" class="outline-2">
+<h2 id="orgbae0ef8">Usage</h2>
 </div>
-<div id="outline-container-orgf81cffa" class="outline-2">
-<h2 id="orgf81cffa">From Docs</h2>
-<div class="outline-text-2" id="text-orgf81cffa">
+<div id="outline-container-org97a713e" class="outline-2">
+<h2 id="org97a713e">From Docs</h2>
+<div class="outline-text-2" id="text-org97a713e">
 <p>
 Ansible automates the management of remote systems and controls their desired state. A basic Ansible environment has three main components:
 </p>
@@ -66,9 +66,9 @@ Ansible automates the management of remote systems and controls their desired st
 </div>
 </div>
 
-<div id="outline-container-orgd911828" class="outline-2">
-<h2 id="orgd911828">Automating</h2>
-<div class="outline-text-2" id="text-orgd911828">
+<div id="outline-container-org5cb80fd" class="outline-2">
+<h2 id="org5cb80fd">Automating</h2>
+<div class="outline-text-2" id="text-org5cb80fd">
 <p>
 After installing ansible, create an inventory adding the IP addresses of one or more remote systems to <code>/etc/ansible/hosts</code>.
 </p>
@@ -102,9 +102,9 @@ example, <code>/etc/ansible/hosts</code>
 </div>
 </div>
 
-<div id="outline-container-orgc809f3b" class="outline-2">
-<h2 id="orgc809f3b">Ansible tutorial - GitHub</h2>
-<div class="outline-text-2" id="text-orgc809f3b">
+<div id="outline-container-org3fdf600" class="outline-2">
+<h2 id="org3fdf600">Ansible tutorial - GitHub</h2>
+<div class="outline-text-2" id="text-org3fdf600">
 <p>
 Ansible is a <b>configuration management software</b> that let's you control and configure nodes from another machine. It uses SSH infrastructure instead of PKI like <i>Chef</i>, <i>Puppet</i> to be set up.
 </p>
@@ -119,9 +119,9 @@ All that's necessary is for nodes to be accesible, the master doesn't need to be
 </div>
 </div>
 
-<div id="outline-container-org5e9d7dd" class="outline-2">
-<h2 id="org5e9d7dd">WSL stuff to automate</h2>
-<div class="outline-text-2" id="text-org5e9d7dd">
+<div id="outline-container-org02baae1" class="outline-2">
+<h2 id="org02baae1">WSL stuff to automate</h2>
+<div class="outline-text-2" id="text-org02baae1">
 <p>
 Downlading
 </p>
@@ -149,9 +149,9 @@ Downlading
 </div>
 </div>
 
-<div id="outline-container-org347af1b" class="outline-2">
-<h2 id="org347af1b">Ansible on Windows</h2>
-<div class="outline-text-2" id="text-org347af1b">
+<div id="outline-container-org797dec3" class="outline-2">
+<h2 id="org797dec3">Ansible on Windows</h2>
+<div class="outline-text-2" id="text-org797dec3">
 <p>
 &gt; <a href="https://docs.ansible.com/ansible/latest/os_guide/windows_winrm.html">Windows Remote Management - docs.ansible.com</a>
 </p>
@@ -186,9 +186,9 @@ Test
 </p>
 </div>
 
-<div id="outline-container-orgfae0304" class="outline-3">
-<h3 id="orgfae0304">Tutorial</h3>
-<div class="outline-text-3" id="text-orgfae0304">
+<div id="outline-container-org887a366" class="outline-3">
+<h3 id="org887a366">Tutorial</h3>
+<div class="outline-text-3" id="text-org887a366">
 <p>
 ~$ sudo dnf install python3-virtualenv
 ~$ virtualenv env
@@ -235,9 +235,9 @@ To communicate with Windows hosts, you will need to install Winrm. (in Linux sys
 </div>
 </div>
 
-<div id="outline-container-org78976aa" class="outline-3">
-<h3 id="org78976aa">Through WSL</h3>
-<div class="outline-text-3" id="text-org78976aa">
+<div id="outline-container-org0b43c44" class="outline-3">
+<h3 id="org0b43c44">Through WSL</h3>
+<div class="outline-text-3" id="text-org0b43c44">
 <p>
 In this case WSL needs a different connection.
 </p>
@@ -289,9 +289,9 @@ Help setting wsl environment within a Windows 10 machine.
 </div>
 </div>
 
-<div id="outline-container-orgbe717c8" class="outline-2">
-<h2 id="orgbe717c8">Ansible on Termux</h2>
-<div class="outline-text-2" id="text-orgbe717c8">
+<div id="outline-container-orge9d53a4" class="outline-2">
+<h2 id="orge9d53a4">Ansible on Termux</h2>
+<div class="outline-text-2" id="text-orge9d53a4">
 <p>
 Get Ansible working on an Android phone using a Terminal Emulator like Termux
 &gt; <a href="https://gist.github.com/kuttor/5540b0b7ee18ea62283068b03813693e">ansible-termix.sh - github gist</a>
@@ -299,17 +299,17 @@ Get Ansible working on an Android phone using a Terminal Emulator like Termux
 </div>
 </div>
 
-<div id="outline-container-org51243a6" class="outline-2">
-<h2 id="org51243a6">Active Directory on Ansible</h2>
+<div id="outline-container-org3697c82" class="outline-2">
+<h2 id="org3697c82">Active Directory on Ansible</h2>
 </div>
 
-<div id="outline-container-orgf3ed1f6" class="outline-2">
-<h2 id="orgf3ed1f6">Tutorials</h2>
-<div class="outline-text-2" id="text-orgf3ed1f6">
+<div id="outline-container-orgd4763ae" class="outline-2">
+<h2 id="orgd4763ae">Tutorials</h2>
+<div class="outline-text-2" id="text-orgd4763ae">
 </div>
-<div id="outline-container-org47458dc" class="outline-3">
-<h3 id="org47458dc">Ansible Full Course - SimpliLearn</h3>
-<div class="outline-text-3" id="text-org47458dc">
+<div id="outline-container-org97f1888" class="outline-3">
+<h3 id="org97f1888">Ansible Full Course - SimpliLearn</h3>
+<div class="outline-text-3" id="text-org97f1888">
 <p>
 Push a configuration to various nodes from a host.
 Remember that:
@@ -329,9 +329,9 @@ Installing on Ubuntu.
 </div>
 </div>
 
-<div id="outline-container-orgbf76e1d" class="outline-3">
-<h3 id="orgbf76e1d">How to manage machines</h3>
-<div class="outline-text-3" id="text-orgbf76e1d">
+<div id="outline-container-org2a38f76" class="outline-3">
+<h3 id="org2a38f76">How to manage machines</h3>
+<div class="outline-text-3" id="text-org2a38f76">
 <p>
 -&gt; /etc/ansible
 </p>

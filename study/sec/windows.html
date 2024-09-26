@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Windows</title>
+<meta name="generator" content="Org Mode" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Windows</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgedf5ea7">Commands</a>
+<ul>
+<li><a href="#org3574959">netsh</a></li>
+</ul>
+</li>
+<li><a href="#org1a38f0f">Tips</a>
+<ul>
+<li><a href="#orge94911b">Temporarily disable the Wi-Fi</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgedf5ea7" class="outline-2">
+<h2 id="orgedf5ea7">Commands</h2>
+<div class="outline-text-2" id="text-orgedf5ea7">
+</div>
+<div id="outline-container-org3574959" class="outline-3">
+<h3 id="org3574959">netsh</h3>
+<div class="outline-text-3" id="text-org3574959">
+<ul class="org-ul">
+<li><a href="https://www.thewindowsclub.com/disable-wifi-using-cmd-or-powershell">How to disable WiFi using CMD or Powershell in Windows 11/10 - TheWindowsClub</a></li>
+</ul>
+
+<p>
+Disconnect from Wi-Fi network.
+</p>
+<div class="org-src-container">
+<pre class="src src-cmd">netsh wlan disconnect
+</pre>
+</div>
+
+<p>
+Connect to a specific Wi-Fi connection.
+</p>
+<div class="org-src-container">
+<pre class="src src-cmd">netsh wlan connect name="&lt;network-name&gt;"
+</pre>
+</div>
+
+<p>
+See the available interfaces.
+</p>
+<div class="org-src-container">
+<pre class="src src-cmd">netsh wlan show interfaces
+</pre>
+</div>
+
+<p>
+Disable an interface.
+</p>
+<div class="org-src-container">
+<pre class="src src-cmd">netsh interface set interface name="Wi-Fi" admin=DISABLED
+</pre>
+</div>
+
+<p>
+Re-enable an interface.
+</p>
+<div class="org-src-container">
+<pre class="src src-text">netsh interface set interface name="Wi-Fi" admin=ENABLED
+</pre>
+</div>
+
+<p>
+<b>Powershell</b>
+</p>
+
+<p>
+Get interfaces.
+</p>
+<div class="org-src-container">
+<pre class="src src-pwsh">Get-NetAdapter | format-table
+</pre>
+</div>
+
+<p>
+Disable an interface.
+</p>
+<div class="org-src-container">
+<pre class="src src-pwsh">Disable-NetAdapter -Name "Adapter-Name" -Confirm:$false
+</pre>
+</div>
+
+<p>
+Re-enable an interface.
+</p>
+<div class="org-src-container">
+<pre class="src src-pwsh">Enable-NetAdapter -Name "Adapter-Name" -Confirm:$false
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1a38f0f" class="outline-2">
+<h2 id="org1a38f0f">Tips</h2>
+<div class="outline-text-2" id="text-org1a38f0f">
+</div>
+<div id="outline-container-orge94911b" class="outline-3">
+<h3 id="orge94911b">Temporarily disable the Wi-Fi</h3>
+<div class="outline-text-3" id="text-orge94911b">
+<p>
+<b>Useful when doing a Windows (10/11) install</b> but forgetting to set up the user before the Wi-Fi. We can temporarily disable the network interface with <code>netsh</code>.
+</p>
+
+<p>
+Press <code>Shift</code> + <code>F10</code>.
+</p>
+
+<p>
+See the available interfaces.
+</p>
+<div class="org-src-container">
+<pre class="src src-cmd">netsh wlan show interfaces
+</pre>
+</div>
+
+<p>
+The name of the interface will be the one to use on the next command, in this case "Wi-Fi".
+</p>
+<div class="org-src-container">
+<pre class="src src-cmd">netsh interface set interface name="Wi-Fi" admin=DISABLED
+</pre>
+</div>
+
+<p>
+Enable the interface again.
+</p>
+<div class="org-src-container">
+<pre class="src src-cmd">netsh interface set interface name="Wi-Fi" admin=ENABLED
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+</div>
+</body>
+</html>
