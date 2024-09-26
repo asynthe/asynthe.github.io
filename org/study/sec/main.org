@@ -19,3 +19,4 @@
 ** Tools
 
 To pentesting -> ???
+- Windows
