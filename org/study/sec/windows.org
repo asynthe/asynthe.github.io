@@ -1,4 +1,6 @@
 #+title: Windows
+#+options: num:nil author:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
 * Commands
 ** netsh
