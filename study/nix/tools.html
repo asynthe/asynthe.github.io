@@ -21,30 +21,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9b31aaa">disko</a>
+<li><a href="#org9b1941e">disko</a>
 <ul>
-<li><a href="#org4c291da">Usage</a></li>
+<li><a href="#org7e6514e">Usage</a></li>
 </ul>
 </li>
-<li><a href="#orge6d15ee">nixos-anywhere</a>
+<li><a href="#orgb461a87">nixos-anywhere</a>
 <ul>
-<li><a href="#org11a30b3">Setup</a></li>
-<li><a href="#orgc674485">Tips</a></li>
+<li><a href="#org28e8145">Setup</a></li>
+<li><a href="#orgbe7abc6">Tips</a></li>
 </ul>
 </li>
-<li><a href="#org652830f">nixos-generators</a>
+<li><a href="#org9dbcfa3">nixos-generators</a>
 <ul>
-<li><a href="#orgc8f5996">Creating an Image</a></li>
-<li><a href="#org43be1be">Building an Image</a></li>
+<li><a href="#orgb44568a">Creating an Image</a></li>
+<li><a href="#org48cb20c">Building an Image</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9b31aaa" class="outline-2">
-<h2 id="org9b31aaa">disko</h2>
-<div class="outline-text-2" id="text-org9b31aaa">
+<div id="outline-container-org9b1941e" class="outline-2">
+<h2 id="org9b1941e">disko</h2>
+<div class="outline-text-2" id="text-org9b1941e">
 <p>
 Used to configure a disk layout.
 </p>
@@ -59,9 +59,9 @@ I also have my own disko layouts defined here.
 </p>
 </div>
 
-<div id="outline-container-org4c291da" class="outline-3">
-<h3 id="org4c291da">Usage</h3>
-<div class="outline-text-3" id="text-org4c291da">
+<div id="outline-container-org7e6514e" class="outline-3">
+<h3 id="org7e6514e">Usage</h3>
+<div class="outline-text-3" id="text-org7e6514e">
 <ul class="org-ul">
 <li><a href="https://github.com/nix-community/disko/blob/master/docs/quickstart.md">Quickstart Guide - disko github page</a></li>
 
@@ -155,9 +155,9 @@ reboot
 </div>
 </div>
 
-<div id="outline-container-orge6d15ee" class="outline-2">
-<h2 id="orge6d15ee">nixos-anywhere</h2>
-<div class="outline-text-2" id="text-orge6d15ee">
+<div id="outline-container-orgb461a87" class="outline-2">
+<h2 id="orgb461a87">nixos-anywhere</h2>
+<div class="outline-text-2" id="text-orgb461a87">
 <p>
 Installs NixOS configuration with disko over SSH in a single command.
 <a href="https://github.com/nix-community/nixos-anywhere">https://github.com/nix-community/nixos-anywhere</a>
@@ -234,9 +234,9 @@ Run the interacive nixos-vm test (test locally with an own created vm)
 </div>
 </div>
 
-<div id="outline-container-org11a30b3" class="outline-3">
-<h3 id="org11a30b3">Setup</h3>
-<div class="outline-text-3" id="text-org11a30b3">
+<div id="outline-container-org28e8145" class="outline-3">
+<h3 id="org28e8145">Setup</h3>
+<div class="outline-text-3" id="text-org28e8145">
 <p>
 <span class="underline">note</span>: <b>kexec</b> requires at least <i>1.5GB</i> of ram.
 </p>
@@ -370,9 +370,9 @@ Remember this is on the <b>host</b>.
 </div>
 </div>
 
-<div id="outline-container-orgc674485" class="outline-3">
-<h3 id="orgc674485">Tips</h3>
-<div class="outline-text-3" id="text-orgc674485">
+<div id="outline-container-orgbe7abc6" class="outline-3">
+<h3 id="orgbe7abc6">Tips</h3>
+<div class="outline-text-3" id="text-orgbe7abc6">
 <p>
 Each time you change the machine configuration, update the remote machine.
 </p>
@@ -397,9 +397,9 @@ Each time you change the machine configuration, update the remote machine.
 </div>
 </div>
 
-<div id="outline-container-org652830f" class="outline-2">
-<h2 id="org652830f">nixos-generators</h2>
-<div class="outline-text-2" id="text-org652830f">
+<div id="outline-container-org9dbcfa3" class="outline-2">
+<h2 id="org9dbcfa3">nixos-generators</h2>
+<div class="outline-text-2" id="text-org9dbcfa3">
 <ul class="org-ul">
 <li><a href="https://github.com/nix-community/nixos-generators">github page</a></li>
 </ul>
@@ -417,18 +417,18 @@ Just put your stuff into the configuration.nix and then call one of the image bu
 </p>
 </div>
 
-<div id="outline-container-orgc8f5996" class="outline-3">
-<h3 id="orgc8f5996">Creating an Image</h3>
-<div class="outline-text-3" id="text-orgc8f5996">
+<div id="outline-container-orgb44568a" class="outline-3">
+<h3 id="orgb44568a">Creating an Image</h3>
+<div class="outline-text-3" id="text-orgb44568a">
 <p>
 When creating an <b>install-iso</b>, remember it won't follow disko but instead just make it regular size.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org43be1be" class="outline-3">
-<h3 id="org43be1be">Building an Image</h3>
-<div class="outline-text-3" id="text-org43be1be">
+<div id="outline-container-org48cb20c" class="outline-3">
+<h3 id="org48cb20c">Building an Image</h3>
+<div class="outline-text-3" id="text-org48cb20c">
 <p>
 Building an image should just be
 </p>
