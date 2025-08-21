@@ -6,6 +6,6 @@ My website where I write some stuff.
 
 - [ ] Setting up a clean Windows 11
 - [ ] Learning Kubernetes
-- ...
+- [ ] Playing around with GOAD
 - [ ] Writeups about HTB/THM Machines (main page and subpages)
 - [ ] Writing *LaTeX* in **Tectonic**.
