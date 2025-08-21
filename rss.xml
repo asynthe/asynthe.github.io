@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>asynthes blog</title>
+    <link>https://asynthe.github.io</link>
+    <description>Latest posts</description>
+    <generator>Norgolith</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 21 Aug 2025 14:46:23 +0000</lastBuildDate>
+    <ttl>60</ttl>
+    <atom:link href="https:&#x2F;&#x2F;asynthe.github.io/rss.xml" rel="self" type="application/rss+xml" />
+
+    <image>
+      <url>https://asynthe.github.io&#x2F;assets&#x2F;favicon.png</url>
+      <title>asynthes blog</title>
+      <link>https://asynthe.github.io</link>
+      <width>144</width>
+      <height>144</height>
+    </image>
+
+    
+  </channel>
+</rss>
