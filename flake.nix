@@ -1,0 +1,28 @@
+{
+    description = "devshell for developing a blog in norgolith";
+    inputs = {
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+        flake-utils.url = "github:numtide/flake-utils";
+        norgolith.url = "github:NTBBloodbath/norgolith";
+    };
+    outputs = { 
+        self,
+        nixpkgs, 
+        flake-utils,
+        norgolith, 
+        ... 
+        }: 
+        flake-utils.lib.eachDefaultSystem (
+            system:
+            let
+                pkgs = nixpkgs.legacyPackages.${system};
+            in
+                {
+                devShells.default = pkgs.mkShell {
+                    packages = [
+                        norgolith.packages.${system}.default
+                    ];
+                };
+            }
+        );
+}

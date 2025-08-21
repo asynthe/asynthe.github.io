@@ -1,0 +1,17 @@
+#+title: Blog Posts
+#+startup: showeverything
+#+options: toc:nil num:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+Maybe
+- /NixOS system in less than 10 minutes with disko and nixos-anywhere./
+
+* 2024
+
+*September*
+- /[[./2024/202409_making_a_website_in_org_mode.org][Making a website in org-mode]]/
+- /[[./2024/202409_playing_around_with_goad.org][Playing around with GOAD]]/
+
+* 2025
+
+- ...

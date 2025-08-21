@@ -1,0 +1,11 @@
+#+title: Making a website in org-mode
+#+options: num:nil author:nil timestamp:nil date:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+[ IN PROGRESS ]
+
+Note: [[https://stackoverflow.com/questions/76023778/action-failed-with-the-process-usr-bin-git-failed-with-exit-code-128][Action failed with "The process '/usr/bin/git' failed with exit code 128 - StackOverflow]]
+
+Settings > Action > General > Workflow Permissions
++ [X] Read and Write
++ [X] Allow Github Actions to create and approve pull requests
