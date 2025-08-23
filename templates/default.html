@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ metadata.title | title }}{% endblock title %}
+{% block title %}{{ metadata.title }}{% endblock title %}
 {% block content %}
 <div class="container mx-auto min-h-screen mt-12">
 {{ content | safe }}
@@ -13,8 +13,8 @@
     <span
         >Copyright &copy; {{ now(format="%Y") }}
       <a
-        href="https://github.com/asynthe"
-        class="text-blue-400 hover:underline">Asynthe</a
+        href="https://github.com/NTBBloodbath"
+        class="text-blue-400 hover:underline">NTBBloodbath</a
       >. Licensed under GPLv2.</span
     >
     <a

@@ -1,12 +1,13 @@
 rootUrl = 'https://asynthe.github.io'
 language = 'en-US'
-title = 'site'
-author = 'nixos'
+title = "Asynthe's blog"
+author = 'Asynthe'
+description = "Testing"
 
 # Code blocks highlighting
 [highlighter]
 enable = false
-# engine = 'prism' # Can be 'prism' or 'hljs'. Defaults to 'prism'
+engine = 'prism' # Can be 'prism' or 'hljs'. Defaults to 'prism'
 
 # RSS feed
 [rss]
@@ -14,3 +15,18 @@ enable = true
 description = 'Latest posts'
 ttl = 60
 image = '/assets/favicon.png'
+
+[extra]
+# license = "GPLv2" # Optional
+favicon_path = "/assets/norgolith.svg" # Fallback to default favicon
+# footer_author_link = "https://github.com/NTBBloodbath" # Optional
+enable_mermaid = true # Enable Mermaid.js for diagrams
+
+[extra.nav]
+RSS = "/rss.xml"
+blog = "/posts"
+# GitHub = "https://github.com/NTBBloodbath/norgolith"
+
+[extra.footer]
+# Link_name = "url"
+# GitHub = "https://github.com/NTBBloodbath/norgolith"

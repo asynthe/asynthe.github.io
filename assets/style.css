@@ -108,3 +108,9 @@ pre[class*="language-"].line-numbers > code {
 #github-issues > a:hover {
   text-decoration: underline;
 }
+
+/* Headers */
+
+.h1, .h2 {
+    padding-top: 4em
+}

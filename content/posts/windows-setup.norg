@@ -1,0 +1,58 @@
+@document.meta
+title: Setting up Windows 11
+description: Setting up a clean install of Windows 11 by an unattended install with other tips and tricks.
+authors: [
+  Asynthe
+]
+categories: [
+  Windows
+  PowerShell
+  WSL
+  Setup
+]
+created: 2025-08-23T14:39:12+00:00
+updated: 2025-08-23T15:30:16+0000
+draft: false
+layout: post
+version: 1.1.1
+@end
+
++html.class note
+> Here I will write about how I do my current Windows 11 install
+
+* Install
+** Preparing UnattendedInstall 2.0 ISO
+
+   Install Windows 11 using non-attended
+   -> link to video
+
+** Installing
+
+   > At any time during the Windows install you can press `Shift + F9` to pull up a console. This can be helpful to do actions that the installed doesn't allow.
+
+** Setup
+
+   Enable Microsoft Store and UAC
+
+* Software
+** MS Office
+
+   While I love Libreoffice I use MS Office for compatibility purposes, be it in the place I study or at work.
+  - Installing Microsoft Office with (massgravel)
+
+** Nvidia Graphics
+** VMware
+** mpv
+** winRAR
+* WSL (NixOS)
+
+  -> password-store
+
+* Extra: Mounting the Windows 11 drive in Linux
+
+  Mounting windows in linux to copy files
+  https://unix.stackexchange.com/questions/32796/why-is-my-file-system-mounted-as-read-only
+
+  `
+  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SessionManager\Power\HiberbootEnabled=0
+  `

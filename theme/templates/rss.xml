@@ -11,14 +11,14 @@
     <atom:link href="{{ config.rootUrl }}/rss.xml" rel="self" type="application/rss+xml" />
 
     <image>
-      <url>{{ config.rootUrl | escape_xml | safe }}{{ config.rss.image | default(value="/assets/favicon.png") }}</url>
+      <url>{{ config.rootUrl | escape_xml | safe }}{{ config.rss.image | default(value="/assets/favicon.svg") }}</url>
       <title>{{ config.title }}</title>
       <link>{{ config.rootUrl | escape_xml | safe }}</link>
       <width>144</width>
       <height>144</height>
     </image>
 
-    {% for post in posts | filter(attribute="draft", value=false) %}
+    {% for post in posts | filter(attribute="draft", value=false) | sort(attribute="created") | reverse %}
     <item>
       <title>{{ post.title }}</title>
       <link>{{ post.permalink | escape_xml | safe }}</link>

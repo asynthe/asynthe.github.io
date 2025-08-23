@@ -1,0 +1,49 @@
+@document.meta
+title: Setting up the Steam Deck
+description: Setting up different things such as Emudeck and Agent in the Steam Deck for emulation and japanese learning.
+authors: [
+  Asynthe
+]
+categories: [
+  Steam
+  Deck
+  English
+  Japanese
+  Linux
+]
+created: 2025-08-23T15:03:53+00:00
+updated: 2025-08-23T15:37:33+0000
+draft: false
+layout: post
+version: 1.1.1
+@end
+
+TOC
+- {** Emudeck}
+- {** SRM (Steam Rom Manager)}
+- {** Anki}
+- {** Agent / Texthooker}
+ 
+** /Emudeck/
+
+   {https://www.emudeck.com/}[Emudeck] has been one of the most comfortable and hassle-free ways of managing emulators and playing different console roms. Containing emulators like {https://rpcs3.net/}[RPCS3] and others.
+
+   Folders where roms are stored -> `...`
+
+** /SRM (Steam Rom Manager)/
+
+   from {https://www.reddit.com/r/SteamDeck/comments/123hrb5/steam_rom_manager_can_i_add_just_12_specific_games/}[Steam Rom Manager - Can I add just 1-2 specific games? - reddit]
+
+   > So what I did is once Emudeck set up the rom paths, I went in each console rom folder (that I wanted to do this for at least) and created a new folder called Favs. I would then add my favorites that I would want in Steam in those folders. Then when running Steam Rom Manager under each console I'd set the path to my Favs folder so only my favorites would be imported into steam instead of thousands of roms. I don't know yet if Emulation Station recognizes that folder (didn't test it) but I figure that's not that big of a deal since I'll be playing them in steam anyway.
+
+   This is going to be a small entry, as SRM can be setup up and managed effortless-ly by Emudeck.
+   However, SRM
+
+   While I love Emudeck UI's I also want to have some games appear on my steam library for a easy access.
+
+   *Getting specific roms into Steam with SRM*  
+
+   For this you can create a folder called `fav/` inside of the roms
+
+** /Agent / Texthooker/
+** /Anki/

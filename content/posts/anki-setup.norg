@@ -1,0 +1,193 @@
+@document.meta
+title: Setting up Anki
+description: Setting up Anki
+authors: [
+  Asynthe
+]
+categories: [
+  Anki
+  Steam
+  Deck
+  Windows
+  Linux
+  Japanese
+  English
+]
+created: 2025-08-23T15:00:39+00:00
+updated: 2025-08-23T15:43:22+0000
+draft: false
+layout: post
+version: 1.1.1
+@end
+
+*Ankidrone* -> Person that spends all day doing Anki instead of having fun in the target language.
+
+* /What is Anki?/
+
+  *Links*
+  - {https://docs.ankiweb.net/}[Anki Manual - Introduction]
+  - {https://donkuri.github.io/learn-japanese/setup/}[Japanese Learning Setup - Immersion-Based Japanese Learning]
+
+  Use it correctly
+  Good or Again
+  15-20 words a day
+  vocab cards
+  sentences cards (a+1)
+
+  addons let you create a card very quickly.
+  sentence cards need more effort, need more manual work for creating.
+
+  vocab cards -> better for objects, directly translated words.
+  sentences -> words with more nuance.
+
+  Once in an *intermediate* level, it's better to create /monolingual cards/ which are cards which explanation in their own target language.
+
+  ___
+
+  - *FSRS* -> New algorithm (ver. 23.1)
+  -- Create a new settings profile
+  -- Settings -> Advanced 
+  --- Desired retention: .85
+
+  Daily limites: 10
+  Maximum reviews: 9999
+
+  Mixing with reviews
+
+  Lapses
+  Leech action: Tag Only
+
+  ___
+
+  Anki is usually saved in `~/.Anki2`.
+  The flatpak is saved in `$HOME/.var/app/net.ankiweb.Anki`.
+
+* /Setup/
+
+  -> {https://tatsumoto.neocities.org/blog/setting-up-anki}[Setting up Anki - Tatsumoto]
+
+  Install by using your package manager of choice. (Linux)
+  Sign up for Anki Web to synchronize your decks on both your laptop and phone.
+
+  ___
+  /Tools/ -> /Preferences/
+
+  *Appearance*
+  Video driver: /Vulkan/
+  Theme: /Dark/
+  Style: /Native/
+  /Minimalist mode/
+
+  *Review*
+  Learn ahead limit: *35* minutes
+  /Show play buttons on cards with audio/
+  /Spacebar (or enter) also answers card/
+
+  *Editing*
+  -Paste clipboard images as PNG-
+
+  *Syncing*
+  /Log in to AnkiWeb/
+
+  ___
+  Importing a Deck and configuring
+
+  _Remember_: Create different *Options group* for /each type of material/ you learn.
+
+** Quick Setup
+
+   anki addons
+   2055492159 1214357311 3918629684 1610304449 1045800357 1771074083 580654285
+
+   Local Audio Server for Yomichan
+   http://127.0.0.1:5050/?term={term}&reading={reading}
+
+   Forvo Server
+   http://localhost:8770/?term={term}&reading={reading}
+
+* /Keybinds/
+
+  `e` to edit a card.
+  `Space` to flip the card.
+  `Ctrl+Delete` to delete a card.
+  `Ctrl+Z` to undo a card.
+  `Shift + 8` add a star for forgetful cards.
+
+  *Burying a card*: Don't show this card today, show it tomorrow.
+
+  *Suspend a card*: Don't show this card ever again, I already know the word.
+  `@` or `!` to suspend a card.
+
+* /Add-ons/
+
+  How to enable an addon:
+  Go to /Tools/ -> /Add-ons/ -> /Get Add-ons/ 
+  then add the *code* that is in the addon website.
+
+  One liner:
+  2055492159 1214357311 3918629684 1610304449 1045800357 1771074083 580654285
+
+  - {https://ankiweb.net/shared/info/2055492159}[AnkiConnect]
+  - {https://ankiweb.net/shared/info/1214357311}[ImageResizer]
+  - {https://ankiweb.net/shared/info/3918629684}[Japanese Support]
+  - {https://ankiweb.net/shared/info/1610304449}[Kanji Grid Kuube]
+  - {https://ankiweb.net/shared/info/1045800357}[Local Audio Server for Yomichan]
+  - {https://ankiweb.net/shared/info/1771074083}[Review Heatmap]
+  - {https://ankiweb.net/shared/info/580654285}[Yomichan Forvo Server]
+
+  *Local Audio Server for Yomichan*
+  `http://127.0.0.1:5050/?term={term}&reading={reading}`
+
+  *Forvo Server*
+  `http://localhost:8770/?term={term}&reading={reading}`
+
+** Audio Server for Yomitan
+
+   *Local Audio Server for Yomitan*
+
+   Another amazing addon is {https://ankiweb.net/shared/info/1045800357}[Local Audio Server] for Yomitan, this allows to find natural audio quickly when /creating cards/.
+
+   Go to Yomitan configuration page 
+   -> *Audio* 
+   -> *Configure audio playback sources...*
+   -> here click on *Add* then Custom URL (JSON) and add `http://127.0.0.1:5050`
+
+   More info on the {https://github.com/yomidevs/local-audio-yomichan}[github page].
+
+   ___
+
+   *Forvo extra audio source for Yomitan*
+
+   Also add the {https://learnjapanese.moe/yomichan/#bonus-adding-forvo-extra-audio-source}[forvo] (code: 580654285) extra audio source, this can be useful with audio that is not commonly found, as forvo is a giant audio database.
+
+   Go to Yomitan configuration page 
+   -> *Audio* 
+   -> *Configure audio playback sources...*
+   -> here click on *Add* then Custom URL (JSON) and add `http://127.0.0.1:5050`
+* /Notetypes/
+
+  - {https://github.com/arbyste/jp-mining-note}[jp-mining-note]
+  - lapis modified
+  - lapis
+
+* /Dictionaries/
+
+  *Preferred dictionary order*:
+  大辞林 Daijirin
+  大辞泉 Daijisen
+  明鏡 Meikyou
+  新明解 Shinmeikai
+
+
+* /Decks/
+
+  - Core 2.3k
+  - Ankidrone
+  - {https://ankiweb.net/shared/info/1196762551}[Kaishi 1.5k]
+
+* /Anki on Android/
+
+  Firefox
+  Yomitan
+  https://github.com/lrorpilla/jidoujisho
+  https://github.com/KamWithK/AnkiconnectAndroid
