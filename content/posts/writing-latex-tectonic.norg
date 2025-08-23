@@ -1,0 +1,21 @@
+@document.meta
+title: Writing LaTeX with Tectonic
+description: 
+authors: [
+  Asynthe
+]
+categories: [
+  LaTeX
+  Linux
+  WSL
+]
+created: 2025-08-23T15:52:32+00:00
+updated: 2025-08-23T15:53:19+0000
+draft: false
+layout: post
+version: 1.1.1
+@end
+
+* Writing LaTeX with Tectonic
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua. Lobortis scelerisque fermentum dui faucibus in ornare.
