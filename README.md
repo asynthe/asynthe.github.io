@@ -2,14 +2,18 @@
 
 TODO
 - [ ] Add japanese translation and japanese translation button (?)
+- [ ] Change website icon
+- [ ] Make work with JetBrainsMono and a cool japanese font like retro style gaming
+- [ ] Writeups about HTB/THM Machines (main page and subpages)
 
 Posts
-- [ ] Setting up a clean *Windows 11*
+- [ ] (FUTURE) Learning *Kubernetes*
+- [ ] (FUTURE) Playing around with *GOAD*
+- [ ] Writing *LaTeX* with **Tectonic**.
+- [ ] Setting up *Librewolf*
+- [ ] Setting up the *Steam Deck*
 - [ ] Setting up *Anki*
-- [ ] Learning *Kubernetes*
-- [ ] Playing around with *GOAD*
-- [ ] Writeups about HTB/THM Machines (main page and subpages)
-- [ ] Writing *LaTeX* in **Tectonic**.
+- [ ] Setting up *Windows 11*
 
 Personal
 - [ ] Life in Tokyo
