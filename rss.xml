@@ -6,7 +6,7 @@
     <description>Latest posts</description>
     <generator>Norgolith</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 23 Aug 2025 15:08:30 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Aug 2025 15:53:38 +0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https:&#x2F;&#x2F;asynthe.github.io/rss.xml" rel="self" type="application/rss+xml" />
 
@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>Librewolf Setup</title>
+      <title>Setting up Librewolf</title>
       <link>https://asynthe.github.io/posts/librewolf-setup/</link>
       <guid>https://asynthe.github.io/posts/librewolf-setup/</guid>
       <description>Setting up Firefox&#x2F;Librewolf</description>
@@ -40,7 +40,7 @@
     </item>
     
     <item>
-      <title>Steam Deck Setup</title>
+      <title>Setting up the Steam Deck</title>
       <link>https://asynthe.github.io/posts/steam-deck-setup/</link>
       <guid>https://asynthe.github.io/posts/steam-deck-setup/</guid>
       <description>Setting up different things such as Emudeck and Agent in the Steam Deck for emulation and japanese learning.</description>
@@ -50,13 +50,23 @@
     </item>
     
     <item>
-      <title>Setting up a clean install of Windows 11</title>
+      <title>Setting up Windows 11</title>
       <link>https://asynthe.github.io/posts/windows-setup/</link>
       <guid>https://asynthe.github.io/posts/windows-setup/</guid>
-      <description>Because I want to have all my tips organized in a single page.</description>
+      <description>Setting up a clean install of Windows 11 by an unattended install with other tips and tricks.</description>
       <author>Asynthe</author>
       <pubDate>Sat, 23 Aug 2025 14:39:12 +0000</pubDate>
       <category>Windows</category><category>PowerShell</category><category>WSL</category><category>Setup</category>
+    </item>
+    
+    <item>
+      <title>Writing LaTeX with Tectonic</title>
+      <link>https://asynthe.github.io/posts/writing-latex-tectonic/</link>
+      <guid>https://asynthe.github.io/posts/writing-latex-tectonic/</guid>
+      <description>nil</description>
+      <author>Asynthe</author>
+      <pubDate>Sat, 23 Aug 2025 15:52:32 +0000</pubDate>
+      <category>LaTeX</category><category>Linux</category><category>WSL</category>
     </item>
     
   </channel>
