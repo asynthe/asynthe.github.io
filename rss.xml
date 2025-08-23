@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>site</title>
+    <title>Asynthe&#x27;s blog</title>
     <link>https://asynthe.github.io</link>
     <description>Latest posts</description>
     <generator>Norgolith</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 21 Aug 2025 15:35:21 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Aug 2025 15:08:30 +0000</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https:&#x2F;&#x2F;asynthe.github.io/rss.xml" rel="self" type="application/rss+xml" />
 
     <image>
       <url>https://asynthe.github.io&#x2F;assets&#x2F;favicon.png</url>
-      <title>site</title>
+      <title>Asynthe&#x27;s blog</title>
       <link>https://asynthe.github.io</link>
       <width>144</width>
       <height>144</height>
@@ -20,33 +20,43 @@
 
     
     <item>
-      <title>Blog Post3</title>
-      <link>https://asynthe.github.io/posts/blog-post3/</link>
-      <guid>https://asynthe.github.io/posts/blog-post3/</guid>
-      <description>nil</description>
-      <author>nixos</author>
-      <pubDate>Thu, 21 Aug 2025 13:55:05 +0000</pubDate>
-      
+      <title>Setting up Anki</title>
+      <link>https://asynthe.github.io/posts/anki-setup/</link>
+      <guid>https://asynthe.github.io/posts/anki-setup/</guid>
+      <description>Setting up Anki</description>
+      <author>Asynthe</author>
+      <pubDate>Sat, 23 Aug 2025 15:00:39 +0000</pubDate>
+      <category>Anki</category><category>Steam</category><category>Deck</category><category>Windows</category><category>Linux</category><category>Japanese</category><category>English</category>
     </item>
     
     <item>
-      <title>Testing Note</title>
-      <link>https://asynthe.github.io/posts/hello-world/</link>
-      <guid>https://asynthe.github.io/posts/hello-world/</guid>
-      <description>This is a note for testing purposes</description>
-      <author>me</author>
-      <pubDate>Thu, 21 Aug 2025 12:21:24 +0000</pubDate>
-      <category>Neovim</category><category>Neorg</category>
+      <title>Librewolf Setup</title>
+      <link>https://asynthe.github.io/posts/librewolf-setup/</link>
+      <guid>https://asynthe.github.io/posts/librewolf-setup/</guid>
+      <description>Setting up Firefox&#x2F;Librewolf</description>
+      <author>Asynthe</author>
+      <pubDate>Sat, 23 Aug 2025 15:06:35 +0000</pubDate>
+      <category>Web</category><category>Windows</category><category>Linux</category>
     </item>
     
     <item>
-      <title>Hello World2</title>
-      <link>https://asynthe.github.io/posts/hello-world2/</link>
-      <guid>https://asynthe.github.io/posts/hello-world2/</guid>
-      <description>nil</description>
-      <author>nixos</author>
-      <pubDate>Thu, 21 Aug 2025 13:09:03 +0000</pubDate>
-      
+      <title>Steam Deck Setup</title>
+      <link>https://asynthe.github.io/posts/steam-deck-setup/</link>
+      <guid>https://asynthe.github.io/posts/steam-deck-setup/</guid>
+      <description>Setting up different things such as Emudeck and Agent in the Steam Deck for emulation and japanese learning.</description>
+      <author>Asynthe</author>
+      <pubDate>Sat, 23 Aug 2025 15:03:53 +0000</pubDate>
+      <category>Steam</category><category>Deck</category><category>English</category><category>Japanese</category><category>Linux</category>
+    </item>
+    
+    <item>
+      <title>Setting up a clean install of Windows 11</title>
+      <link>https://asynthe.github.io/posts/windows-setup/</link>
+      <guid>https://asynthe.github.io/posts/windows-setup/</guid>
+      <description>Because I want to have all my tips organized in a single page.</description>
+      <author>Asynthe</author>
+      <pubDate>Sat, 23 Aug 2025 14:39:12 +0000</pubDate>
+      <category>Windows</category><category>PowerShell</category><category>WSL</category><category>Setup</category>
     </item>
     
   </channel>
